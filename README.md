@@ -21,6 +21,7 @@ Ashour
 - php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
 دة ساعات بيضرب إيرور لأن مفيش داتابيز لسه باين
 - php artisan optimize:clear
+- >> create database and edit it in .env file <<
 - php artisan migrate
 
 ** add laravel ban:
