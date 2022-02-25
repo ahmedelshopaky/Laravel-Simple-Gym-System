@@ -17,10 +17,11 @@ Abd El-rahman
 Ashour
 ** add laravel permissions:
 - composer require spatie/laravel-permission
-- Spatie\Permission\PermissionServiceProvider::class, اتأكد إنه موجود جوه config/app.php
+- Spatie\Permission\PermissionServiceProvider::class, اتأكد إنه موجود جوه providers في فايل config/app.php
 - php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
 دة ساعات بيضرب إيرور لأن مفيش داتابيز لسه باين
 - php artisan optimize:clear
+- >> create database and edit it in .env file <<
 - php artisan migrate
 
 ** add laravel ban:
