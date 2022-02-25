@@ -11,8 +11,7 @@ Abd El-rahman
 - npm install admin-lte@^3.2 --save
 *after editing in front pages and ui* we run => npm run dev *not necessary to do it*
 - npm install --save @fortawesome/fontawesome-free
-- npm run dev
-
+- npm run dev -> note: you must run this command after any edit on admin lte style
 ------------------------------------------------------------------------------
 Ashour
 ** add laravel permissions:
