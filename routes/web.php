@@ -21,3 +21,5 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
 
+Route::get('/home/gym-managers', [App\Http\Controllers\GymManagerController::class, 'index'])->name('gym_managers.index');
+
