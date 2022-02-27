@@ -9,5 +9,6 @@ class GymController extends Controller
     public function index()
     {
         return view('menu.gyms');
+        
     }
 }
