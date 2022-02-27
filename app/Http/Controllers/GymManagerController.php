@@ -8,6 +8,6 @@ class GymManagerController extends Controller
 {
     public function index()
     {
-        return view('gym_managers');
+        return view('menu.gym_managers');
     }
 }

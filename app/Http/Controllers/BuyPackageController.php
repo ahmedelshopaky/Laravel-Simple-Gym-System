@@ -8,6 +8,6 @@ class BuyPackageController extends Controller
 {
     public function index()
     {
-        return view('buy_package');
+        return view('menu.buy_package');
     }
 }

@@ -8,6 +8,6 @@ class TrainingPackageController extends Controller
 {
     public function index()
     {
-        return view('training_packages');
+        return view('menu.training_packages');
     }
 }

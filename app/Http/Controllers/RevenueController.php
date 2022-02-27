@@ -8,6 +8,6 @@ class RevenueController extends Controller
 {
     public function index()
     {
-        return view('revenue');
+        return view('menu.revenue');
     }
 }

@@ -8,6 +8,6 @@ class CityManagerController extends Controller
 {
     public function index()
     {
-        return view('city_managers');
+        return view('menu.city_managers');
     }
 }
