@@ -23,6 +23,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->date('date_of_birth');
             $table->timestamp('last_login')->nullable();
+            $table->string('remember_token')->nullable();
+            $table->timestamps();
         });
     }
 

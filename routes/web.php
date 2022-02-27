@@ -32,3 +32,4 @@ Route::get('/home/attendance', [App\Http\Controllers\AttendanceController::class
 Route::get('/home/buy-package', [App\Http\Controllers\BuyPackageController::class, 'index'])->name('buy_package.index');
 Route::get('/home/revenue', [App\Http\Controllers\RevenueController::class, 'index'])->name('revenue.index');
 
+Route::get('/test', [App\Http\Controllers\UserController::class, 'index'])->name('user.index')->middleware('auth');
