@@ -16,7 +16,12 @@
     <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
+
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css"> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+   
 </head>
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
@@ -157,7 +162,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('cities.index')}}" class="nav-link">
+                                    <a href="{{route('cities.show')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Cities</p>
                                     </a>
@@ -227,5 +232,6 @@
     </div>
 
     <script src="{{asset('js/app.js')}} "> </script>
+ 
 </body>
 </html>

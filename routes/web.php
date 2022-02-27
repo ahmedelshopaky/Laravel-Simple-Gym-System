@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/gym-managers', [App\Http\Controllers\GymManagerController::class, 'index'])->name('gym_managers.index');
     Route::get('/city-managers', [App\Http\Controllers\CityManagerController::class, 'index'])->name('city_managers.index');
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
-    Route::get('/cities', [App\Http\Controllers\CityController::class, 'index'])->name('cities.index');
+    Route::get('/cities', [App\Http\Controllers\GymController::class, 'showCity'])->name('cities.show');
     Route::get('/gyms', [App\Http\Controllers\GymController::class, 'index'])->name('gyms.index');
     Route::get('/training-packages', [App\Http\Controllers\TrainingPackageController::class, 'index'])->name('training_packages.index');
     Route::get('/coaches', [App\Http\Controllers\CoachController::class, 'index'])->name('coaches.index');
