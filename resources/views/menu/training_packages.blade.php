@@ -22,13 +22,14 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover" id="table_id">
                   <thead>
                   <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Price</th>
                     <th>Sessions Number</th>
+                
                   </tr>
                   </thead>
                   <tbody>
@@ -125,6 +126,11 @@
       "responsive": true,
     });
   });
+</script>
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
 </script>
 
 @endsection
