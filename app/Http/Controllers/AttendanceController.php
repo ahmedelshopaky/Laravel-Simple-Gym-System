@@ -10,7 +10,7 @@ class AttendanceController extends Controller
 
     public function index()
     {
-        $training_session_user = UserTrainingSession::all();
-        return view('menu.attendance', compact('training_session_user'));
+        $training_sessions_users = UserTrainingSession::all();
+        return view('menu.attendance', compact('training_sessions_users'));
     }
 }

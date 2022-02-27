@@ -9,8 +9,8 @@ class GymController extends Controller
    
     public function index()
     {
-        $gym = Gym::all();
-        return view('menu.gyms', compact('gym'));
+        $gyms = Gym::all();
+        return view('menu.gyms', compact('gyms'));
 
     }
     public function showCity() {
