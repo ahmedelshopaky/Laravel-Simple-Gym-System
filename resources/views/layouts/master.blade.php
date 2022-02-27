@@ -27,7 +27,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
+                    <a href="{{ route('home') }}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact Us</a>
@@ -66,13 +66,50 @@
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
+                
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav">
+                <!-- Authentication Links -->
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
             </ul>
         </nav>
 
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-            <a href="index3.html" class="brand-link text-decoration-none">
+            <a href="{{ route('home') }}" class="brand-link text-decoration-none">
                 <img src="{{asset('/images/gym-logo.jpg')}}" class="brand-image-xl img-circle elevation-3 mx-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">Sparta Gym</span>
             </a>
