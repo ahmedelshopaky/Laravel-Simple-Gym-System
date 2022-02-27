@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -64,6 +65,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+        if ($request->hasFile('profile_image'))
+        {
+            $name = $request->profile_image;
+            if( $name ){
+                $img = $request->file('profile_image');
+                $ext = $img->getClientOriginalExtension();
+                $name = 'img-' . uniqid() . '.' . $ext;
+                $img->move(public_path('images/users'),$name);
+            } else { // $name == null
+                // unlink((public_path('uploads/users')).$name);
+            }
+        }
+        
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],

@@ -13,3 +13,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
+
+/public/images/users
+/public/images/gym_managers
+/public/images/gyms
