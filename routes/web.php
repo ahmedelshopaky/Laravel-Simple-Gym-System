@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::middleware('auth')->group(function(){
-    Route::get('/', [App\Http\Controllers\AdminController::class, 'index'])->name('home');
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/gym-managers', [App\Http\Controllers\GymManagerController::class, 'index'])->name('gym_managers.index');
     Route::get('/city-managers', [App\Http\Controllers\CityManagerController::class, 'index'])->name('city_managers.index');
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
