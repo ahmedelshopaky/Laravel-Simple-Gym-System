@@ -31,3 +31,4 @@ Route::get('/home/coaches', [App\Http\Controllers\CoachController::class, 'index
 Route::get('/home/attendance', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance.index');
 Route::get('/home/buy-package', [App\Http\Controllers\BuyPackageController::class, 'index'])->name('buy_package.index');
 Route::get('/home/revenue', [App\Http\Controllers\RevenueController::class, 'index'])->name('revenue.index');
+

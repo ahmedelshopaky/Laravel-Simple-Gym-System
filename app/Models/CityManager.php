@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class CityManager extends Model
 {
     use HasFactory;
+    protected $fillable =['id','national_id','email','name','password','avatar_image'];
 }
