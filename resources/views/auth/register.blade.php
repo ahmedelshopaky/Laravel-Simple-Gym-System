@@ -66,8 +66,10 @@
                             <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
 
                             <div class="col-md-6">
-                                <input id="gender" type="text" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" autofocus>
-
+                            <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" autofocus>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
                                 @error('gender')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -83,7 +85,7 @@
                             <label for="date_of_birth" class="col-md-4 col-form-label text-md-end">{{ __('Date Of Birth') }}</label>
 
                             <div class="col-md-6">
-                                <input id="date_of_birth" type="text" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth" autofocus>
+                                <input id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth" autofocus>
 
                                 @error('date_of_birth')
                                     <span class="invalid-feedback" role="alert">
@@ -98,10 +100,8 @@
 
                         <div class="row mb-3">
                             <label for="profile_image" class="col-md-4 col-form-label text-md-end">{{ __('Profile Picture') }}</label>
-
                             <div class="col-md-6">
-                                <input id="profile_image" type="text" class="form-control @error('profile_image') is-invalid @enderror" name="profile_image" value="{{ old('profile_image') }}" required autocomplete="profile_image" autofocus>
-
+                                <input id="profile_image" type="file" class="form-control @error('profile_image') is-invalid @enderror" name="profile_image" required autofocus/>
                                 @error('profile_image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
