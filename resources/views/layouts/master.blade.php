@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Starter</title>
+    <title>Home</title>
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
@@ -188,56 +188,56 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('city_managers.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>City Managers</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('users.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Users</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="{{route('cities.index')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Cities</p>
                                     </a>
                                 </li>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('gyms.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Gyms</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('training_packages.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Training Packages</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('coaches.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Coaches</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('attendance.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Attendance</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('buy_package.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Buy Packages For Users</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('revenue.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Revenue</p>
                             </a>
