@@ -9,7 +9,7 @@ class CoachController extends Controller
     
     public function index()
     {
-        $gym_managers = Coach::all();
+        $coaches = Coach::all();
         return view('menu.coaches', compact('coaches'));
     }
 

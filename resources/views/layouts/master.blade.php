@@ -162,7 +162,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('showCity.index')}}" class="nav-link">
+                                    <a href="{{route('cities.show')}}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Cities</p>
                                     </a>

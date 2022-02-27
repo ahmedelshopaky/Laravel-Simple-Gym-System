@@ -11,6 +11,6 @@ class RevenueController extends Controller
     public function index()
     {
         $revenue = Revenue::all();
-        return view('menu.revenue', compact('$revenue'));
+        return view('menu.revenue', compact('revenue'));
     }
 }
