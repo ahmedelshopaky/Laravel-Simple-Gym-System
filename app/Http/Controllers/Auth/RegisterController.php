@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -50,9 +51,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            // 'name' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'profile_image' => ['image', 'mimes:jpg,png'],
+            'gender' => ['required'],
+            'date_of_birth' => ['required'],
         ]);
     }
 
@@ -64,13 +68,27 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+        if ($request->hasFile('profile_image'))
+        {
+            $img = $request->file('profile_image');
+            $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();
+            $img->move(public_path('images/users'),$name);
+
+            // TODO
+            // if $name == null
+            // unlink((public_path('uploads/users')).$name);
+
+            // image is already exists
+        }
+        
         return User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'gender' => $data['gender'],
             'date_of_birth' => $data['date_of_birth'],
-            'profile_image' => $data['profile_image'],
+            'profile_image' => $name,
         ]);
     }
 }
