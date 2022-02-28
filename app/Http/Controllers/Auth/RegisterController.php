@@ -51,9 +51,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            // 'name' => ['required', 'string', 'max:255'],
-            // 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'profile_image' => ['image', 'mimes:jpg,png'],
+            'gender' => ['required'],
+            'date_of_birth' => ['required'],
         ]);
     }
 
@@ -68,15 +71,15 @@ class RegisterController extends Controller
         $request = request();
         if ($request->hasFile('profile_image'))
         {
-            $name = $request->profile_image;
-            if( $name ){
-                $img = $request->file('profile_image');
-                $ext = $img->getClientOriginalExtension();
-                $name = 'img-' . uniqid() . '.' . $ext;
-                $img->move(public_path('images/users'),$name);
-            } else { // $name == null
-                // unlink((public_path('uploads/users')).$name);
-            }
+            $img = $request->file('profile_image');
+            $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();
+            $img->move(public_path('images/users'),$name);
+
+            // TODO
+            // if $name == null
+            // unlink((public_path('uploads/users')).$name);
+
+            // image is already exists
         }
         
         return User::create([
@@ -85,7 +88,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'gender' => $data['gender'],
             'date_of_birth' => $data['date_of_birth'],
-            'profile_image' => $data['profile_image'],
+            'profile_image' => $name,
         ]);
     }
 }
