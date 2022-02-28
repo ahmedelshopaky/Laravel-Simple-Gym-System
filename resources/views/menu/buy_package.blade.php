@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <div class="col-sm-6">
-      <h1>Training Packages</h1>
+      <h1>Buy Package For Users</h1>
     </div>
     </section>
 
@@ -18,29 +18,20 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Training Packages</h3>
+                <h3 class="card-title">Buy Package Data</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="table_id">
+                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
                   <thead>
                   <tr>
-                    <th> ID</th>
+                    <th>ID</th>
                     <th>Name</th>
-                    
-                
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($training_packages as $training_package)
-                  <tr>
-                    <td>{{ $training_package->id }}</td>
-                    <td>{{ $training_package->name }}</td>
-                    
-                   
-                   
-                  </tr>
-                  @endforeach
+                 
                   </tbody>
                 </table>
               </div>
@@ -127,9 +118,23 @@
   });
 </script>
 <script>
-    $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+
+$(function () {
+    
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('buy_package.index') }}",
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'name', name: 'name'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    } );
+});
+
+
+
 </script>
 
 @endsection
