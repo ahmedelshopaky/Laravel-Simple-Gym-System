@@ -22,7 +22,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="table_id">
+                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
                   <thead>
                   <tr>
                     <th>ID</th>
@@ -31,19 +31,11 @@
                     <th>Gender</th>
                     <th>Date Of Birth</th>
                     <th>Last Login</th>
+                    <th  >Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($users as $user)
-                  <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->username }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->gender }}</td>
-                    <td>{{ $user->date_of_birth }}</td>
-                    <td>{{ $user->last_login }}</td>
-                  </tr>
-                  @endforeach
+                 
                   </tbody>
                 </table>
               </div>
@@ -112,7 +104,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
+<!-- <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -128,11 +120,31 @@
       "responsive": true,
     });
   });
-</script>
+</script> -->
 <script>
-    $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+//     $(document).ready( function () {
+//     $('#table_id').DataTable();
+// } );
+$(function () {
+    
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('users.index') }}",
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'username', name: 'name'},
+            {data: 'email', name: 'email'},
+            {data: 'gender', name: 'gender'},
+            {data: 'date_of_birth', name: 'date_of_birth'},
+            {data: 'last_login', name: 'last_login'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    } );
+});
+
+
+
 </script>
 
 @endsection
