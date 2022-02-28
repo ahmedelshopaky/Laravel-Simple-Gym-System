@@ -22,26 +22,17 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="table_id">
+                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
                   <thead>
                   <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Price</th>
                     <th>Sessions Number</th>
-                
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($training_packages as $training_package)
-                  <tr>
-                    <td>{{ $training_package->id }}</td>
-                    <td>{{ $training_package->name }}</td>
-                    <td>{{ $training_package->price }}</td>
-                    <td>{{ $training_package->sessions_number }}</td>
-                   
-                  </tr>
-                  @endforeach
+                 
                   </tbody>
                 </table>
               </div>
@@ -128,9 +119,24 @@
   });
 </script>
 <script>
-    $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+
+$(function () {
+    
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('training_packages.index') }}",
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'name', name: 'name'},
+            {data: 'sessions_number', name: 'email'},    
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    } );
+});
+
+
+
 </script>
 
 @endsection
