@@ -53,3 +53,8 @@ Laravel Sanctum
 ---------------------------------------------------------------------------
 To add a new admin use this command
 - $ php artisan create:admin 
+- -----------------------------------------------------------------------
+// to run seeder
+// uncomment line 17 in database/seeders/DatabaseSeeder
+// then
+// $ php artisan db:seed
