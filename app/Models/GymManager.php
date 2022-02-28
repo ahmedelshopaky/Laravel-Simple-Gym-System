@@ -8,7 +8,7 @@ use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class GymManager extends Authenticatable implements BannableContract
+class GymManager extends Model implements BannableContract
 {
     use HasFactory, Bannable;
     protected $fillable = [

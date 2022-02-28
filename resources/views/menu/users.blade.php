@@ -28,10 +28,7 @@
                     <th>ID</th>
                     <th>Username</th>
                     <th>Email</th>
-                    <th>Gender</th>
-                    <th>Date Of Birth</th>
-                    <th>Last Login</th>
-                    <th  >Actions</th>
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -104,7 +101,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<!-- <script>
+<script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -120,11 +117,9 @@
       "responsive": true,
     });
   });
-</script> -->
+</script>
 <script>
-//     $(document).ready( function () {
-//     $('#table_id').DataTable();
-// } );
+
 $(function () {
     
     var table = $('.data-table').DataTable({
@@ -134,10 +129,7 @@ $(function () {
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'username', name: 'name'},
-            {data: 'email', name: 'email'},
-            {data: 'gender', name: 'gender'},
-            {data: 'date_of_birth', name: 'date_of_birth'},
-            {data: 'last_login', name: 'last_login'},
+            {data: 'email', name: 'email'},    
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     } );
