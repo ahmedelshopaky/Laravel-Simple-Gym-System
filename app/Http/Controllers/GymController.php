@@ -1,14 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Gym;
 use Illuminate\Http\Request;
 
 class GymController extends Controller
 {
+   
     public function index()
     {
-        return view('menu.gyms');
-        
+        $gyms = Gym::all();
+        return view('menu.gyms', compact('gyms'));
+
+    }
+    public function showCity() {
+        //
     }
 }

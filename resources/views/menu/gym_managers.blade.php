@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <div class="col-sm-6">
-      <h1>Gym Managers</h1>
+      <h1>Revenue</h1>
     </div>
     </section>
 
@@ -18,24 +18,29 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Gym Managers Data</h3>
+                <h3 class="card-title">Gym Managers</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
+                <table class="table table-bordered table-hover" id="table_id">
                   <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>name</th>
-                    <th>Email</th>
-                    <th>national_id</th>
-                    <th>Date Of Birth</th>
-                    <th>Last Login</th>
-                    <th  >Actions</th>
+                    <th> ID</th>
+                    <th>Name</th>
+                    <th>Gym ID</th>
+                
                   </tr>
                   </thead>
                   <tbody>
-                 
+                  @foreach ($gym_managers as $gym_manager)
+                  <tr>
+                    <td>{{ $gym_manager->id }}</td>
+                    <td>{{ $gym_manager->name }}</td>
+                    <td>{{ $gym_manager->gym_id }}</td>
+                   
+                   
+                  </tr>
+                  @endforeach
                   </tbody>
                 </table>
               </div>
@@ -145,6 +150,11 @@ $(function () {
 
 
 
+</script>
+<script>
+    $(document).ready( function () {
+    $('#table_id').DataTable();
+} );
 </script>
 
 @endsection
