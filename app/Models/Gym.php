@@ -8,5 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Gym extends Model
 {
     use HasFactory;
-    protected $fillable =['cover_iamge','name','city'];
+    protected $fillable = [
+        'cover_iamge',
+        'name',
+        'city'
+    ];
+
+    public function coaches()
+    {
+        return $this->hasMany(Coach::class);
+    }
+
+    public function gym_managers()
+    {
+        return $this->hasMany(GymManager::class);
+    }
 }

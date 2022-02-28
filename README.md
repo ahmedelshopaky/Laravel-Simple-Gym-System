@@ -49,6 +49,7 @@ Laravel Sanctum
 - composer require laravel/sanctum
 - php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
 - php artisan migrate
-
-
-
+------------------------------------------------------------------------
+---------------------------------------------------------------------------
+To add a new admin use this command
+- $ php artisan create:admin 
