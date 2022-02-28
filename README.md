@@ -20,7 +20,7 @@ Ashour
 - php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
 دة ساعات بيضرب إيرور لأن مفيش داتابيز لسه باين
 - php artisan optimize:clear
-- >> create database and edit it in .env file <<
+- create database and edit it in .env file
 - php artisan migrate
 
 ** add laravel ban:
@@ -28,3 +28,27 @@ Ashour
 - Cog\Laravel\Ban\Providers\BanServiceProvider::class, اتأكد إنه موجود جوه config/app.php
 - php artisan vendor:publish --provider="Cog\Laravel\Ban\Providers\BanServiceProvider" --tag="migrations"
 - php artisan migrate
+-----------------------------------------------------------------------------------
+DataTables
+- $ composer require yajra/laravel-datatables-oracle:"~9.0"
+- Register provider and facade on your config/app.php file.
+
+'providers' => [
+    ...,
+    Yajra\DataTables\DataTablesServiceProvider::class,
+]
+
+'aliases' => [
+    ...,
+    'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+]
+- $ php artisan vendor:publish --provider="Yajra\DataTables\DataTablesServiceProvider"
+-------------------------------------------------------------------------------------------
+Laravel Sanctum
+
+- composer require laravel/sanctum
+- php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
+- php artisan migrate
+
+
+

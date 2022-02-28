@@ -13,12 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_sessions', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-
-            $table->unsignedBigInteger('training_session_id');
-            $table->foreign('training_session_id')->references('id')->on('training_sessions');
+        Schema::table('gym_managers', function (Blueprint $table) {
+            $table->string('remember_token')->nullable();
         });
     }
 
@@ -29,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_sessions');
+        Schema::table('gym_managers', function (Blueprint $table) {
+            //
+        });
     }
 };
