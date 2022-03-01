@@ -14,4 +14,4 @@ yarn-error.log
 /.idea
 /.vscode
 
-/images/users
+/public/images/users/*
