@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\GymMember;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -82,13 +83,19 @@ class RegisterController extends Controller
             // image is already exists
         }
         
-        return User::create([
-            'username' => $data['username'],
+        $user = User::create([
+            'name' => $data['username'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'avatar_image' => $name,
+        ]);
+
+        $gymMember = GymMember::create([
+            'user_id' => $user->id,
             'gender' => $data['gender'],
             'date_of_birth' => $data['date_of_birth'],
-            'profile_image' => $name,
         ]);
+
+        return $user;
     }
 }

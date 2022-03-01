@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Auth;
 
 
 Auth::routes();
-Route::middleware('auth')->group(function(){
+Route::middleware('role:admin')->group(function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::prefix('/gym-managers')->group(function(){
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');
         Route::get('/{id}', [GymManagerController::class, 'show'])->name('gym-managers.show');
         Route::get('/{id}/edit', [GymManagerController::class, 'edit'])->name('gym-managers.edit');
-        Route::delete('/{id}',[GymManagerController::class],'destroy')->name('gym-managers.destroy');
+        Route::delete('/{id}',[GymManagerController::class],'destroy')->name('gym-managers.destroy')->middleware('role:admin');
     });
     
     Route::get('/city-managers', [App\Http\Controllers\CityManagerController::class, 'index'])->name('city-managers.index');

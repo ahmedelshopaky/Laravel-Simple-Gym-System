@@ -14,11 +14,11 @@ return [
     */
 
     'defaults' => [
-        // 'guard' => 'web',
-        // 'passwords' => 'users',
+        'guard' => 'web',
+        'passwords' => 'users',
 
-        'guard' => 'webadmin',
-        'passwords' => 'admins',
+        // 'guard' => 'webadmin',
+        // 'passwords' => 'admins',
     ],
 
     /*
@@ -39,16 +39,16 @@ return [
     */
 
     'guards' => [
-        // 'web' => [
-        //     'driver' => 'session',
-        //     'provider' => 'users',
-        // ],
-
-        'webadmin' => [
+        'web' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'users',
         ],
-    ],
+
+        // 'webadmin' => [
+        //     'driver' => 'session',
+        //     'provider' => 'admins',
+        // ],
+        ],
 
     /*
     |--------------------------------------------------------------------------
@@ -68,15 +68,15 @@ return [
     */
 
     'providers' => [
-        // 'users' => [
-        //     'driver' => 'eloquent',
-        //     'model' => App\Models\User::class,
-        // ],
-
-        'admins' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model' => App\Models\User::class,
         ],
+
+        // 'admins' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Admin::class,
+        // ],
     ],
 
     /*
@@ -95,19 +95,19 @@ return [
     */
 
     'passwords' => [
-        // 'users' => [
-        //     'provider' => 'users',
-        //     'table' => 'password_resets',
-        //     'expire' => 60,
-        //     'throttle' => 60,
-        // ],
-
-        'admins' => [
-            'provider' => 'admins',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
+
+        // 'admins' => [
+        //     'provider' => 'admins',
+        //     'table' => 'password_resets',
+        //     'expire' => 60,
+        //     'throttle' => 60,
+        // ],
     ],
 
     /*
