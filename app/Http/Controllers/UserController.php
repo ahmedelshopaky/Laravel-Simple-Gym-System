@@ -8,10 +8,7 @@ use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
-    // public function index(){
-    //     $users = User::all();
-    //     return view('menu.users', compact('users'));
-    // }
+   
     public function index(Request $request){
         if ($request->ajax()) {
             $data = User::all();

@@ -17,9 +17,9 @@ class GymManagerController extends Controller
             $data = GymManager::all();
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $Btn = '<a href="/gym-managers/edit" class="edit btn btn-primary btn-sm mr-3">Edit</a>';
-                    $Btn = $Btn . '<a href="javascript:void(0)" class="delete btn btn-danger btn-sm mr-3">Delete</a>';
-                    $Btn = $Btn . '<a href="javascript:void(0)" class="view btn btn-primary btn-sm mr-3">View</a>';
+                    $Btn = '<a href="/gym-managers/edit" class="edit btn btn-info btn-xl mr-3">Edit</a>';
+                    $Btn = $Btn . '<a href="javascript:void(0)" class="delete btn btn-danger btn-xl mr-3">Delete</a>';
+                    $Btn = $Btn . '<a href="javascript:void(0)" class="view btn btn-primary btn-xl mr-3">View</a>';
                     return $Btn;
                 })
                 ->rawColumns(['action'])
