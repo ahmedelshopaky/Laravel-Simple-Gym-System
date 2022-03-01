@@ -8,5 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class CityManager extends Model
 {
     use HasFactory;
-    protected $fillable =['national_id','email','name','password','avatar_image'];
+    protected $fillable = [
+        'national_id',
+        'email',
+        'name',
+        'password',
+        'avatar_image'
+    ];
+
+    public function gyms()
+    {
+        return $this->hasMany(Gym::class);
+    }
 }

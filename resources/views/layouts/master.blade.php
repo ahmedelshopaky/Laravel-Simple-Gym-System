@@ -92,7 +92,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            {{ Auth::user()->email }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -133,80 +133,67 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                        <li class="nav-item menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Starter Pages
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
+                        <li class="nav-item">
+                            <a href="{{route('gym_managers.index')}}" class="nav-link">
+                                <i class="far fa-user-circle nav-icon"></i>
+                                <p>Gym Managers</p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{route('gym_managers.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Gym Managers</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{route('city_managers.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>City Managers</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{route('users.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Users</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{route('cities.show')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Cities</p>
-                                    </a>
-                                </li>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('city_managers.index')}}" class="nav-link">
+                                <i class="far fa-user-circle nav-icon"></i>
+                                <p>City Managers</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('users.index')}}" class="nav-link">
+                                <i class="far fa-user nav-icon"></i>
+                                <p>Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('cities.show')}}" class="nav-link">
+                                <i class="far fa-address-book nav-icon"></i>
+                                <p>Cities</p>
+                            </a>
+                        </li>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('gyms.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-building nav-icon"></i>
                                 <p>Gyms</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('training_packages.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-shield nav-icon"></i>
                                 <p>Training Packages</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('coaches.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-male nav-icon"></i>
                                 <p>Coaches</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('attendance.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-users nav-icon"></i>
                                 <p>Attendance</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('buy_package.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-credit-card nav-icon"></i>
                                 <p>Buy Packages For Users</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('revenue.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="far fa-usd nav-icon"></i>
                                 <p>Revenue</p>
                             </a>
                         </li>
-                    </ul>
-                    </li>
-                   
                     </ul>
                 </nav>
             </div>

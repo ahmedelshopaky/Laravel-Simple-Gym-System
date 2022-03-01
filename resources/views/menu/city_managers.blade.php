@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <div class="col-sm-6">
-      <h1>Revenue</h1>
+      <h1>City Managers</h1>
     </div>
     </section>
 
@@ -18,29 +18,21 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">City Managers</h3>
+                <h3 class="card-title">City Managers Data</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="table_id">
+                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
                   <thead>
                   <tr>
-                    <th> ID</th>
+                    <th>ID</th>
                     <th>Name</th>
-                    
-                
+                    <th>Email</th>
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($city_managers as $gym_manager)
-                  <tr>
-                    <td>{{ $city_manager->id }}</td>
-                    <td>{{ $city_manager->name }}</td>
-                    
-                   
-                   
-                  </tr>
-                  @endforeach
+                 
                   </tbody>
                 </table>
               </div>
@@ -109,7 +101,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
+<!-- <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -125,11 +117,26 @@
       "responsive": true,
     });
   });
-</script>
+</script> -->
 <script>
-    $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+
+$(function () {
+    
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('city_managers.index') }}",
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'name', name: 'name'},
+            {data: 'email', name: 'email'},    
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    } );
+});
+
+
+
 </script>
 
 @endsection

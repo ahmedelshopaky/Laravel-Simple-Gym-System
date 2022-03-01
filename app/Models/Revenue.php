@@ -9,6 +9,8 @@ class Revenue extends Model
 {
     use HasFactory;
     protected $table = 'package_purchase';
-    protected $fillable =['amount_paid'];
+    protected $fillable = [
+        'amount_paid'
+    ];
 }
 	

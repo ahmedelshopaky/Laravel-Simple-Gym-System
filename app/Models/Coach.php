@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Coach extends Model
 {
     use HasFactory;
-    protected $fillable =['name'];
+    protected $fillable = [
+        'name'
+    ];
+
+    public function training_sessions()
+    {
+        return $this->belongsTo(TrainingSession::class);
+    }
 }
