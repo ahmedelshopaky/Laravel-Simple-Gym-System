@@ -42,34 +42,37 @@
 
   
             <!-- /.card -->
-            @isset($gymManager)
+
+
+            {{-- @isset($gymManager)
             <!-- /.card -->
+
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title text-center">hello {{$gymManager->name}}</h3>
+                <h3 class="card-title w-100 text-center">{{$gymManager->name}}</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-striped table-hover">
+                <table class="table table-striped table-hover text-center table-bordered border-secondary">
                   <tr scope="row">
-                    <td>Email :</td>
+                    <td>Email</td>
                     <td>{{$gymManager->email}}</td>
                   </tr>
                   <tr scope="row">
-                    <td>National Id : </td>
+                    <td>National Id</td>
                     <td>{{$gymManager->national_id}}</td>
                   </tr>
                   <tr scope="row">
-                    <td>avatar : </td>
-                    <td>{{$gymManager->avatar}}</td>
+                    <td>avatar</td>
+                    <td>{{$gymManager->avatar_image}}</td>
                   </tr>
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
-            @endisset
-            
+            @endisset --}}
+
           </div>
           <!-- /.col -->
         </div>
@@ -134,6 +137,21 @@
       "responsive": true,
     });
   });
+  function destroy(id) 
+  {
+      if(confirm("are you sure you want to delete this manager ?"))
+      {
+        $.ajax({
+          url : "/gym-managers/"+id,
+          type: 'DELETE',
+          // data: {_token:$("input[name=_token]").val()},
+          success:function(response)
+          {
+            
+          }
+        });
+      }
+  }
 </script>
 <script>
   $(function() {

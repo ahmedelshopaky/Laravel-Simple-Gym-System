@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');
         Route::get('/{id}', [GymManagerController::class, 'show'])->name('gym-managers.show');
         Route::get('/{id}/edit', [GymManagerController::class, 'edit'])->name('gym-managers.edit');
-        Route::delete('/{id}',[GymManagerController::class],'destroy')->name('gym-managers.destroy');
+        Route::delete('/{id}',[GymManagerController::class,'destroy'])->name('gym-managers.destroy');
     });
     
     Route::get('/city-managers', [App\Http\Controllers\CityManagerController::class, 'index'])->name('city-managers.index');
