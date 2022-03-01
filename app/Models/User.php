@@ -48,6 +48,6 @@ class User extends Authenticatable
 
     public function training_sessions()
     {
-        return $this->belongsTo(TrainingSession::class);
+        return $this->hasMany(TrainingSession::class);
     }
 }

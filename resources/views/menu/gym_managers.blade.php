@@ -6,9 +6,9 @@
   <div class="">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <div class="col-sm-6">
-      <h1>Gym Managers</h1>
-    </div>
+      <div class="col-sm-6">
+        <h1>Gym Managers</h1>
+      </div>
     </section>
 
     <!-- Main content -->
@@ -24,15 +24,15 @@
               <div class="card-body">
                 <table class="table table-bordered table-hover yajra-datatable data-table" id="">
                   <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                  </tr>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Actions</th>
+                    </tr>
                   </thead>
                   <tbody>
-                 
+                    
                   </tbody>
                 </table>
               </div>
@@ -46,7 +46,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              
+
 
 
 
@@ -102,9 +102,11 @@
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
-  $(function () {
+  $(function() {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
@@ -119,24 +121,31 @@
   });
 </script>
 <script>
+  $(function() {
 
-$(function () {
-    
     var table = $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('gym_managers.index') }}",
-        columns: [
-          {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},    
-            {data: 'action', name: 'action'},
-        ]
-    } );
-});
-
-
-
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('gym_managers.index') }}",
+      columns: [{
+          data: 'id',
+          name: 'id'
+        },
+        {
+          data: 'name',
+          name: 'name'
+        },
+        {
+          data: 'email',
+          name: 'email'
+        },
+        {
+          data: 'action',
+          name: 'action'
+        },
+      ]
+    });
+  });
 </script>
 
 @endsection

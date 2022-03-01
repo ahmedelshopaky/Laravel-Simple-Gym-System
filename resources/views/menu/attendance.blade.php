@@ -25,18 +25,20 @@
                 <table class="table table-bordered table-hover" id="table_id">
                   <thead>
                   <tr>
-                    <th> User ID</th>
+                    <th>User ID</th>
+                    <th>Username</th>
                     <th>Training session ID</th>
                     
                 
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($training_sessions_users as $training_sessions_user)
+                  @foreach ($users as $user)
                   <tr>
-                    <td>{{ $training_sessions_user->user_id }}</td>
-                    <td>{{ $training_sessions_user->training_session_id }}</td>
-                    
+                    <td>{{ $user->id }}</td>
+                    <td>{{ $user->username }}</td>
+                    <!-- <td> $user->training_sessions->id </td> -->
+
                    
                    
                   </tr>
