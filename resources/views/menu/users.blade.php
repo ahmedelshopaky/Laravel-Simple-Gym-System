@@ -33,18 +33,6 @@
                     <th>Last Login</th>
                   </tr>
                   </thead>
-                  <tbody>
-                  @foreach ($users as $user)
-                  <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->username }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->gender }}</td>
-                    <td>{{ $user->date_of_birth }}</td>
-                    <td>{{ $user->last_login }}</td>
-                  </tr>
-                  @endforeach
-                  </tbody>
                 </table>
               </div>
               <!-- /.card-body -->
