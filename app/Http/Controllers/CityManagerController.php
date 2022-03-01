@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\CityManager;
 use Illuminate\Http\Request;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
 
 class CityManagerController extends Controller
@@ -24,6 +24,6 @@ class CityManagerController extends Controller
                     ->make(true);
         }
       
-        return view('menu.city_managers');
+        return view('menu.city_manager.index');
     }
 }

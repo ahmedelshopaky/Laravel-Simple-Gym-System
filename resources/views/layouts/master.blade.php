@@ -134,13 +134,13 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="{{route('gym_managers.index')}}" class="nav-link">
+                            <a href="{{route('gym-managers.index')}}" class="nav-link">
                                 <i class="far fa-user-circle nav-icon"></i>
                                 <p>Gym Managers</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('city_managers.index')}}" class="nav-link">
+                            <a href="{{route('city-managers.index')}}" class="nav-link">
                                 <i class="far fa-user-circle nav-icon"></i>
                                 <p>City Managers</p>
                             </a>
@@ -165,7 +165,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('training_packages.index')}}" class="nav-link">
+                            <a href="{{route('training-packages.index')}}" class="nav-link">
                                 <i class="far fa-shield nav-icon"></i>
                                 <p>Training Packages</p>
                             </a>
@@ -183,7 +183,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('buy_package.index')}}" class="nav-link">
+                            <a href="{{route('buy-package.index')}}" class="nav-link">
                                 <i class="far fa-credit-card nav-icon"></i>
                                 <p>Buy Packages For Users</p>
                             </a>
