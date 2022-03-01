@@ -40,21 +40,36 @@
             </div>
             <!-- /.card -->
 
+  
+            <!-- /.card -->
+            @isset($gymManager)
+            <!-- /.card -->
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"></h3>
+                <h3 class="card-title text-center">hello {{$gymManager->name}}</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-
-
-
-
-
+                <table class="table table-striped table-hover">
+                  <tr scope="row">
+                    <td>Email :</td>
+                    <td>{{$gymManager->email}}</td>
+                  </tr>
+                  <tr scope="row">
+                    <td>National Id : </td>
+                    <td>{{$gymManager->national_id}}</td>
+                  </tr>
+                  <tr scope="row">
+                    <td>avatar : </td>
+                    <td>{{$gymManager->avatar}}</td>
+                  </tr>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            @endisset
+            
           </div>
           <!-- /.col -->
         </div>
