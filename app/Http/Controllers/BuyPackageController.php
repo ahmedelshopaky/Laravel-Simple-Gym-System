@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\TrainingPackage;
 use Illuminate\Http\Request;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
 class BuyPackageController extends Controller
 {
