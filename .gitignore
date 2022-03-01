@@ -15,6 +15,3 @@ yarn-error.log
 /.vscode
 
 /public/images/users/*
-/public/images/gym_managers/*
-/public/images/city_managers/*
-/public/images/gyms/*
