@@ -16,6 +16,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
+            
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">City Managers Data</h3>
@@ -38,23 +39,35 @@
               </div>
               <!-- /.card-body -->
             </div>
+            @if($gymManager)
             <!-- /.card -->
-
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"></h3>
+                <h3 class="card-title text-center">hello {{$gymManager->name}}</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              
-
-
-
-
+                <table class="table table-striped table-hover">
+                  <tr scope="row">
+                    <td>Email :</td>
+                    <td>{{$gymManager->email}}</td>
+                  </tr>
+                  <tr scope="row">
+                    <td>National Id : </td>
+                    <td>{{$gymManager->national_id}}</td>
+                  </tr>
+                  <tr scope="row">
+                    <td>avatar : </td>
+                    <td>{{$gymManager->avatar}}</td>
+                  </tr>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            @endif
+
+
           </div>
           <!-- /.col -->
         </div>
@@ -101,23 +114,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<!-- <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script> -->
 <script>
 
 $(function () {
@@ -134,9 +130,6 @@ $(function () {
         ]
     } );
 });
-
-
-
 </script>
 
 @endsection
