@@ -10,22 +10,27 @@ use DataTables;
 
 class GymManagerController extends Controller
 {
-    
-    public function index(Request $request){
+
+    public function index(Request $request)
+    {
         if ($request->ajax()) {
-            $data = GymManager::first()->get();
-            // dd($data);
+            $data = GymManager::all();
             return Datatables::of($data)->addIndexColumn()
-                    ->addColumn('action', function($row){
-                           $Btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm mr-3">Edit</a>';
-                            $Btn=$Btn.'<a href="javascript:void(0)" class="delete btn btn-danger btn-sm mr-3">Delete</a>';
-                            $Btn=$Btn.'<a href="javascript:void(0)" class="view btn btn-primary btn-sm mr-3">View</a>';
-                            return $Btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
+                ->addColumn('action', function ($row) {
+                    $Btn = '<a href="/gym-managers/edit" class="edit btn btn-primary btn-sm mr-3">Edit</a>';
+                    $Btn = $Btn . '<a href="javascript:void(0)" class="delete btn btn-danger btn-sm mr-3">Delete</a>';
+                    $Btn = $Btn . '<a href="javascript:void(0)" class="view btn btn-primary btn-sm mr-3">View</a>';
+                    return $Btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
-      
-        return view('menu.gym_managers');
+
+        return view('menu.gym_manager.index');
+    }
+
+    public function edit(Request $request)
+    {
+        return view('menu.gym_manager.edit');
     }
 }

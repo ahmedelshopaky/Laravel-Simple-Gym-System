@@ -14,6 +14,6 @@ class GymController extends Controller
 
     }
     public function showCity() {
-        //
+        return view('menu.cities');
     }
 }

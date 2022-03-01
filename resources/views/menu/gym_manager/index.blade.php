@@ -6,9 +6,9 @@
   <div class="">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <div class="col-sm-6">
-      <h1>City Managers</h1>
-    </div>
+      <div class="col-sm-6">
+        <h1>Gym Managers</h1>
+      </div>
     </section>
 
     <!-- Main content -->
@@ -18,21 +18,21 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">City Managers Data</h3>
+                <h3 class="card-title">Gym Managers Data</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
+                <table class="table table-bordered table-hover yajra-datatable data-table" id="">
                   <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                  </tr>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Actions</th>
+                    </tr>
                   </thead>
                   <tbody>
-                 
+                    
                   </tbody>
                 </table>
               </div>
@@ -46,7 +46,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              
+
 
 
 
@@ -101,10 +101,12 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<!-- <script>
-  $(function () {
+<script>
+  $(function() {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
@@ -117,26 +119,33 @@
       "responsive": true,
     });
   });
-</script> -->
+</script>
 <script>
+  $(function() {
 
-$(function () {
-    
     var table = $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('city_managers.index') }}",
-        columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},    
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-        ]
-    } );
-});
-
-
-
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('gym-managers.index') }}",
+      columns: [{
+          data: 'id',
+          name: 'id'
+        },
+        {
+          data: 'name',
+          name: 'name'
+        },
+        {
+          data: 'email',
+          name: 'email'
+        },
+        {
+          data: 'action',
+          name: 'action'
+        },
+      ]
+    });
+  });
 </script>
 
 @endsection

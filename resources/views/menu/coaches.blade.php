@@ -7,7 +7,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
     <div class="col-sm-6">
-      <h1>Coaches</h1>
+      <h1>Users</h1>
     </div>
     </section>
 
@@ -18,29 +18,21 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Coaches</h3>
+                <h3 class="card-title">Users Data</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="table_id">
+                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
                   <thead>
                   <tr>
-                    <th> ID</th>
+                    <th>ID</th>
                     <th>Name</th>
-                    <th>Gym ID</th>
-                
+                    <th>Gym Id</th>
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($coaches as $coach)
-                  <tr>
-                    <td>{{ $coach->id }}</td>
-                    <td>{{ $coach->name }}</td>
-                    <td>{{ $coach->gym_id }}</td>
-                   
-                   
-                  </tr>
-                  @endforeach
+                 
                   </tbody>
                 </table>
               </div>
@@ -127,9 +119,24 @@
   });
 </script>
 <script>
-    $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+
+$(function () {
+    
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('coaches.index') }}",
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'name', name: 'name'},
+            {data: 'gym_id', name: 'gym_id'},    
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    } );
+});
+
+
+
 </script>
 
 @endsection
