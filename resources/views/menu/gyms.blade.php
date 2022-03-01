@@ -18,30 +18,21 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Gyms</h3>
+                <h3 class="card-title">Gyms Data</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="table_id">
+                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
                   <thead>
                   <tr>
-                    <th> ID</th>
+                    <th>ID</th>
                     <th>Name</th>
                     <th>City</th>
-                    <th>City Manager ID</th>
-                
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($gyms as $gym)
-                  <tr>
-                    <td>{{ $gym->id }}</td>
-                    <td>{{ $gym->name }}</td>
-                    <td>{{ $gym->city }}</td>
-                    <td>{{ $gym->city_manager_id }}</td>
-                   
-                  </tr>
-                  @endforeach
+                 
                   </tbody>
                 </table>
               </div>
@@ -128,9 +119,24 @@
   });
 </script>
 <script>
-    $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+
+$(function () {
+    
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('gyms.index') }}",
+        columns: [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'name', name: 'name'},
+            {data: 'city', name: 'city'},    
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
+    } );
+});
+
+
+
 </script>
 
 @endsection
