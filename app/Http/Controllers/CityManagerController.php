@@ -10,7 +10,7 @@ class CityManagerController extends Controller
 {
     public function index(Request $request){
         if ($request->ajax()) {
-            $data = CityManager::first()->get();
+            $data = CityManager::all();
            
 
             return Datatables::of($data)->addIndexColumn()

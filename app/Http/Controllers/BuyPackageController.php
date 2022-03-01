@@ -9,7 +9,7 @@ class BuyPackageController extends Controller
 {
     public function index(Request $request){
         if ($request->ajax()) {
-            $data = TrainingPackage::first()->get();
+            $data = TrainingPackage::all();
            
 
             return Datatables::of($data)->addIndexColumn()

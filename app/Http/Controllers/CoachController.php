@@ -10,7 +10,7 @@ class CoachController extends Controller
     
     public function index(Request $request){
         if ($request->ajax()) {
-            $data = Coach::first()->get();
+            $data = Coach::all();
             return Datatables::of($data)->addIndexColumn()
                     ->addColumn('action', function($row){
                            $Btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-xl mr-3">Edit</a>';
