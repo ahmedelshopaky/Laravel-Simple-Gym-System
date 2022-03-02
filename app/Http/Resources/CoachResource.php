@@ -17,7 +17,7 @@ class CoachResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'gym' => new GymResource($this->gym),
+            'gym_name' => $this->gym->name,
         ];
     }
 }

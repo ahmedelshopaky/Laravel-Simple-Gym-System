@@ -111,8 +111,8 @@ $(function () {
         ajax: "{{ route('city-managers.index') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},    
+            {data: 'user.name', name: 'name'},
+            {data: 'user.email', name: 'email'},    
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     } );
