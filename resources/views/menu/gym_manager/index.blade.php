@@ -143,8 +143,8 @@
       serverSide: true,
       ajax: "{{ route('gym-managers.index') }}",
       columns: [{
-          data: 'id',
-          name: 'id'
+          data: 'user_id',
+          name: 'user_id'
         },
         {
           data: 'name',

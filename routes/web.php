@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Auth;
 
 
 Auth::routes();
-Route::middleware('role:admin')->group(function(){
+Route::middleware('auth')->group(function(){
     Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
     Route::prefix('/gym-managers')->group(function(){

@@ -17,12 +17,12 @@ class GymManagerController extends Controller
             $users = GymManager::all();
             return Datatables::of($users)->addIndexColumn()
                 ->addColumn('action', function ($user) {
-                    $Btn = '<a href="'.route('gym-managers.edit',$user->id).'" class="btn btn-primary btn-sm mr-3">Edit</a>';
+                    $Btn = '<a href="'.route('gym-managers.edit',$user->user_id).'" class="btn btn-primary btn-sm mr-3">Edit</a>';
 
-                    $Btn = $Btn . '<a href="'.route('gym-managers.show',$user->id).'" class="btn btn-primary btn-sm mr-3">View</a>';
+                    $Btn = $Btn . '<a href="'.route('gym-managers.show',$user->user_id).'" class="btn btn-primary btn-sm mr-3">View</a>';
                     
                     $Btn = $Btn . '
-                    <form action="'.route('gym-managers.destroy',$user->id).'" method="post" class="d-inline">'
+                    <form action="'.route('gym-managers.destroy',$user->user_id).'" method="post" class="d-inline">'
                         .csrf_field().method_field('delete')
                         .'<input type="submit" value="Delete" class="btn btn-danger btn-sm mr-3">
                     </form>';
