@@ -1,3 +1,5 @@
+
+   
 @extends('layouts.master')
 @section('content')
 
@@ -119,7 +121,6 @@
   });
 </script>
 <script>
-
 $(function () {
     
     var table = $('.data-table').DataTable({
@@ -134,9 +135,6 @@ $(function () {
         ]
     } );
 });
-
-
-
 </script>
 
 @endsection

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Resources\CoachResource;
 use App\Models\Coach;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -10,7 +12,8 @@ class CoachController extends Controller
     
     public function index(Request $request){
         if ($request->ajax()) {
-            $data = Coach::all();
+            $data = Coach::with('gym')->get();
+            $data= CoachResource::collection($data);
             return Datatables::of($data)->addIndexColumn()
                     ->addColumn('action', function($row){
                            $Btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-xl mr-3">Edit</a>';

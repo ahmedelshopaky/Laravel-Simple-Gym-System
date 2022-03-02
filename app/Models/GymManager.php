@@ -12,15 +12,21 @@ class GymManager extends Model implements BannableContract
 {
     use HasFactory, Bannable;
     protected $fillable = [
-        'national_id',
-        'email',
-        'name',
-        'password',
-        'avatar_image'
+        'user_id',
     ];
 
     public function shouldApplyBannedAtScope()
     {
         return true;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function gym()
+    {
+        return $this->belongsTo(Gym::class);
     }
 }

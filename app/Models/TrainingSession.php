@@ -14,13 +14,18 @@ class TrainingSession extends Model
         'finishes_at'
     ];
 
-    public function users()
+    public function gym_members()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(GymMember::class);
     }
 
     public function coaches()
     {
-        return $this->belongsTo(Coach::class);
+        return $this->hasMany(Coach::class);
+    }
+
+    public function gym()
+    {
+        return $this->belongsTo(Gym::class);
     }
 }

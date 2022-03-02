@@ -14,8 +14,10 @@ class GymManagerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $users = GymManager::all();
-            return Datatables::of($users)->addIndexColumn()
+            $gymManager = GymManager::with('user')->get();
+            // $data= GymManager::collection($data);
+            return Datatables::of($gymManager)->addIndexColumn()
+            
                 ->addColumn('action', function ($user) {
                     $Btn  = '<a href="javascript:void(0)" data-toggle="tooltip" class="btn btn-info btn-sm mx-3 "   data-id="'.$user->id.'" data-original-title="View" >View</a>';
                     $Btn .= '<a href="javascript:void(0)" data-toggle="tooltip" class="btn btn-primary btn-sm mx-3 " data-id="'.$user->id.'" data-original-title="Edit">Edit</a>';

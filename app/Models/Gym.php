@@ -23,4 +23,14 @@ class Gym extends Model
     {
         return $this->hasMany(GymManager::class);
     }
+
+    public function training_sessions()
+    {
+        return $this->hasMany(TrainingSession::class);
+    }
+
+    public function city_managers()
+    {
+        return $this->belongsTo(TrainingSession::class);
+    }
 }
