@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CityManager extends Model
+class GymMember extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'user_id',
+        'gender',
+        'date_of_birth',
     ];
 
     public function user()
@@ -17,8 +20,8 @@ class CityManager extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function gyms()
+    public function training_sessions()
     {
-        return $this->hasMany(Gym::class);
+        return $this->hasMany(TrainingSession::class);
     }
 }
