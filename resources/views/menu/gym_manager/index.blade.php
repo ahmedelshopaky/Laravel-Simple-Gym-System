@@ -144,15 +144,12 @@
       ajax: "{{ route('gym-managers.index') }}",
       columns: [{
           data: 'user_id',
-          name: 'user_id'
         },
         {
-          data: 'name',
-          name: 'name'
+          data: 'user.name',
         },
         {
-          data: 'email',
-          name: 'email'
+          data: 'user.email',
         },
         {
           data: 'action',
