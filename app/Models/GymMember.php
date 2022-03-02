@@ -10,9 +10,18 @@ class GymMember extends Model
     use HasFactory;
 
     protected $fillable = [
-        
         'user_id',
         'gender',
         'date_of_birth',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function training_sessions()
+    {
+        return $this->hasMany(TrainingSession::class);
+    }
 }

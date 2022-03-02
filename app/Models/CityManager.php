@@ -9,12 +9,13 @@ class CityManager extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'national_id',
-        'email',
-        'name',
-        'password',
-        'avatar_image'
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function gyms()
     {

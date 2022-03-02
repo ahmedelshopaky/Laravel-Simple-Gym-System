@@ -19,10 +19,11 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'password',
         'avatar_image',
         'email',
+        'name',
+        'password',
+        'national_id',
     ];
 
     /**
@@ -44,9 +45,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function training_sessions()
+    public function city_manager()
     {
-        return $this->hasMany(TrainingSession::class);
+        return $this->hasOne(CityManager::class);
+    }
+
+    public function gym_manager()
+    {
+        return $this->hasOne(GymManager::class);
+    }
+
+    public function gym_member()
+    {
+        return $this->hasOne(GymMember::class);
     }
 }
