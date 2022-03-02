@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -20,14 +19,11 @@ class UserFactory extends Factory
         $gender = $this->faker->randomElement(['male', 'female']);
 
         return [
-            'username' => $this->faker->name($gender),
+            'name' => $this->faker->name($gender),
             'password' => bcrypt('secret'),
-            'gender' => $gender,
-            'profile_image' => $this->faker->image('public/images/users', 400, 300, null, false),
+            'avatar_image' => $this->faker->image('public/images/users', 640,480, null, false),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'date_of_birth' => $this->faker->date('Y-m-d', 'now'),
-            'remember_token' => Str::random(10),
+            'national_id'=>$this->faker->unique()->numberBetween(1000000000000000,9999999999999999),
         ];
     }
 
