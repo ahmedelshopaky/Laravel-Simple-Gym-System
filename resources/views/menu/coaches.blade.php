@@ -27,7 +27,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th>Gym Id</th>
+                    <th>Gym Name</th>
                     <th>Actions</th>
                   </tr>
                   </thead>
@@ -127,9 +127,9 @@ $(function () {
         serverSide: true,
         ajax: "{{ route('coaches.index') }}",
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'gym_id', name: 'gym_id'},    
+            {data: 'id'},
+            {data: 'name'},
+            {data: 'gym_name'},    
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     } );

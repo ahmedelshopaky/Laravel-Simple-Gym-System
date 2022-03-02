@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('gyms', function (Blueprint $table) {
             $table->id();
             $table->string('cover_image');
-            $table->date('created_at');
+            $table->timestamps();
             $table->string('name');
             $table->string('city');
         });

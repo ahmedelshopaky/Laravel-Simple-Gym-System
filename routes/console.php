@@ -20,7 +20,7 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('create:admin', function () {
-    DB::table('admins')->insert([
+    DB::table('users')->insert([
             'email' => $this->ask('Email'),
             'password' => bcrypt($this->ask('Password')),
     ]);
