@@ -98,7 +98,6 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
@@ -119,44 +118,17 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
-  $(function() {
-    $("#example1").DataTable({
-      "responsive": true,
-      "lengthChange": false,
-      "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-  function destroy(id) 
-  {
-      if(confirm("are you sure you want to delete this manager ?"))
-      {
-        $.ajax({
-          url : "/gym-managers/"+id,
-          type: 'DELETE',
-          // data: {_token:$("input[name=_token]").val()},
-          success:function(response)
-          {
-            
-          }
-        });
-      }
-  }
-</script>
-<script>
-  $(function() {
 
-    var table = $('.data-table').DataTable({
+<script src="../../plugins/jquery/jquery.min.js"></script>
+
+<script>
+        
+
+  $(function() {
+    $.ajaxSetup({
+      headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}
+    });
+    var dataTable = $('.data-table').DataTable({
       processing: true,
       serverSide: true,
       ajax: "{{ route('gym-managers.index') }}",
@@ -178,7 +150,25 @@
         },
       ]
     });
+    $('body').on('click','.deleteManager',function () {
+          var ManagerId=$(this).data("id");
+          confirm("Do you want to remove student  ?");
+            $.ajax({
+              type:"DELETE",
+              data: {
+                   _token: '{!! csrf_token() !!}',
+                 },
+              url: "/gym-managers/"+ManagerId ,
+              sucess:function(data)
+              {
+                dataTable.draw();
+              }
+            });
+          
+            
+    });
   });
+  
 </script>
 
 @endsection
