@@ -133,10 +133,10 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item menu-close">
+                        <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="far fa-user-circle nav-icon"></i>
-                                <p>Managers<i class="right fas fa-angle-left"></i></p>
+                                <p>System Users<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -152,18 +152,18 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="{{route('gym-members.index')}}" class="nav-link">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>Gym Member</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="{{route('users.create')}}" class="nav-link">
                                         <i class="far fa-user-circle nav-icon"></i>
-                                        <p>Assign Manager</p>
+                                        <p>Assign User</p>
                                     </a>
                                 </li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('gym-member.index')}}" class="nav-link">
-                                <i class="far fa-user nav-icon"></i>
-                                <p>Gym Member</p>
-                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('cities.show')}}" class="nav-link">

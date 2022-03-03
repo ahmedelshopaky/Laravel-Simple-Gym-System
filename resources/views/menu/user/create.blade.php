@@ -4,26 +4,40 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Create a new manager') }}</div>
-
+                <div class="card-header">{{ __('New System User') }}</div>
+                
                 <div class="card-body">
                     <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
                         @csrf
-
+                        
                         <div class="row mb-3">
-                            <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-
-                                @error('username')
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <label for="national_id" class="col-md-4 col-form-label text-md-end">{{ __('National ID') }}</label>
+                
+                            <div class="col-md-6">
+                                <input id="national_id" type="national_id" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" required autocomplete="national_id">
+                
+                                @error('national_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
+                        
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
@@ -37,6 +51,9 @@
                                 @enderror
                             </div>
                         </div>
+
+
+
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
@@ -59,8 +76,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
-                        
-
+                        <!---------------------------- only gym member can see this section ---------------------------->
                         <div class="row mb-3">
                             <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
 
@@ -76,10 +92,6 @@
                                 @enderror
                             </div>
                         </div>
-
-
-
-
                         <div class="row mb-3">
                             <label for="date_of_birth" class="col-md-4 col-form-label text-md-end">{{ __('Date Of Birth') }}</label>
 
@@ -93,15 +105,12 @@
                                 @enderror
                             </div>
                         </div>
-
-
-
-
+                        <!---------------------------- end of gym member section ---------------------------->
                         <div class="row mb-3">
-                            <label for="profile_image" class="col-md-4 col-form-label text-md-end">{{ __('Profile Picture') }}</label>
+                            <label for="avatar_image" class="col-md-4 col-form-label text-md-end">{{ __('Avatar Image') }}</label>
                             <div class="col-md-6">
-                                <input id="profile_image" type="file" class="form-control @error('profile_image') is-invalid @enderror" name="profile_image" required autofocus/>
-                                @error('profile_image')
+                                <input id="avatar_image" type="file" class="form-control @error('avatar_image') is-invalid @enderror" name="avatar_image" required autofocus/>
+                                @error('avatar_image')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -117,6 +126,7 @@
                             <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
                                 <option value="city_manager">City Manager</option>
                                 <option value="gym_manager">Gym Manager</option>
+                                <option value="gym_member">Gym Member</option>
                             </select>
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">

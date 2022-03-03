@@ -38,8 +38,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [CityManagerController::class, 'index'])->name('city-managers.index');
     });
 
-    Route::prefix('/gym-member')->group(function () {
-        Route::get('/', [GymMemberController::class, 'index'])->name('gym-member.index');
+    Route::prefix('/gym-members')->group(function () {
+        Route::get('/', [GymMemberController::class, 'index'])->name('gym-members.index');
     });
 
     Route::prefix('/users')->group(function () {

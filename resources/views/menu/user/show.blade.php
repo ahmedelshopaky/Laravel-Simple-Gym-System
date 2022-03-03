@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
+<?php // $gymMember = App\Models\GymMember::where('user_id', $user->id)->get()->first(); ?>
 
 <section class="content">
 
@@ -8,7 +9,7 @@
         <div class="card-body row">
             <div class="col-5 text-center d-flex align-items-center justify-content-center">
                 <div class="">
-                    <img src="/home/aelshopaky/Pictures/blank-profile-picture-973460_1280.png" />
+                    <img src="{{asset('/images/users/'.$user->avatar_image)}}" class="img-thumbnail"/>
                 </div>
             </div>
             <div class="col-7">
@@ -37,6 +38,24 @@
                                     <td>Created At</td>
                                     <td>{{$user->created_at}}</td>
                                 </tr>
+<!---------------------------- only gym member can see this section ---------------------------->
+                                <tr>                                
+                                    <td>Gender</td>
+                                    <td>{{$user->gender}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Date Of Birth</td>
+                                    <td>{{$user->date_of_birth}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Last Login</td>
+                                    <td>{{$user->last_login}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email Verified At</td>
+                                    <td>{{$user->email_verified_at}}</td>
+                                </tr>
+<!---------------------------- end of gym member section ---------------------------->
                             </tbody>
                         </table>
                     </div>

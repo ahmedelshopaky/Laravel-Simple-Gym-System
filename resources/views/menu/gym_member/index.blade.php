@@ -125,7 +125,7 @@ $(function () {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('gym-member.index') }}",
+        ajax: "{{ route('gym-members.index') }}",
         columns: [
             {data: 'user_id',},
             {data: 'user.name',},
