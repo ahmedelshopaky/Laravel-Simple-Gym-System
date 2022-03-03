@@ -40,4 +40,14 @@ Route::middleware('auth')->group(function(){
     Route::get('/buy-package', [App\Http\Controllers\BuyPackageController::class, 'index'])->name('buy-package.index');
     
     Route::get('/revenue', [App\Http\Controllers\RevenueController::class, 'index'])->name('revenue.index');
+
+    
+    Route::get('/payment', function(){
+        return view('payment');
+    });
+
+    Route::post('/payment', function(){
+        
+    });
+
 });
