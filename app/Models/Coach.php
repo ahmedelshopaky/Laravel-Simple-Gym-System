@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Coach extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'name'
     ];
@@ -21,5 +22,4 @@ class Coach extends Model
     {
         return $this->belongsTo(Gym::class);
     }
-   
 }
