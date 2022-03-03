@@ -17,7 +17,7 @@ class GymManager extends Model implements BannableContract
 
     public function shouldApplyBannedAtScope()
     {
-        return true;
+        return false;
     }
 
     public function user()
