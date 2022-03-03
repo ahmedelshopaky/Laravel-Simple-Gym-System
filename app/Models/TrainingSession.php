@@ -16,7 +16,7 @@ class TrainingSession extends Model
 
     public function gym_members()
     {
-        return $this->hasMany(GymMember::class);
+        return $this->belongsToMany(GymMember::class,'gym_member_training_session','gym_member_id','training_session_id');
     }
 
     public function coaches()

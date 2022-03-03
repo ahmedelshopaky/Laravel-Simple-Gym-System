@@ -12,8 +12,8 @@ class GymController extends Controller
         $data = Gym::all();
         $user = User::find($data[0]->city_manager_id);
         if ($request->ajax()) {
-            
-            return Datatables::of($user)->addIndexColumn()
+            $gym = Gym::with('city_managers')->get();
+            return Datatables::of($gym)->addIndexColumn()
                     ->addColumn('action', function($row){
                            $Btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-xl mr-3">Edit</a>';
                             $Btn=$Btn.'<a href="javascript:void(0)" class="delete btn btn-danger btn-xl mr-3">Delete</a>';
