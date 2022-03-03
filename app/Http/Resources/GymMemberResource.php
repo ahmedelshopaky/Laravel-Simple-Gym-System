@@ -25,6 +25,7 @@ class GymMemberResource extends JsonResource
             'updated_at' => $this->updated_at,
 
             'user' => new UserResource($this->user),
+            'training_sessions' => new TrainingSessionResource($this->training_sessions),
         ];
     }
 }

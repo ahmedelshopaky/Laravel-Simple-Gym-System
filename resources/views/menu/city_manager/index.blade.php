@@ -104,7 +104,11 @@
 <script>
 
 $(function () {
-    
+  $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
@@ -116,7 +120,23 @@ $(function () {
             {data: 'action', orderable: false, searchable: false},
         ]
     } );
+
+    $('body').on('click', '.deleteManager', function() {
+      var ManagerId = $(this).data("id");
+          $.ajax({
+          url: "/city-managers/" + ManagerId,
+          type: "DELETE",
+          data: {_token: '{!! csrf_token() !!}',}, 
+          sucess: function(data) 
+          {
+            dataTable.draw();
+          }
+          
+      });
+    });
 });
+
+
 </script>
 
 @endsection

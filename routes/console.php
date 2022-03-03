@@ -23,6 +23,7 @@ Artisan::command('create:admin', function () {
     DB::table('users')->insert([
             'email' => $this->ask('Email'),
             'password' => bcrypt($this->ask('Password')),
+            'role' => 'admin'
     ]);
     $this->info('Account created successfully.');
 });

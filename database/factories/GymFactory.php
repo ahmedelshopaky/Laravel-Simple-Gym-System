@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+<<<<<<< HEAD
 use App\Models\CityManager;
+=======
+>>>>>>> f43dc52bbd53f840a5f4021b5e31e3177e3daec0
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

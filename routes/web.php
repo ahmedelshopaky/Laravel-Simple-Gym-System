@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/city-managers')->group(function () {
         Route::get('/', [CityManagerController::class, 'index'])->name('city-managers.index');
+        Route::delete('/{id}', [CityManagerController::class, 'destroy'])->name('city-managers.destroy');
     });
 
     Route::prefix('/gym-members')->group(function () {
