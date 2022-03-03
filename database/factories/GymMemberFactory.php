@@ -23,7 +23,7 @@ class GymMemberFactory extends Factory
         $gender = $this->faker->randomElement(['male', 'female']);
 
         return [
-            'user_id'=>User::factory(),
+            'user_id'=>User::factory(['role'=>'gym_member']),
             'gender' => $gender,
             'date_of_birth' => $this->faker->date('Y-m-d', 'now'),
             'email_verified_at' => now(),

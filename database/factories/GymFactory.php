@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\CityManager;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -18,13 +19,10 @@ class GymFactory extends Factory
     public function definition()
     {
         return [
-            //
-             'cover_image'=>$this->faker->image('public/images/gyms', 400, 300, null, false),
-              'created_at'=>$this->faker->dateTime(now()),
-              'updated_at'=>$this->faker->dateTime(now()),
-              'name'=>$this->faker->name(), 
-              'city'=>$this->faker->city(),
-              'city_manager_id'=>User::all('id')->random(),
+            'cover_image' => $this->faker->image('public/images/users', 800, 300, null, false),
+            'name' => $this->faker->sentence(2),
+            'city' => $this->faker->city(),
+            // 'city_manager_id'=>CityManager::factory(),
         ];
     }
 }

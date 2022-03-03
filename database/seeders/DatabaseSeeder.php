@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\CityManager;
+use App\Models\Coach;
+use App\Models\Gym;
 use App\Models\GymManager;
 use App\Models\GymMember;
 use App\Models\User;
@@ -18,31 +20,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create(); //محدش يشيل الكومنت .. آمين؟!
+        // User::factory(10)->create();
         GymMember::factory(10)->create();
         GymManager::factory(10)->create();
         CityManager::factory(10)->create();
-
-        // GymMember::factory()
-        //     ->count(10)
-        //     ->for(User::factory()->state([
-        //         'role' => 'gymMember',
-        //     ]))
-        //     ->create();
-
-
-        // GymManager::factory()
-        //     ->count(10)
-        //     ->for(User::factory()->state([
-        //         'role' => 'gymManager',
-        //     ]))
-        //     ->create();
-
-        // CityManager::factory()
-        //     ->count(10)
-        //     ->for(User::factory()->state([
-        //         'role' => 'cityManager',
-        //     ]))
-        //     ->create();
+        // Gym::factory(5)->create();
+        Coach::factory(5)->create();
     }
 }
