@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CityManager;
 use App\Models\GymMember;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,7 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create(); //محدش يشيل الكومنت .. آمين؟!
-        GymMember::factory(10)->create();
+        //User::factory(10)->create(); //محدش يشيل الكومنت .. آمين؟!
+        CityManager::factory(10)->create();
     }
 }
