@@ -23,6 +23,10 @@ class UserResource extends JsonResource
             'password' => $this->password,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+
+            'gym_member' => new GymMemberResource($this->gym_member),
+            'gym_manager' => new GymManagerResource($this->gym_manager),
+            'city_manager' => new CityManagerResource($this->city_manager),
         ];
     }
 }

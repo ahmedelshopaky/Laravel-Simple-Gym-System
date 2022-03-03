@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 use App\Models\Gym;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class GymController extends Controller
 {
     public function index(Request $request){
-        $gym = Gym::with('city_managers')->get();
-            dd($gym);
+        $data = Gym::all();
+        $user = User::find($data[0]->city_manager_id);
         if ($request->ajax()) {
             
-            return Datatables::of($gym)->addIndexColumn()
+            return Datatables::of($user)->addIndexColumn()
                     ->addColumn('action', function($row){
                            $Btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-xl mr-3">Edit</a>';
                             $Btn=$Btn.'<a href="javascript:void(0)" class="delete btn btn-danger btn-xl mr-3">Delete</a>';

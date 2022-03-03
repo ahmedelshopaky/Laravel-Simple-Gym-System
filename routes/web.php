@@ -1,9 +1,19 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GymManagerController;
+use App\Http\Controllers\TrainingPackageController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\CityManagerController;
+use App\Http\Controllers\RevenueController;
+use App\Http\Controllers\GymController;
+use App\Http\Controllers\CoachController;
+use App\Http\Controllers\BuyPackageController;
+use App\Http\Controllers\GymMemberController;
+use App\Models\GymMember;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,32 +27,44 @@ use Illuminate\Support\Facades\Auth;
 
 
 Auth::routes();
-Route::middleware('auth')->group(function(){
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware('auth')->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::prefix('/gym-managers')->group(function(){
+    Route::prefix('/gym-managers')->group(function () {
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');
-        Route::get('/{id}', [GymManagerController::class, 'show'])->name('gym-managers.show');
-        Route::get('/{id}/edit', [GymManagerController::class, 'edit'])->name('gym-managers.edit');
-        Route::delete('/{id}',[GymManagerController::class,'destroy'])->name('gym-managers.destroy');
     });
-    
-    Route::get('/city-managers', [App\Http\Controllers\CityManagerController::class, 'index'])->name('city-managers.index');
-    Route::get('/city-managers/edit', [App\Http\Controllers\GymManagerController::class, 'edit'])->name('city-managers.edit');
 
-    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+    Route::prefix('/city-managers')->group(function () {
+        Route::get('/', [CityManagerController::class, 'index'])->name('city-managers.index');
+    });
 
-    Route::get('/cities', [App\Http\Controllers\GymController::class, 'showCity'])->name('cities.show');
+    Route::prefix('/gym-members')->group(function () {
+        Route::get('/', [GymMemberController::class, 'index'])->name('gym-members.index');
+    });
 
-    Route::get('/gyms', [App\Http\Controllers\GymController::class, 'index'])->name('gyms.index');
+    Route::prefix('/users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('users.index');
+        Route::get('/create', [UserController::class, 'create'])->name('users.create');
+        Route::post('/', [UserController::class, 'store'])->name('users.store');
 
-    Route::get('/training-packages', [App\Http\Controllers\TrainingPackageController::class, 'index'])->name('training-packages.index');
+        Route::get('/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::put('/{id}', [UserController::class, 'update'])->name('users.update');
+        Route::get('/{id}', [UserController::class, 'show'])->name('users.show');
+        Route::delete('/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    });
 
-    Route::get('/coaches', [App\Http\Controllers\CoachController::class, 'index'])->name('coaches.index');
 
-    Route::get('/attendance', [App\Http\Controllers\AttendanceController::class, 'index'])->name('attendance.index');
+    Route::get('/cities', [GymController::class, 'showCity'])->name('cities.show');
 
-    Route::get('/buy-package', [App\Http\Controllers\BuyPackageController::class, 'index'])->name('buy-package.index');
-    
-    Route::get('/revenue', [App\Http\Controllers\RevenueController::class, 'index'])->name('revenue.index');
+    Route::get('/gyms', [GymController::class, 'index'])->name('gyms.index');
+
+    Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
+
+    Route::get('/coaches', [CoachController::class, 'index'])->name('coaches.index');
+
+    Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+
+    Route::get('/buy-package', [BuyPackageController::class, 'index'])->name('buy-package.index');
+
+    Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
 });

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,11 +18,12 @@
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
-   
+
 </head>
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
@@ -70,42 +72,41 @@
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
-                
+
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav">
                 <!-- Authentication Links -->
                 @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
+                @if (Route::has('login'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                @endif
 
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
+                @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
+                @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->email }}
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->email }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
                 @endguest
             </ul>
         </nav>
@@ -132,23 +133,37 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item">
-                            <a href="{{route('gym-managers.index')}}" class="nav-link">
+                        <li class="nav-item menu-open">
+                            <a href="#" class="nav-link active">
                                 <i class="far fa-user-circle nav-icon"></i>
-                                <p>Gym Managers</p>
+                                <p>System Users<i class="right fas fa-angle-left"></i></p>
                             </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('city-managers.index')}}" class="nav-link">
-                                <i class="far fa-user-circle nav-icon"></i>
-                                <p>City Managers</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('users.index')}}" class="nav-link">
-                                <i class="far fa-user nav-icon"></i>
-                                <p>Users</p>
-                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('gym-managers.index')}}" class="nav-link">
+                                        <i class="far fa-user-circle nav-icon"></i>
+                                        <p>Gym Managers</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('city-managers.index')}}" class="nav-link">
+                                        <i class="far fa-user-circle nav-icon"></i>
+                                        <p>City Managers</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('gym-members.index')}}" class="nav-link">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>Gym Member</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('users.create')}}" class="nav-link">
+                                        <i class="far fa-user-circle nav-icon"></i>
+                                        <p>Assign User</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('cities.show')}}" class="nav-link">
@@ -218,6 +233,7 @@
     </div>
 
     <script src="{{asset('js/app.js')}} "> </script>
-    
+
 </body>
+
 </html>
