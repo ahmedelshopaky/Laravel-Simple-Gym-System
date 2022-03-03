@@ -2,12 +2,17 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
+use Faker\Factory as FakerFactory;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use phpDocumentor\Reflection\Types\Integer;
+use Illuminate\Support\Str;
+
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class UserFactory extends Factory
+class GymMemberFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,16 +21,15 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        $faker = \Faker\Factory::create('ar_EG');
-
         $gender = $this->faker->randomElement(['male', 'female']);
 
         return [
-            'password' => bcrypt('secret'),
-            'avatar_image' => $this->faker->image('public/images/users', 400, 300, null, false),
-            'email' => $this->faker->unique()->safeEmail(),
-            'name' => $this->faker->name($gender),
-            'national_id'=>$faker->nationalIdNumber(),
+            'user_id'=>User::factory(),
+            'gender' => $gender,
+            'date_of_birth' => $this->faker->date('Y-m-d', 'now'),
+            'email_verified_at' => now(),
+            'last_login' => now(),
+            'remember_token' => Str::random(10),
         ];
     }
 
