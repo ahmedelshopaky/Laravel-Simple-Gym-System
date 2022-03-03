@@ -18,24 +18,24 @@
                             <tbody>
                                 <tr>
                                     <td>ID</td>
-                                    <td>{{$gymManager[0]->user_id}}</td>
+                                    <td>{{$user->id}}</td>
                                 </tr>
                                 <tr>
                                     <td>Name</td>
-                                    <td>{{$gymManager[0]->user->name}}</td>
+                                    <td>{{$user->name}}</td>
                                 </tr>
                                 <tr>
 
                                     <td>Email</td>
-                                    <td>{{$gymManager[0]->user->email}}</td>
+                                    <td>{{$user->email}}</td>
                                 </tr>
                                 <tr>
                                     <td>National ID</td>
-                                    <td>{{$gymManager[0]->user->national_id}}</td>
+                                    <td>{{$user->national_id}}</td>
                                 </tr>
                                 <tr>
                                     <td>Created At</td>
-                                    <td>{{$gymManager[0]->user->created_at}}</td>
+                                    <td>{{$user->created_at}}</td>
                                 </tr>
                             </tbody>
                         </table>

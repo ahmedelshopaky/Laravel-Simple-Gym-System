@@ -10,6 +10,8 @@ use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\BuyPackageController;
+use App\Http\Controllers\GymMemberController;
+use App\Models\GymMember;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 /*
@@ -34,6 +36,10 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/city-managers')->group(function () {
         Route::get('/', [CityManagerController::class, 'index'])->name('city-managers.index');
+    });
+
+    Route::prefix('/gym-member')->group(function () {
+        Route::get('/', [GymMemberController::class, 'index'])->name('gym-member.index');
     });
 
     Route::prefix('/users')->group(function () {

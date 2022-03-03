@@ -160,9 +160,9 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('users.index')}}" class="nav-link">
+                            <a href="{{route('gym-member.index')}}" class="nav-link">
                                 <i class="far fa-user nav-icon"></i>
-                                <p>Users</p>
+                                <p>Gym Member</p>
                             </a>
                         </li>
                         <li class="nav-item">

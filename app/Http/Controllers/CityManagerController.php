@@ -12,12 +12,12 @@ class CityManagerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = CityManager::with('user')->get();
-            return Datatables::of($data)->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $Btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-xl mr-3">Edit</a>';
+            $cityManager = CityManager::with('user')->get();
+            return Datatables::of($cityManager)->addIndexColumn()
+                ->addColumn('action', function ($user) {
+                    $Btn = '<a href="' . route('users.show', $user->user_id) . '" class="edit btn btn-info btn-xl mr-3">Edit</a>';
+                    $Btn = $Btn . '<a href="' . route('users.show', $user->user_id) . '" class="view btn btn-primary btn-xl mr-3">View</a>';
                     $Btn = $Btn . '<a href="javascript:void(0)" class="delete btn btn-danger btn-xl mr-3">Delete</a>';
-                    $Btn = $Btn . '<a href="javascript:void(0)" class="view btn btn-primary btn-xl mr-3">View</a>';
                     return $Btn;
                 })
                 ->rawColumns(['action'])

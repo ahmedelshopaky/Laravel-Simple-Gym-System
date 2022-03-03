@@ -110,10 +110,10 @@ $(function () {
         serverSide: true,
         ajax: "{{ route('city-managers.index') }}",
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},    
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+            {data: 'user_id'},
+            {data: 'user.name'},
+            {data: 'user.email'},
+            {data: 'action', orderable: false, searchable: false},
         ]
     } );
 });
