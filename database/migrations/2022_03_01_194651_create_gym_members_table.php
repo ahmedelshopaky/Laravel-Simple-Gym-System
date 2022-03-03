@@ -13,9 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('city_managers', function (Blueprint $table) {
+        Schema::create('gym_members', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->primary();
             $table->foreign('user_id')->references('id')->on('users');
+            
+            $table->enum('gender', ['male', 'female']);
+            $table->date('date_of_birth');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('last_login')->nullable();
+
+            $table->string('remember_token')->nullable();
+
+            $table->timestamps();
         });
     }
 
@@ -26,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('city_managers');
+        Schema::dropIfExists('gym_members');
     }
 };

@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('package_purchase', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('gym_member_id');
+            $table->foreign('gym_member_id')->references('user_id')->on('gym_members');
 
             $table->unsignedBigInteger('gym_id');
             $table->foreign('gym_id')->references('id')->on('gyms');

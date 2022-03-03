@@ -14,12 +14,14 @@ class GymManagerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = GymManager::all();
-            return Datatables::of($data)->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $Btn = '<a href="/gym-managers/edit" class="edit btn btn-primary btn-sm mr-3">Edit</a>';
-                    $Btn = $Btn . '<a href="javascript:void(0)" class="delete btn btn-danger btn-sm mr-3">Delete</a>';
-                    $Btn = $Btn . '<a href="javascript:void(0)" class="view btn btn-primary btn-sm mr-3">View</a>';
+            $gymManager = GymManager::with('user')->get();
+            // $data= GymManager::collection($data);
+            return Datatables::of($gymManager)->addIndexColumn()
+            
+                ->addColumn('action', function ($user) {
+                    $Btn  = '<a href="javascript:void(0)" data-toggle="tooltip" class="btn btn-info btn-sm mx-3 "   data-id="'.$user->id.'" data-original-title="View" >View</a>';
+                    $Btn .= '<a href="javascript:void(0)" data-toggle="tooltip" class="btn btn-primary btn-sm mx-3 " data-id="'.$user->id.'" data-original-title="Edit">Edit</a>';
+                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mx-3 deleteManager"  data-id="'.$user->id.'" data-original-title="Delete">Delete</a>';   
                     return $Btn;
                 })
                 ->rawColumns(['action'])
@@ -29,8 +31,20 @@ class GymManagerController extends Controller
         return view('menu.gym_manager.index');
     }
 
-    public function edit(Request $request)
+    public function show($id)
+    {
+        $gymManager=GymManager::find($id);
+        return view('menu.gym_manager.index',compact('gymManager'));
+    }
+
+    public function edit()
     {
         return view('menu.gym_manager.edit');
+    }
+
+    public function destroy($id)
+    {
+        GymManager::find($id)->delete();
+        return response()->json(['success'=>'the row deleted Successfully']);
     }
 }

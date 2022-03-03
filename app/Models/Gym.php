@@ -19,8 +19,19 @@ class Gym extends Model
         return $this->hasMany(Coach::class);
     }
 
+    
     public function gym_managers()
     {
         return $this->hasMany(GymManager::class);
+    }
+
+    public function training_sessions()
+    {
+        return $this->hasMany(TrainingSession::class);
+    }
+
+    public function city_managers()
+    {
+        return $this->belongsTo(CityManager::class);
     }
 }

@@ -16,6 +16,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
+            
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">City Managers Data</h3>
@@ -38,15 +39,13 @@
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- /.card -->
-
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title"></h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              
+
 
 
 
@@ -54,7 +53,8 @@
               </div>
               <!-- /.card-body -->
             </div>
-            <!-- /.card -->
+
+
           </div>
           <!-- /.col -->
         </div>
@@ -101,23 +101,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<!-- <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script> -->
 <script>
 
 $(function () {
@@ -128,15 +111,12 @@ $(function () {
         ajax: "{{ route('city-managers.index') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'email', name: 'email'},    
+            {data: 'user.name', name: 'name'},
+            {data: 'user.email', name: 'email'},    
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     } );
 });
-
-
-
 </script>
 
 @endsection

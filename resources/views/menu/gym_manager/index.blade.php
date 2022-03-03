@@ -40,21 +40,39 @@
             </div>
             <!-- /.card -->
 
+  
+            <!-- /.card -->
+
+
+            {{-- @isset($gymManager)
+            <!-- /.card -->
+
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"></h3>
+                <h3 class="card-title w-100 text-center">{{$gymManager->name}}</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-
-
-
-
-
+                <table class="table table-striped table-hover text-center table-bordered border-secondary">
+                  <tr scope="row">
+                    <td>Email</td>
+                    <td>{{$gymManager->email}}</td>
+                  </tr>
+                  <tr scope="row">
+                    <td>National Id</td>
+                    <td>{{$gymManager->national_id}}</td>
+                  </tr>
+                  <tr scope="row">
+                    <td>avatar</td>
+                    <td>{{$gymManager->avatar_image}}</td>
+                  </tr>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            @endisset --}}
+
           </div>
           <!-- /.col -->
         </div>
@@ -80,7 +98,6 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
@@ -101,43 +118,28 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
-  $(function() {
-    $("#example1").DataTable({
-      "responsive": true,
-      "lengthChange": false,
-      "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
-    });
-  });
-</script>
-<script>
-  $(function() {
 
-    var table = $('.data-table').DataTable({
+<script src="../../plugins/jquery/jquery.min.js"></script>
+
+<script>
+        
+
+  $(function() {
+    $.ajaxSetup({
+      headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}
+    });
+    var dataTable = $('.data-table').DataTable({
       processing: true,
       serverSide: true,
       ajax: "{{ route('gym-managers.index') }}",
       columns: [{
-          data: 'id',
-          name: 'id'
+          data: 'user_id',
         },
         {
-          data: 'name',
-          name: 'name'
+          data: 'user.name',
         },
         {
-          data: 'email',
-          name: 'email'
+          data: 'user.email',
         },
         {
           data: 'action',
@@ -145,7 +147,25 @@
         },
       ]
     });
+    $('body').on('click','.deleteManager',function () {
+          var ManagerId=$(this).data("id");
+          confirm("Do you want to remove student  ?");
+            $.ajax({
+              type:"DELETE",
+              data: {
+                   _token: '{!! csrf_token() !!}',
+                 },
+              url: "/gym-managers/"+ManagerId ,
+              sucess:function(data)
+              {
+                dataTable.draw();
+              }
+            });
+          
+            
+    });
   });
+  
 </script>
 
 @endsection
