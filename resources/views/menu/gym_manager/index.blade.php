@@ -32,7 +32,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
+
                   </tbody>
                 </table>
               </div>
@@ -40,7 +40,7 @@
             </div>
             <!-- /.card -->
 
-  
+
             <!-- /.card -->
 
 
@@ -50,50 +50,50 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title w-100 text-center">{{$gymManager->name}}</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-striped table-hover text-center table-bordered border-secondary">
-                  <tr scope="row">
-                    <td>Email</td>
-                    <td>{{$gymManager->email}}</td>
-                  </tr>
-                  <tr scope="row">
-                    <td>National Id</td>
-                    <td>{{$gymManager->national_id}}</td>
-                  </tr>
-                  <tr scope="row">
-                    <td>avatar</td>
-                    <td>{{$gymManager->avatar_image}}</td>
-                  </tr>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-            @endisset --}}
-
           </div>
-          <!-- /.col -->
+          <!-- /.card-header -->
+          <div class="card-body">
+            <table class="table table-striped table-hover text-center table-bordered border-secondary">
+              <tr scope="row">
+                <td>Email</td>
+                <td>{{$gymManager->email}}</td>
+              </tr>
+              <tr scope="row">
+                <td>National Id</td>
+                <td>{{$gymManager->national_id}}</td>
+              </tr>
+              <tr scope="row">
+                <td>avatar</td>
+                <td>{{$gymManager->avatar_image}}</td>
+              </tr>
+            </table>
+          </div>
+          <!-- /.card-body -->
         </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
+        <!-- /.card -->
+        @endisset --}}
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+      </div>
+      <!-- /.col -->
+  </div>
+  <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+  <div class="float-right d-none d-sm-block">
+    <b>Version</b> 3.2.0
+  </div>
+</footer>
+
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -122,11 +122,11 @@
 <script src="../../plugins/jquery/jquery.min.js"></script>
 
 <script>
-        
-
   $(function() {
     $.ajaxSetup({
-      headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
     });
     var dataTable = $('.data-table').DataTable({
       processing: true,
@@ -143,29 +143,26 @@
         },
         {
           data: 'action',
-          name: 'action'
         },
       ]
     });
-    $('body').on('click','.deleteManager',function () {
-          var ManagerId=$(this).data("id");
-          confirm("Do you want to remove student  ?");
-            $.ajax({
-              type:"DELETE",
-              data: {
-                   _token: '{!! csrf_token() !!}',
-                 },
-              url: "/gym-managers/"+ManagerId ,
-              sucess:function(data)
-              {
-                dataTable.draw();
-              }
-            });
-          
-            
+    $('body').on('click', '.deleteManager', function() {
+      var ManagerId = $(this).data("id");
+      confirm("Do you want to remove student  ?");
+      $.ajax({
+        type: "DELETE",
+        data: {
+          _token: '{!! csrf_token() !!}',
+        },
+        url: "/gym-managers/" + ManagerId,
+        sucess: function(data) {
+          dataTable.draw();
+        }
+      });
+
+
     });
   });
-  
 </script>
 
 @endsection
