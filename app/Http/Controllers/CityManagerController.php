@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CityManager;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -15,14 +16,21 @@ class CityManagerController extends Controller
             $cityManager = CityManager::with('user')->get();
             return Datatables::of($cityManager)->addIndexColumn()
                 ->addColumn('action', function ($user) {
-                    $Btn = '<a href="' . route('users.edit', $user->user_id) . '" class="edit btn btn-info btn-xl mr-3">Edit</a>';
+                    $Btn = '<a href="' . route('users.show', $user->user_id) . '" class="edit btn btn-info btn-xl mr-3">Edit</a>';
                     $Btn = $Btn . '<a href="' . route('users.show', $user->user_id) . '" class="view btn btn-primary btn-xl mr-3">View</a>';
-                    $Btn = $Btn . '<a href="javascript:void(0)" class="delete btn btn-danger btn-xl mr-3">Delete</a>';
+                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-xl mx-3 deleteManager"  data-id="' . $user->user_id . '" data-original-title="Delete">Delete</a>';
                     return $Btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
         return view('menu.city_manager.index');
+    }
+
+
+    public function destroy($id)
+    {
+        User::find($id)->delete();
+        return redirect()->route('city-managers.index');
     }
 }

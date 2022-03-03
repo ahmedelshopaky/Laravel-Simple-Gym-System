@@ -11,13 +11,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class GymManager extends Model implements BannableContract
 {
     use HasFactory, Bannable;
+    public $timestamps = false;
     protected $fillable = [
         'user_id',
     ];
 
     public function shouldApplyBannedAtScope()
     {
-        return true;
+        return false;
     }
 
     public function user()
