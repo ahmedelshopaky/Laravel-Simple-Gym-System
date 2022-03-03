@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\TrainingSession;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class AttendanceResource extends JsonResource
@@ -17,7 +18,7 @@ class AttendanceResource extends JsonResource
         return [
           
              'gym_member' =>  new UserResource($this->gym_member),
-            'training_session_name' => $this->training_session->name,
+            'training_session' => new TrainingSession($this->training_session),
         ];
     }
 }

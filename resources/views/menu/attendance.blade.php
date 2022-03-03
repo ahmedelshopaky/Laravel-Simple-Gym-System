@@ -28,6 +28,7 @@
                     <th>User ID</th>
                     <th>Username</th>
                     <th>Training session Name</th>
+                    <th>Date</th>
                   
                   </tr>
                   </thead>
@@ -115,7 +116,8 @@ $(function () {
         columns: [
           {data: 'gym_member.id'},  
           {data: 'gym_member.name'},  
-            {data: 'training_session.name'},    
+          {data: 'training_session.name'},    
+          {data: 'training_session.starts_at'}, 
             // {data: 'action', name: 'action', orderable: false, searchable: false},
 
         ],
