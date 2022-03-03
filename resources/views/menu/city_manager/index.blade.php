@@ -127,15 +127,15 @@ $(function () {
     var ManagerId;
     $('body').on('click', '.delete', function() {
        ManagerId = $(this).data("id");
-       $('body').on('click','.deleteManager', () => {
+       $('body').on('click','.deleteManager', (event) => {
         $.ajax({
-            url: "/city-managers/" + ManagerId,
+            url: "/users/" + ManagerId,
             type: "DELETE",
             data: {_token: '{!! csrf_token() !!}',}, 
             success:(response) =>
             {
               $('#deleteAlert').modal('hide');
-              console.log(this);
+              $( this ).off( event );
               $(this).parent().parent().remove();
             }  
           });

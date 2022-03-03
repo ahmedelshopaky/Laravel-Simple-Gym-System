@@ -39,39 +39,26 @@
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            {{-- modal  --}}
+            <div class="modal" id="deleteAlert" tabindex="-1">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header text-center">
+                    <h1 class="modal-title text-center mx-auto"><span class="badge bg-danger">Warning</span></h1>
+                  </div>
+                  <div class="modal-body bg-secondary text-white">
+                    <p class="text-center h3 ">Do you want to delete This Post ? </p>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <a href="javascript:void(0)"  class="btn btn-danger btn-xl mx-3 deleteManager" data-original-title="Delete">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {{-- end of modal --}}
 
-
-            <!-- /.card -->
-
-
-            {{-- @isset($gymManager)
-            <!-- /.card -->
-
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title w-100 text-center">{{$gymManager->name}}</h3>
-          </div>
-          <!-- /.card-header -->
-          <div class="card-body">
-            <table class="table table-striped table-hover text-center table-bordered border-secondary">
-              <tr scope="row">
-                <td>Email</td>
-                <td>{{$gymManager->email}}</td>
-              </tr>
-              <tr scope="row">
-                <td>National Id</td>
-                <td>{{$gymManager->national_id}}</td>
-              </tr>
-              <tr scope="row">
-                <td>avatar</td>
-                <td>{{$gymManager->avatar_image}}</td>
-              </tr>
-            </table>
-          </div>
-          <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
-        @endisset --}}
+            
 
       </div>
       <!-- /.col -->
@@ -99,7 +86,7 @@
 
 <!-- jQuery -->
 <!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+{{-- <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -119,7 +106,7 @@
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
 
-<script src="../../plugins/jquery/jquery.min.js"></script>
+<script src="../../plugins/jquery/jquery.min.js"></script> --}}
 
 <script>
   $(function() {
@@ -146,20 +133,24 @@
         },
       ]
     });
-    $('body').on('click', '.deleteManager', function() {
-      var ManagerId = $(this).data("id");
-      $.ajax({
-        type: "DELETE",
-        data: {
-          _token: '{!! csrf_token() !!}',
-        },
-        url: "/gym-managers/" + ManagerId,
-        sucess: function(data) {
-          dataTable.draw();
-        }
-      });
-
-
+    var ManagerId;
+    $('body').on('click', '.delete', function() {
+      
+       ManagerId = $(this).data("id");
+       $('body').on('click','.deleteManager', (event) => {
+        $.ajax({
+            url: "/users/" + ManagerId,
+            type: "DELETE",
+            async:false,
+            data: {_token: '{!! csrf_token() !!}',}, 
+            success:(response) =>
+            {
+              $('#deleteAlert').modal('hide');
+              $( this ).off( event );
+              $(this).parent().parent().remove();  
+            }  
+          });
+        });
     });
   });
 </script>

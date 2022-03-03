@@ -96,7 +96,9 @@ class UserController extends Controller
         return view('menu.user.show', compact('user'));
     }
 
-    public function destroy() {
-        //
+    public function destroy($id)
+    {
+        User::find($id)->delete();
+        return response()->json(['success'=>'This row id deleted successfully']);
     }
 }
