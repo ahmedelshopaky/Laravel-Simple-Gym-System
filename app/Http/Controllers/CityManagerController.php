@@ -18,7 +18,7 @@ class CityManagerController extends Controller
                 ->addColumn('action', function ($user) {
                     $Btn = '<a href="' . route('users.show', $user->user_id) . '" class="edit btn btn-info btn-xl mr-3">Edit</a>';
                     $Btn = $Btn . '<a href="' . route('users.show', $user->user_id) . '" class="view btn btn-primary btn-xl mr-3">View</a>';
-                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-xl mx-3 deleteManager"  data-id="' . $user->user_id . '" data-original-title="Delete">Delete</a>';
+                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-xl mx-3 delete"  data-id="' . $user->user_id . '"  data-bs-toggle="modal" data-bs-target="#deleteAlert">Delete</a>';
                     return $Btn;
                 })
                 ->rawColumns(['action'])
@@ -31,6 +31,6 @@ class CityManagerController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('city-managers.index');
+        return response()->json(['success'=>'This row id deleted successfully']);
     }
 }

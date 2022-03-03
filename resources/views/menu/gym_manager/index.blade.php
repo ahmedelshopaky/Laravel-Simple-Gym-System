@@ -142,13 +142,12 @@
           data: 'user.email',
         },
         {
-          data: 'action',
+          data: 'action',orderable:false,searchable:false
         },
       ]
     });
     $('body').on('click', '.deleteManager', function() {
       var ManagerId = $(this).data("id");
-      confirm("Do you want to remove student  ?");
       $.ajax({
         type: "DELETE",
         data: {
