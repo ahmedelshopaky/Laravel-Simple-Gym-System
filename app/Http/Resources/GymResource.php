@@ -21,7 +21,6 @@ class GymResource extends JsonResource
             'name' => $this->name,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            
             'city_manager' => new CityManagerResource($this->city_manager),
         ];
     }
