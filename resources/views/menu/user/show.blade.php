@@ -38,6 +38,10 @@
                                     <td>Created At</td>
                                     <td>{{$user->created_at}}</td>
                                 </tr>
+                                <tr>
+                                    <td>Role</td>
+                                    <td>{{$user->role}}</td>
+                                </tr>
 <!---------------------------- only gym member can see this section ---------------------------->
                                 <tr>                                
                                     <td>Gender</td>

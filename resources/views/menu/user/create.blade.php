@@ -123,7 +123,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                            <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
+                            <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="role" autofocus>
                                 <option value="city_manager">City Manager</option>
                                 <option value="gym_manager">Gym Manager</option>
                                 <option value="gym_member">Gym Member</option>

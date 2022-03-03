@@ -43,17 +43,20 @@ class UserController extends Controller
         $user = User::create($validated);
         User::where('national_id', $request->national_id)->update([
             'avatar_image' => $name,
-            'password' => Hash::make($request['password'])
+            'password' => Hash::make($request['password']),
+            // 'role' => $request->role,
         ]);
 
         if ($request->role == 'city_manager'){
             CityManager::insert([
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                // 'role' => 'city_manager',
             ]);
             return redirect()->route('city-managers.index');
         } else if ($request->role == 'gym_manager'){
             GymManager::insert([
-                'user_id' => $user->id
+                'user_id' => $user->id,
+                // 'role' => 'gym_manager',
             ]);
             return redirect()->route('gym-managers.index');
         } else if ($request->role == 'gym_member'){
@@ -61,6 +64,7 @@ class UserController extends Controller
                 'user_id' => $user->id,
                 'gender' => $request->gender,
                 'date_of_birth' => $request->date_of_birth,
+                // 'role' => 'gym_member',
             ]);
             return redirect()->route('gym-members.index');
         }
@@ -71,15 +75,16 @@ class UserController extends Controller
         return view('menu.user.edit', compact('user'));
     }
 
-    public function update(StoreUserRequest $request, $id) {
+    public function update($id, StoreUserRequest $request) {
         // TODO
         // avatar, role and gym member section old value ????
         $validated = $request->validated();
 
-        $user = User::where('id', $id)->first();
+        $user = User::find($id);
         if ($user) {
             $user->update($validated);
         }
+        return view('menu.user.show', compact('user'));
     }
 
     public function show($id) {

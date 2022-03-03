@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreUserRequest extends FormRequest
 {
@@ -29,8 +30,9 @@ class StoreUserRequest extends FormRequest
             'avatar_image' => ['required'],
             'email' => ['required','email'],
             'name' => ['required', 'min:3'],
-            'password' => ['required', 'confirmed', Password::min(8)],
-            'national_id' => ['required', 'unique:users', 'min:14'],
+            'password' => ['confirmed', Password::min(8)],
+            'national_id' => ['required', Rule::unique('users','national_id')->ignore($this->id, 'id'), 'min:14'],
+            'role' => ['required'],
 
             // 'gender' => ['required',],
             // 'date_of_birth' => ['required',],
