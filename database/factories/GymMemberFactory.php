@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use phpDocumentor\Reflection\Types\Integer;
 use Illuminate\Support\Str;
 
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
