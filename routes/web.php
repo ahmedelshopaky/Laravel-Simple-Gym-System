@@ -11,6 +11,7 @@ use App\Http\Controllers\GymController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\BuyPackageController;
 use App\Http\Controllers\GymMemberController;
+use App\Http\Controllers\TrainingSessionController;
 use App\Models\Gym;
 use App\Models\GymMember;
 use Illuminate\Support\Facades\Route;
@@ -82,6 +83,20 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
+
+    Route::prefix('/training-sessions')->group(function () {
+        Route::get('/', [TrainingSessionController::class, 'index'])->name('training-sessions.index');
+
+        Route::get('/create',[TrainingSessionController::class,'create'])->name('training-sessions.create');
+        Route::post('/',[TrainingSessionController::class,'store'])->name('training-sessions.store');
+        
+        Route::get('/{id}',[TrainingSessionController::class,'show'])->name('training-sessions.show');
+
+        Route::get('/{id}/edit',[TrainingSessionController::class,'edit'])->name('training-sessions.edit');
+        Route::put('/{id}',[TrainingSessionController::class,'update'])->name('training-sessions.update');
+
+        Route::delete('/{id}',[TrainingSessionController::class,'destroy'])->name('training-sessions.destroy');
+    });
 });
 
 //Ban actions

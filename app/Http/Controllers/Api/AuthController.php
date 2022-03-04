@@ -24,7 +24,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'national_id' => $data['national_id'],
-            'avatar_image' => $request->file('avatar_image')->store('uploads','public'),
+            'avatar_image' => $request->file('avatar_image')->store('uploads', 'public'),
 
             //$data['avatar_image'],
         ]);
@@ -65,12 +65,13 @@ class AuthController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
-       
+        
         $token = $user->createToken($request->email)->plainTextToken;
-
+        
         GymMember::where('user_id', $user->id)
-                ->update(['last_login' => Carbon::now(), 'remember_token' => $token]);
-
+            ->update(['last_login' => Carbon::now(), 'remember_token' => $token]);
+       
+        
         return [
             'message' => 'Welcome you are logged in',
             'token' => $token,
