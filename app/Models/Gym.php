@@ -34,4 +34,5 @@ class Gym extends Model
     {
         return $this->belongsTo(CityManager::class);
     }
+
 }

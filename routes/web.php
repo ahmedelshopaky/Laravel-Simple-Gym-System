@@ -11,6 +11,7 @@ use App\Http\Controllers\GymController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\BuyPackageController;
 use App\Http\Controllers\GymMemberController;
+use App\Models\Gym;
 use App\Models\GymMember;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +58,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/cities', [GymController::class, 'showCity'])->name('cities.show');
 
-    Route::get('/gyms', [GymController::class, 'index'])->name('gyms.index');
+    Route::prefix('/gyms')->group(function(){
+        Route::get('/', [GymController::class, 'index'])->name('gyms.index');
+        Route::get('/create',[GymController::class,'create'])->name('gyms.create');
+        Route::post('/',[GymController::class,'store'])->name('gyms.store');
+        Route::get('/{id}',[GymController::class,'show'])->name('gyms.show');
+
+        Route::get('/{id}/edit',[GymController::class,'edit'])->name('gyms.edit');
+        Route::put('/{id}',[GymController::class,'update'])->name('gyms.update');
+    });
 
     Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
 
