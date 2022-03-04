@@ -13,10 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('coaches', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-
+        Schema::table('gym_managers', function (Blueprint $table) {
             $table->unsignedBigInteger('gym_id');
             $table->foreign('gym_id')->references('id')->on('gyms')->onDelete('cascade');
         });
@@ -29,6 +26,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coaches');
+        Schema::table('gym_managers', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -135,8 +135,7 @@ $(function () {
             success:(response) =>
             {
               $('#deleteAlert').modal('hide');
-              $( this ).off( event );
-              $(this).parent().parent().remove();
+              table.ajax.reload();
             }  
           });
         });

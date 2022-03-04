@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable ,HasRoles;
 
@@ -46,18 +46,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function city_manager()
+    public function city_manager() // done
     {
-        return $this->hasOne(CityManager::class);
+        return $this->hasOne(CityManager::class, 'user_id');
     }
 
-    public function gym_manager()
+    public function gym_manager() // done
     {
-        return $this->hasOne(GymManager::class);
+        return $this->hasOne(GymManager::class, 'user_id');
     }
 
-    public function gym_member()
+    public function gym_member() // done
     {
-        return $this->hasOne(GymMember::class);
+        return $this->hasOne(GymMember::class, 'user_id');
     }
 }

@@ -21,12 +21,12 @@ class GymManager extends Model implements BannableContract
         return false;
     }
 
-    public function user()
+    public function user() // done
     {
         return $this->belongsTo(User::class);
     }
 
-    public function gym()
+    public function gym() // done
     {
         return $this->belongsTo(Gym::class);
     }

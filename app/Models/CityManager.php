@@ -13,13 +13,13 @@ class CityManager extends Model
         'user_id',
     ];
 
-    public function user()
+    public function user() // done
     {
         return $this->belongsTo(User::class);
     }
 
-    public function gyms()
+    public function gyms() // done
     {
-        return $this->hasMany(Gym::class);
+        return $this->hasMany(Gym::class, 'city_manager_id', 'user_id');
     }
 }

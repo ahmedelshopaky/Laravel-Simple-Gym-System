@@ -14,17 +14,17 @@ class TrainingSession extends Model
         'finishes_at'
     ];
 
-    public function gym_members()
+    public function gym_members() // done
     {
-        return $this->belongsToMany(GymMember::class,'gym_member_training_session','gym_member_id','training_session_id');
+        return $this->belongsToMany(GymMember::class, 'gym_member_training_session', 'training_session_id', 'gym_member_id', 'id', 'user_id');
     }
 
-    public function coaches()
+    public function coaches() // done
     {
-        return $this->hasMany(Coach::class);
+        return $this->belongsToMany(Coach::class, 'coach_training_session', 'training_session_id', 'coach_id');
     }
 
-    public function gym()
+    public function gym() // done
     {
         return $this->belongsTo(Gym::class);
     }

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Gym;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -20,6 +21,7 @@ class GymManagerFactory extends Factory
         return [
             'user_id'=>User::factory(['role'=>'gym_manager']),
             'banned_at' => $this->faker->dateTimeThisYear(),
+            'gym_id' => Gym::factory(),
         ];
     }
 }
