@@ -15,8 +15,8 @@ use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
-    public function register(StoreGymMemberRequest $request){
-
+    public function register(StoreGymMemberRequest $request)
+    {
         $data = request()->all();
 
         $user = User::create([
@@ -51,29 +51,29 @@ class AuthController extends Controller
         ];
     }
 
-    public function login(Request $request){
-
+    public function login(Request $request)
+    {
         $data = $request->validate([
             'email' => 'required|email',
             'password' => 'required'
         ]);
 
-        $user = User::where('email' , $data['email'])->first();
+        $user = User::where('email', $data['email'])->first();
 
         if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
-        
-        GymMember::where('user_id', $user->id)
-                ->update(['last_login' => Carbon::now()]);
        
         $token = $user->createToken($request->email)->plainTextToken;
+
+        GymMember::where('user_id', $user->id)
+                ->update(['last_login' => Carbon::now(), 'remember_token' => $token]);
+
         return [
             'message' => 'Welcome you are logged in',
             'token' => $token,
         ];
-
     }
 }
