@@ -3,9 +3,11 @@
 namespace App\Console\Commands;
 
 use App\Models\GymMember;
+use App\Notifications\MemberMissed;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Notification;
+
 
 class NotifyMembers extends Command
 {
@@ -42,7 +44,6 @@ class NotifyMembers extends Command
     public function handle()
     {
         $users = GymMember::whereDate('last_login' ,'<',Carbon::now()->subDays(30)->toDateTimeString())->get();
-       // Notification::send($users , new WeMissYou);
-        return 0;
+       Notification::send($users , new MemberMissed);
     }
 }
