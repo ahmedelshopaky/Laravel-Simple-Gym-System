@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGymRequest;
 use App\Http\Requests\UpdateGymRequest;
+use App\Http\Resources\GymResource;
 use App\Models\CityManager;
 use App\Models\Gym;
 use App\Models\User;
@@ -79,11 +80,11 @@ class GymController extends Controller
     }
     
     public function showCity(Request $request) {
-        $cities = Gym::with('city_managers')->get();
-        $name=Gym::with('city_managers')->get()->first()->city_managers->user->name;
-        dd($name);
+       
+        
         if ($request->ajax()) {
-           
+            $cities = Gym::with('city_managers')->get();
+             $cities= GymResource::collection($cities);
             return Datatables::of($cities)->addIndexColumn()
                     ->addColumn('action', function($gym){
                         $Btn = '<a href="" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder"> </i>View</a>';

@@ -96,7 +96,7 @@ $(function () {
         columns: [
             {data: 'city',},
             {data: 'name'},
-            {data: 'city_managers.user_id'},            
+            {data: 'city_manager_name'},            
             {data: 'action', orderable: false, searchable: false},
         ]
     });

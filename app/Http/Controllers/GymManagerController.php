@@ -8,10 +8,8 @@ use Illuminate\Http\Request;
 
 use Yajra\DataTables\DataTables;
 
-
 class GymManagerController extends Controller
 {
-
     public function index(Request $request)
     {
         if ($request->ajax()) {
@@ -28,4 +26,16 @@ class GymManagerController extends Controller
         }
         return view('menu.gym_manager.index');
     }
+
+    // public function ban(GymManager $gymManager)
+    // {
+    //     $gymManager->ban();
+    //     return redirect()->route('gymManagers.index');
+    // }
+
+    // public function unban(GymManager $gymManager)
+    // {
+    //     $gymManager->unban();
+    //     return redirect()->route('gymManagers.index');
+    // }
 }

@@ -15,6 +15,7 @@ use App\Models\Gym;
 use App\Models\GymMember;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,13 +32,13 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::prefix('/gym-managers')->group(function () {
+    
+    Route::group(['prefix'=>'/gym-managers','middleware' => 'auth', 'role:admin|cityManager'], function () {
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');
     });
 
-    Route::prefix('/city-managers')->group(function () {
+    Route::group(['prefix'=>'/city-managers','middleware' => 'auth', 'forbid-banned-user','role:admin'], function () {
         Route::get('/', [CityManagerController::class, 'index'])->name('city-managers.index');
-        
     });
 
     Route::prefix('/gym-members')->group(function () {
@@ -58,15 +59,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/cities', [GymController::class, 'showCity'])->name('cities.show');
 
-    Route::prefix('/gyms')->group(function(){
+    Route::group(['prefix' => '/gyms', 'middleware' => 'auth', 'forbid-banned-user','role:admin|cityManager'], function () {
         Route::get('/', [GymController::class, 'index'])->name('gyms.index');
-        Route::get('/create',[GymController::class,'create'])->name('gyms.create');
-        Route::post('/',[GymController::class,'store'])->name('gyms.store');
-        Route::get('/{id}',[GymController::class,'show'])->name('gyms.show');
+        Route::get('/create', [GymController::class,'create'])->name('gyms.create');
+        Route::post('/', [GymController::class,'store'])->name('gyms.store');
+        Route::get('/{id}', [GymController::class,'show'])->name('gyms.show');
 
-        Route::get('/{id}/edit',[GymController::class,'edit'])->name('gyms.edit');
-        Route::put('/{id}',[GymController::class,'update'])->name('gyms.update');
-        Route::delete('/{id}',[GymController::class,'destroy'])->name('gyms.destroy');
+        Route::get('/{id}/edit', [GymController::class,'edit'])->name('gyms.edit');
+        Route::put('/{id}', [GymController::class,'update'])->name('gyms.update');
+        Route::delete('/{id}', [GymController::class,'destroy'])->name('gyms.destroy');
     });
 
     Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
@@ -82,3 +83,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
 });
+
+//Ban actions
+// Route::get('/banned', 'Web\BannedController@index')->name('BannedController.ban');
+
+// Route::get('/home', 'HomeController@index')->name('home');
