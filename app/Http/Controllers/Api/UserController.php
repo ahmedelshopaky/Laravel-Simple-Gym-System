@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreGymMemberRequest;
-use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateGymMemberRequest;
 use App\Models\GymMember;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,37 +17,40 @@ class UserController extends Controller
         return "helloo";
     }
 
-    public function update($userId, StoreGymMemberRequest $request)
+    public function update($Id,UpdateGymMemberRequest $request)
     {
         $token = $request->bearerToken();
-        $data = request()->all();
-        // $name = $request->input('name');
+        $request->merge(['password' => Hash::make(request()->password)]);
 
-        // dd($data);
-        $user= GymMember::where('remember_token', $token)->first(['user_id'])->user_id;
+        $data = $request->except(['_method']);
+        
 
+        $userId= GymMember::where('remember_token', $token)->first(['user_id'])->user_id;
+        $gymMember = GymMember::where('user_id', $userId)->first();
         $userObj=Auth::user();
 
-        if ($userId == $user) {
-            // dd($request->has('name'));
-            User::where('id', $user)
-                ->update([
-            'name' => $request->has('name')? $data['name']:$userObj->name,
-            'email' => $request->has('email')? $data['email']:$userObj->email,
-            'national_id' => $request->has('national_id')? $data['national_id']:$userObj->national_id,
-            'password' => $request->has('password')? Hash::make($data['password']):$userObj->password,
-            'avatar_image' => $request->has('avatar_image')? $request->file('avatar_image')->store('uploads', 'public'):$userObj->avatar_image,]);
 
-            GymMember::where('user_id', $user)->update([
-            'gender' => $request->has('gender')? $data['gender']:$userObj->gender,
-            'date_of_birth' => $request->has('date_of_birth')? $data['date_of_birth']:$userObj->date_of_birth,]);
+        if ($Id == $userId) {
+
+            $data = $request->only(['name', 'email','national_id','password']);
+
+            User::where('id', $userId)
+                 ->update($data);
+
+            User::where('id', $userId)
+                 ->update(['avatar_image' => $request->has('avatar_image')? $request->file('avatar_image')->store('uploads', 'public'):$userObj->avatar_image]);   
+            
+            $data = $request->only(['gender', 'date_of_birth']);
+
+            GymMember::where('user_id', $userId)->update($data);
+
         } else {
-            return "you are not eligible to update";
+            return "you are not eligible to update data of another user please enter your id in the url";
         }
-        // return $userObj->name;
+
+        return response([
+            'message' => 'your data updated successfully',
+            'Your new data' => [$userObj,$gymMember],
+        ]);
     }
 }
-
-// 'password' => Hash::make($data['password']),
-//             'national_id' => $data['national_id'],
-//             'avatar_image' => $request->file('avatar_image')->store('uploads', 'public')
