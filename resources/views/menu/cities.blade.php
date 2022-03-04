@@ -22,12 +22,12 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
+                <table class="table table-bordered table-hover  data-table" id="data-table">
                   <thead>
                   <tr>
-                    <th>city</th>
+                    <th>city Name</th>
                     <th>Gym Name</th>
-                    <th>Email</th>
+                    <th>City Manager</th>
                     <th>Actions</th>
                   </tr>
                   </thead>
@@ -92,11 +92,11 @@ $(function () {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('gym-members.index') }}",
+        ajax: "{{ route('cities.show') }}",
         columns: [
-            {data: 'user_id',},
-            {data: 'user.name',},
-            {data: 'user.email',},
+            {data: 'city',},
+            {data: 'name'},
+            {data: 'city_managers.user_id'},            
             {data: 'action', orderable: false, searchable: false},
         ]
     });

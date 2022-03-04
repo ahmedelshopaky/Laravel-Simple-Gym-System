@@ -77,7 +77,24 @@ class GymController extends Controller
         }
 
     }
-    public function showCity() {
+    
+    public function showCity(Request $request) {
+        $cities = Gym::with('city_managers')->get();
+        $name=Gym::with('city_managers')->get()->first()->city_managers->user->name;
+        dd($name);
+        if ($request->ajax()) {
+           
+            return Datatables::of($cities)->addIndexColumn()
+                    ->addColumn('action', function($gym){
+                        $Btn = '<a href="" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder"> </i>View</a>';
+                        $Btn .= '<a href="" class="edit btn btn-info btn-sm mr-3"> <i class="fas fa-pencil-alt"> </i> Edit</a>';
+                        $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id=""  data-bs-toggle="modal" data-bs-target="#deleteAlert"> <i class="fas fa-trash">  </i>Delete</a>';
+                        return $Btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+      
         return view('menu.cities');
     }
 }
