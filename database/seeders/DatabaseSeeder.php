@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $numberOfUsers=300;
         // User::factory(10)->create();
         GymMember::factory(10)->create();
         CityManager::factory(10)->create();
