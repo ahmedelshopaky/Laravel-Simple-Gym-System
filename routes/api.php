@@ -24,9 +24,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('register',[AuthController::class,'register']);
+Route::post('register', [AuthController::class,'register']);
 
-Route::post('login',[AuthController::class,'login']);
+Route::post('login', [AuthController::class,'login']);
 
 
 
@@ -38,16 +38,14 @@ Route::get('/email/verify', function () {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
  
-    return  "hellooooooooooo"; 
+    return  "hellooooooooooo";
 })->middleware(['auth:sanctum'])->name('verification.verify');
 
 
-Route::middleware('auth:sanctum')->group(function(){
-
-    Route::get('/',[UserController::class,'index'])->middleware('verified');
-
-    
-    });
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/', [UserController::class,'index'])->middleware('verified');
+    Route::put('/profile/{id}/update', [UserController::class,'update'])->middleware('verified');
+});
     
     
     // Route::post('/sanctum/token', function (Request $request) {
