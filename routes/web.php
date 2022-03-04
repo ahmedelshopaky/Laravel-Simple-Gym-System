@@ -75,7 +75,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 
-    Route::get('/buy-package', [BuyPackageController::class, 'index'])->name('buy-package.index');
+    Route::prefix('/buy-package')->group(function(){
+        Route::get('/create', [BuyPackageController::class, 'create'])->name('buy-package.create');
+        Route::post('/', [BuyPackageController::class, 'store'])->name('buy-package.store');
+    });
 
     Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
 });
