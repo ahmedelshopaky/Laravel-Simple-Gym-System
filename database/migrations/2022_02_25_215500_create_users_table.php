@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('name')->nullable();
             $table->bigInteger('national_id')->nullable();
             $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
         });
     }
 

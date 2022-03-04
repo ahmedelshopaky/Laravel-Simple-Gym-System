@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use phpDocumentor\Reflection\Types\Integer;
 use Illuminate\Support\Str;
 
-
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
@@ -24,10 +23,10 @@ class GymMemberFactory extends Factory
         $gender = $this->faker->randomElement(['male', 'female']);
 
         return [
-            'user_id'=>User::factory(),
+            'user_id'=>User::factory(['role'=>'gym_member']),
             'gender' => $gender,
             'date_of_birth' => $this->faker->date('Y-m-d', 'now'),
-            'email_verified_at' => now(),
+            // 'email_verified_at' => now(),
             'last_login' => now(),
             'remember_token' => Str::random(10),
         ];

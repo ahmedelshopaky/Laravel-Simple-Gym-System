@@ -11,6 +11,7 @@ use App\Http\Controllers\GymController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\BuyPackageController;
 use App\Http\Controllers\GymMemberController;
+use App\Models\Gym;
 use App\Models\GymMember;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/city-managers')->group(function () {
         Route::get('/', [CityManagerController::class, 'index'])->name('city-managers.index');
+        
     });
 
     Route::prefix('/gym-members')->group(function () {
@@ -56,7 +58,16 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/cities', [GymController::class, 'showCity'])->name('cities.show');
 
-    Route::get('/gyms', [GymController::class, 'index'])->name('gyms.index');
+    Route::prefix('/gyms')->group(function(){
+        Route::get('/', [GymController::class, 'index'])->name('gyms.index');
+        Route::get('/create',[GymController::class,'create'])->name('gyms.create');
+        Route::post('/',[GymController::class,'store'])->name('gyms.store');
+        Route::get('/{id}',[GymController::class,'show'])->name('gyms.show');
+
+        Route::get('/{id}/edit',[GymController::class,'edit'])->name('gyms.edit');
+        Route::put('/{id}',[GymController::class,'update'])->name('gyms.update');
+        Route::delete('/{id}',[GymController::class,'destroy'])->name('gyms.destroy');
+    });
 
     Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
 
@@ -64,8 +75,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 
-    Route::get('/buy-package', [BuyPackageController::class, 'index'])->name('buy-package.index');
+    Route::prefix('/buy-package')->group(function(){
+        Route::get('/create', [BuyPackageController::class, 'create'])->name('buy-package.create');
+        Route::post('/', [BuyPackageController::class, 'store'])->name('buy-package.store');
+    });
 
     Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
-   
 });

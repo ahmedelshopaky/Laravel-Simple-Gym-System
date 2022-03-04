@@ -26,6 +26,8 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'name' => $this->faker->name($gender),
             'national_id'=>$faker->nationalIdNumber(),
+            
+            'role' => $faker->randomElement(['city_manager', 'gym_manager', 'gym_member']),
         ];
     }
 

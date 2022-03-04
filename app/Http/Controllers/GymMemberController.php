@@ -14,10 +14,11 @@ class GymMemberController extends Controller
         $gymMember = GymMember::with('user')->get();
         if ($request->ajax()) {
             return DataTables::of($gymMember)->addIndexColumn()
-                ->addColumn('action', function ($user) {
-                    $Btn = '<a href="' . route('users.edit', $user->user_id) . '" class="edit btn btn-info btn-xl mr-3">Edit</a>';
-                    $Btn = $Btn . '<a href="javascript:void(0)" class="delete btn btn-danger btn-xl mr-3">Delete</a>';
-                    $Btn = $Btn . '<a href="' . route('users.show', $user->user_id) . '" class="view btn btn-primary btn-xl mr-3">View</a>';
+                ->addColumn('action', function ($user) 
+                {
+                    $Btn   = '<a href="' . route('users.show', $user->user_id) . '" class="btn btn-info btn-xl mr-3">View</a>';
+                    $Btn  .= '<a href="' . route('users.edit', $user->user_id) . '" class="edit btn btn-primary btn-xl mr-3">Edit</a>';
+                    $Btn  .= '<a href="javascript:void(0)"  class="btn btn-danger btn-xl mx-3 delete"  data-id="' . $user->user_id . '"  data-bs-toggle="modal" data-bs-target="#deleteAlert">Delete</a>';
                     return $Btn;
                 })
                 ->rawColumns(['action'])

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GymManager;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use Yajra\DataTables\DataTables;
@@ -19,7 +20,7 @@ class GymManagerController extends Controller
                 ->addColumn('action', function ($user) {
                     $Btn  = '<a href="' . route('users.show', $user->user_id) . '" data-toggle="tooltip" class="btn btn-info btn-xl mx-3 "   data-id="' . $user->user_id . '" data-original-title="View" >View</a>';
                     $Btn .= '<a href="' . route('users.edit', $user->user_id) . '" data-toggle="tooltip" class="btn btn-primary btn-xl mx-3 " data-id="' . $user->user_id . '" data-original-title="Edit">Edit</a>';
-                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-xl mx-3 deleteManager"  data-id="' . $user->user_id . '" data-original-title="Delete">Delete</a>';
+                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-xl mx-3 delete"  data-id="' . $user->user_id . '"  data-bs-toggle="modal" data-bs-target="#deleteAlert">Delete</a>';
                     return $Btn;
                 })
                 ->rawColumns(['action'])
