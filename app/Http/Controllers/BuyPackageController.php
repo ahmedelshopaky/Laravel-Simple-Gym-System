@@ -6,6 +6,7 @@ use App\Models\Gym;
 use App\Models\GymMember;
 use App\Models\Revenue;
 use App\Models\TrainingPackage;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -37,7 +38,7 @@ class BuyPackageController extends Controller
             'package_id' => $request->training_package,
 
             'amount_paid' => $triningPackage->price * 100,
-            'created_at' => now(),
+            'purchased_at' => now(),
         ]);
         return view('menu.buy_package.show', compact('gym', 'triningPackage', 'gymMember'));
     }
