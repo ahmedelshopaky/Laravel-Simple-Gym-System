@@ -6,6 +6,7 @@ use App\Models\Gym;
 use App\Models\GymMember;
 use App\Models\Revenue;
 use App\Models\TrainingPackage;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 

@@ -13,4 +13,6 @@ class TrainingPackage extends Model
         'price',
         'sessions_number'
     ];
+
+    
 }
