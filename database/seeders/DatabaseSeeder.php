@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
     {
         $numberOfUsers=300;
         // User::factory(10)->create();
-        GymMember::factory($numberOfUsers*0.20)->create();
-        GymManager::factory($numberOfUsers*0.30)->create();
-        CityManager::factory($numberOfUsers*0.20)->create();
+        GymMember::factory(10)->create();
+        CityManager::factory(10)->create();
         // Gym::factory(5)->create();
-        Coach::factory($numberOfUsers*0.20)->create();
+        Coach::factory(5)->create();
+        GymManager::factory(10)->create();
     }
 }
