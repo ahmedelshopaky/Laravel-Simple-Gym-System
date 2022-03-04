@@ -107,7 +107,7 @@
 
 <script>
 $(function () {
-    $('.data-table').DataTable({
+    var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
         ajax: "{{ route('gym-members.index') }}",
@@ -130,8 +130,7 @@ $(function () {
             success:(response) =>
             {
               $('#deleteAlert').modal('hide');
-              $( this ).off( event );
-              $(this).parent().parent().remove();  
+              table.ajax.reload();
             }  
           });
         });

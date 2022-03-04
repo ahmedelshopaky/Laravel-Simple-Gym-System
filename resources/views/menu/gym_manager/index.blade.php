@@ -115,7 +115,7 @@
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
-    var dataTable = $('.data-table').DataTable({
+    var table = $('.data-table').DataTable({
       processing: true,
       serverSide: true,
       ajax: "{{ route('gym-managers.index') }}",
@@ -146,8 +146,7 @@
             success:(response) =>
             {
               $('#deleteAlert').modal('hide');
-              $( this ).off( event );
-              $(this).parent().parent().remove();  
+              table.ajax.reload();
             }  
           });
         });
