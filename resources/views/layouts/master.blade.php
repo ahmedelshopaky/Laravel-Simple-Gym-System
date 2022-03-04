@@ -185,6 +185,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{route('training-packages.index')}}" class="nav-link">
+                                <i class="far fa-shield nav-icon"></i>
+                                <p>Training Sessions</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{route('coaches.index')}}" class="nav-link">
                                 <i class="far fa-male nav-icon"></i>
                                 <p>Coaches</p>
@@ -197,7 +203,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('buy-package.index')}}" class="nav-link">
+                            <a href="{{route('buy-package.create')}}" class="nav-link">
                                 <i class="far fa-credit-card nav-icon"></i>
                                 <p>Buy Packages For Users</p>
                             </a>

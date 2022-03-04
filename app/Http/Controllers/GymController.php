@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGymRequest;
 use App\Http\Requests\UpdateGymRequest;
+use App\Http\Resources\GymResource;
 use App\Models\CityManager;
 use App\Models\Gym;
 use App\Models\User;
@@ -77,7 +78,24 @@ class GymController extends Controller
         }
 
     }
-    public function showCity() {
-        return "hi";
+    
+    public function showCity(Request $request) {
+       
+        
+        if ($request->ajax()) {
+            $cities = Gym::with('city_managers')->get();
+             $cities= GymResource::collection($cities);
+            return Datatables::of($cities)->addIndexColumn()
+                    ->addColumn('action', function($gym){
+                        $Btn = '<a href="" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder"> </i>View</a>';
+                        $Btn .= '<a href="" class="edit btn btn-info btn-sm mr-3"> <i class="fas fa-pencil-alt"> </i> Edit</a>';
+                        $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id=""  data-bs-toggle="modal" data-bs-target="#deleteAlert"> <i class="fas fa-trash">  </i>Delete</a>';
+                        return $Btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+        }
+      
+        return view('menu.cities');
     }
 }

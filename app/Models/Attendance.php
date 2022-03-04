@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Attendance extends Model
 {
     use HasFactory;
-    protected $table = 'attendance';
+    protected $table = 'gym_member_training_session';
     
     public function gym_member()
     {

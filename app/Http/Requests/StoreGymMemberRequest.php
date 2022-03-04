@@ -28,8 +28,8 @@ class StoreGymMemberRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar_image' => ['required','mimes:png,jpg','max:2048'],
-            'email' => ['required','email',Rule::unique('users', 'email')->ignore($this->id, 'id')],
+            'avatar_image' => ['required','mimes:png,jpg,jpeg','max:2048'],
+            'email' => ['required','email',Rule::unique('users','email')->ignore($this->id, 'id')],
             'name' => ['required', 'min:3'],
             'password' => [Password::min(8)],
             'national_id' => ['required', Rule::unique('users', 'national_id')->ignore($this->id, 'id'), 'min:14'],
@@ -48,6 +48,7 @@ class StoreGymMemberRequest extends FormRequest
             'national_id.required' => 'National Id is required',
             'national_id.min' => 'National Id must be 14 numbers',
             'avatar_image.required' => 'An avatar_image is required',
+            'avatar_image.mimes' => 'An avatar_image extension must be jpg or jpeg only',
             'password.min' => 'A password must at least 8 characters',
         ];
     }
