@@ -78,6 +78,6 @@ class GymController extends Controller
 
     }
     public function showCity() {
-        return "hi";
+        return view('menu.cities');
     }
 }
