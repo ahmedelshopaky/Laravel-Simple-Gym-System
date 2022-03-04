@@ -28,38 +28,42 @@ Route::post('register',[AuthController::class,'register']);
 
 Route::post('login',[AuthController::class,'login']);
 
+
+
+
 Route::get('/email/verify', function () {
-    return view('auth.verify-email');
+    return  view('auth.verify-email');
 })->middleware('auth')->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
  
-    return redirect('/');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+    return  "hellooooooooooo"; 
+})->middleware(['auth:sanctum'])->name('verification.verify');
 
 
 Route::middleware('auth:sanctum')->group(function(){
 
-    Route::get('/',[UserController::class,'index']);
+    Route::get('/',[UserController::class,'index'])->middleware('verified');
+
     
     });
     
     
-    Route::post('/sanctum/token', function (Request $request) {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-            'device_name' => 'required',
-        ]);
+    // Route::post('/sanctum/token', function (Request $request) {
+    //     $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required',
+    //         'device_name' => 'required',
+    //     ]);
      
-        $user = User::where('email', $request->email)->first();
+    //     $user = User::where('email', $request->email)->first();
      
-        if (! $user || ! Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
-            ]);
-        }
+    //     if (! $user || ! Hash::check($request->password, $user->password)) {
+    //         throw ValidationException::withMessages([
+    //             'email' => ['The provided credentials are incorrect.'],
+    //         ]);
+    //     }
      
-        return $user->createToken($request->device_name)->plainTextToken;
-    });
+    //     return $user->createToken($request->device_name)->plainTextToken;
+    // });

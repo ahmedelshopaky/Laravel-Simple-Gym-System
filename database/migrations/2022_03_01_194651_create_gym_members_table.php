@@ -19,7 +19,7 @@ return new class extends Migration
             
             $table->enum('gender', ['male', 'female']);
             $table->date('date_of_birth');
-            $table->timestamp('email_verified_at')->nullable();
+            
             $table->timestamp('last_login')->nullable();
 
             $table->string('remember_token')->nullable();

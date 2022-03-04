@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreGymMemberRequest;
+use App\Http\Resources\UserResource;
 use App\Models\GymMember;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
@@ -12,17 +15,9 @@ use Illuminate\Auth\Events\Registered;
 
 class AuthController extends Controller
 {
-    public function register(Request $request){
+    public function register(StoreGymMemberRequest $request){
 
-        $data = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-            'national_id' => 'required|min:14',
-            'avatar_image' => 'required|mimes:png,jpg|max:2048',
-            'gender' => 'required',
-            'date_of_birth' => 'required',
-        ]);
+        $data = request()->all();
 
         $user = User::create([
             'name' => $data['name'],
@@ -32,7 +27,6 @@ class AuthController extends Controller
             'avatar_image' => $request->file('avatar_image')->store('/public/images/users'),
 
             //$data['avatar_image'],
-            
         ]);
 
         $gymMember = GymMember::create([
@@ -44,11 +38,17 @@ class AuthController extends Controller
 
         event(new Registered($user));
 
-
-        return response([
-            'user' => $user,
-            'member' => $gymMember,
-        ]);
+        return [
+            'message' => 'You are registered successfully',
+            'your data' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'national_id' => $user->national_id,
+                'gender' => $gymMember->gender,
+                'birth_date' => $gymMember->date_of_birth,
+            ]
+        ];
     }
 
     public function login(Request $request){
@@ -65,9 +65,15 @@ class AuthController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
-     
-        return $user->createToken($request->email)->plainTextToken;
-
+        
+        GymMember::where('user_id', $user->id)
+                ->update(['last_login' => Carbon::now()]);
+       
+        $token = $user->createToken($request->email)->plainTextToken;
+        return [
+            'message' => 'Welcome you are logged in',
+            'token' => $token,
+        ];
 
     }
 }
