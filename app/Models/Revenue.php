@@ -12,5 +12,7 @@ class Revenue extends Model
     protected $fillable = [
         'amount_paid'
     ];
+
+   
 }
 	

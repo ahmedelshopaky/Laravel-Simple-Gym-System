@@ -19,6 +19,7 @@ class RevenueResource extends JsonResource
             'gym' => new GymResource($this->gym),
             'training_package' => new TrainingPackageResource($this->training_package),
             'amount_paid' => $this->amount_paid,
+            
         ];
     }
 }

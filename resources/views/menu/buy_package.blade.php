@@ -6,69 +6,78 @@
   <div class="">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <div class="col-sm-6">
-      <h1>Buy Package For Users</h1>
-    </div>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Buy Package Data</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
-                  <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Actions</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                 
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title"></h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-              
-
-
-
-
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
+      <div class="col-sm-6">
+        <h1>Buy Package to join us now!</h1>
       </div>
-      <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
+
+    <body class="hold-transition login-page">
+      <div class="login-box">
+
+        <div class="card card-outline card-primary">
+          <div class="card-header text-center">
+            <a href="../../index2.html" class="h1"><b>Buy</b>Package</a>
+          </div>
+          <div class="card-body">
+            <p class="login-box-msg">Buy package to enjoy your challenge</p>
+            <form action="../../index3.html" method="post">
+              <div class="input-group mb-3">
+                <select class="form-control" aria-label=".form-select-md example">
+                  <option hidden>Choose Training Package you want to buy</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+
+              </div>
+              <div class="input-group mb-3">
+                <select class="form-control" aria-label=".form-select-md example">
+                  <option hidden>Choose user you want to buy package for</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+
+              </div>
+              <div class="row">
+                <div class="col-8">
+                  <div class="icheck-primary">
+
+                    <select class="form-select form-select-md mb-3" aria-label=".form-select-md example">
+                      <option hidden>Choose Gym</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                    <input type="checkbox" id="remember">
+                    <label for="remember">
+                      Agree on terms
+                    </label>
+                  </div>
+                </div>
+
+                <div class="col-4">
+                  <button type="submit" class="btn btn-primary btn-block">Confirm</button>
+                </div>
+
+              </div>
+            </form>
+
+
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+      <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -78,63 +87,42 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../../plugins/jszip/jszip.min.js"></script>
-<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
+
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+  $(function() {
+
+
+    var table = $('.data-table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('buy-package.index') }}",
+      columns: [{
+          data: 'DT_RowIndex',
+          name: 'DT_RowIndex'
+        },
+        {
+          data: 'city',
+          name: 'name'
+        },
+        {
+          data: 'action',
+          name: 'action',
+          orderable: false,
+          searchable: false
+        },
+
+
+      ]
+
     });
   });
-</script>
-<script>
-
-$(function () {
-    
-    var table = $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('buy-package.index') }}",
-        columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-        ]
-    } );
-});
-
-
-
 </script>
 
 @endsection
