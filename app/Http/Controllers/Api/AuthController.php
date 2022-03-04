@@ -24,7 +24,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'national_id' => $data['national_id'],
-            'avatar_image' => $request->file('avatar_image')->store('/public/images/users'),
+            'avatar_image' => $request->file('avatar_image')->store('uploads','public'),
 
             //$data['avatar_image'],
         ]);
