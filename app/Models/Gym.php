@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Gym extends Model
 {
     use HasFactory;
+    public $timestamps=false;
     protected $fillable = [
         'cover_image',
         'name',
-        'city'
+        'city',
+        'city_manager_id',
     ];
 
     public function coaches() // done

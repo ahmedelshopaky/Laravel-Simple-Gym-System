@@ -66,6 +66,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/{id}/edit',[GymController::class,'edit'])->name('gyms.edit');
         Route::put('/{id}',[GymController::class,'update'])->name('gyms.update');
+        Route::delete('/{id}',[GymController::class,'destroy'])->name('gyms.destroy');
     });
 
     Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
