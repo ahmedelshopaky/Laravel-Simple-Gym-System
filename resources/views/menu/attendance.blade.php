@@ -22,27 +22,18 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="table_id">
+                <table class="table table-bordered table-hover data-table" >
                   <thead>
                   <tr>
                     <th>User ID</th>
                     <th>Username</th>
-                    <th>Training session ID</th>
-                    
-                
+                    <th>Training session Name</th>
+                    <th>Date</th>
+                  
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach ($users as $user)
-                  <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->username }}</td>
-                    <!-- <td> $user->training_sessions->id </td> -->
-
-                   
-                   
-                  </tr>
-                  @endforeach
+                
                   </tbody>
                 </table>
               </div>
@@ -90,28 +81,13 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
-<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="../../plugins/jszip/jszip.min.js"></script>
-<script src="../../plugins/pdfmake/pdfmake.min.js"></script>
-<script src="../../plugins/pdfmake/vfs_fonts.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
+<!-- <script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -127,11 +103,35 @@
       "responsive": true,
     });
   });
-</script>
-<script>
-    $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
-</script>
+</script> -->
 
+<script>
+
+$(function () {
+    
+    var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('attendance.index') }}",
+        columns: [
+          {data: 'gym_member.id'},  
+          {data: 'gym_member.name'},  
+          {data: 'training_session.name'},    
+          {data: 'training_session.starts_at'}, 
+            // {data: 'action', name: 'action', orderable: false, searchable: false},
+
+        ],
+        success:function(response){
+          console.log(response);
+        }
+        
+        
+    } );
+    
+   
+});
+
+
+
+</script>
 @endsection

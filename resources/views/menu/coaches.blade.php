@@ -129,7 +129,7 @@ $(function () {
         columns: [
             {data: 'id'},
             {data: 'name'},
-            {data: 'gym_name'},    
+            {data: 'gym.name'},    
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     } );

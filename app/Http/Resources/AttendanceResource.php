@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Models\TrainingSession;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CoachResource extends JsonResource
+class AttendanceResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,9 +16,9 @@ class CoachResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'gym' => new GymResource($this->gym),
+          
+             'gym_member' =>  new UserResource($this->gym_member),
+            'training_session' => new TrainingSession($this->training_session),
         ];
     }
 }

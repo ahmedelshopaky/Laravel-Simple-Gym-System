@@ -9,29 +9,28 @@ class Gym extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'cover_iamge',
+        'cover_image',
         'name',
         'city'
     ];
 
-    public function coaches()
+    public function coaches() // done
     {
         return $this->hasMany(Coach::class);
     }
-
     
-    public function gym_managers()
+    public function gym_managers() // done
     {
         return $this->hasMany(GymManager::class);
     }
 
-    public function training_sessions()
+    public function training_sessions() // done
     {
         return $this->hasMany(TrainingSession::class);
     }
 
-    public function city_managers()
+    public function city_managers() // done
     {
-        return $this->belongsTo(CityManager::class);
+        return $this->belongsTo(CityManager::class, 'city_manager_id', 'user_id');
     }
 }

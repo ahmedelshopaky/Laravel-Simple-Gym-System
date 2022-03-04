@@ -6,9 +6,9 @@
   <div class="">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-    <div class="col-sm-6">
-      <h1>Revenue</h1>
-    </div>
+      <div class="col-sm-6">
+        <h1>Gym Managers</h1>
+      </div>
     </section>
 
     <!-- Main content -->
@@ -18,30 +18,22 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Revenue Data</h3>
+                <h3 class="card-title">Gym Managers Data</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover" id="table_id">
+                <table class="table table-bordered table-hover yajra-datatable data-table" id="">
                   <thead>
-                  <tr>
-                    <th>User ID</th>
-                    <th>Gym ID</th>
-                    <th>Package ID</th>
-                    <th>Amount Paid</th>
-                
-                  </tr>
+                    <tr>
+                      <th>UserName</th>
+                      <th>Gym Name</th>
+                      <th>Package Name</th>
+                      <th>Amount paid</th>
+                      <th>Actions</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  @foreach ($revenues as $revenue)
-                  <tr>
-                    <td>{{ $revenue->id }}</td>
-                    <td>{{ $revenue->username }}</td>
-                    <td>{{ $revenue->email }}</td>
-                    <td>{{ $revenue->gender }}</td>
-                   
-                  </tr>
-                  @endforeach
+                    
                   </tbody>
                 </table>
               </div>
@@ -49,21 +41,39 @@
             </div>
             <!-- /.card -->
 
+  
+            <!-- /.card -->
+
+
+            {{-- @isset($gymManager)
+            <!-- /.card -->
+
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title"></h3>
+                <h3 class="card-title w-100 text-center">{{$gymManager->name}}</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              
-
-
-
-
+                <table class="table table-striped table-hover text-center table-bordered border-secondary">
+                  <tr scope="row">
+                    <td>Email</td>
+                    <td>{{$gymManager->email}}</td>
+                  </tr>
+                  <tr scope="row">
+                    <td>National Id</td>
+                    <td>{{$gymManager->national_id}}</td>
+                  </tr>
+                  <tr scope="row">
+                    <td>avatar</td>
+                    <td>{{$gymManager->avatar_image}}</td>
+                  </tr>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+            @endisset --}}
+
           </div>
           <!-- /.col -->
         </div>
@@ -89,7 +99,6 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables  & Plugins -->
@@ -110,27 +119,42 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
+
+<script src="../../plugins/jquery/jquery.min.js"></script>
+
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+        
+
+  $(function() {
+    $.ajaxSetup({
+      headers:{'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')}
     });
+    var dataTable = $('.data-table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('revenue.index') }}",
+      columns: [
+        // {
+        //   data: 'user.name',
+        // },
+        {
+          data: 'gym.name',
+        },
+        {
+          data: 'training_package.name',
+        },
+        {
+          data: 'amount_paid',
+        },
+        {
+          data: 'action',
+          name: 'action'
+        },
+      ]
+    });
+  
   });
-</script>
-<script>
-    $(document).ready( function () {
-    $('#table_id').DataTable();
-} );
+  
 </script>
 
 @endsection

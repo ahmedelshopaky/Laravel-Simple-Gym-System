@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GymManager;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 use Yajra\DataTables\DataTables;
@@ -15,36 +16,16 @@ class GymManagerController extends Controller
     {
         if ($request->ajax()) {
             $gymManager = GymManager::with('user')->get();
-            // $data= GymManager::collection($data);
             return Datatables::of($gymManager)->addIndexColumn()
-            
                 ->addColumn('action', function ($user) {
-                    $Btn  = '<a href="javascript:void(0)" data-toggle="tooltip" class="btn btn-info btn-sm mx-3 "   data-id="'.$user->id.'" data-original-title="View" >View</a>';
-                    $Btn .= '<a href="javascript:void(0)" data-toggle="tooltip" class="btn btn-primary btn-sm mx-3 " data-id="'.$user->id.'" data-original-title="Edit">Edit</a>';
-                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mx-3 deleteManager"  data-id="'.$user->id.'" data-original-title="Delete">Delete</a>';   
+                    $Btn  = '<a href="' . route('users.show', $user->user_id) . '" data-toggle="tooltip" class="btn btn-info btn-xl mx-3 "   data-id="' . $user->user_id . '" data-original-title="View" >View</a>';
+                    $Btn .= '<a href="' . route('users.edit', $user->user_id) . '" data-toggle="tooltip" class="btn btn-primary btn-xl mx-3 " data-id="' . $user->user_id . '" data-original-title="Edit">Edit</a>';
+                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-xl mx-3 delete"  data-id="' . $user->user_id . '"  data-bs-toggle="modal" data-bs-target="#deleteAlert">Delete</a>';
                     return $Btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
         return view('menu.gym_manager.index');
-    }
-
-    public function show($id)
-    {
-        $gymManager=GymManager::find($id);
-        return view('menu.gym_manager.index',compact('gymManager'));
-    }
-
-    public function edit()
-    {
-        return view('menu.gym_manager.edit');
-    }
-
-    public function destroy($id)
-    {
-        GymManager::find($id)->delete();
-        return response()->json(['success'=>'the row deleted Successfully']);
     }
 }

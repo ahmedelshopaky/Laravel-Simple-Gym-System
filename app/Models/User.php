@@ -19,10 +19,11 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array<int, string>
      */
     protected $fillable = [
-        'avatar_image',
-        'email',
         'name',
+        'email',
         'password',
+        'role',
+        'avatar_image',
         'national_id',
     ];
 
@@ -45,18 +46,18 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function city_manager()
+    public function city_manager() // done
     {
-        return $this->hasOne(CityManager::class);
+        return $this->hasOne(CityManager::class, 'user_id');
     }
 
-    public function gym_manager()
+    public function gym_manager() // done
     {
-        return $this->hasOne(GymManager::class);
+        return $this->hasOne(GymManager::class, 'user_id');
     }
 
-    public function gym_member()
+    public function gym_member() // done
     {
-        return $this->hasOne(GymMember::class);
+        return $this->hasOne(GymMember::class, 'user_id');
     }
 }

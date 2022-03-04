@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.0.0",
-        "admin-lte": "3.2"
+        "admin-lte": "3.2",
+        "node-snackbar": "^0.1.16"
     }
 }
