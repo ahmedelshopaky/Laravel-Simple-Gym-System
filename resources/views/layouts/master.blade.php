@@ -197,7 +197,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('buy-package.index')}}" class="nav-link">
+                            <a href="{{route('buy-package.create')}}" class="nav-link">
                                 <i class="far fa-credit-card nav-icon"></i>
                                 <p>Buy Packages For Users</p>
                             </a>
