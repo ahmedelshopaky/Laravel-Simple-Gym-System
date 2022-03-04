@@ -22,7 +22,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover data-table" >
+                <table class="table table-bordered table-striped  table-hover data-table" >
                   <thead>
                   <tr>
                     <th>User ID</th>
