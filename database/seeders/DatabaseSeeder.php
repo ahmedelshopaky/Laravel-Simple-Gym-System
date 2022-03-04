@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         GymMember::factory(10)->create();
-        GymManager::factory(10)->create();
         CityManager::factory(10)->create();
         // Gym::factory(5)->create();
         Coach::factory(5)->create();
+        GymManager::factory(10)->create();
     }
 }

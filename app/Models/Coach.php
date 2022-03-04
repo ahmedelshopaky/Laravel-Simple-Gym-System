@@ -13,12 +13,12 @@ class Coach extends Model
         'name'
     ];
 
-    public function training_sessions()
+    public function training_sessions() // done
     {
-        return $this->hasMany(TrainingSession::class);
+        return $this->belongsToMany(TrainingSession::class, 'coach_training_session', 'coach_id', 'training_session_id');
     }
 
-    public function gym()
+    public function gym() // done
     {
         return $this->belongsTo(Gym::class);
     }
