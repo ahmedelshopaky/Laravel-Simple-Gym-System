@@ -76,7 +76,7 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
-    Route::prefix('/coaches')->group(function(){
+    Route::prefix('/coaches')->group(function () {
         Route::get('/', [CoachController::class, 'index'])->name('coaches.index');
         Route::get('/create', [CoachController::class, 'create'])->name('coaches.create');
         Route::post('/', [CoachController::class, 'store'])->name('coaches.store');
@@ -93,23 +93,24 @@ Route::middleware('auth')->group(function () {
 
     
     Route::group(['prefix' => '/training-sessions', 'middleware' => 'auth','forbid-banned-user','role:admin|cityManager|gymManager'], function () {
-    Route::prefix('/revenue')->group(function(){
-        Route::get('/', [RevenueController::class, 'index'])->name('revenue.index');
-    });
+        Route::prefix('/revenue')->group(function () {
+            Route::get('/', [RevenueController::class, 'index'])->name('revenue.index');
+        });
     
-    Route::prefix('/training-sessions')->group(function () {
-        Route::get('/', [TrainingSessionController::class, 'index'])->name('training-sessions.index');
+        Route::prefix('/training-sessions')->group(function () {
+            Route::get('/', [TrainingSessionController::class, 'index'])->name('training-sessions.index');
 
-        Route::get('/create', [TrainingSessionController::class,'create'])->name('training-sessions.create');
-        Route::post('/', [TrainingSessionController::class,'store'])->name('training-sessions.store');
+            Route::get('/create', [TrainingSessionController::class,'create'])->name('training-sessions.create');
+            Route::post('/', [TrainingSessionController::class,'store'])->name('training-sessions.store');
         
-        Route::get('/{id}', [TrainingSessionController::class,'show'])->name('training-sessions.show');
+            Route::get('/{id}', [TrainingSessionController::class,'show'])->name('training-sessions.show');
 
-        Route::get('/{id}/edit', [TrainingSessionController::class,'edit'])->name('training-sessions.edit');
-        Route::put('/{id}', [TrainingSessionController::class,'update'])->name('training-sessions.update');
+            Route::get('/{id}/edit', [TrainingSessionController::class,'edit'])->name('training-sessions.edit');
+            Route::put('/{id}', [TrainingSessionController::class,'update'])->name('training-sessions.update');
 
-        Route::delete('/{id}', [TrainingSessionController::class,'destroy'])->name('training-sessions.destroy');
-    });
-    //Ban actions
+            Route::delete('/{id}', [TrainingSessionController::class,'destroy'])->name('training-sessions.destroy');
+        });
+        //Ban actions
     // Route::get('/banned',[BannedController::class,'index'])->name('BannedController.ban');
+    });
 });
