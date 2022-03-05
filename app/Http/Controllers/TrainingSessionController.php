@@ -21,9 +21,9 @@ class TrainingSessionController extends Controller
             $trainingSessions = TrainingSession::with('gym')->get();
             return DataTables::of($trainingSessions)->addIndexColumn()
                 ->addColumn('action', function ($trainingSession) {
-                    $Btn = '<a href="' . route('training-sessions.show', $trainingSession->id) . '" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder"> </i>View</a>';
-                    $Btn .= '<a href="" class="edit btn btn-info btn-sm mr-3"> <i class="fas fa-pencil-alt"> </i> Edit</a>';
-                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id=""  data-bs-toggle="modal" data-bs-target="#deleteAlert"> <i class="fas fa-trash">  </i>Delete</a>';
+                    $Btn = '<a href="' . route('training-sessions.show', $trainingSession->id) . '" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder mr-2""> </i>View</a>';
+                    $Btn .= '<a href="" class="edit btn btn-info btn-sm mr-3 text-white"> <i class="fas fa-pencil-alt mr-2"> </i> Edit</a>';
+                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id=""  data-bs-toggle="modal" data-bs-target="#deleteAlert"> <i class="fas fa-trash mr-2"">  </i>Delete</a>';
                     return $Btn;
                 })
                 ->rawColumns(['action'])

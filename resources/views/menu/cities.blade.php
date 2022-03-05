@@ -22,7 +22,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover  data-table" id="data-table">
+                <table class="table table-bordered table-hover table-striped  data-table" id="data-table">
                   <thead>
                   <tr>
                     <th>city Name</th>
