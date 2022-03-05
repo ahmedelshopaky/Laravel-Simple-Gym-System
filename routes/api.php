@@ -54,6 +54,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/profile/update', [UserController::class,'update'])->middleware('verified');
 
     Route::get('/training-sessions',[UserController::class,'view'])->middleware('verified');
+
+    Route::post('/training-sessions/{id}/attend',[UserController::class,'attend'])->middleware('verified');
 });
     
     
