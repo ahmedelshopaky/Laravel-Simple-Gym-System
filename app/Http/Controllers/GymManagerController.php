@@ -28,15 +28,15 @@ class GymManagerController extends Controller
     }
 
  
-    // public function ban(GymManager $gymManager)
-    // {
-    //     $gymManager->ban();
-    //     return redirect()->route('gymManagers.index');
-    // }
+    public function ban(GymManager $gymManager)
+    {
+        $gymManager->ban();
+        return to_route('gym-managers.index');
+    }
 
-    // public function unban(GymManager $gymManager)
-    // {
-    //     $gymManager->unban();
-    //     return redirect()->route('gymManagers.index');
-    // }
+    public function unban(GymManager $gymManager)
+    {
+        $gymManager->unban();
+        return to_route('gym-managers.index');
+    }
 }
