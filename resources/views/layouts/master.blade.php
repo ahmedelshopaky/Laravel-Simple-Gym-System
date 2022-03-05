@@ -193,7 +193,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('gyms.create')}}" class="nav-link">
-                                        <i class="far fa-building nav-icon"></i>
+                                    <i class="fa-solid fa-fire nav-icon"></i>
                                         <p>Create Gyms</p>
                                     </a>
                                 </li>
@@ -207,13 +207,13 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('coaches.index')}}" class="nav-link">
-                                        <i class="far fa-male nav-icon"></i>
+                                    <i class="fa-solid fa-hand-back-fist nav-icon"></i>
                                         <p>Coaches</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('coaches.create')}}" class="nav-link">
-                                        <i class="far fa-male nav-icon"></i>
+                                    <i class="fa-solid fa-hand-holding-dollar nav-icon"></i>
                                         <p>Hiring Coaches</p>
                                     </a>
                                 </li>
