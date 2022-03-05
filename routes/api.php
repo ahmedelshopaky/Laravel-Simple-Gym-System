@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\MemberVerified;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +40,9 @@ Route::get('/email/verify', function () {
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
- 
-    return  "hellooooooooooo";
+    // $user = Auth::user();
+    // $user->notify(new MemberVerified);
+    
 })->middleware(['auth:sanctum'])->name('verification.verify');
 
 

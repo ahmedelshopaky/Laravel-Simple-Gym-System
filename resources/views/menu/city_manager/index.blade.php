@@ -1,15 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="wrapper">
+<div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
   <div class="">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-    <div class="col-sm-6">
-      <h1>City Managers</h1>
-    </div>
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -19,7 +13,7 @@
             
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">City Managers Data</h3>
+                <h3 class="card-title">City Managers</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

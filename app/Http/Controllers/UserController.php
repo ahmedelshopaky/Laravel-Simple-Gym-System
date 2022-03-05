@@ -10,25 +10,29 @@ use App\Http\Requests\StoreUserRequest;
 use App\Models\CityManager;
 use App\Models\GymMember;
 use Illuminate\Support\Facades\Hash;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Traits\HasRoles;
 
 class UserController extends Controller
 {
+    use HasRoles;
+
     public function index(Request $request)
     {
         //
     }
 
-    public function create() {
+    public function create()
+    {
         return view('menu.user.create');
     }
 
-    public function store(StoreUserRequest $request) {
-        if (request()->hasFile('avatar_image'))
-        {
+    public function store(StoreUserRequest $request)
+    {
+        if (request()->hasFile('avatar_image')) {
             $img = request()->file('avatar_image');
             $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('images/users'),$name);
+            $img->move(public_path('images/users'), $name);
             
             // TODO
             // if $name == null
@@ -44,38 +48,42 @@ class UserController extends Controller
         User::where('national_id', $request->national_id)->update([
             'avatar_image' => $name,
             'password' => Hash::make($request['password']),
-            // 'role' => $request->role,
         ]);
 
-        if ($request->role == 'city_manager'){
-            CityManager::insert([
+        if ($request->role == 'city_manager') {
+            CityManager::create([
                 'user_id' => $user->id,
+                'city_id' => $request->city,
                 // 'role' => 'city_manager',
-            ]);
+            ])->assignRole('cityManager');
+
             return redirect()->route('city-managers.index');
-        } else if ($request->role == 'gym_manager'){
-            GymManager::insert([
+        } elseif ($request->role == 'gym_manager') {
+            GymManager::create([
                 'user_id' => $user->id,
+                'gym_id' => $request->gym,
                 // 'role' => 'gym_manager',
-            ]);
+            ])->assignRole('gymManager');
+
             return redirect()->route('gym-managers.index');
-        } else if ($request->role == 'gym_member'){
+        } elseif ($request->role == 'gym_member') {
             GymMember::insert([
                 'user_id' => $user->id,
                 'gender' => $request->gender,
                 'date_of_birth' => $request->date_of_birth,
-                // 'role' => 'gym_member',
             ]);
             return redirect()->route('gym-members.index');
         }
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $user = User::find($id);
         return view('menu.user.edit', compact('user'));
     }
 
-    public function update($id, StoreUserRequest $request) {
+    public function update($id, StoreUserRequest $request)
+    {
         // TODO
         // avatar, role and gym member section old value ????
         $validated = $request->validated();
@@ -87,11 +95,8 @@ class UserController extends Controller
         return view('menu.user.show', compact('user'));
     }
 
-    public function show($id) {
-        
-        // TODO
-        // if it is a gym member, retrieve the rest of the data from gym_members table
-
+    public function show($id)
+    {
         $user = User::find($id);
         return view('menu.user.show', compact('user'));
     }

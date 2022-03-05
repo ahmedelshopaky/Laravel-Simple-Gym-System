@@ -42,24 +42,13 @@
                                     <td>Role</td>
                                     <td>{{$user->role}}</td>
                                 </tr>
-<!---------------------------- only gym member can see this section ---------------------------->
-                                <tr>                                
-                                    <td>Gender</td>
-                                    <td>{{$user->gender}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Date Of Birth</td>
-                                    <td>{{$user->date_of_birth}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Last Login</td>
-                                    <td>{{$user->last_login}}</td>
-                                </tr>
+                                <!---- GYM MEMBERS ONLY ------>
+                                @yield('gym_member_data')
+                                <!---- END OF GYM MEMBERS SECTION ---->
                                 <tr>
                                     <td>Email Verified At</td>
                                     <td>{{$user->email_verified_at}}</td>
                                 </tr>
-<!---------------------------- end of gym member section ---------------------------->
                             </tbody>
                         </table>
                     </div>

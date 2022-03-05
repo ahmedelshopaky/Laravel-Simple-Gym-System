@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\GymManager;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Request;
 
 class LoginController extends Controller
 {
@@ -41,7 +42,7 @@ class LoginController extends Controller
     //     if ($user->hasRole('gymManager')) {
     //         $gymManager = GymManager::findOrFail($user->role_id);
     //         if ($gymManager->isBanned()) {
-    //             return redirect()->route('BannedController.ban');
+    //             return to_route('BannedController.ban');
     //         }
     //     }
     // }
