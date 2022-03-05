@@ -180,26 +180,26 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('training-packages.index')}}" class="nav-link">
-                                <i class="far fa-shield nav-icon"></i>
+                            <i class=" fa-solid fa-wallet nav-icon"></i>
                                 <p>Training Packages</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('training-sessions.index')}}" class="nav-link">
-                                <i class="far fa-shield nav-icon"></i>
+                            <i class="fa-solid fa-person-running nav-icon"></i>
                                 <p>Training Sessions</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('coaches.index')}}" class="nav-link">
-                                <i class="far fa-male nav-icon"></i>
+                            <i class="fa-solid fa-hand nav-icon"></i>
                                 <p>Coaches</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('attendance.index')}}" class="nav-link">
-                                <i class="far fa-users nav-icon"></i>
-                                <p>Attendance</p>
+                            <i class="fa-solid fa-clock nav-icon"></i>                              
+                            <p>Attendance</p>
                             </a>
                         </li>
                         <li class="nav-item">
