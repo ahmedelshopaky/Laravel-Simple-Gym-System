@@ -15,16 +15,29 @@ class CoachController extends Controller
             $data = Coach::with('gym')->get();
             return Datatables::of($data)->addIndexColumn()
                     ->addColumn('action', function($row){
-                           $Btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-xl mr-3">Edit</a>';
-                            $Btn=$Btn.'<a href="javascript:void(0)" class="delete btn btn-danger btn-xl mr-3">Delete</a>';
-                            $Btn=$Btn.'<a href="javascript:void(0)" class="view btn btn-primary btn-xl mr-3">View</a>';
+                         
+                            $Btn='<a href="javascript:void(0)" class="view btn btn-primary btn-sm mr-3"> <i class="fas fa-folder mr-2"> </i>View</a>';
+                            $Btn .= '<a href="javascript:void(0)" class="edit btn btn-info btn-sm mr-3 text-white"> <i class="fas fa-pencil-alt mr-2"> </i>Edit</a>';
+                            $Btn .='<a href="javascript:void(0)" class="delete btn btn-danger btn-sm mr-3"><i class="fas fa-trash mr-2"> </i>Delete</a>';
                             return $Btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
       
-        return view('menu.coaches');
+        return view('menu.coaches.index');
+    }
+    public function create() {
+        $gyms = Coach::with('gym')->get();
+        return view('menu.coaches.create', compact('gyms'));
+    }
+
+    public function store() {
+        Coach::insert([
+            'name' => request()->name,
+            'gym_id' => request()->gym,
+        ]);
+        return view('menu.coaches.index');
     }
 
 }

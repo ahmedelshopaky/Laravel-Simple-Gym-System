@@ -1,15 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="wrapper">
+<div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
   <div class="">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-    <div class="col-sm-6">
-      <h1>City Managers</h1>
-    </div>
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -19,11 +13,11 @@
             
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">City Managers Data</h3>
+                <h3 class="card-title">City Managers</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover yajra-datatable data-table" id="data-table">
+                <table class="table table-bordered table-hover table-striped data-table" id="data-table">
                   <thead>
                   <tr>
                     <th>ID</th>
@@ -81,10 +75,6 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery -->
-{{-- <script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
 {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js" integrity="sha512-iILlngu0qmiyIkOH6MV1RWSya+DL2uzo0cb/nKR4hqwz9H+Xnop1++f8TMw1j5CdbutXGkBUyfRUfg/hmNBfZg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- AdminLTE App --> --}}

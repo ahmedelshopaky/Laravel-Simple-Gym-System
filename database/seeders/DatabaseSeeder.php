@@ -26,6 +26,6 @@ class DatabaseSeeder extends Seeder
         CityManager::factory(10)->create();
         // Gym::factory(5)->create();
         Coach::factory(5)->create();
-        GymManager::factory(10)->create();
+        GymManager::factory(5)->create();
     }
 }

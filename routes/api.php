@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\MemberVerified;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,13 +40,17 @@ Route::get('/email/verify', function () {
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
- 
-    return  "hellooooooooooo";
+    // $user = Auth::user();
+    // $user->notify(new MemberVerified);
+    
 })->middleware(['auth:sanctum'])->name('verification.verify');
 
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/', [UserController::class,'index'])->middleware('verified');
+
+    //you should use method post from postman but include ('_method => PUT') in the body fo 
+    //the request this is due to errors of empty body of put method i hope they solve it soon
     Route::put('/profile/{id}/update', [UserController::class,'update'])->middleware('verified');
 });
     

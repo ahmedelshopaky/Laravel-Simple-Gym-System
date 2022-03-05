@@ -1,15 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="wrapper">
+<div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
   <div class="">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-    <div class="col-sm-6">
-      <h1>Attendance</h1>
-    </div>
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -18,22 +12,21 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Attendance </h3>
+                <h3 class="card-title">Coaches</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover data-table" >
+                <table class="table table-bordered table-hover table-striped data-table" id="data-table">
                   <thead>
                   <tr>
-                    <th>User ID</th>
-                    <th>Username</th>
-                    <th>Training session Name</th>
-                    <th>Date</th>
-                  
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gym Name</th>
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
-                
+                 
                   </tbody>
                 </table>
               </div>
@@ -78,16 +71,8 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
 
-<!-- jQuery -->
-
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-<!-- Page specific script -->
-<!-- <script>
+<script>
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -103,8 +88,7 @@
       "responsive": true,
     });
   });
-</script> -->
-
+</script>
 <script>
 
 $(function () {
@@ -112,26 +96,18 @@ $(function () {
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ route('attendance.index') }}",
+        ajax: "{{ route('coaches.index') }}",
         columns: [
-          {data: 'gym_member.id'},  
-          {data: 'gym_member.name'},  
-          {data: 'training_session.name'},    
-          {data: 'training_session.starts_at'}, 
-            // {data: 'action', name: 'action', orderable: false, searchable: false},
-
-        ],
-        success:function(response){
-          console.log(response);
-        }
-        
-        
+            {data: 'id'},
+            {data: 'name'},
+            {data: 'gym.name'},    
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ]
     } );
-    
-   
 });
 
 
 
 </script>
+
 @endsection

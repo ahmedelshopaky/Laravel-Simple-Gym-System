@@ -133,7 +133,7 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-item menu-open">
+                        <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
                                 <i class="far fa-user-circle nav-icon"></i>
                                 <p>System Users<i class="right fas fa-angle-left"></i></p>
@@ -158,24 +158,71 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('users.create')}}" class="nav-link">
+                                    <a href="{{route('city-managers.create')}}" class="nav-link">
                                         <i class="far fa-user-circle nav-icon"></i>
-                                        <p>Assign User</p>
+                                        <p>Assign City Manager</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('gym-managers.create')}}" class="nav-link">
+                                        <i class="far fa-user-circle nav-icon"></i>
+                                        <p>Assign Gym Manager</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('gym-members.create')}}" class="nav-link">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>Assign Gym Member</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item menu-close">
+                            <a href="#" class="nav-link active">
+                                <i class="far fa-user-circle nav-icon"></i>
+                                <p>Gyms<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('gyms.index')}}" class="nav-link">
+                                        <i class="far fa-building nav-icon"></i>
+                                        <p>Gyms</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('gyms.create')}}" class="nav-link">
+                                        <i class="far fa-building nav-icon"></i>
+                                        <p>Create Gyms</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item menu-close">
+                            <a href="#" class="nav-link active">
+                                <i class="far fa-user-circle nav-icon"></i>
+                                <p>Coaches<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('coaches.index')}}" class="nav-link">
+                                        <i class="far fa-male nav-icon"></i>
+                                        <p>Coaches</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('coaches.create')}}" class="nav-link">
+                                        <i class="far fa-male nav-icon"></i>
+                                        <p>Hiring Coaches</p>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('cities.show')}}" class="nav-link">
+                            <a href="{{route('cities.index')}}" class="nav-link">
                                 <i class="far fa-address-book nav-icon"></i>
                                 <p>Cities</p>
-                            </a>
-                        </li>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('gyms.index')}}" class="nav-link">
-                                <i class="far fa-building nav-icon"></i>
-                                <p>Gyms</p>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -188,12 +235,6 @@
                             <a href="{{route('training-sessions.index')}}" class="nav-link">
                             <i class="fa-solid fa-person-running nav-icon"></i>
                                 <p>Training Sessions</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('coaches.index')}}" class="nav-link">
-                            <i class="fa-solid fa-hand nav-icon"></i>
-                                <p>Coaches</p>
                             </a>
                         </li>
                         <li class="nav-item">

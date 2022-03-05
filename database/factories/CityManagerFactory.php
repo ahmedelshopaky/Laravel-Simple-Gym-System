@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,6 +20,7 @@ class CityManagerFactory extends Factory
     {
         return [
             'user_id'=>User::factory(['role'=>'city_manager']),
+            'city_id'=>City::factory(),
         ];
     }
 }
