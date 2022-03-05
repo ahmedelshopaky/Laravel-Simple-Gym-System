@@ -19,15 +19,19 @@ class AuthController extends Controller
     {
         $data = request()->all();
 
+        $img = request()->file('avatar_image');
+        $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();
+        
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'national_id' => $data['national_id'],
-            'avatar_image' => $request->file('avatar_image')->store('uploads', 'public'),
-
+            'avatar_image' => $name,
         ]);
 
+        $img->move(public_path('images/users'),$name);
+        
         $gymMember = GymMember::create([
             'user_id' => $user->id,
             'gender' => $data['gender'],

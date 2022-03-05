@@ -64,7 +64,7 @@ class UserController extends Controller
                 'user_id' => $user->id,
                 'city_id' => $cityID,
                 // 'role' => 'city_manager',
-            ])->assignRole('cityManager')->givePermissionTo(['create gym','create gym manager','create coach','create session','edit gym manager','edit gym','edit coach','edit session','delete gym manager','delete gym','delete coach','delete session','show gym manager','show gym','show coach','show package','show session','show attendance','buy package','assign coach','ban gym manager','unban gym manager']) ;
+            ])->assignRole('cityManager');
 
             return redirect()->route('city-managers.index');
         } elseif ($request->role == 'gym_manager') {
@@ -72,10 +72,9 @@ class UserController extends Controller
                 'user_id' => $user->id,
                 'gym_id' => $request->gym,
                 // 'role' => 'gym_manager',
-            ])->assignRole('gymManager')->givePermissionTo(['create session','edit session','delete session','show session','show coach','show package','show attendance','buy package','assign coach']);
+            ])->assignRole('gymManager');
 
             return redirect()->route('gym-managers.index');
-
         } elseif ($request->role == 'gym_member') {
             GymMember::insert([
                 'user_id' => $user->id,
