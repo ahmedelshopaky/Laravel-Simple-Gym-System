@@ -55,11 +55,13 @@
               <table class="table table-bordered table-hover yajra-datatable data-table" id="">
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    <!-- <th>ID</th> -->
                     <th>Client Name</th>
                     <th>Email</th>
                     <th>Package Name</th>
                     <th>Amount paid</th>
+                    <th>GYM</th>  <!-- CITY MANAGER AND ADMIN ONLY -->
+                    <th>CITY</th> <!-- ADMIN ONLY -->
                   </tr>
                 </thead>
                 <tbody>
@@ -110,10 +112,6 @@
       serverSide: true,
       ajax: "{{ route('revenue.index') }}",
       columns: [{
-          data: 'id',
-          name: 'id'
-        },
-        {
           data: 'gym_member_name',
           name: 'gym_member_name'
         },
@@ -128,6 +126,14 @@
         {
           data: 'amount_paid',
           name: 'amount_paid'
+        },
+        {
+          data: 'gym_name',         // <!-- CITY MANAGER AND ADMIN ONLY -->
+          name: 'gym_name'
+        },
+        {
+          data: 'city',         // <!-- ADMIN ONLY -->
+          name: 'city'
         },
       ]
     });

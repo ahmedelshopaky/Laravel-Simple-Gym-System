@@ -24,6 +24,9 @@ class RevenueResource extends JsonResource
             'training_package_name' => $this->training_packages->first()->name,
             'gym_member_name' => $this->gym_members->first()->user->name,
             'gym_member_email' => $this->gym_members->first()->user->email,
+
+            'gym_name' => $this->gym->name,
+            'city' => $this->gym->city
         ];
     }
 }
