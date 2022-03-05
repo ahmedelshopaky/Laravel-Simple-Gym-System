@@ -23,3 +23,7 @@
 @section('role')
 <option value="gym_manager">Gym Manager</option>
 @endsection
+
+@section('header')
+{{ __('Edit Gym Manager Data') }}
+@endsection

@@ -18,6 +18,19 @@
         @enderror
     </div>
 </div>
+<div class="row mb-3">
+    <label for="new_city" class="col-md-4 col-form-label text-md-end">{{ __('New City') }}</label>
+
+    <div class="col-md-6">
+        <input id="new_city" type="text" class="form-control @error('new_city') is-invalid @enderror" name="new_city" value="{{ old('new_city') }}" autocomplete="new_city" autofocus placeholder="In case you want to create a new city">
+
+        @error('new_city')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+</div>
 @endsection
 
 @section('role')
