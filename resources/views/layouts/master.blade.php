@@ -133,32 +133,10 @@
 
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
-                                <i class="far fa-user-circle nav-icon"></i>
-                                <p>Gym Managers<i class="right fas fa-angle-left"></i></p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{route('gym-managers.index')}}" class="nav-link">
-                                        <i class="far fa-user-circle nav-icon"></i>
-                                        <p>Gym Managers</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="{{route('gym-managers.create')}}" class="nav-link">
-                                        <i class="far fa-user-circle nav-icon"></i>
-                                        <p>Assign Gym Manager</p>
-                                    </a>
-                                </li>
-
-
-                            </ul>
-                        </li>
-                        <li class="nav-item menu-close">
-                            <a href="#" class="nav-link active">
-                                <i class="far fa-user-circle nav-icon"></i>
+                                <i class="fa-solid fa-address-card nav-icon"></i>
                                 <p>City Managers<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
@@ -173,8 +151,32 @@
 
                                 <li class="nav-item">
                                     <a href="{{route('city-managers.create')}}" class="nav-link">
-                                        <i class="far fa-user-circle nav-icon"></i>
+                                        <i class="fa-solid fa-user-plus nav-icon"></i>
                                         <p>Assign City Manager</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item menu-close">
+                            <a href="#" class="nav-link active">
+                                <i class="fa-regular fa-address-card nav-icon"></i>
+                                <p>Gym Managers<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('gym-managers.index')}}" class="nav-link">
+                                        <i class="fa-solid fa-circle-user nav-icon"></i>
+                                        <p>Gym Managers</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{route('gym-managers.create')}}" class="nav-link">
+                                        <i class="fa-solid fa-user-gear nav-icon"></i>
+                                        <p>Assign Gym Manager</p>
                                     </a>
                                 </li>
 
@@ -185,21 +187,21 @@
 
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
-                                <i class="far fa-user-circle nav-icon"></i>
-                                <p>Gym Member<i class="right fas fa-angle-left"></i></p>
+                                <i class="fa-solid fa-user-group nav-icon"></i>
+                                <p>Gym Members<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
 
 
                                 <li class="nav-item">
                                     <a href="{{route('gym-members.index')}}" class="nav-link">
-                                        <i class="far fa-user nav-icon"></i>
+                                        <i class="fa-solid fa-user-large nav-icon"></i>
                                         <p>Gym Member</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('gym-members.create')}}" class="nav-link">
-                                        <i class="far fa-user nav-icon"></i>
+                                        <i class="fa-solid fa-user-lock nav-icon"></i>
                                         <p>Assign Gym Member</p>
                                     </a>
                                 </li>
@@ -216,13 +218,13 @@
 
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
-                                <i class="far fa-user-circle nav-icon"></i>
+                                <i class="fa-solid fa-dumbbell nav-icon"></i>
                                 <p>Gyms<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('gyms.index')}}" class="nav-link">
-                                        <i class="far fa-building nav-icon"></i>
+                                        <i class="fa-solid fa-weight-hanging nav-icon"></i>
                                         <p>Gyms</p>
                                     </a>
                                 </li>
@@ -230,7 +232,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('gyms.create')}}" class="nav-link">
-                                        <i class="fa-solid fa-fire nav-icon"></i>
+                                        <i class="fa-solid fa-medal nav-icon"></i>
                                         <p>Create Gyms</p>
                                     </a>
                                 </li>
@@ -238,13 +240,14 @@
                         </li>
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
-                                <i class="far fa-user-circle nav-icon"></i>
+                                <i class="fa-solid fa-hand-back-fist nav-icon"></i>
                                 <p>Coaches<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('coaches.index')}}" class="nav-link">
-                                        <i class="fa-solid fa-hand-back-fist nav-icon"></i>
+                                        <i class="fa-solid fa-hand nav-icon"></i>
+
                                         <p>Coaches</p>
                                     </a>
                                 </li>
@@ -256,23 +259,23 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
 
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
-                                <i class="far fa-user-circle nav-icon"></i>
+                                <i class=" fa-solid fa-wallet nav-icon"></i>
                                 <p>Training Packages<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{route('training-packages.index')}}" class="nav-link">
-                                        <i class=" fa-solid fa-wallet nav-icon"></i>
+                                        <i class="fa-solid fa-file-invoice nav-icon"></i>
                                         <p>Training Packages</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('training-packages.index')}}" class="nav-link">
-                                        <i class=" fa-solid fa-wallet nav-icon"></i>
+                                        <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
                                         <p>Create Training Package</p>
                                     </a>
                                 </li>
@@ -283,20 +286,20 @@
 
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
-                                <i class="far fa-user-circle nav-icon"></i>
+                                <i class="fa-solid fa-person-running nav-icon"></i>
                                 <p>Training Sessions<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
 
                                 <li class="nav-item">
                                     <a href="{{route('training-sessions.index')}}" class="nav-link">
-                                        <i class="fa-solid fa-person-running nav-icon"></i>
+                                        <i class="fa-solid fa-bell nav-icon"></i>
                                         <p>Training Sessions</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{route('training-packages.index')}}" class="nav-link">
-                                        <i class=" fa-solid fa-wallet nav-icon"></i>
+                                        <i class="fa-brands fa-battle-net nav-icon"></i>
                                         <p>Create Training Session</p>
                                     </a>
                                 </li>
@@ -304,7 +307,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('cities.index')}}" class="nav-link">
-                                <i class="far fa-address-book nav-icon"></i>
+                                <i class="fa-solid fa-archway nav-icon"></i>
                                 <p>Cities</p>
                             </a>
                         </li>

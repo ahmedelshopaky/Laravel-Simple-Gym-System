@@ -31,7 +31,7 @@ class StoreGymMemberRequest extends FormRequest
             'avatar_image' => ['required','mimes:png,jpg,jpeg','max:2048'],
             'email' => ['required','email',Rule::unique('users','email')->ignore($this->id, 'id')],
             'name' => ['required', 'min:3'],
-            'password' => [Password::min(8)],
+            'password' => ['required',Password::min(8)],
             'national_id' => ['required', Rule::unique('users', 'national_id')->ignore($this->id, 'id'), 'min:14'],
             'gender' => ['required',Rule::in(['male','female','Male','Female'])],
             'date_of_birth' => ['required','date'],
