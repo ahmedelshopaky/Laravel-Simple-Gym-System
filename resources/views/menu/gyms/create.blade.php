@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="wrapper mt-4">
+<div class="wrapper mt-5">
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -74,14 +74,14 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
+                                            <!-- In case the city does not exist -->
                                             <div class="row mb-3">
-                                                <label for="city" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
+                                                <label for="other_city" class="col-md-4 col-form-label text-md-end">{{ __('New City') }}</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="city" type="city" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" placeholder="In case the city does not exist">
-
-                                                    @error('city')
+                                                    <input id="other_city" type="text" class="form-control @error('other_city') is-invalid @enderror" name="other_city" value="{{ old('other_city') }}" autocomplete="other_city" placeholder="In case the city does not exist">
+                                                    * In case the city does not exist
+                                                    @error('other_city')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -89,8 +89,27 @@
                                                 </div>
                                             </div>
 
-                                            
+                                            <div class="row mb-3">
+                                                <label for="city_manager" class="col-md-4 col-form-label text-md-end">{{ __('City Manager') }}</label>
 
+                                                <div class="col-md-6">
+                                                    <select id="city_manager" class="form-control @error('city_manager') is-invalid @enderror" name="city_manager" value="{{ old('city_manager') }}" required autocomplete="city_manager" autofocus>
+                                                        @foreach ($cityManagers as $cityManager)
+                                                        <option value="{{$cityManager->user_id}}">{{$cityManager->user->name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    * In case the city does not exist
+                                                    @error('city_manager')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <!-- End of -> In case the city does not exist -->
+
+
+                                            
                                             <div class="row mb-3">
                                                 <label for="cover_image" class="col-md-4 col-form-label text-md-end">{{ __('Cover Image') }}</label>
                                                 <div class="col-md-6">

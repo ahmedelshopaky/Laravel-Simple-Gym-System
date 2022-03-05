@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/gym-members')->group(function () {
         Route::get('/', [GymMemberController::class, 'index'])->name('gym-members.index');
+        Route::get('/{id}', [GymMemberController::class, 'show'])->name('gym-members.show');
     });
 
     Route::prefix('/users')->group(function () {

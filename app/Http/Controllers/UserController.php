@@ -88,10 +88,6 @@ class UserController extends Controller
     }
 
     public function show($id) {
-        
-        // TODO
-        // if it is a gym member, retrieve the rest of the data from gym_members table
-
         $user = User::find($id);
         return view('menu.user.show', compact('user'));
     }
