@@ -16,6 +16,7 @@ class GymManager extends Model implements BannableContract
     protected $guard_name = 'web';
     protected $fillable = [
         'user_id',
+        'gym_id'
     ];
 
     public function shouldApplyBannedAtScope()
