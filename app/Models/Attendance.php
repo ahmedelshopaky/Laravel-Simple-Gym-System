@@ -12,7 +12,7 @@ class Attendance extends Model
     
     public function gym_member()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(GymMember::class, 'gym_member_id', 'user_id');
     }
     public function training_session()
     {

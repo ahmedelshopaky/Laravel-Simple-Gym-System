@@ -10,12 +10,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
-/*
-gym_member -> user
-training package
-amount paid
-gym
-*/
 class BuyPackageController extends Controller
 {
     public function create(){
@@ -37,7 +31,7 @@ class BuyPackageController extends Controller
             'gym_member_id' => $request->gym_member,
             'package_id' => $request->training_package,
 
-            'amount_paid' => $triningPackage->price * 100,
+            'amount_paid' => $triningPackage->price,
             'purchased_at' => now(),
         ]);
         return view('menu.buy_package.show', compact('gym', 'triningPackage', 'gymMember'));

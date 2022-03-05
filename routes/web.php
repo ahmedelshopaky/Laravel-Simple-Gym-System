@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
 
     Route::prefix('/gym-members')->group(function () {
         Route::get('/', [GymMemberController::class, 'index'])->name('gym-members.index');
+        Route::get('/{id}', [GymMemberController::class, 'show'])->name('gym-members.show');
     });
 
     
@@ -75,12 +76,14 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
-
-    Route::get('/coaches', [CoachController::class, 'index'])->name('coaches.index');
+    Route::prefix('/coaches')->group(function(){
+        Route::get('/', [CoachController::class, 'index'])->name('coaches.index');
+        Route::get('/create', [CoachController::class, 'create'])->name('coaches.create');
+        Route::post('/', [CoachController::class, 'store'])->name('coaches.store');
+    });
 
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 
-    
     Route::group(['prefix' => '/buy-package', 'middleware' => 'auth','forbid-banned-user','role:admin'], function () {
         Route::get('/create', [BuyPackageController::class, 'create'])->name('buy-package.create');
         Route::post('/', [BuyPackageController::class, 'store'])->name('buy-package.store');
@@ -90,6 +93,11 @@ Route::middleware('auth')->group(function () {
 
     
     Route::group(['prefix' => '/training-sessions', 'middleware' => 'auth','forbid-banned-user','role:admin|cityManager|gymManager'], function () {
+    Route::prefix('/revenue')->group(function(){
+        Route::get('/', [RevenueController::class, 'index'])->name('revenue.index');
+    });
+    
+    Route::prefix('/training-sessions')->group(function () {
         Route::get('/', [TrainingSessionController::class, 'index'])->name('training-sessions.index');
 
         Route::get('/create', [TrainingSessionController::class,'create'])->name('training-sessions.create');
