@@ -13,6 +13,7 @@ class CityManager extends Model
     protected $guard_name = 'web';
     protected $fillable = [
         'user_id',
+        'city_id'
     ];
 
     public function user() // done
