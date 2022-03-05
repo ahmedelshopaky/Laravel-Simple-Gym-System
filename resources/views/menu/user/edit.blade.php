@@ -68,44 +68,9 @@
                                                 </div>
                                             </div>
 
+                                            @yield('gym_member')
+                                            @yield('manages')
 
-                                            <!---------------------------- GYM MEMBERS ONLY ---------------------------->
-                                            <div class="row mb-3">
-                                                <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
-
-                                                <div class="col-md-6">
-                                                    <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" autofocus>
-                                                        @if ($user->gym_member->gender == 'male')
-                                                        <option value="male" selected>Male</option>
-                                                        <option value="female">Female</option>
-                                                        @endif
-
-                                                        @if ($user->gym_member->gender == 'female')
-                                                        <option value="male">Male</option>
-                                                        <option value="female" selected>Female</option>
-                                                        @endif
-                                                    </select>
-                                                    @error('gender')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <label for="date_of_birth" class="col-md-4 col-form-label text-md-end">{{ __('Date Of Birth') }}</label>
-
-                                                <div class="col-md-6">
-                                                    <input value="{{$user->gym_member->date_of_birth}}" id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth" autofocus>
-
-                                                    @error('date_of_birth')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <!---------------------------- END OF GYM MEMBERS SECTION ---------------------------->
                                             <div class="row mb-3">
                                                 <label for="avatar_image" class="col-md-4 col-form-label text-md-end">{{ __('Avatar Image') }}</label>
                                                 <div class="col-md-6">
@@ -126,9 +91,7 @@
 
                                                 <div class="col-md-6">
                                                     <select value="{{$user->role}}" id="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
-                                                        <option value="city_manager">City Manager</option>      <!--ADMIN ONLY-->
-                                                        <option value="gym_manager">Gym Manager</option>        <!--ADMIN + CITY MANAGER ONLY-->
-                                                        <option value="gym_member">Gym Member</option>          <!--ADMIN + CITY MANAGER + GYM MANAGER-->
+                                                        @yield('role')
                                                     </select>
                                                     @error('role')
                                                     <span class="invalid-feedback" role="alert">

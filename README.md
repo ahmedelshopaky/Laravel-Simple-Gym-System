@@ -120,7 +120,11 @@ php artisan db:seed
 ```
 ### Add Stripe key
 In .env file add and then run this command
-- [STRIPE_KEY=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa]()
+- 
+[STRIPE_KEY=pk_test_51KZbWdGerl36jGBlSUe3rMyBApbtz9gPiGLrY3dSKyCRZKuqADbV9JG3gHNrtxxh94WD703gxBv3NZ7WzVTMqZUV00bCzwzL6F]()
+
+[STRIPE_SECRET=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa]()
+
 
 ```
 composer update 
@@ -152,6 +156,4 @@ php artisan serve
 * **Asmaa Ebrahim Abdelhamid Ebrahim**
 * **Ali Tarek Ahmed Hussein**
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

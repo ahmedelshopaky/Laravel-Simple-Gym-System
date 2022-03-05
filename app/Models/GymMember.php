@@ -13,6 +13,7 @@ class GymMember extends Model
         'user_id',
         'gender',
         'date_of_birth',
+        'gym_id'
     ];
 
     public function user() // done
