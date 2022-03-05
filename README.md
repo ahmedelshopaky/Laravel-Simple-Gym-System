@@ -146,6 +146,13 @@ php artisan serve
 * [Laravel Ban ]()
 * [Laravel Permissions ]()
 
+</br>
+</br>
+
+## ERD Diagram & Mapping 
+
+[![ERD](https://github.com/ahmedelshopaky/Simple-Gym-System/blob/sidework/00.utilities/gym.edited.drawio)]()
+
 
 
 ## Authors
