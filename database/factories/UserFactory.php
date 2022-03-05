@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -26,7 +27,7 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'name' => $this->faker->name($gender),
             'national_id'=>$faker->nationalIdNumber(),
-            
+            'email_verified_at'=>$faker->date(),
             'role' => $faker->randomElement(['city_manager', 'gym_manager', 'gym_member']),
         ];
     }

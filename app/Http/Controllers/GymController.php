@@ -19,7 +19,7 @@ class GymController extends Controller
 {
     public function index(Request $request)
     {
-        $gyms = Gym::with('city_managers')->get();
+        $gyms = Gym::with('city')->get();
         if ($request->ajax()) {
             return Datatables::of($gyms)->addIndexColumn()
                 ->addColumn('action', function ($gym) {
@@ -38,10 +38,10 @@ class GymController extends Controller
 
     public function create()
     {
-        $cities = Gym::distinct()->get(['city']);
-        $gymManagers = GymManager::with('user')->where('gym_id', null)->get();
-        $cityManagers = CityManager::leftJoin('gyms', 'city_managers.user_id', '=', 'gyms.city_manager_id')->where('id', null)->get();
-        return view('menu.gyms.create', compact('gymManagers', 'cityManagers', 'cities'));
+        // $cities = Gym::distinct()->get(['city']);
+        // $gymManagers = GymManager::with('user')->where('gym_id', null)->get();
+        // $cityManagers = CityManager::leftJoin('gyms', 'city_managers.user_id', '=', 'gyms.city_manager_id')->where('id', null)->get();
+        // return view('menu.gyms.create', compact('gymManagers', 'cityManagers', 'cities'));
     }
 
 
@@ -105,23 +105,5 @@ class GymController extends Controller
         } else {
             return response()->json(['fail' => 'Can\'t delete Gym Right Now !']);
         }
-    }
-
-    public function showCity(Request $request)
-    {
-        if ($request->ajax()) {
-            $cities = Gym::with('city_managers')->get();
-            $cities = GymResource::collection($cities);
-            return Datatables::of($cities)->addIndexColumn()
-                ->addColumn('action', function ($gym) {
-                    $Btn = '<a href="" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder mr-2"> </i>View</a>';
-                    $Btn .= '<a href="" class="edit btn btn-info btn-sm mr-3 text-white"> <i class="fas fa-pencil-alt mr-2"> </i> Edit</a>';
-                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id=""  data-bs-toggle="modal" data-bs-target="#deleteAlert"> <i class="fas fa-trash mr-2">  </i>Delete</a>';
-                    return $Btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-        return view('menu.cities');
     }
 }

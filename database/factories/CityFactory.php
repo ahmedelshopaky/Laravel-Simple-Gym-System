@@ -2,14 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\City;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\GymManager>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\City>
  */
-class CityManagerFactory extends Factory
+class CityFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,8 +17,7 @@ class CityManagerFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>User::factory(['role'=>'city_manager']),
-            'city_id'=>City::factory(),
+            'name' => $this->faker->city(),
         ];
     }
 }

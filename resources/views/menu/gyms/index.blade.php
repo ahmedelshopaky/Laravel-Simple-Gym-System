@@ -91,8 +91,8 @@
           name: 'name'
         },
         {
-          data: 'city',
-          name: 'city'
+          data: 'city.name',
+          name: 'city.name'
         },
 
         {

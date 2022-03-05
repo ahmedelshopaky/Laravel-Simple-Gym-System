@@ -10,7 +10,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('New System User') }}</h3>
+                            <h3 class="card-title">@yield('header')</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -91,36 +91,11 @@
                                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                                 </div>
                                             </div>
-                                            <!---------------------------- GYM MEMBERS ONLY ---------------------------->
-                                            <div class="row mb-3">
-                                                <label for="gender" class="col-md-4 col-form-label text-md-end">{{ __('Gender') }}</label>
 
-                                                <div class="col-md-6">
-                                                    <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender" value="{{ old('gender') }}" required autocomplete="gender" autofocus>
-                                                        <option value="male">Male</option>
-                                                        <option value="female">Female</option>
-                                                    </select>
-                                                    @error('gender')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <label for="date_of_birth" class="col-md-4 col-form-label text-md-end">{{ __('Date Of Birth') }}</label>
+                                            @yield('gym_member_data')  <!---------- GYM MEMBERS ONLY --------->
+                                            @yield('manages')     <!---------- GYM MANAGER + CITY MANAGER --------->
 
-                                                <div class="col-md-6">
-                                                    <input id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="date_of_birth" autofocus>
 
-                                                    @error('date_of_birth')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <!---------------------------- END OF GYM MEMBERS SECTION ---------------------------->
                                             <div class="row mb-3">
                                                 <label for="avatar_image" class="col-md-4 col-form-label text-md-end">{{ __('Avatar Image') }}</label>
                                                 <div class="col-md-6">
@@ -139,9 +114,10 @@
 
                                                 <div class="col-md-6">
                                                     <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="role" autofocus>
-                                                        <option value="city_manager">City Manager</option>
+                                                        <!-- <option value="city_manager">City Manager</option>
                                                         <option value="gym_manager">Gym Manager</option>
-                                                        <option value="gym_member">Gym Member</option>
+                                                        <option value="gym_member">Gym Member</option> -->
+                                                        @yield('role')
                                                     </select>
                                                     @error('role')
                                                     <span class="invalid-feedback" role="alert">

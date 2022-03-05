@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gym;
 use App\Models\GymManager;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,7 +28,11 @@ class GymManagerController extends Controller
         return view('menu.gym_manager.index');
     }
 
- 
+    public function create() {
+        $gyms = Gym::all();
+        return view('menu.gym_manager.create', compact('gyms'));
+    }
+
     // public function ban(GymManager $gymManager)
     // {
     //     $gymManager->ban();

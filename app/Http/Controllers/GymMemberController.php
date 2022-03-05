@@ -27,8 +27,13 @@ class GymMemberController extends Controller
         return view('menu.gym_member.index');
     }
     
+    public function create() {
+        return view('menu.gym_member.create');
+    }
+    
     public function show($id) {
         $user = User::find($id);
         return view('menu.gym_member.show', compact('user'));
     }
+
 }

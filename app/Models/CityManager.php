@@ -22,4 +22,9 @@ class CityManager extends Model
     {
         return $this->hasMany(Gym::class, 'city_manager_id', 'user_id');
     }
+
+    public function city()
+    {
+        return $this->hasOne(City::class, 'id', 'city_id');
+    }
 }

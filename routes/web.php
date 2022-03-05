@@ -10,6 +10,7 @@ use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\GymController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\BuyPackageController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\GymMemberController;
 use App\Http\Controllers\TrainingSessionController;
 use App\Models\Gym;
@@ -36,14 +37,17 @@ Route::middleware('auth')->group(function () {
     
     Route::group(['prefix'=>'/gym-managers','middleware' => 'auth', 'role:admin|cityManager'], function () {
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');
+        Route::get('/create', [GymManagerController::class, 'create'])->name('gym-managers.create');
     });
 
     Route::group(['prefix'=>'/city-managers','middleware' => 'auth', 'forbid-banned-user','role:admin'], function () {
         Route::get('/', [CityManagerController::class, 'index'])->name('city-managers.index');
+        Route::get('/create', [CityManagerController::class, 'create'])->name('city-managers.create');
     });
 
     Route::prefix('/gym-members')->group(function () {
         Route::get('/', [GymMemberController::class, 'index'])->name('gym-members.index');
+        Route::get('/create', [GymMemberController::class, 'create'])->name('gym-members.create');
         Route::get('/{id}', [GymMemberController::class, 'show'])->name('gym-members.show');
     });
 
@@ -58,9 +62,10 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     });
 
-
-    Route::get('/cities', [GymController::class, 'showCity'])->name('cities.show');
-
+    Route::prefix('/cities')->group(function () {
+        Route::get('/', [CityController::class, 'index'])->name('cities.index');
+    });
+    
     Route::group(['prefix' => '/gyms', 'middleware' => 'auth', 'forbid-banned-user','role:admin|cityManager'], function () {
         Route::get('/', [GymController::class, 'index'])->name('gyms.index');
         Route::get('/create', [GymController::class,'create'])->name('gyms.create');
@@ -75,7 +80,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
     Route::prefix('/coaches')->group(function(){
         Route::get('/', [CoachController::class, 'index'])->name('coaches.index');
-        Route::get('/creare', [CoachController::class, 'create'])->name('coaches.create');
+        Route::get('/create', [CoachController::class, 'create'])->name('coaches.create');
         Route::post('/', [CoachController::class, 'store'])->name('coaches.store');
     });
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');

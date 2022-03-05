@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\CityManager;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,5 +27,10 @@ class CityManagerController extends Controller
                 ->make(true);
         }
         return view('menu.city_manager.index');
+    }
+
+    public function create() {
+        $cities = City::all();
+        return view('menu.city_manager.create', compact('cities'));
     }
 }

@@ -44,19 +44,18 @@ class UserController extends Controller
         User::where('national_id', $request->national_id)->update([
             'avatar_image' => $name,
             'password' => Hash::make($request['password']),
-            // 'role' => $request->role,
         ]);
 
         if ($request->role == 'city_manager'){
             CityManager::insert([
                 'user_id' => $user->id,
-                // 'role' => 'city_manager',
+                'city_id' => $request->city,
             ]);
             return redirect()->route('city-managers.index');
         } else if ($request->role == 'gym_manager'){
             GymManager::insert([
                 'user_id' => $user->id,
-                // 'role' => 'gym_manager',
+                'gym_id' => $request->gym,
             ]);
             return redirect()->route('gym-managers.index');
         } else if ($request->role == 'gym_member'){
@@ -64,7 +63,6 @@ class UserController extends Controller
                 'user_id' => $user->id,
                 'gender' => $request->gender,
                 'date_of_birth' => $request->date_of_birth,
-                // 'role' => 'gym_member',
             ]);
             return redirect()->route('gym-members.index');
         }

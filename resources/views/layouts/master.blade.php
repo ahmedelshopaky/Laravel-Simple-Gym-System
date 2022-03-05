@@ -158,9 +158,21 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('users.create')}}" class="nav-link">
+                                    <a href="{{route('city-managers.create')}}" class="nav-link">
                                         <i class="far fa-user-circle nav-icon"></i>
-                                        <p>Assign User</p>
+                                        <p>Assign City Manager</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('gym-managers.create')}}" class="nav-link">
+                                        <i class="far fa-user-circle nav-icon"></i>
+                                        <p>Assign Gym Manager</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{route('gym-members.create')}}" class="nav-link">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>Assign Gym Member</p>
                                     </a>
                                 </li>
                             </ul>
@@ -208,7 +220,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('cities.show')}}" class="nav-link">
+                            <a href="{{route('cities.index')}}" class="nav-link">
                                 <i class="far fa-address-book nav-icon"></i>
                                 <p>Cities</p>
                             </a>
