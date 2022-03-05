@@ -136,7 +136,7 @@
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
                                 <i class="far fa-user-circle nav-icon"></i>
-                                <p>System Users<i class="right fas fa-angle-left"></i></p>
+                                <p>Gym Managers<i class="right fas fa-angle-left"></i></p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
@@ -145,28 +145,56 @@
                                         <p>Gym Managers</p>
                                     </a>
                                 </li>
+
+                                <li class="nav-item">
+                                    <a href="{{route('gym-managers.create')}}" class="nav-link">
+                                        <i class="far fa-user-circle nav-icon"></i>
+                                        <p>Assign Gym Manager</p>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </li>
+                        <li class="nav-item menu-close">
+                            <a href="#" class="nav-link active">
+                                <i class="far fa-user-circle nav-icon"></i>
+                                <p>City Managers<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+
                                 <li class="nav-item">
                                     <a href="{{route('city-managers.index')}}" class="nav-link">
                                         <i class="far fa-user-circle nav-icon"></i>
                                         <p>City Managers</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="{{route('gym-members.index')}}" class="nav-link">
-                                        <i class="far fa-user nav-icon"></i>
-                                        <p>Gym Member</p>
-                                    </a>
-                                </li>
+
                                 <li class="nav-item">
                                     <a href="{{route('city-managers.create')}}" class="nav-link">
                                         <i class="far fa-user-circle nav-icon"></i>
                                         <p>Assign City Manager</p>
                                     </a>
                                 </li>
+
+
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item menu-close">
+                            <a href="#" class="nav-link active">
+                                <i class="far fa-user-circle nav-icon"></i>
+                                <p>Gym Member<i class="right fas fa-angle-left"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+
                                 <li class="nav-item">
-                                    <a href="{{route('gym-managers.create')}}" class="nav-link">
-                                        <i class="far fa-user-circle nav-icon"></i>
-                                        <p>Assign Gym Manager</p>
+                                    <a href="{{route('gym-members.index')}}" class="nav-link">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>Gym Member</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -175,8 +203,17 @@
                                         <p>Assign Gym Member</p>
                                     </a>
                                 </li>
+
                             </ul>
                         </li>
+
+
+
+
+
+
+
+
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
                                 <i class="far fa-user-circle nav-icon"></i>

@@ -38,6 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix'=>'/gym-managers','middleware' => 'auth', 'role:admin|cityManager'], function () {
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');
         Route::get('/create', [GymManagerController::class, 'create'])->name('gym-managers.create');
+        Route::get('/{id}/edit', [GymManagerController::class, 'edit'])->name('gym-managers.edit');
+
         Route::put('/{id}/ban', [GymManagerController::class, 'bam'])->name('gym-managers.ban');
         Route::put('/{id}/unban', [GymManagerController::class, 'unban'])->name('gym-managers.unban');
     });
@@ -45,12 +47,15 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix'=>'/city-managers','middleware' => 'auth', 'forbid-banned-user','role:admin'], function () {
         Route::get('/', [CityManagerController::class, 'index'])->name('city-managers.index');
         Route::get('/create', [CityManagerController::class, 'create'])->name('city-managers.create');
+        Route::get('/{id}/edit', [CityManagerController::class, 'edit'])->name('city-managers.edit');
     });
 
     Route::prefix('/gym-members')->group(function () {
         Route::get('/', [GymMemberController::class, 'index'])->name('gym-members.index');
         Route::get('/create', [GymMemberController::class, 'create'])->name('gym-members.create');
         Route::get('/{id}', [GymMemberController::class, 'show'])->name('gym-members.show');
+
+        Route::get('/{id}/edit', [GymMemberController::class, 'edit'])->name('gym-members.edit');
     });
 
     
