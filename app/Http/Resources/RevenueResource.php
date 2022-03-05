@@ -15,11 +15,15 @@ class RevenueResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'gym_member' => new GymMemberResource($this->gym_member),
-            'gym' => new GymResource($this->gym),
-            'training_package' => new TrainingPackageResource($this->training_package),
-            'amount_paid' => $this->amount_paid,
-            
+            // 'gym_members' => new GymMemberResource($this->gym_members),
+            // 'gym' => new GymResource($this->gym),
+            // 'training_packages' => new TrainingPackageResource($this->training_packages),
+            'amount_paid' => '$' . $this->amount_paid / 100,
+            'id' => $this->id,
+
+            'training_package_name' => $this->training_packages->first()->name,
+            'gym_member_name' => $this->gym_members->first()->user->name,
+            'gym_member_email' => $this->gym_members->first()->user->email,
         ];
     }
 }
