@@ -42,24 +42,24 @@
                                     <td>Role</td>
                                     <td>{{$user->role}}</td>
                                 </tr>
-<!---------------------------- only gym member can see this section ---------------------------->
+                                <!---- GYM MEMBERS ONLY ------>
                                 <tr>                                
                                     <td>Gender</td>
-                                    <td>{{$user->gender}}</td>
+                                    <td>{{$user->gym_member->gender}}</td>
                                 </tr>
                                 <tr>
                                     <td>Date Of Birth</td>
-                                    <td>{{$user->date_of_birth}}</td>
+                                    <td>{{$user->gym_member->date_of_birth}}</td>
                                 </tr>
                                 <tr>
                                     <td>Last Login</td>
-                                    <td>{{$user->last_login}}</td>
+                                    <td>{{$user->gym_member->last_login}}</td>
                                 </tr>
                                 <tr>
                                     <td>Email Verified At</td>
-                                    <td>{{$user->email_verified_at}}</td>
+                                    <td>{{$user->gym_member->email_verified_at}}</td>
                                 </tr>
-<!---------------------------- end of gym member section ---------------------------->
+                                <!---- END OF GYM MEMBERS SECTION ---->
                             </tbody>
                         </table>
                     </div>

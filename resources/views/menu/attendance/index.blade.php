@@ -1,15 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="wrapper">
+<div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
   <div class="">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="col-sm-6">
-        <h1>Attendance</h1>
-      </div>
-    </section>
 
     <!-- Main content -->
     <section class="content">

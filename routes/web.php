@@ -72,9 +72,11 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
-
-    Route::get('/coaches', [CoachController::class, 'index'])->name('coaches.index');
-
+    Route::prefix('/coaches')->group(function(){
+        Route::get('/', [CoachController::class, 'index'])->name('coaches.index');
+        Route::get('/creare', [CoachController::class, 'create'])->name('coaches.create');
+        Route::post('/', [CoachController::class, 'store'])->name('coaches.store');
+    });
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 
     Route::prefix('/buy-package')->group(function(){

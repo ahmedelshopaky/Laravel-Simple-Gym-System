@@ -31,7 +31,7 @@
                                     <ul class="mt-2 ml-4 mb-0 fa-ul text-muted text-md">
                                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Package Name: {{$triningPackage->name}}</li>
                                         <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Sessions Number: {{$triningPackage->sessions_number}}</li>
-                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Price: {{$triningPackage->price / 100}}$</li>
+                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Price: ${{$triningPackage->price / 100}}</li>
                                     </ul>
                                 </div>
                                 <div class="col-5 text-center">

@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateGymRequest;
 use App\Http\Resources\GymResource;
 use App\Models\CityManager;
 use App\Models\Gym;
+use App\Models\GymManager;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -34,8 +35,9 @@ class GymController extends Controller
     }
     public function create()
     {
-        $users = CityManager::with('user')->get();
-        return view('menu.gyms.create', compact('users'));
+        $gymManagers = GymManager::with('user')->get();
+        $cities = Gym::distinct()->get(['city']);
+        return view('menu.gyms.create', compact('gymManagers', 'cities'));
     }
     public function store(StoreGymRequest $request)
     {
