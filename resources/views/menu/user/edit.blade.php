@@ -9,15 +9,9 @@
             <div class="row">
                 <div class="col-8 offset-2 mt-3">
 
-<<<<<<< HEAD
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">@yield('header')</h3>
-=======
-                    <div class="card card-info">
-                        <div class="card-header py-3">
-                            <h2 class="card-title fw-bold">{{ __('Edit User Data') }}</h2>
->>>>>>> 62082b7c74a2e5e0531308fcb20d25d6d4d85665
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
