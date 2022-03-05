@@ -17,6 +17,10 @@ class UserController extends Controller
         return "helloo";
     }
 
+
+    //you should use method post from postman but include ('_method => PUT') in the body fo 
+    //the request this is due to errors of empty body of put method i hope they solve it soon
+    
     public function update($Id,UpdateGymMemberRequest $request)
     {
         $token = $request->bearerToken();

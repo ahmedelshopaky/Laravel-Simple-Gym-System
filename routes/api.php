@@ -44,6 +44,9 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/', [UserController::class,'index'])->middleware('verified');
+
+    //you should use method post from postman but include ('_method => PUT') in the body fo 
+    //the request this is due to errors of empty body of put method i hope they solve it soon
     Route::put('/profile/{id}/update', [UserController::class,'update'])->middleware('verified');
 });
     
