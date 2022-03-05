@@ -9,7 +9,9 @@ class City extends Model
 {
     use HasFactory;
     public $timestamps = false;
-
+    protected $fillable = [
+        'name',
+    ];
     public function gyms()
     {
         return $this->hasMany(Gym::class);

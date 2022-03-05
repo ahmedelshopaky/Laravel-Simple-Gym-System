@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Http\Requests\StoreUserRequest;
+use App\Models\City;
 use App\Models\CityManager;
 use App\Models\GymMember;
 use Illuminate\Support\Facades\Hash;
@@ -51,9 +52,17 @@ class UserController extends Controller
         ]);
 
         if ($request->role == 'city_manager') {
+            if ($request->city == 'other'){
+                $city = City::create([
+                    'name' => $request->new_city,
+                ]);
+                $cityID = $city->id;
+            } else {
+                $cityID = $request->city;
+            }
             CityManager::create([
                 'user_id' => $user->id,
-                'city_id' => $request->city,
+                'city_id' => $cityID,
                 // 'role' => 'city_manager',
             ])->assignRole('cityManager')->givePermissionTo(['create gym','create gym manager','create coach','create session','edit gym manager','edit gym','edit coach','edit session','delete gym manager','delete gym','delete coach','delete session','show gym manager','show gym','show coach','show package','show session','show attendance','buy package','assign coach','ban gym manager','unban gym manager']) ;
 

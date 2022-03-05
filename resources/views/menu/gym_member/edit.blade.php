@@ -43,3 +43,8 @@
 @section('role')
 <option value="gym_member">Gym Member</option>
 @endsection
+
+
+@section('header')
+{{ __('Edit Gym Member Data') }}
+@endsection
