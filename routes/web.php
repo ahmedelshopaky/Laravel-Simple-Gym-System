@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GymManagerController;
 use App\Http\Controllers\TrainingPackageController;
 use App\Http\Controllers\UserController;
@@ -32,7 +33,9 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::middleware('auth')->group(function () {
+
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
     
     Route::group(['prefix'=>'/gym-managers','middleware' => 'role:admin|cityManager'], function () {
@@ -76,13 +79,19 @@ Route::middleware('auth')->group(function () {
     
     Route::group(['prefix' => '/gyms', 'middleware' => ['forbid-banned-user','role:admin|cityManager']], function () {
         Route::get('/', [GymController::class, 'index'])->name('gyms.index');
-        Route::get('/create', [GymController::class,'create'])->name('gyms.create');
-        Route::post('/', [GymController::class,'store'])->name('gyms.store');
-        Route::get('/{id}', [GymController::class,'show'])->name('gyms.show');
+        Route::get('/create', [GymController::class, 'create'])->name('gyms.create');
+        Route::post('/', [GymController::class, 'store'])->name('gyms.store');
+        Route::get('/{id}', [GymController::class, 'show'])->name('gyms.show');
 
-        Route::get('/{id}/edit', [GymController::class,'edit'])->name('gyms.edit');
-        Route::put('/{id}', [GymController::class,'update'])->name('gyms.update');
-        Route::delete('/{id}', [GymController::class,'destroy'])->name('gyms.destroy');
+        Route::get('/{id}/edit', [GymController::class, 'edit'])->name('gyms.edit');
+        Route::put('/{id}', [GymController::class, 'update'])->name('gyms.update');
+        Route::delete('/{id}', [GymController::class, 'destroy'])->name('gyms.destroy');
+    });
+
+    Route::prefix('/training-packages')->group(function () {
+        Route::get('/', [TrainingPackageController::class, 'index'])->name('training-packages.index');
+        Route::get('/create', [TrainingPackageController::class, 'create'])->name('training-packages.create');
+        Route::post('/', [TrainingPackageController::class, 'store'])->name('training-packages.store');
     });
 
     Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
@@ -107,21 +116,21 @@ Route::middleware('auth')->group(function () {
         Route::prefix('/revenue')->group(function () {
             Route::get('/', [RevenueController::class, 'index'])->name('revenue.index');
         });
-    
+
         Route::prefix('/training-sessions')->group(function () {
             Route::get('/', [TrainingSessionController::class, 'index'])->name('training-sessions.index');
 
-            Route::get('/create', [TrainingSessionController::class,'create'])->name('training-sessions.create');
-            Route::post('/', [TrainingSessionController::class,'store'])->name('training-sessions.store');
-        
-            Route::get('/{id}', [TrainingSessionController::class,'show'])->name('training-sessions.show');
+            Route::get('/create', [TrainingSessionController::class, 'create'])->name('training-sessions.create');
+            Route::post('/', [TrainingSessionController::class, 'store'])->name('training-sessions.store');
 
-            Route::get('/{id}/edit', [TrainingSessionController::class,'edit'])->name('training-sessions.edit');
-            Route::put('/{id}', [TrainingSessionController::class,'update'])->name('training-sessions.update');
+            Route::get('/{id}', [TrainingSessionController::class, 'show'])->name('training-sessions.show');
 
-            Route::delete('/{id}', [TrainingSessionController::class,'destroy'])->name('training-sessions.destroy');
+            Route::get('/{id}/edit', [TrainingSessionController::class, 'edit'])->name('training-sessions.edit');
+            Route::put('/{id}', [TrainingSessionController::class, 'update'])->name('training-sessions.update');
+
+            Route::delete('/{id}', [TrainingSessionController::class, 'destroy'])->name('training-sessions.destroy');
         });
         //Ban actions
-    // Route::get('/banned',[BannedController::class,'index'])->name('BannedController.ban');
+        // Route::get('/banned',[BannedController::class,'index'])->name('BannedController.ban');
     });
 });

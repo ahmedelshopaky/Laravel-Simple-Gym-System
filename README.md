@@ -4,10 +4,16 @@
 A Simple Gym System as the Laravel project for Open Source Application Development Track, ITI intake 42.
 
 # Contents
-
+- [ERD]()
 - [Running the Project]()
 - [Built with]()
 - [Authors ](#features)
+
+
+## ERD Diagram & Mapping 
+
+
+![gym edited](https://user-images.githubusercontent.com/97949768/156903803-d0e015de-a274-4a9a-a25c-de8434383991.png)
 
 # Running the project
 
@@ -145,6 +151,11 @@ php artisan serve
 * [Laravel Sanctum ]()
 * [Laravel Ban ]()
 * [Laravel Permissions ]()
+
+</br>
+</br>
+
+
 
 
 
