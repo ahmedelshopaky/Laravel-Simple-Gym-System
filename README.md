@@ -22,12 +22,12 @@ A Simple Gym System as the Laravel project for Open Source Application Developme
 
 After making clone to our project go to .env file and make sure you edit these parameters to suit yours. 
 
-- [DB_DATABASE=gym]()
-- [DB_USERNAME=root]()
-- [DB_PASSWORD=](#features)
+* **DB_DATABASE=gym**
+* **DB_USERNAME=root**
+* **DB_PASSWORD=**
 
-- [DB_HOST=127.0.0.1]()
-- [DB_PORT=3306]()
+* **DB_HOST=127.0.0.1**
+* **DB_PORT=3306**
 
 Run this command in your terminal
 ```
@@ -125,12 +125,13 @@ php artisan create:admin
 php artisan db:seed
 ```
 ### Add Stripe key
-In .env file add and then run this command
+In .env file add 
 - 
-[STRIPE_KEY=pk_test_51KZbWdGerl36jGBlSUe3rMyBApbtz9gPiGLrY3dSKyCRZKuqADbV9JG3gHNrtxxh94WD703gxBv3NZ7WzVTMqZUV00bCzwzL6F]()
+* **STRIPE_KEY=pk_test_51KZbWdGerl36jGBlSUe3rMyBApbtz9gPiGLrY3dSKyCRZKuqADbV9JG3gHNrtxxh94WD703gxBv3NZ7WzVTMqZUV00bCzwzL6F**
 
-[STRIPE_SECRET=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa]()
+* **STRIPE_SECRET=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa**
 
+Then run this command
 
 ```
 composer update 
