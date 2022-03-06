@@ -26,6 +26,9 @@ class StoreTrainingSessionRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'min:4', 'string', Rule::unique('training_sessions','name')->ignore($this->id, 'id')],
+            'starts_at' => 'required',      // TODO : finishes at must come after starts at :)
+            'finishes_at' => 'required',
+            'gym_id' => 'required',
         ];
     }
 }

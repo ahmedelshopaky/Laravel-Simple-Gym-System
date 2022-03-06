@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTrainingSessionRequest;
 use App\Models\Gym;
 use App\Models\TrainingSession;
 use Illuminate\Http\Request;
@@ -50,14 +51,9 @@ class TrainingSessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTrainingSessionRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|unique:training_sessions|min:5|max:255',
-            'starts_at' => 'required',      // TODO : finishes at must come after starts at :)
-            'finishes_at' => 'required',
-            'gym_id' => 'required',
-        ]);
+        $validated = $request->validated();
 
         TrainingSession::insert($validated);
         return view('menu.training_sessions.index');
