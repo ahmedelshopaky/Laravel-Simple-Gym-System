@@ -12,9 +12,7 @@ use App\Models\TrainingSession;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\PermissionRegistrar;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -24,7 +22,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //un-hash this to generate dummy data
+        //generate dummy data
         $numberOfUsers=300;
         // User::factory(10)->create();
         GymMember::factory(10)->create();
