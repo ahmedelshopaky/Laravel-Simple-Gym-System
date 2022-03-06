@@ -91,9 +91,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [TrainingPackageController::class, 'index'])->name('training-packages.index');
         Route::get('/create', [TrainingPackageController::class, 'create'])->name('training-packages.create');
         Route::post('/', [TrainingPackageController::class, 'store'])->name('training-packages.store');
+        Route::get('/{id}', [TrainingPackageController::class, 'show'])->name('training-packages.show');
+
+        Route::get('/{id}/edit', [TrainingPackageController::class, 'edit'])->name('training-packages.edit');
+        Route::put('/{id}', [TrainingPackageController::class, 'update'])->name('training-packages.update');
+        Route::delete('/{id}', [TrainingPackageController::class, 'destroy'])->name('training-packages.destroy');
     });
 
-    Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
 
     Route::prefix('/coaches')->group(function () {
         Route::get('/', [CoachController::class, 'index'])->name('coaches.index');
@@ -129,7 +133,7 @@ Route::middleware('auth')->group(function () {
 
             Route::delete('/{id}', [TrainingSessionController::class, 'destroy'])->name('training-sessions.destroy');
         });
-        //Ban actions
+        // Ban actions
         // Route::get('/banned',[BannedController::class,'index'])->name('BannedController.ban');
     });
 });

@@ -96,7 +96,7 @@ class UserController extends Controller
     public function update($id, StoreUserRequest $request)
     {
         // TODO
-        // avatar, role and gym member section old value ????
+        // avatar old value ????
         $validated = $request->validated();
 
         $user = User::find($id);

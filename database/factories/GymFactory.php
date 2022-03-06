@@ -25,6 +25,8 @@ class GymFactory extends Factory
             // 'city_manager_id'=>random_int(11,20),   // must be unique
             'city_manager_id'=>$this->faker->unique()->numberBetween(11, 20),
             'city_id'=>City::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
