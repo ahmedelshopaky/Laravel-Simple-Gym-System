@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<link rel="stylesheet" href="{{asset('/css/app.css')}}">
 
 <div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
@@ -95,7 +96,7 @@ $(function () {
         serverSide: true,
         ajax: "{{ route('city-managers.index') }}",
         columns: [
-            {data: 'user_id'},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'user.name'},
             {data: 'user.email'},
             {data: 'action', orderable: false, searchable: false},

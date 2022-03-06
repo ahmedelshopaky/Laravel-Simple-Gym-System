@@ -11,14 +11,16 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable ,HasRoles;
-     protected $guard_name = 'web';
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    protected $guard_name = 'web';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
+    public $timestamps = false;
     protected $fillable = [
         'name',
         'email',
@@ -60,10 +62,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function gym_member() // done
     {
         return $this->hasOne(GymMember::class, 'user_id');
-    }
-
-    public function role()
-    {
-        return $this->morphTo();
     }
 }

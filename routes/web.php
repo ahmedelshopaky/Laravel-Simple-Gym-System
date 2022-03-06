@@ -33,17 +33,16 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::middleware('auth')->group(function () {
-
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
     
-    Route::group(['prefix'=>'/gym-managers','middleware' => 'role:admin|cityManager'], function () {
+    Route::group(['prefix'=>'/gym-managers','middleware' => ['role:admin|cityManager']], function () {
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');
         Route::get('/create', [GymManagerController::class, 'create'])->name('gym-managers.create');
         Route::get('/{id}/edit', [GymManagerController::class, 'edit'])->name('gym-managers.edit');
 
-        Route::put('/{id}/ban', [GymManagerController::class, 'bam'])->name('gym-managers.ban');
+        Route::put('/{id}/ban', [GymManagerController::class, 'ban'])->name('gym-managers.ban');
         Route::put('/{id}/unban', [GymManagerController::class, 'unban'])->name('gym-managers.unban');
     });
 
@@ -92,9 +91,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [TrainingPackageController::class, 'index'])->name('training-packages.index');
         Route::get('/create', [TrainingPackageController::class, 'create'])->name('training-packages.create');
         Route::post('/', [TrainingPackageController::class, 'store'])->name('training-packages.store');
+        Route::get('/{id}', [TrainingPackageController::class, 'show'])->name('training-packages.show');
+
+        Route::get('/{id}/edit', [TrainingPackageController::class, 'edit'])->name('training-packages.edit');
+        Route::put('/{id}', [TrainingPackageController::class, 'update'])->name('training-packages.update');
+        Route::delete('/{id}', [TrainingPackageController::class, 'destroy'])->name('training-packages.destroy');
     });
 
-    Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
 
     Route::prefix('/coaches')->group(function () {
         Route::get('/', [CoachController::class, 'index'])->name('coaches.index');
@@ -130,7 +133,7 @@ Route::middleware('auth')->group(function () {
 
             Route::delete('/{id}', [TrainingSessionController::class, 'destroy'])->name('training-sessions.destroy');
         });
-        //Ban actions
+        // Ban actions
         // Route::get('/banned',[BannedController::class,'index'])->name('BannedController.ban');
     });
 });
