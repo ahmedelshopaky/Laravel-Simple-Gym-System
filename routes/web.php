@@ -33,17 +33,16 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::middleware('auth')->group(function () {
-
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
     
-    Route::group(['prefix'=>'/gym-managers','middleware' => 'role:admin|cityManager'], function () {
+    Route::group(['prefix'=>'/gym-managers','middleware' => ['role:admin|cityManager']], function () {
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');
         Route::get('/create', [GymManagerController::class, 'create'])->name('gym-managers.create');
         Route::get('/{id}/edit', [GymManagerController::class, 'edit'])->name('gym-managers.edit');
 
-        Route::put('/{id}/ban', [GymManagerController::class, 'bam'])->name('gym-managers.ban');
+        Route::put('/{id}/ban', [GymManagerController::class, 'ban'])->name('gym-managers.ban');
         Route::put('/{id}/unban', [GymManagerController::class, 'unban'])->name('gym-managers.unban');
     });
 

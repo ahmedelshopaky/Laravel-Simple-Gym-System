@@ -63,9 +63,4 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(GymMember::class, 'user_id');
     }
-
-    public function role()
-    {
-        return $this->morphTo();
-    }
 }

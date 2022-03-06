@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<link rel="stylesheet" href="{{asset('/css/app.css')}}">
 
 <div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->

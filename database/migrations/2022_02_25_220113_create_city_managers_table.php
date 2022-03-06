@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('city_managers', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->primary();
+            $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

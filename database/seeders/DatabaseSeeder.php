@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        //generate dummy data
+        //php artisan migrate:fresh --seed
+
         $numberOfUsers=300;
         // User::factory(10)->create();
         GymMember::factory(10)->create();
@@ -33,5 +34,6 @@ class DatabaseSeeder extends Seeder
         // TrainingSession::factory(5)->create();
         // TrainingPackage::factory(5)->create();
 
+        $this->call(PermissionsSeeder::class);
     }
 }

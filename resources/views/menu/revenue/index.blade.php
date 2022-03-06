@@ -8,9 +8,15 @@
 
         <div class="card">
           <div class="card-header">
+            @role('admin')
             <h3 class="card-title">Total Revenue</h3> <!-- ADMIN ONLY -->
+            @endrole
+            @role('cityManager')
             <h3 class="card-title">Total Revenue For Your City</h3> <!-- CITY MANAGER ONLY -->
+            @endrole
+            @role('gymManager')
             <h3 class="card-title">Total Revenue For Your Gym</h3> <!-- GYM MANAGER ONLY -->
+            @endrole
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                 <i class="fas fa-minus"></i>
@@ -60,7 +66,7 @@
                     <th>Email</th>
                     <th>Package Name</th>
                     <th>Amount paid</th>
-                    <th>GYM</th>  <!-- CITY MANAGER AND ADMIN ONLY -->
+                    <th>GYM</th> <!-- CITY MANAGER AND ADMIN ONLY -->
                     <th>CITY</th> <!-- ADMIN ONLY -->
                   </tr>
                 </thead>
@@ -128,11 +134,11 @@
           name: 'amount_paid'
         },
         {
-          data: 'gym_name',         // <!-- CITY MANAGER AND ADMIN ONLY -->
+          data: 'gym_name', // <!-- CITY MANAGER AND ADMIN ONLY -->
           name: 'gym_name'
         },
         {
-          data: 'city',         // <!-- ADMIN ONLY -->
+          data: 'city', // <!-- ADMIN ONLY -->
           name: 'city'
         },
       ]

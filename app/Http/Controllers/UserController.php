@@ -52,7 +52,7 @@ class UserController extends Controller
         ]);
 
         if ($request->role == 'city_manager') {
-            if ($request->city == 'other'){
+            if ($request->city == 'other') {
                 $city = City::create([
                     'name' => $request->new_city,
                 ]);
