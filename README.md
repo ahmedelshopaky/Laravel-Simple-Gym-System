@@ -150,8 +150,9 @@ php artisan serve
 </br>
 
 ## ERD Diagram & Mapping 
+[![ERD](https://github.com/ahmedelshopaky/Simple-Gym-System/blob/sidework/sidework/00.utilities/gym.edited.png)]()
 
-[![ERD](https://github.com/ahmedelshopaky/Simple-Gym-System/blob/sidework/00.utilities/gym.edited.drawio)]()
+[![ERD](https://raw.github.com/ahmedelshopaky/Simple-Gym-System/sidework/00.utilities/gym.edited.png)]()
 
 
 
