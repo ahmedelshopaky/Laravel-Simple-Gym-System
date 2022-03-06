@@ -107,7 +107,7 @@ $(function () {
         serverSide: true,
         ajax: "{{ route('gym-members.index') }}",
         columns: [
-            {data: 'user_id',},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'user.name',},
             {data: 'user.email',},
             {data: 'action', orderable: false, searchable: false},

@@ -11,14 +11,16 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable ,HasRoles;
-     protected $guard_name = 'web';
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    protected $guard_name = 'web';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
+    public $timestamps = false;
     protected $fillable = [
         'name',
         'email',

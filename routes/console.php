@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -25,5 +26,11 @@ Artisan::command('create:admin', function () {
             'password' => bcrypt($this->ask('Password')),
             'role' => 'admin'
     ]);
+
+    // User::create([
+    //     'email' => $this->ask('Email'),
+    //     'password' => bcrypt($this->ask('Password')),
+    //     'role' => 'admin'
+    // ])->assignRole('admin');
     $this->info('Account created successfully.');
 });
