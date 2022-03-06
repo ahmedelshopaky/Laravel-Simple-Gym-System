@@ -73476,3 +73476,25 @@ readers do not read off random characters that represent icons */
 
 .card-view{
   box-shadow:10px 10px 10px #bbc4d2;
+}
+/* start pagination */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current{
+  color:#fff !important
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover{
+  background: #17a2b8;
+  color:#fff !important
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover{
+  background: #eee;
+  border:1px solid #17a2b8;
+  color:#000 !important
+}
+/* end pagination */
+.btn-info{
+  background: #17a2b8;
+}
+.btn-info:hover{
+  background: #3d919e;
+}

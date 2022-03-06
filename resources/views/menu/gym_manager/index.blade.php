@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<link rel="stylesheet" href="{{asset('/css/app.css')}}">
 
 <div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
@@ -16,7 +17,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-striped  dtr-inline table-hover data-table w-100" id="">
+                <table class="table table-bordered table-striped  dtr-inline table-hover data-table" id="">
                   <thead>
                     <tr>
                       <th>ID</th>
