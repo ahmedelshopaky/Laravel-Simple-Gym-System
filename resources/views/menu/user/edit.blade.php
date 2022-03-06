@@ -26,7 +26,7 @@
                             <div class="card-body ">
                                 <div class="row mb-3 form-group">
 
-                                    <label for="name" class=" col-sm-2 col-form-label">{{ __('Name') }}</label>
+                                    <label for="name" class=" col-sm-2 col-form-label">Name</label>
 
                                     <div class="col-sm-10">
                                         <input value="{{$user->name}}" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -106,7 +106,7 @@
                                 <div class="row mb-0">
                                     <div class="col-sm-12 ">
                                         <button type="submit" class="btn btn-info text-white col-sm-2 offset-5 fs-5" style="background-color: #17a2b8;">
-                                            {{ __('Submit') }}
+                                           Submit
                                         </button>
                                     </div>
                                 </div>

@@ -41,3 +41,4 @@
 @section('header')
 {{ __('Edit City Manager Data') }}
 @endsection
+
