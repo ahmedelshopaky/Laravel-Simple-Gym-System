@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateGymMemberRequest;
+use App\Http\Resources\ApiUserAttendanceResource;
+use App\Http\Resources\AttendanceResource;
+use App\Http\Resources\GymResource;
+use App\Http\Resources\TrainingSessionResource;
 use App\Models\Attendance;
 use App\Models\GymMember;
 use App\Models\Revenue;
@@ -135,5 +139,16 @@ class UserController extends Controller
                 }
             }
         }  
+    }
+
+    public function viewHistory(){
+        $userId = Auth::id();
+
+        $trainingSessions = Attendance::with('training_session')->where('gym_member_id',$userId)->get();
+     
+        return [
+            'your attendance history'=>ApiUserAttendanceResource::collection($trainingSessions)
+            ] ;
+
     }
 }
