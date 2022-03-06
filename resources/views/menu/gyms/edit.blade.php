@@ -1,33 +1,50 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="wrapper w-75 mx-auto">
-
-    <div class="card">
-        <div class="card-header">
-            <h2 class="text-center text-primary bg-dark p-3">Update Gym Information</h2>
+<div class="wrapper  mx-auto mt-3">
+<div class="container-fluid">
+<div class="row">
+    <div class="col-8 offset-2 mt-3">
+    <div class="card card-info">
+        <div class="card-header py-3">
+            <h2 class="card-title fw-bold">Update Gym Information</h2>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
         </div>
-        <div class="card-body">
            <form action="{{route('gyms.update',$modifyGym->id)}}" method="post">
                @csrf
                @method('PUT')
-            <div class=" mb-3 w-50 mx-auto">
-                <label for="name">Gym Name</label>
-                <input type="text" name="name" value="{{$modifyGym->name}}" class="form-control" placeholder="Gym Name">
+               <div class="card-body">
+            
+
+            <div class=" row mb-3 form-group">
+                <label for="city" class="col-sm-2 col-form-label">Gym Name</label>
+                <div class="col-sm-10">
+                <input type="text" name="city" value="{{$modifyGym->name}}" class="form-control" placeholder="Gym Name">
                 @error('name')
                     <p class="text-danger">{{$message}}</p>
                 @enderror
+                </div>
             </div>
 
-            <div class=" mb-3 w-50 mx-auto">
-                <label for="city">City Name</label>
+
+
+
+            <div class=" row mb-3 form-group">
+                <label for="city" class="col-sm-2 col-form-label">City Name</label>
+                <div class="col-sm-10">
                 <input type="text" name="city" value="{{$modifyGym->city}}" class="form-control" placeholder="City Name">
                 @error('city')
                     <p class="text-danger">{{$message}}</p>
                 @enderror
+                </div>
             </div>
-            <div class=" mb-3 w-50 mx-auto">
-                <label for="city_manager_id">Manager Name</label>
+            <div class=" row mb-3 form-group">
+                <label for="city_manager_id" class="col-sm-2 col-form-label">Manager Name</label>
+                <div class="col-sm-10">
                 <select name="city_manager_id" class="form-control">
                     @foreach ($users as $user)
                         <option value="{{$user->user->id}}" >{{$user->user->name}}</option>
@@ -36,13 +53,16 @@
                 @error('city_manager_id')
                     <p class="text-danger">{{$message}}</p>
                 @enderror
+                </div>
                 <div>
-                    <input type="submit" class="btn btn-primary px-4 my-3" value="Update">
+                    <input type="submit" class="btn btn-primary px-4 my-3" value="Update" style="background-color: #17a2b8;">
                 </div>
             </div>
            </form>
         </div>
     </div>
 </div>
-
+</div>
+    </div>
+</div>
 @endsection
