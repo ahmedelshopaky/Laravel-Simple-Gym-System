@@ -9,8 +9,8 @@
             <div class="row">
                 <div class="col-8 offset-2 mt-3">
 
-                    <div class="card">
-                        <div class="card-header">
+                    <div class="card card-info">
+                        <div class="card-header py-3">
                             <h3 class="card-title">@yield('header')</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">

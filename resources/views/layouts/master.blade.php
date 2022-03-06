@@ -36,7 +36,7 @@
                     <a href="{{ route('home') }}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact Us</a>
+                    <a href="{{ route('contact') }}" class="nav-link">Contact Us</a>
                 </li>
             </ul>
 
@@ -116,7 +116,7 @@
 
             <a href="{{ route('home') }}" class="brand-link text-decoration-none">
                 <img src="{{asset('/images/gym-logo.jpg')}}" class="brand-image-xl img-circle elevation-3 mx-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">Sparta Gym</span>
+                <span class="brand-text font-weight-light">A-Team Gym</span>
             </a>
 
             <div class="sidebar mt-3 p-1">

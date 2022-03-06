@@ -1,10 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
+<section class="content mt-5">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card card-primary">
                 <div class="card-header">{{ __('Dashboard') }}</div>
                 <div class="card-body">
                     @if (session('status'))
@@ -19,4 +20,5 @@
         </div>
     </div>
 </div>
+</section >
 @endsection

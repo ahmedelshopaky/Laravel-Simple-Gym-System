@@ -16,14 +16,13 @@ class GymResource extends JsonResource
     {
         return [
             
-
-            // 'city' => $this->city,
-            // 'cover_image' => $this->cover_image,
-            // 'id' => $this->id,
-            // 'name' => $this->name,
-            // 'created_at' => $this->created_at,
-            // 'updated_at' => $this->updated_at,
-            //'city_managers' => new CityManagerResource($this->city_manager),
+            'city' => $this->city,
+            'cover_image' => $this->cover_image,
+            'id' => $this->id,
+            'name' => $this->name,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'city_managers' => new CityManagerResource($this->city_manager),
         ];
     }
 }
