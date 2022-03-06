@@ -4,7 +4,7 @@
 <div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
   <div class="">
-    
+
     <!-- Main content -->
     <section class="content">
       <div class="container">
@@ -18,15 +18,16 @@
               <div class="card-body">
                 <table class="table table-bordered table-hover table-striped  data-table" id="data-table">
                   <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Sessions Number</th>
-                    <th>Actions</th>
-                  </tr>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Sessions Number</th>
+                      <th>Price</th>
+                      <th>Actions</th>
+                    </tr>
                   </thead>
                   <tbody>
-                 
+
                   </tbody>
                 </table>
               </div>
@@ -40,7 +41,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              
+
 
 
 
@@ -74,9 +75,11 @@
 
 <!-- Page specific script -->
 <script>
-  $(function () {
+  $(function() {
     $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
@@ -91,24 +94,37 @@
   });
 </script>
 <script>
+  $(function() {
 
-$(function () {
-    
     var table = $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('training-packages.index') }}",
-        columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'sessions_number', name: 'email'},    
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-        ]
-    } );
-});
-
-
-
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('training-packages.index') }}",
+      columns: [{
+          data: 'id',
+          name: 'id'
+        },
+        {
+          data: 'name',
+          name: 'name'
+        },
+        {
+          data: 'sessions_number',
+          name: 'sessions_number'
+        },
+        {
+          data: 'price',
+          name: 'price'
+        },
+        {
+          data: 'action',
+          name: 'action',
+          orderable: false,
+          searchable: false
+        },
+      ]
+    });
+  });
 </script>
 
 @endsection

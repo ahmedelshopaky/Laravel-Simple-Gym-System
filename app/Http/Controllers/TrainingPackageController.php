@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TrainingPackageResource;
 use App\Models\TrainingPackage;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -11,7 +12,7 @@ class TrainingPackageController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = TrainingPackage::all();
+            $data = TrainingPackageResource::collection(TrainingPackage::all());
             return Datatables::of($data)->addIndexColumn()
                 ->addColumn('action', function ($row) {
                     
@@ -25,6 +26,23 @@ class TrainingPackageController extends Controller
                 ->make(true);
         }
 
-        return view('menu.training_packages');
+        return view('menu.training_packages.index');
+    }
+
+    public function create() {
+        return view('menu.training_packages.create');
+    }
+
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required|unique:training_packages|min:5|max:255',
+            'sessions_number' => 'required',
+            'price' => 'required',
+        ]);
+        $package = TrainingPackage::create($validated);
+        $package->update([
+            'price' => $package->price * 100,
+        ]);
+        return view('menu.training_packages.index');
     }
 }

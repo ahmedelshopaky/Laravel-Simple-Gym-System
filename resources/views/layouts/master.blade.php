@@ -274,7 +274,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('training-packages.index')}}" class="nav-link">
+                                    <a href="{{route('training-packages.create')}}" class="nav-link">
                                         <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
                                         <p>Create Training Package</p>
                                     </a>
@@ -298,7 +298,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{route('training-packages.index')}}" class="nav-link">
+                                    <a href="{{route('training-sessions.create')}}" class="nav-link">
                                         <i class="fa-brands fa-battle-net nav-icon"></i>
                                         <p>Create Training Session</p>
                                     </a>

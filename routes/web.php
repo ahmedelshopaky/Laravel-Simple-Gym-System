@@ -85,7 +85,12 @@ Route::middleware('auth')->group(function () {
         Route::delete('/{id}', [GymController::class,'destroy'])->name('gyms.destroy');
     });
 
-    Route::get('/training-packages', [TrainingPackageController::class, 'index'])->name('training-packages.index');
+    Route::prefix('/training-packages')->group(function () {
+        Route::get('/', [TrainingPackageController::class, 'index'])->name('training-packages.index');
+        Route::get('/create', [TrainingPackageController::class, 'create'])->name('training-packages.create');
+        Route::post('/', [TrainingPackageController::class, 'store'])->name('training-packages.store');
+    });
+
     Route::prefix('/coaches')->group(function () {
         Route::get('/', [CoachController::class, 'index'])->name('coaches.index');
         Route::get('/create', [CoachController::class, 'create'])->name('coaches.create');
