@@ -11,16 +11,16 @@ class MemberMissed extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected $member;
+   // protected $member;
    
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($member)
+    public function __construct()
     {
-        $this->member = $member;
+        // $this->member = $member;
     }
 
     /**

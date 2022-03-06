@@ -47,9 +47,10 @@ class NotifyMembers extends Command
     public function handle()
     {
         $users = GymMember::with('user')->where('last_login' ,'<',Carbon::now()->subDays(30)->toDateTimeString())->get();
-        $user = new GymMemberEmailResource($users);
-      // $users = GymMember::with('user')->whereDate('last_login' ,'<',Carbon::now()->subDays(30)->toDateTimeString())->get();
-     
-        Notification::send($user,new MemberMissed($user));
+      
+        foreach($users as $user){
+            Notification::send($user->user,new MemberMissed());
+        }
+        
     }
 }

@@ -15,7 +15,7 @@ class GymMemberEmailResource extends JsonResource
     public function toArray($request)
     {
         return [
-
+            'name' => $this->user->name,
             'email' => $this->user->email,
 
         ];
