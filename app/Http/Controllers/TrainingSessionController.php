@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gym;
 use App\Models\TrainingSession;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
@@ -39,7 +40,8 @@ class TrainingSessionController extends Controller
      */
     public function create()
     {
-        //
+        $gyms = Gym::all();
+        return view('menu.training_sessions.create', compact('gyms'));
     }
 
     /**
@@ -50,7 +52,15 @@ class TrainingSessionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|unique:training_sessions|min:5|max:255',
+            'starts_at' => 'required',      // TODO : finishes at must come after starts at :)
+            'finishes_at' => 'required',
+            'gym_id' => 'required',
+        ]);
+
+        TrainingSession::insert($validated);
+        return view('menu.training_sessions.index');
     }
 
     /**
@@ -61,8 +71,8 @@ class TrainingSessionController extends Controller
      */
     public function show($id)
     {
-        $trainingSession = TrainingSession::find($id);
-        return view('menu.training_sessions.show', compact('trainingSession'));
+        // $trainingSession = TrainingSession::find($id);
+        // return view('menu.training_sessions.show', compact('trainingSession'));
     }
 
     /**

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
+use App\Notifications\MemberVerified;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,8 +40,9 @@ Route::get('/email/verify', function () {
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
- 
-    return  "hellooooooooooo";
+    // $user = Auth::user();
+    // $user->notify(new MemberVerified);
+    
 })->middleware(['auth:sanctum'])->name('verification.verify');
 
 
@@ -47,24 +51,14 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //you should use method post from postman but include ('_method => PUT') in the body fo 
     //the request this is due to errors of empty body of put method i hope they solve it soon
-    Route::put('/profile/{id}/update', [UserController::class,'update'])->middleware('verified');
+    Route::put('/profile/update', [UserController::class,'update'])->middleware('verified');
+
+    Route::get('/training-sessions',[UserController::class,'view'])->middleware('verified');
+
+    Route::post('/training-sessions/{id}/attend',[UserController::class,'attend'])->middleware('verified');
+   
+    Route::get('/training-sessions/attendance',[UserController::class,'viewHistory'])->middleware('verified');
 });
     
     
-    // Route::post('/sanctum/token', function (Request $request) {
-    //     $request->validate([
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-    //         'device_name' => 'required',
-    //     ]);
-     
-    //     $user = User::where('email', $request->email)->first();
-     
-    //     if (! $user || ! Hash::check($request->password, $user->password)) {
-    //         throw ValidationException::withMessages([
-    //             'email' => ['The provided credentials are incorrect.'],
-    //         ]);
-    //     }
-     
-    //     return $user->createToken($request->device_name)->plainTextToken;
-    // });
+  

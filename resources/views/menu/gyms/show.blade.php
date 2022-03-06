@@ -1,5 +1,3 @@
-
-   
 @extends('layouts.master')
 @section('content')
 
@@ -14,7 +12,7 @@
             <hr>
             <div class="d-flex">
                 <p class="w-50 text-center fw-bold"> Gym City</p>
-                <p class="w-50"> {{$gym->city}}</p>
+                <p class="w-50"> {{$gym->city->name}}</p>
             </div>
             
             <div>

@@ -4399,6 +4399,8 @@ input[type="button"].btn-block {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 0.5rem;
+  /* box-shadow:10px 10px 10px #eee; */
+  height: 70px;
 }
 
 .navbar .container,
@@ -73469,3 +73471,8 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 6 Free";
   font-weight: 400;
 }
+
+
+
+.card-view{
+  box-shadow:10px 10px 10px #bbc4d2;

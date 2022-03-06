@@ -24,11 +24,10 @@ class StoreGymRequest extends FormRequest
     public function rules()
     {
         return [
-            //
             'name'=>['required','min:4','string','unique:gyms'],
             'city'=>['required', 'min:3','string'],
             'cover_image'=>['required'],
-            'city_manager_id'=>['required','int'],
+            'gym_manager'=>['required'],
         ];
     }
 }

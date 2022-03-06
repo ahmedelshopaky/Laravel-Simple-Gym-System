@@ -1,15 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="wrapper">
+<div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
   <div class="">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-    <div class="col-sm-6">
-      <h1>Cities</h1>
-    </div>
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -18,21 +12,22 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Cities Data</h3>
+                <h3 class="card-title">Training Packages</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table class="table table-bordered table-hover table-striped  data-table" id="data-table">
                   <thead>
-                  <tr>
-                    <th>city Name</th>
-                    <th>Gym Name</th>
-                    <th>City Manager</th>
-                    <th>Actions</th>
-                  </tr>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Sessions Number</th>
+                      <th>Price</th>
+                      <th>Actions</th>
+                    </tr>
                   </thead>
                   <tbody>
-                 
+
                   </tbody>
                 </table>
               </div>
@@ -46,7 +41,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              
+
 
 
 
@@ -77,35 +72,59 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
 
-
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
 <!-- Page specific script -->
 <script>
-
-$(function () {
-    
-    var table = $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('cities.show') }}",
-        columns: [
-            {data: 'city',},
-            {data: 'name'},
-            {data: 'city_manager_name'},            
-            {data: 'action', orderable: false, searchable: false},
-        ]
+  $(function() {
+    $("#example1").DataTable({
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
     });
+  });
+</script>
+<script>
+  $(function() {
 
-    
-});
-
-
-
+    var table = $('.data-table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('training-packages.index') }}",
+      columns: [{
+          data: 'id',
+          name: 'id'
+        },
+        {
+          data: 'name',
+          name: 'name'
+        },
+        {
+          data: 'sessions_number',
+          name: 'sessions_number'
+        },
+        {
+          data: 'price',
+          name: 'price'
+        },
+        {
+          data: 'action',
+          name: 'action',
+          orderable: false,
+          searchable: false
+        },
+      ]
+    });
+  });
 </script>
 
 @endsection

@@ -4,10 +4,16 @@
 A Simple Gym System as the Laravel project for Open Source Application Development Track, ITI intake 42.
 
 # Contents
-
+- [ERD]()
 - [Running the Project]()
 - [Built with]()
 - [Authors ](#features)
+
+
+## ERD Diagram & Mapping 
+
+
+![gym edited](https://user-images.githubusercontent.com/97949768/156903803-d0e015de-a274-4a9a-a25c-de8434383991.png)
 
 # Running the project
 
@@ -120,7 +126,11 @@ php artisan db:seed
 ```
 ### Add Stripe key
 In .env file add and then run this command
-- [STRIPE_KEY=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa]()
+- 
+[STRIPE_KEY=pk_test_51KZbWdGerl36jGBlSUe3rMyBApbtz9gPiGLrY3dSKyCRZKuqADbV9JG3gHNrtxxh94WD703gxBv3NZ7WzVTMqZUV00bCzwzL6F]()
+
+[STRIPE_SECRET=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa]()
+
 
 ```
 composer update 
@@ -142,6 +152,11 @@ php artisan serve
 * [Laravel Ban ]()
 * [Laravel Permissions ]()
 
+</br>
+</br>
+
+
+
 
 
 ## Authors
@@ -152,6 +167,4 @@ php artisan serve
 * **Asmaa Ebrahim Abdelhamid Ebrahim**
 * **Ali Tarek Ahmed Hussein**
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

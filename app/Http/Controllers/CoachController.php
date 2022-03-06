@@ -25,7 +25,19 @@ class CoachController extends Controller
                     ->make(true);
         }
       
-        return view('menu.coaches');
+        return view('menu.coaches.index');
+    }
+    public function create() {
+        $gyms = Coach::with('gym')->get();
+        return view('menu.coaches.create', compact('gyms'));
+    }
+
+    public function store() {
+        Coach::insert([
+            'name' => request()->name,
+            'gym_id' => request()->gym,
+        ]);
+        return view('menu.coaches.index');
     }
 
 }
