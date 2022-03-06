@@ -11,7 +11,7 @@
 
                     <div class="card card-info">
                         <div class="card-header py-3">
-                            <h3 class="card-title">@yield('header')</h3>
+                            <h2 class="card-title fs-4">@yield('header')</h2>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -104,8 +104,8 @@
 
 
                                 <div class="row mb-0">
-                                    <div class="col-md-6">
-                                        <button type="submit" class="btn btn-info text-white" style="background-color: #17a2b8;">
+                                    <div class="col-sm-12 ">
+                                        <button type="submit" class="btn btn-info text-white col-sm-2 offset-5 fs-5" style="background-color: #17a2b8;">
                                             {{ __('Submit') }}
                                         </button>
                                     </div>

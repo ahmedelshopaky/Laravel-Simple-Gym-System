@@ -6,11 +6,11 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-8 offset-2 mt-3">
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">@yield('header')</h3>
+                    <div class="card card-info">
+                        <div class="card-header py-3">
+                            <h2 class="card-title fs-4">@yield('header')</h2>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -18,17 +18,15 @@
                             </div>
                         </div>
 
-                        <div class="card-body">
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-7 container-fluid">
-                                        <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
-                                            @csrf
+                
+                                <form method="POST" action="{{ route('users.store') }}" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="card-body">
+                                         <div class="row">
+                                            <div class="row mb-3 form-group form-group">
+                                                <label for="name" class="col-sm-2 col-form-label">{{ __('Name') }}</label>
 
-                                            <div class="row mb-3">
-                                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                                                <div class="col-md-6">
+                                                <div class="col-sm-10">
                                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                                     @error('name')
@@ -39,10 +37,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-3">
-                                                <label for="national_id" class="col-md-4 col-form-label text-md-end">{{ __('National ID') }}</label>
+                                            <div class="row mb-3 form-group">
+                                                <label for="national_id" class="col-sm-2 col-form-label">{{ __('National ID') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="col-sm-10">
                                                     <input id="national_id" type="text" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" required autocomplete="national_id">
 
                                                     @error('national_id')
@@ -53,10 +51,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-3">
-                                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                                            <div class="row mb-3 form-group">
+                                                <label for="email" class="col-sm-2 col-form-label">{{ __('Email Address') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="col-sm-10">
                                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                                     @error('email')
@@ -70,10 +68,10 @@
 
 
 
-                                            <div class="row mb-3">
-                                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                                            <div class="row mb-3 form-group">
+                                                <label for="password" class="col-sm-2 col-form-label">{{ __('Password') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="col-sm-10">
                                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                                     @error('password')
@@ -84,10 +82,10 @@
                                                 </div>
                                             </div>
 
-                                            <div class="row mb-3">
-                                                <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
+                                            <div class="row mb-3 form-group">
+                                                <label for="password-confirm" class="col-sm-2 col-form-label">{{ __('Confirm Password') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="col-sm-10">
                                                     <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                                 </div>
                                             </div>
@@ -96,9 +94,9 @@
                                             @yield('manages')     <!---------- GYM MANAGER + CITY MANAGER --------->
 
 
-                                            <div class="row mb-3">
-                                                <label for="avatar_image" class="col-md-4 col-form-label text-md-end">{{ __('Avatar Image') }}</label>
-                                                <div class="col-md-6">
+                                            <div class="row mb-3 form-group">
+                                                <label for="avatar_image" class="col-sm-2 col-form-label">{{ __('Avatar Image') }}</label>
+                                                <div class="col-sm-10">
                                                     <input id="avatar_image" type="file" class="form-control @error('avatar_image') is-invalid @enderror" name="avatar_image" required autofocus />
                                                     @error('avatar_image')
                                                     <span class="invalid-feedback" role="alert">
@@ -109,10 +107,10 @@
                                             </div>
 
 
-                                            <div class="row mb-3">
-                                                <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('Role') }}</label>
+                                            <div class="row mb-3 form-group">
+                                                <label for="role" class="col-sm-2 col-form-label">{{ __('Role') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="col-sm-10">
                                                     <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="role" autofocus>
                                                         <!-- <option value="city_manager">City Manager</option>
                                                         <option value="gym_manager">Gym Manager</option>
@@ -131,16 +129,13 @@
 
 
                                             <div class="row mb-0">
-                                                <div class="col-md-6 offset-md-4">
-                                                    <button type="submit" class="btn btn-primary">
+                                                <div class="col-sm-12">
+                                                    <button type="submit" class="btn btn-info text-white col-sm-2 offset-5 fs-5"  style="background-color: #17a2b8;">
                                                         {{ __('Submit') }}
                                                     </button>
                                                 </div>
                                             </div>
-                                        </form>
-
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
