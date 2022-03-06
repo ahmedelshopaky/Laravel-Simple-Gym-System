@@ -82,9 +82,8 @@
       processing: true,
       serverSide: true,
       ajax: "{{ route('gym-managers.index') }}",
-      columns: [{
-          data: 'user_id',
-        },
+      columns: [
+        {data: 'DT_RowIndex', name: 'DT_RowIndex'},
         {
           data: 'user.name',
         },
