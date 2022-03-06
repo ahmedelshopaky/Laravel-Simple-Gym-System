@@ -43,7 +43,7 @@
                                                 <label for="national_id" class="col-md-4 col-form-label text-md-end">{{ __('National ID') }}</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="national_id" type="national_id" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" required autocomplete="national_id">
+                                                    <input id="national_id" type="text" class="form-control @error('national_id') is-invalid @enderror" name="national_id" value="{{ old('national_id') }}" required autocomplete="national_id">
 
                                                     @error('national_id')
                                                     <span class="invalid-feedback" role="alert">

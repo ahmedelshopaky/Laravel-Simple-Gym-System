@@ -9,6 +9,8 @@
             @foreach ($cities as $city)
             <option value="{{$city->id}}">{{$city->name}}</option>
             @endforeach
+            <option value="other">Other</option>
+
         </select>
         @error('city')
         <span class="invalid-feedback" role="alert">
@@ -18,7 +20,7 @@
     </div>
 </div>
 <div class="row mb-3">
-    <label for="new_city" class="col-sm-2 col-form-label ">{{ __('New City') }}</label>
+    <label for="new_city" class="col-sm-2 col-form-label">{{ __('New City') }}</label>
 
     <div class="col-sm-10">
         <input id="new_city" type="text" class="form-control @error('new_city') is-invalid @enderror" name="new_city" value="{{ old('new_city') }}" autocomplete="new_city" autofocus placeholder="In case you want to create a new city">

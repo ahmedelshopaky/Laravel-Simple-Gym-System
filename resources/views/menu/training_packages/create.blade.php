@@ -10,7 +10,7 @@
 
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Create New Training Session</h3>
+                            <h3 class="card-title">Create New Training Package</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -22,7 +22,7 @@
                             <div class="card-body pt-0">
                                 <div class="row">
                                     <div class="col-7 container-fluid">
-                                        <form method="POST" action="{{ route('training-sessions.store') }}" enctype="multipart/form-data">
+                                        <form method="POST" action="{{ route('training-packages.store') }}" enctype="multipart/form-data">
                                             @csrf
 
                                             <div class="row mb-3">
@@ -42,12 +42,12 @@
 
 
                                             <div class="row mb-3">
-                                                <label for="starts_at" class="col-md-4 col-form-label text-md-end">{{ __('Starts At') }}</label>
+                                                <label for="sessions_number" class="col-md-4 col-form-label text-md-end">{{ __('Sessions Number') }}</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="starts_at" type="datetime-local" class="form-control @error('starts_at') is-invalid @enderror" name="starts_at" value="{{ old('starts_at') }}" required autocomplete="starts_at" autofocus>
+                                                    <input id="sessions_number" type="text" class="form-control @error('sessions_number') is-invalid @enderror" name="sessions_number" value="{{ old('sessions_number') }}" required autocomplete="sessions_number" autofocus>
 
-                                                    @error('starts_at')
+                                                    @error('sessions_number')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -55,43 +55,23 @@
                                                 </div>
                                             </div>
 
-
-                                            <div class="row mb-3">
-                                                <label for="finishes_at" class="col-md-4 col-form-label text-md-end">{{ __('Finishes At') }}</label>
-
-                                                <div class="col-md-6">
-                                                    <input id="finishes_at" type="datetime-local" class="form-control @error('finishes_at') is-invalid @enderror" name="finishes_at" value="{{ old('finishes_at') }}" required autocomplete="finishes_at" autofocus>
-
-                                                    @error('finishes_at')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
 
 
 
 
                                             <div class="row mb-3">
-                                                <label for="gym" class="col-md-4 col-form-label text-md-end">{{ __('Gym') }}</label>
+                                                <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price ($)') }}</label>
 
                                                 <div class="col-md-6">
-                                                    <select id="gym" class="form-control @error('gym') is-invalid @enderror" name="gym_id" value="{{ old('gym') }}" required autocomplete="gym" autofocus>
-                                                        @foreach ($gyms as $gym)
-                                                        <option value="{{$gym->id}}">{{$gym->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('gym')
+                                                    <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
+
+                                                    @error('price')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
                                                 </div>
                                             </div>
-
-
-
 
                                             <div class="row mb-0">
                                                 <div class="col-md-6 offset-md-4">

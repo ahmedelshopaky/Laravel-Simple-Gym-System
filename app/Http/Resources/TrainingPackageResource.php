@@ -19,6 +19,7 @@ class TrainingPackageResource extends JsonResource
             'name' => $this->name,
             'price' => $this->price,
             'sessions_number' => $this->sessions_number,
+            'price' => '$' . $this->price / 100,
         ];
     }
 }

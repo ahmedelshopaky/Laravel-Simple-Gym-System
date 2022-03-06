@@ -19,11 +19,10 @@
                 <table class="table table-bordered table-striped  table-hover data-table">
                   <thead>
                     <tr>
-                      <th>User ID</th>
-                      <th>Username</th>
+                      <th>Client</th>
                       <th>Training Session</th>
-                      <th>Date / Time</th>
-
+                      <th>Date / Time</th>  <!-- what is the date / time should i show ? attendance time ? or session starts time ? -->
+                      <th>Status</th>
                       <th>GYM</th> <!-- CITY MANAGER AND ADMIN ONLY -->
                       <th>CITY</th> <!-- ADMIN ONLY -->
                     </tr>
@@ -65,10 +64,6 @@
       serverSide: true,
       ajax: "{{ route('attendance.index') }}",
       columns: [{
-          data: 'gym_member_id',
-          name: 'gym_member_id'
-        },
-        {
           data: 'gym_member_name',
           name: 'gym_member_name'
         },
@@ -79,6 +74,10 @@
         {
           data: 'training_session_starts_at',
           name: 'training_session_starts_at'
+        },
+        {
+          data: 'status',
+          name: 'status'
         },
         {
           data: 'gym_name',                 // <!-- CITY MANAGER AND ADMIN ONLY -->
