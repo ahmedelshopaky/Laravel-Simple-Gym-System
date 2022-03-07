@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => '/gym-managers', 'middleware' => ['role:admin|cityManager']], function () {
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');
         Route::get('/create', [GymManagerController::class, 'create'])->name('gym-managers.create');
+        Route::get('/{id}', [GymManagerController::class, 'show'])->name('gym-managers.show');
         Route::get('/{id}/edit', [GymManagerController::class, 'edit'])->name('gym-managers.edit');
 
         Route::put('/{gymManager}/ban', [GymManagerController::class, 'ban'])->name('gym-managers.ban');
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::group(['prefix' => '/city-managers', 'middleware' => ['forbid-banned-user', 'role:admin']], function () {
         Route::get('/', [CityManagerController::class, 'index'])->name('city-managers.index');
         Route::get('/create', [CityManagerController::class, 'create'])->name('city-managers.create');
+        Route::get('/{id}', [CityManagerController::class, 'show'])->name('city-managers.show');
         Route::get('/{id}/edit', [CityManagerController::class, 'edit'])->name('city-managers.edit');
     });
 
