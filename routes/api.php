@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Notifications\MemberVerified;
-
+use Illuminate\Support\Facades\Notification;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +40,10 @@ Route::get('/email/verify', function () {
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-    // $user = Auth::user();
+    $user = Auth::user();
     // $user->notify(new MemberVerified);
+    Notification::send($user,new MemberVerified($user));
+    return "Your email verified successfully , please check your email again";
     
 })->middleware(['auth:sanctum'])->name('verification.verify');
 

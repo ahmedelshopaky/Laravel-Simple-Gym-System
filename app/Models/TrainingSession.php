@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class TrainingSession extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'name',
         'starts_at',
-        'finishes_at'
+        'finishes_at',
+        'gym_id'
     ];
 
     public function gym_members() // done

@@ -31,8 +31,8 @@ class DatabaseSeeder extends Seeder
         // Gym::factory(5)->create();
         Coach::factory(5)->create();
         GymManager::factory(5)->create();
-        // TrainingSession::factory(5)->create();
-        // TrainingPackage::factory(5)->create();
+        TrainingPackage::factory(10)->create();
+        TrainingSession::factory(10)->create();
 
         $this->call(PermissionsSeeder::class);
     }
