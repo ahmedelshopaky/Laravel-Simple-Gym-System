@@ -33,15 +33,15 @@ class GymManagerController extends Controller
         return view('menu.gym_manager.create', compact('gyms'));
     }
  
-    public function ban(GymManager $gymManager)
+    public function ban( $gymManager)
     {
-        $gymManager->ban();
+        GymManager::find($gymManager)->ban();
         return to_route('gym-managers.index');
     }
 
-    public function unban(GymManager $gymManager)
+    public function unban($gymManager)
     {
-        $gymManager->unban();
+        GymManager::find($gymManager)->unban();
         return to_route('gym-managers.index');
     }
 

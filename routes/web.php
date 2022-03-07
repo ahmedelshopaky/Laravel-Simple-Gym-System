@@ -138,7 +138,8 @@ Route::middleware('auth')->group(function () {
         Route::put('/{id}', [TrainingSessionController::class, 'update'])->name('training-sessions.update');
 
         Route::delete('/{id}', [TrainingSessionController::class, 'destroy'])->name('training-sessions.destroy');
-        // Ban actions
-        Route::get('/banned', [BannedController::class,'index'])->name('BannedController.ban');
     });
+            // Ban actions
+    Route::get('/banned', [BannedController::class,'index'])->name('BannedController.ban');
+
 });
