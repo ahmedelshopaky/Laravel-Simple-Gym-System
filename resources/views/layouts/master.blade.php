@@ -9,18 +9,23 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    {{-- <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    {{--
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style --> --}}
-    {{-- <link rel="stylesheet" href="../../dist/css/adminlte.min.css"> --}}
+    {{--
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css"> --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js">
+    </script>
 
 </head>
 
@@ -48,7 +53,8 @@
                     <div class="navbar-search-block">
                         <form class="form-inline">
                             <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                    aria-label="Search">
                                 <div class="input-group-append">
                                     <button class="btn btn-navbar" type="submit">
                                         <i class="fas fa-search"></i>
@@ -92,7 +98,8 @@
                 @endif
                 @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->email }}
                     </a>
 
@@ -115,14 +122,16 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
             <a href="{{ route('home') }}" class="brand-link text-decoration-none">
-                <img src="{{asset('/images/gym-logo.jpg')}}" class="brand-image-xl img-circle elevation-3 mx-3" style="opacity: .8">
+                <img src="{{asset('/images/gym-logo.jpg')}}" class="brand-image-xl img-circle elevation-3 mx-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-light">A-Team Gym</span>
             </a>
 
             <div class="sidebar mt-3 p-1">
                 <div class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                            aria-label="Search">
                         <div class="input-group-append">
                             <button class="btn btn-sidebar">
                                 <i class="fas fa-search fa-fw"></i>
@@ -132,8 +141,9 @@
                 </div>
 
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
+                        @role('admin')
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
                                 <i class="fa-solid fa-address-card nav-icon"></i>
@@ -159,7 +169,8 @@
 
                             </ul>
                         </li>
-
+                        @endrole
+                        @hasanyrole('admin|cityManager')
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
                                 <i class="fa-regular fa-address-card nav-icon"></i>
@@ -183,7 +194,7 @@
 
                             </ul>
                         </li>
-
+                        @endhasanyrole
 
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">

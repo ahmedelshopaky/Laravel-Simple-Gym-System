@@ -52,7 +52,7 @@ class UserController extends Controller
         ]);
 
         if ($request->role == 'city_manager') {
-            if ($request->city == 'other'){
+            if ($request->city == 'other') {
                 $city = City::create([
                     'name' => $request->new_city,
                 ]);
@@ -64,7 +64,8 @@ class UserController extends Controller
                 'user_id' => $user->id,
                 'city_id' => $cityID,
                 // 'role' => 'city_manager',
-            ])->assignRole('cityManager');
+            ]);
+            $user->assignRole('cityManager');
 
             return redirect()->route('city-managers.index');
         } elseif ($request->role == 'gym_manager') {
@@ -72,7 +73,8 @@ class UserController extends Controller
                 'user_id' => $user->id,
                 'gym_id' => $request->gym,
                 // 'role' => 'gym_manager',
-            ])->assignRole('gymManager');
+            ]);
+            $user->assignRole('gymManager');
 
             return redirect()->route('gym-managers.index');
         } elseif ($request->role == 'gym_member') {
