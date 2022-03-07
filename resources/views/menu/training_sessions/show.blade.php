@@ -63,7 +63,7 @@
                                     </tr>
                                     <tr>
                                         <td><b>City</b></td>
-                                        <td>{{$trainingSession->gym->city}}</td>
+                                        <td>{{$trainingSession->gym->city->name}}</td>
                                     </tr>
                                 </table>
                                 

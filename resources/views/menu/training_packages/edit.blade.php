@@ -1,4 +1,4 @@
-@extends('menu.training_packages.layout')
+@extends('menu.training_packages.create')
 @section('value_name')
 {{$package->name}}
 @endsection
