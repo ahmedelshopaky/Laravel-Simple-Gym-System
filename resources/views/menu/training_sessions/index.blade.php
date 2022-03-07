@@ -44,7 +44,7 @@
                                         <p class="text-center h3 "> Sure? </p>
                                     </div>
                                     <div class="modal-footer flex-center">
-                                        <a href="" class="btn btn-outline-danger delete_session">Yes</a>
+                                        <a  class="btn btn-outline-danger delete_session">Yes</a>
                                         <a type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">No</a>
                                     </div>
                                 </div>

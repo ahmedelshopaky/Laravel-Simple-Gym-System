@@ -32,12 +32,6 @@ class GymManagerController extends Controller
         $gyms = Gym::all();
         return view('menu.gym_manager.create', compact('gyms'));
     }
-
-    // public function ban(GymManager $gymManager)
-    // {
-    //     $gymManager->ban();
-    //     return redirect()->route('gymManagers.index');
-    // }
  
     public function ban(GymManager $gymManager)
     {

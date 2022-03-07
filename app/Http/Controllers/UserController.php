@@ -10,6 +10,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Models\City;
 use App\Models\CityManager;
 use App\Models\GymMember;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
@@ -40,6 +41,9 @@ class UserController extends Controller
             // unlink((public_path('uploads/users')).$name);
             
             // image is already exists (in edit)
+        } else {
+            $name = 'blank-profile-picture.png';
+            File::copy(public_path('/images/blank-profile-picture.png'), public_path('/images/users/'.$name));
         }
         
         // validate the request data

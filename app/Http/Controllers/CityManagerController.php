@@ -29,7 +29,7 @@ class CityManagerController extends Controller
     }
 
     public function create() {
-        $cities = City::all();
+        $cities = City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('user_id',null)->get();
         return view('menu.city_manager.create', compact('cities'));
     }
 

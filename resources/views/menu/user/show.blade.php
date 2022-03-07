@@ -7,14 +7,21 @@
 
     <div class="card card-widget widget-user card-view">
 
-        <div class="widget-user-header text-white" style="background-color: #17a2b8;">
-            <h3 class="widget-user-username"> <span class="fw-bold">Name :</span> {{$user->name}}</h3>
-        </div>
-        <div class="widget-user-image">
-            <img class="img-circle elevation-2" src="{{asset('/images/gym-logo.jpg')}}" alt="User Avatar">
-            <!-- <img src="{{asset('/images/users/'.$user->avatar_image)}}" class="img-thumbnail"/> -->
-        </div>
-        <div class="card-footer">
+<div class="widget-user-header text-white" style="background-color: #17a2b8;">
+<h3 class="widget-user-username"> {{$user->name}}</h3>
+</div>
+<div class="widget-user-image">
+<!-- <img class="img-circle elevation-2" src="{{asset('/images/gym-logo.jpg')}}" alt="User Avatar"> -->
+<img src="{{asset('/images/users/'.$user->avatar_image)}}" class="img-thumbnail"/>
+</div>
+<div class="card-footer">
+    
+<div class="row">
+<div class="col-sm-4">
+<div class="description-block">
+<h5 class="description-header">ID</h5>
+<span class="description-text">{{$user->id}}</span>
+</div>
 
             <div class="row">
                 <div class="col-sm-4">
