@@ -75,7 +75,7 @@
                                     <div class="col-sm-10">
                                         <!--TODO
                                                         Retrive old image into input field -->
-                                        <input src="{{asset('/images/users/'.$user->avatar_image)}}" id="avatar_image" type="file" class="form-control @error('avatar_image') is-invalid @enderror" name="avatar_image" required autofocus />
+                                        <input id="avatar_image" type="file" class="form-control @error('avatar_image') is-invalid @enderror" name="avatar_image" autofocus/>
                                         @error('avatar_image')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

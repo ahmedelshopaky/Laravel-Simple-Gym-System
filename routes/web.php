@@ -42,8 +42,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/create', [GymManagerController::class, 'create'])->name('gym-managers.create');
         Route::get('/{id}/edit', [GymManagerController::class, 'edit'])->name('gym-managers.edit');
 
-        Route::put('/{id}/ban', [GymManagerController::class, 'ban'])->name('gym-managers.ban');
-        Route::put('/{id}/unban', [GymManagerController::class, 'unban'])->name('gym-managers.unban');
+        Route::put('/{gymManager}/ban', [GymManagerController::class, 'ban'])->name('gym-managers.ban');
+        Route::put('/{gymManager}/unban', [GymManagerController::class, 'unban'])->name('gym-managers.unban');
     });
 
     Route::group(['prefix' => '/city-managers', 'middleware' => ['forbid-banned-user', 'role:admin']], function () {
@@ -114,12 +114,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 
-    Route::group(['prefix' => '/buy-package', 'middleware' => ['forbid-banned-user', 'role:admin']], function () {
+    Route::group(['prefix' => '/buy-package', 'middleware' => ['forbid-banned-user', 'role:admin|cityManager|gymManager']], function () {
         Route::get('/create', [BuyPackageController::class, 'create'])->name('buy-package.create');
         Route::post('/', [BuyPackageController::class, 'store'])->name('buy-package.store');
     });
 
-    Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
+    // Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
 
 
     Route::prefix('/revenue')->group(function () {
@@ -139,6 +139,6 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('/{id}', [TrainingSessionController::class, 'destroy'])->name('training-sessions.destroy');
         // Ban actions
-        // Route::get('/banned',[BannedController::class,'index'])->name('BannedController.ban');
+        Route::get('/banned', [BannedController::class,'index'])->name('BannedController.ban');
     });
 });

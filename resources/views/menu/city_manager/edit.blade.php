@@ -9,6 +9,7 @@
             @foreach ($cities as $city)
             <option value="{{$city->id}}">{{$city->name}}</option>
             @endforeach
+            <option value="{{$user->city_manager->city->id}}" selected>{{$user->city_manager->city->name}}</option>
             <option value="other">Other</option>
 
         </select>
