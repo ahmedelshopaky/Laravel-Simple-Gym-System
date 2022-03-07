@@ -4,8 +4,8 @@
 <div class="col-sm-10 offset-1 mt-5">
     <div class="card card-info card-view">
         <div class="card-header text-white  ">
-            <h1 class="text-center py-4 fw-bold"> <i class="fa-solid fa-dumbbell nav-icon"></i> Gym Data <i class="fa-solid fa-dumbbell nav-icon"></i>  </h1>
-           
+            <h1 class="text-center py-4 fw-bold"> <i class="fa-solid fa-dumbbell nav-icon"></i> Gym Data <i class="fa-solid fa-dumbbell nav-icon"></i> </h1>
+
         </div>
         <div class="row">
 
@@ -46,13 +46,6 @@
                     <div class="row">
                         <div class="col-sm-4 border-right">
                             <div class="description-block">
-                                <h5 class="description-header"> Manager Email</h5>
-                                <span class="description-text">{{$user ? $user->email : "None"}}</span>
-                            </div>
-
-                        </div>
-                        <div class="col-sm-4 border-right">
-                            <div class="description-block">
                                 <h5 class="description-header">Manager Name</h5>
                                 <span class="description-text"> {{$user ? $user->name : "None"}}</span>
 
@@ -62,11 +55,20 @@
                         <div class="col-sm-4 ">
                             <div class="description-block">
                                 <h5 class="description-header"> Manager National ID</h5>
-                                <span class="description-text">  {{$user ? $user->national_id : "None"}}</span>
+                                <span class="description-text"> {{$user ? $user->national_id : "None"}}</span>
 
                             </div>
 
                         </div>
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header"> Manager Email</h5>
+                                <span class="description-text">{{$user ? $user->email : "None"}}</span>
+                            </div>
+
+                        </div>
+
+
 
                     </div>
 
