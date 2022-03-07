@@ -66,8 +66,12 @@
                     <th>Email</th>
                     <th>Package Name</th>
                     <th>Amount paid</th>
+                    @hasanyrole('admin|cityManager')
                     <th>GYM</th> <!-- CITY MANAGER AND ADMIN ONLY -->
+                    @endhasanyrole
+                    @role('admin')
                     <th>CITY</th> <!-- ADMIN ONLY -->
+                    @endrole
                   </tr>
                 </thead>
                 <tbody>
@@ -105,7 +109,7 @@
 <!-- Page specific script -->
 
 <script src="../../plugins/jquery/jquery.min.js"></script>
-
+@role('admin')
 <script>
   $(function() {
     $.ajaxSetup({
@@ -143,8 +147,77 @@
         },
       ]
     });
-
   });
 </script>
-
+@endrole
+@role('cityManager')
+<script>
+  $(function() {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    var dataTable = $('.data-table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('revenue.index') }}",
+      columns: [{
+          data: 'gym_member_name',
+          name: 'gym_member_name'
+        },
+        {
+          data: 'gym_member_email',
+          name: 'gym_member_email'
+        },
+        {
+          data: 'training_package_name',
+          name: 'training_package_name'
+        },
+        {
+          data: 'amount_paid',
+          name: 'amount_paid'
+        },
+        {
+          data: 'gym_name', // <!-- CITY MANAGER AND ADMIN ONLY -->
+          name: 'gym_name'
+        },
+      ]
+    });
+  });
+</script>
+@endrole
+@role('gymManager')
+<script>
+  $(function() {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    var dataTable = $('.data-table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('revenue.index') }}",
+      columns: [{
+          data: 'gym_member_name',
+          name: 'gym_member_name'
+        },
+        {
+          data: 'gym_member_email',
+          name: 'gym_member_email'
+        },
+        {
+          data: 'training_package_name',
+          name: 'training_package_name'
+        },
+        {
+          data: 'amount_paid',
+          name: 'amount_paid'
+        },
+      ]
+    });
+  });
+</script>
+@endrole
 @endsection

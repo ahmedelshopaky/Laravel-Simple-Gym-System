@@ -44,10 +44,10 @@ class LoginController extends Controller
         if ($user->hasRole('gymManager')) {
             // dd(User::isBanned());
             $gymManager = User::with('gym_manager')->where('id', $user->id)->get();
-            dd($gymManager);
-            if ($user->isBanned()) {
-                return to_route('BannedController.ban');
-            }
+            // dd($gymManager);
+            // if ($user->isBanned()) {
+            //     return to_route('BannedController.ban');
+            // }
         } elseif (!$user->hasAnyRole(['admin', 'cityManager', 'gymManager'])) {
             dd('اتكل على الله يابا');
         }

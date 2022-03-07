@@ -107,12 +107,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
 
-    Route::group(['prefix' => '/buy-package', 'middleware' => ['forbid-banned-user', 'role:admin']], function () {
+    Route::group(['prefix' => '/buy-package', 'middleware' => ['forbid-banned-user', 'role:admin|cityManager|gymManager']], function () {
         Route::get('/create', [BuyPackageController::class, 'create'])->name('buy-package.create');
         Route::post('/', [BuyPackageController::class, 'store'])->name('buy-package.store');
     });
 
-    Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
+    // Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
 
 
     Route::prefix('/revenue')->group(function () {
