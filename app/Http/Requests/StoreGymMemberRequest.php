@@ -28,7 +28,7 @@ class StoreGymMemberRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar_image' => ['required','mimes:png,jpg,jpeg','max:2048'],
+            'avatar_image' => ['mimes:png,jpg,jpeg','max:2048'],
             'email' => ['required','email',Rule::unique('users','email')->ignore($this->id, 'id')],
             'name' => ['required', 'min:3'],
             'password' => ['required',Password::min(8)],
