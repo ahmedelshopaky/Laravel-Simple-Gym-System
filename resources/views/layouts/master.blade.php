@@ -216,7 +216,7 @@
 
 
 
-
+                        @hasanyrole('admin|cityManager')
 
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
@@ -240,6 +240,7 @@
                                 </li>
                             </ul>
                         </li>
+                        @endhasanyrole
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link active">
                                 <i class="fa-solid fa-hand-back-fist nav-icon"></i>

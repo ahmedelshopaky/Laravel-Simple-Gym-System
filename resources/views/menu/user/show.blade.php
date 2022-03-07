@@ -33,14 +33,6 @@
                     </div>
 
                 </div>
-
-                <div class="col-sm-4">
-                    <div class="description-block">
-                        <h5 class="description-header">City</h5>
-                        <span class="description-text">{{$user->city_manager ? $user->city_manager->city->name : '* Not Found *'}}</span>
-                    </div>
-
-                </div>
                 
                
                 <div class="col-sm-4 border-right">
@@ -68,7 +60,7 @@
                     </div>
 
                 </div>
-                <div class="col-sm-4 offset-4 ">
+                <div class="col-sm-4">
                     <div class="description-block">
                         <h5 class="description-header">Role</h5>
                         <span class="description-text">{{$user->role}}</span>
@@ -77,7 +69,7 @@
                 </div>
                 
                 
-
+                @yield('manager')
 
 
             </div>

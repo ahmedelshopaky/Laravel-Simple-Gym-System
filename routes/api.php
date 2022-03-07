@@ -23,8 +23,10 @@ use Illuminate\Support\Facades\Notification;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['auth:sanctum','verified'])->get('/user', function (Request $request) {
+    return response([
+        'your data' => $request->user(),
+    ]);
 });
 
 Route::post('register', [AuthController::class,'register']);
@@ -35,31 +37,34 @@ Route::post('login', [AuthController::class,'login']);
 
 
 Route::get('/email/verify', function () {
+
     return  view('auth.verify-email');
+
 })->middleware('auth')->name('verification.notice');
 
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+
     $request->fulfill();
     $user = Auth::user();
     // $user->notify(new MemberVerified);
     Notification::send($user,new MemberVerified($user));
-    return "Your email verified successfully , please check your email again";
+    return response([ 'success' => "Your email verified successfully , please check your email again"]);
     
 })->middleware(['auth:sanctum'])->name('verification.verify');
 
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/', [UserController::class,'index'])->middleware('verified');
+Route::middleware(['auth:sanctum','verified'])->group(function () {
+    Route::get('/', [UserController::class,'index']);
 
     //you should use method post from postman but include ('_method => PUT') in the body fo 
     //the request this is due to errors of empty body of put method i hope they solve it soon
-    Route::put('/profile/update', [UserController::class,'update'])->middleware('verified');
+    Route::put('/profile/update', [UserController::class,'update']);
 
-    Route::get('/training-sessions',[UserController::class,'view'])->middleware('verified');
+    Route::get('/training-sessions',[UserController::class,'view']);
 
-    Route::post('/training-sessions/{id}/attend',[UserController::class,'attend'])->middleware('verified');
+    Route::post('/training-sessions/{id}/attend',[UserController::class,'attend']);
    
-    Route::get('/training-sessions/attendance',[UserController::class,'viewHistory'])->middleware('verified');
+    Route::get('/training-sessions/attendance',[UserController::class,'viewHistory']);
 });
     
     
