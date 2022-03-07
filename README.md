@@ -7,10 +7,10 @@ A Simple Gym System as the Laravel project for Open Source Application Developme
 - [ERD]()
 - [Running the Project]()
 - [Built with]()
-- [Authors ](#features)
+- [Authors ]()
 
 
-## ERD Diagram & Mapping 
+## ERD & Mapping 
 
 
 ![gym edited](https://user-images.githubusercontent.com/97949768/156903803-d0e015de-a274-4a9a-a25c-de8434383991.png)
@@ -126,10 +126,13 @@ php artisan db:seed
 ```
 ### Add Stripe key
 In .env file add 
-- 
-* **STRIPE_KEY=pk_test_51KZbWdGerl36jGBlSUe3rMyBApbtz9gPiGLrY3dSKyCRZKuqADbV9JG3gHNrtxxh94WD703gxBv3NZ7WzVTMqZUV00bCzwzL6F**
+``` 
+STRIPE_KEY=pk_test_51KZbWdGerl36jGBlSUe3rMyBApbtz9gPiGLrY3dSKyCRZKuqADbV9JG3gHNrtxxh94WD703gxBv3NZ7WzVTMqZUV00bCzwzL6F
+```
 
-* **STRIPE_SECRET=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa**
+```
+STRIPE_SECRET=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa 
+```
 
 Then run this command
 
