@@ -35,12 +35,6 @@ class UserController extends Controller
             $img = request()->file('avatar_image');
             $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();
             $img->move(public_path('images/users'), $name);
-            
-            // TODO
-            // if $name == null
-            // unlink((public_path('uploads/users')).$name);
-            
-            // image is already exists (in edit)
         } else {
             $name = 'blank-profile-picture.png';
             File::copy(public_path('/images/blank-profile-picture.png'), public_path('/images/users/'.$name));
@@ -99,11 +93,16 @@ class UserController extends Controller
 
     public function update($id, StoreUserRequest $request)
     {
-        // TODO
-        // avatar old value ????
-        $validated = $request->validated();
-
         $user = User::find($id);
+        if (request()->hasFile('avatar_image')) {
+            $img = request()->file('avatar_image');
+            $name = $user->avatar_image;
+            $img->move(public_path('images/users'), $name);
+        } else {
+            // do nothing
+        }
+
+        $validated = $request->validated();
         if ($user) {
             $user->update($validated);
         }

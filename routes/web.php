@@ -103,6 +103,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [CoachController::class, 'index'])->name('coaches.index');
         Route::get('/create', [CoachController::class, 'create'])->name('coaches.create');
         Route::post('/', [CoachController::class, 'store'])->name('coaches.store');
+
+        Route::get('/{id}',[CoachController::class,'show'])->name('coaches.show');
+
+        Route::get('/{id}/edit',[CoachController::class,'edit'])->name('coaches.edit');
+        Route::put('/{id}',[CoachController::class,'update'])->name('coaches.update');
+
+        Route::delete('/{id}',[CoachController::class,'destroy'])->name('coaches.destroy');
     });
 
     Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');

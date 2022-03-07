@@ -12,8 +12,8 @@
             <h2 class="fw-bold mt-2"> {{$user->name}}</h2>
         </div>
         <div class="widget-user-image">
-            <img class="img-circle elevation-2" src="{{asset('/images/gym-logo.jpg')}}" alt="User Avatar">
-            <!-- <img src="{{asset('/images/users/'.$user->avatar_image)}}" class="img-thumbnail"/> -->
+            <!-- <img class="img-circle elevation-2" src="{{asset('/images/gym-logo.jpg')}}" alt="User Avatar"> -->
+            <img src="{{asset('/images/users/'.$user->avatar_image)}}" class="img-thumbnail"/>
         </div>
         <div class="card-footer">
 

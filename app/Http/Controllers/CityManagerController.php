@@ -36,7 +36,7 @@ class CityManagerController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $cities = City::all();
+        $cities = City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('user_id',null)->get();
         return view('menu.city_manager.edit', compact('user', 'cities'));
     }
 }
