@@ -9,7 +9,7 @@
 <div class="card card-widget widget-user card-view">
 
 <div class="widget-user-header text-white" style="background-color: #17a2b8;">
-<h3 class="widget-user-username"> <span class="fw-bold">Name :</span> {{$user->name}}</h3>
+<h3 class="widget-user-username"> {{$user->name}}</h3>
 </div>
 <div class="widget-user-image">
 <img class="img-circle elevation-2" src="{{asset('/images/gym-logo.jpg')}}" alt="User Avatar">
