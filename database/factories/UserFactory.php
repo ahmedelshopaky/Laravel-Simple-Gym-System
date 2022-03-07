@@ -29,6 +29,8 @@ class UserFactory extends Factory
             'national_id'=>$faker->nationalIdNumber(),
             'email_verified_at'=>$faker->date(),
             'role' => $faker->randomElement(['city_manager', 'gym_manager', 'gym_member']),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 

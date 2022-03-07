@@ -97,7 +97,7 @@
                                             <div class="row mb-3 form-group">
                                                 <label for="avatar_image" class="col-sm-2 col-form-label">{{ __('Avatar Image') }}</label>
                                                 <div class="col-sm-10">
-                                                    <input id="avatar_image" type="file" class="form-control @error('avatar_image') is-invalid @enderror" name="avatar_image" required autofocus />
+                                                    <input id="avatar_image" type="file" class="form-control @error('avatar_image') is-invalid @enderror" name="avatar_image" autofocus />
                                                     @error('avatar_image')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>

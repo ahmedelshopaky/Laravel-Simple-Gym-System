@@ -7,7 +7,11 @@
     <div class="col-sm-10">
         <select id="gym" class="form-control @error('gym') is-invalid @enderror" name="gym" value="{{ old('gym') }}" required autocomplete="gym" autofocus>
             @foreach ($gyms as $gym)
-            <option value="{{$gym->id}}">{{$gym->name}}</option>
+                @if ($gym->id == $user->gym_manager->gym_id)
+                <option value="{{$gym->id}}" selected>{{$gym->name}}</option>
+                @else
+                <option value="{{$gym->id}}">{{$gym->name}}</option>
+                @endif
             @endforeach
         </select>
         @error('gym')
