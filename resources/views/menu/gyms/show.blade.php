@@ -1,47 +1,83 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="wrapper w-75 mx-auto">
-    <div class="card">
-        <div class="card-header text-white bg-dark"><h2 class="text-center">Gym</h2></div>
-        <div class="card-body">
-            <div class="d-flex">
-                <p class="w-50 text-center fw-bold"> Gym Name</p>
-                <p class="w-50"> {{$gym->name}}</p>
+<div class="col-sm-10 offset-1 mt-5">
+    <div class="card card-info card-view">
+        <div class="card-header text-white  ">
+            <h1 class="text-center py-4 fw-bold"> <i class="fa-solid fa-dumbbell nav-icon"></i> Gym Data <i class="fa-solid fa-dumbbell nav-icon"></i> </h1>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-4">
+                <img src="{{asset('/images/gym-logo.jpg')}}" class="img-fluid rounded-start w-75">
             </div>
-            <hr>
-            <div class="d-flex">
-                <p class="w-50 text-center fw-bold"> Gym City</p>
-                <p class="w-50"> {{$gym->city->name}}</p>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="fw-bold " style="color: #17a2b8;">Gym Info </h3>
+
+                    <div class="row">
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">ID</h5>
+                                <span class="description-text">{{$gym->id}}</span>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">Gym Name</h5>
+                                <span class="description-text">{{$gym->name}}</span>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4  ">
+                            <div class="description-block">
+                                <h5 class="description-header"> City Name</h5>
+                                <span class="description-text"> {{$gym->city->name}}</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <h3 class="fw-bold mt-3" style="color: #17a2b8;">Gym Manager </h3>
+
+                    <div class="row">
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">Manager Name</h5>
+                                <span class="description-text"> {{$user ? $user->name : "None"}}</span>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4 ">
+                            <div class="description-block">
+                                <h5 class="description-header"> Manager National ID</h5>
+                                <span class="description-text"> {{$user ? $user->national_id : "None"}}</span>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header"> Manager Email</h5>
+                                <span class="description-text">{{$user ? $user->email : "None"}}</span>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+
+                </div>
             </div>
-            
-            <div>
-                <h2 class="text-center bg-secondary text-white p-3">Gym Manager info</h2>
-            </div>
-            
-            <div class="d-flex">
-                <p class="w-50 text-center fw-bold"> Manager Email</p>
-               
-                <p class="w-50"> {{$user ? $user->email : "None"}}</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-                <p class="w-50 text-center fw-bold"> Manager Name</p>
-                <p class="w-50"> {{$user ? $user->name : "None"}}</p>
-            </div>
-            <hr>
-            <div class="d-flex">
-                <p class="w-50 text-center fw-bold"> Manager National ID</p>
-                <p class="w-50"> {{$user ? $user->national_id : "None"}}</p>
-            </div>
-            <div class="text-center">
-                <a href="{{route('gyms.index')}}" class="btn btn-outline-danger px-4 ">Back</a>
-            </div>
-            
         </div>
     </div>
 </div>
-<!-- ./wrapper -->
-
+</div>
 
 @endsection
