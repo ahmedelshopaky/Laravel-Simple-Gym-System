@@ -9,9 +9,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Training Sessions</h3>
+                        <div class="card ">
+                            <div class="card-header py-4">
+                                <h3 class="card-title text-white fs-3">Training Sessions</h3>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
