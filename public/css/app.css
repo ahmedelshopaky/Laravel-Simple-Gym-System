@@ -73498,3 +73498,7 @@ readers do not read off random characters that represent icons */
 .btn-info:hover{
   background: #3d919e;
 }
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active{
+  background-color: #17a2b8;
+}
