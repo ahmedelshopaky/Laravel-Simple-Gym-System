@@ -39,17 +39,17 @@ class LoginController extends Controller
      */
 
     //check if gymManager is banned or not on login
-    public function authenticated(Request $request)
+    public function authenticated(Request $request,$user)
     {
-        // if ($user->hasRole('gymManager')) {
+        if ($user->hasRole('gymManager')) {
             $gymManager=GymManager::where('user_id',Auth::id())->onlyBanned()->first();
             if ($gymManager->isBanned()) 
             {
                 return redirect()->route('BannedController.ban');
             }
-        // } elseif (!$user->hasAnyRole(['admin', 'cityManager', 'gymManager'])) {
-        //     //dd('اتكل على الله يابا');
-        // }
+        } elseif (!$user->hasAnyRole(['admin', 'cityManager', 'gymManager'])) {
+            //dd('اتكل على الله يابا');
+        }
     }
 
     public function __construct()
