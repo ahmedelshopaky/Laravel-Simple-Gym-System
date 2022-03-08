@@ -28,6 +28,7 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
             'national_id' => $data['national_id'],
             'avatar_image' => $name,
+            'role' => 'gym_member',
         ]);
 
         $img->move(public_path('images/users'),$name);

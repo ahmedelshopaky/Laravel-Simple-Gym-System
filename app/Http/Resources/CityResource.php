@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\CityManager;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CityResource extends JsonResource
@@ -16,9 +17,10 @@ class CityResource extends JsonResource
     {
         // return parent::toArray($request);
         return [
+            'city_id' => $this->id,
             'city_name' => $this->name,
-            'gym_name' => $this->gyms->first() ? $this->gyms->first()->name : 'Not Found',
-            'city_manager_name' => $this->city_manager ? $this->city_manager->user->name : 'Not Found',
+            'gym_name' => $this->gyms->first() ? $this->gyms->first()->name : '** Not Found **',
+            'city_manager_name' => $this->city_manager ? $this->city_manager->user->name : '** Not Found **',
         ];
     }
 }

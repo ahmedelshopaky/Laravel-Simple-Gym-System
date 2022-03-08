@@ -8,6 +8,6 @@ class BannedController extends Controller
 {
     public function index()
     {
-        return view('banned/ban');
+        return view('menu.gym_manager.ban');
     }
 }

@@ -23,12 +23,14 @@ class UserFactory extends Factory
 
         return [
             'password' => bcrypt('secret'),
-            'avatar_image' => $this->faker->image('public/images/users', 400, 300, null, false),
+            'avatar_image' => $this->faker->image('public/images/users', 200, 200, null, false),
             'email' => $this->faker->unique()->safeEmail(),
             'name' => $this->faker->name($gender),
             'national_id'=>$faker->nationalIdNumber(),
             'email_verified_at'=>$faker->date(),
             'role' => $faker->randomElement(['city_manager', 'gym_manager', 'gym_member']),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 

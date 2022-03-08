@@ -20,11 +20,13 @@ class GymFactory extends Factory
     public function definition()
     {
         return [
-            'cover_image' => $this->faker->image('public/images/users', 800, 300, null, false),
+            'cover_image' => $this->faker->image('public/images/gyms', 200, 200, null, false),
             'name' => $this->faker->sentence(2),
             // 'city_manager_id'=>random_int(11,20),   // must be unique
             'city_manager_id'=>$this->faker->unique()->numberBetween(11, 20),
             'city_id'=>City::factory(),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }

@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<link rel="stylesheet" href="{{asset('/css/app.css')}}">
 
 <div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
@@ -9,24 +10,25 @@
     <section class="content">
       <div class="container">
         <div class="row">
-          <div class="col-12">
+          <div class="col-sm-12 ">
             
-            <div class="card">
-              <div class="card-header">
+            <div class="card  ">
+              <div class="card-header py-3">
                 <h3 class="card-title">City Managers</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-hover table-striped data-table" id="data-table">
+                <table class="table table-bordered table-hover table-striped data-table w-100" id="data-table">
                   <thead>
                   <tr>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Email</th>
-                    <th>Actions</th>
+                    <th >Actions</th>
                   </tr>
                   </thead>
                   <tbody>
+                    
                  
                   </tbody>
                 </table>
@@ -95,7 +97,7 @@ $(function () {
         serverSide: true,
         ajax: "{{ route('city-managers.index') }}",
         columns: [
-            {data: 'user_id'},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'user.name'},
             {data: 'user.email'},
             {data: 'action', orderable: false, searchable: false},

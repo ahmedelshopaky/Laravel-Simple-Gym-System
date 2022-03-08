@@ -1,81 +1,101 @@
 @extends('layouts.master')
 @section('content')
 
-<?php // $gymMember = App\Models\GymMember::where('user_id', $user->id)->get()->first(); 
-?>
+<div class="col-sm-10 offset-1 mt-5">
+    <div class="card card-info card-view">
+        <div class="card-header text-white  ">
+            <h1 class="text-center py-4 fw-bold"> <i class="fa-solid fa-person-running nav-icon"></i> Training Session <i class="fa-solid fa-person-running nav-icon"></i> </h1>
 
-
-<section class="content mt-4">
-
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Training Session</h3>
         </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
-                    
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="https://img.freepik.com/free-vector/flat-national-sports-day-illustration_23-2148991395.jpg?w=740" alt="user image">
-                                    <span class="username">Training Session Details</span>
-                                </div>
-                                <table class="table table-borderless text-lg">
-                                    <tr>
-                                        <td><b>Session ID</b></td>
-                                        <td>{{$trainingSession->id}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Name</b></td>
-                                        <td>{{$trainingSession->name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Starts At</b></td>
-                                        <td>{{$trainingSession->starts_at}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Finishes At</b></td>
-                                        <td>{{$trainingSession->finishes_at}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Trainees</b></td>
-                                        <td>{{$trainingSession->gym_members->count()}}</td>
-                                    </tr>
-                                </table>
-                                
-                            </div>
+        <div class="row">
 
-                            <div class="post">
-                                <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="https://img.freepik.com/free-vector/flat-national-sports-day-illustration_23-2148991395.jpg?w=740" alt="user image">
-                                    <span class="username">Gym Details</span>
-                                </div>
-                                <table class="table table-borderless text-lg">
-                                    <tr>
-                                        <td><b>Gym ID</b></td>
-                                        <td>{{$trainingSession->gym->id}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Name</b></td>
-                                        <td>{{$trainingSession->gym->name}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>City</b></td>
-                                        <td>{{$trainingSession->gym->city}}</td>
-                                    </tr>
-                                </table>
-                                
+            <div class="col-md-4">
+                <img src="{{asset('/images/gym-logo.jpg')}}" class="img-fluid rounded-start w-75">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="fw-bold " style="color: #17a2b8;">Training Session Details </h3>
+
+                    <div class="row">
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">ID</h5>
+                                <p class="description-text mt-2">{{$trainingSession->id}}</p>
                             </div>
 
                         </div>
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">TrainingSession Name</h5>
+                                <p class="description-text mt-2">{{$trainingSession->name}}</p>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header"> Trainees</h5>
+                                <p class="description-text mt-2"> {{$trainingSession->gym_members->count()}}</p>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4  mt-3 offset-2 ">
+                            <div class="description-block">
+                                <h5 class="description-header"> Starts At</h5>
+                                <p class="description-text mt-2"> {{$trainingSession->starts_at}}</p>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4  mt-3 ">
+                            <div class="description-block">
+                                <h5 class="description-header"> Finishes At</h5>
+                                <p class="description-text mt-2"> {{$trainingSession->starts_at}}</p>
+
+                            </div>
+
+                        </div>
+                       
                     </div>
+                    <hr>
+                    <h3 class="fw-bold mt-5" style="color: #17a2b8;">Gym Details </h3>
+
+                    <div class="row">
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">Gym Id</h5>
+                                <p class="description-text mt-2"> {{$trainingSession->gym->id}}</p>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4 ">
+                            <div class="description-block">
+                                <h5 class="description-header">Gym Name</h5>
+                                <p class="description-text mt-2"> {{$trainingSession->gym->name}}</p>
+
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header"> City</h5>
+                                <p class="description-text mt-2">{{$trainingSession->gym->city->name}}</p>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
-
     </div>
+</div>
+</div>
 
-</section>
 @endsection

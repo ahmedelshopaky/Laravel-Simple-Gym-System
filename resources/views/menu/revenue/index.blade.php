@@ -8,9 +8,15 @@
 
         <div class="card">
           <div class="card-header">
+            @role('admin')
             <h3 class="card-title">Total Revenue</h3> <!-- ADMIN ONLY -->
+            @endrole
+            @role('cityManager')
             <h3 class="card-title">Total Revenue For Your City</h3> <!-- CITY MANAGER ONLY -->
+            @endrole
+            @role('gymManager')
             <h3 class="card-title">Total Revenue For Your Gym</h3> <!-- GYM MANAGER ONLY -->
+            @endrole
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                 <i class="fas fa-minus"></i>
@@ -60,8 +66,12 @@
                     <th>Email</th>
                     <th>Package Name</th>
                     <th>Amount paid</th>
-                    <th>GYM</th>  <!-- CITY MANAGER AND ADMIN ONLY -->
+                    @hasanyrole('admin|cityManager')
+                    <th>GYM</th> <!-- CITY MANAGER AND ADMIN ONLY -->
+                    @endhasanyrole
+                    @role('admin')
                     <th>CITY</th> <!-- ADMIN ONLY -->
+                    @endrole
                   </tr>
                 </thead>
                 <tbody>
@@ -99,7 +109,7 @@
 <!-- Page specific script -->
 
 <script src="../../plugins/jquery/jquery.min.js"></script>
-
+@role('admin')
 <script>
   $(function() {
     $.ajaxSetup({
@@ -128,17 +138,86 @@
           name: 'amount_paid'
         },
         {
-          data: 'gym_name',         // <!-- CITY MANAGER AND ADMIN ONLY -->
+          data: 'gym_name', // <!-- CITY MANAGER AND ADMIN ONLY -->
           name: 'gym_name'
         },
         {
-          data: 'city',         // <!-- ADMIN ONLY -->
+          data: 'city', // <!-- ADMIN ONLY -->
           name: 'city'
         },
       ]
     });
-
   });
 </script>
-
+@endrole
+@role('cityManager')
+<script>
+  $(function() {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    var dataTable = $('.data-table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('revenue.index') }}",
+      columns: [{
+          data: 'gym_member_name',
+          name: 'gym_member_name'
+        },
+        {
+          data: 'gym_member_email',
+          name: 'gym_member_email'
+        },
+        {
+          data: 'training_package_name',
+          name: 'training_package_name'
+        },
+        {
+          data: 'amount_paid',
+          name: 'amount_paid'
+        },
+        {
+          data: 'gym_name', // <!-- CITY MANAGER AND ADMIN ONLY -->
+          name: 'gym_name'
+        },
+      ]
+    });
+  });
+</script>
+@endrole
+@role('gymManager')
+<script>
+  $(function() {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    var dataTable = $('.data-table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('revenue.index') }}",
+      columns: [{
+          data: 'gym_member_name',
+          name: 'gym_member_name'
+        },
+        {
+          data: 'gym_member_email',
+          name: 'gym_member_email'
+        },
+        {
+          data: 'training_package_name',
+          name: 'training_package_name'
+        },
+        {
+          data: 'amount_paid',
+          name: 'amount_paid'
+        },
+      ]
+    });
+  });
+</script>
+@endrole
 @endsection

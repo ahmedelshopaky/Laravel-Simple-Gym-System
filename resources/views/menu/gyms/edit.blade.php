@@ -36,7 +36,7 @@
             <div class=" row mb-3 form-group">
                 <label for="city" class="col-sm-2 col-form-label">City Name</label>
                 <div class="col-sm-10">
-                <input type="text" name="city" value="{{$modifyGym->city}}" class="form-control" placeholder="City Name">
+                <input type="text" name="city" value="{{$modifyGym->city->name}}" class="form-control" placeholder="City Name">
                 @error('city')
                     <p class="text-danger">{{$message}}</p>
                 @enderror

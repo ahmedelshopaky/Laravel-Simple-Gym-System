@@ -26,7 +26,7 @@ class RevenueResource extends JsonResource
             'gym_member_email' => $this->gym_members->first()->user->email,
 
             'gym_name' => $this->gym->name,
-            'city' => $this->gym->city
+            'city' => $this->gym->city->name
         ];
     }
 }

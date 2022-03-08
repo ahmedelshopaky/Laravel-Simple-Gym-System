@@ -17,7 +17,7 @@ class GymManagerController extends Controller
             $gymManager = GymManager::with('user')->get();
             return Datatables::of($gymManager)->addIndexColumn()
                 ->addColumn('action', function ($user) {
-                    $Btn  = '<a href="' . route('users.show', $user->user_id) . '" data-toggle="tooltip" class="btn btn-primary btn-sm mr-3 "   data-id="' . $user->user_id . '" data-original-title="View" > <i class="fas fa-folder mr-2"> </i>View</a>';
+                    $Btn  = '<a href="' . route('gym-managers.show', $user->user_id) . '" data-toggle="tooltip" class="btn btn-primary btn-sm mr-3 "   data-id="' . $user->user_id . '" data-original-title="View" > <i class="fas fa-folder mr-2"> </i>View</a>';
                     $Btn .= '<a href="' . route('gym-managers.edit', $user->user_id) . '" data-toggle="tooltip" class="btn btn-info btn-sm mr-3 text-white" data-id="' . $user->user_id . '" data-original-title="Edit"><i class="fas fa-pencil-alt mr-2"> </i>Edit</a>';
                     $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id="' . $user->user_id . '"  data-bs-toggle="modal" data-bs-target="#deleteAlert"><i class="fas fa-trash mr-2"> </i>Delete</a>';
                     return $Btn;
@@ -32,22 +32,16 @@ class GymManagerController extends Controller
         $gyms = Gym::all();
         return view('menu.gym_manager.create', compact('gyms'));
     }
-
-    // public function ban(GymManager $gymManager)
-    // {
-    //     $gymManager->ban();
-    //     return redirect()->route('gymManagers.index');
-    // }
  
-    public function ban(GymManager $gymManager)
+    public function ban( $gymManager)
     {
-        $gymManager->ban();
+        GymManager::find($gymManager)->ban();
         return to_route('gym-managers.index');
     }
 
-    public function unban(GymManager $gymManager)
+    public function unban($gymManager)
     {
-        $gymManager->unban();
+        GymManager::find($gymManager)->unban();
         return to_route('gym-managers.index');
     }
 
@@ -56,5 +50,11 @@ class GymManagerController extends Controller
         $user = User::find($id);
         $gyms = Gym::all();
         return view('menu.gym_manager.edit', compact('user', 'gyms'));
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        return view('menu.gym_manager.show', compact('user'));
     }
 }

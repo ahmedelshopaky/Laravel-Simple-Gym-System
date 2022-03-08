@@ -27,7 +27,7 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'avatar_image' => ['required'],
+            // 'avatar_image' => ['required'],
             'email' => ['required','email'],
             'name' => ['required', 'min:3'],
             'password' => ['confirmed', Password::min(8)],

@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<link rel="stylesheet" href="{{asset('/css/app.css')}}">
 
 <div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
@@ -16,7 +17,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered table-striped  dtr-inline table-hover data-table" id="">
+                <table class="table table-bordered table-striped  dtr-inline table-hover data-table w-100" id="">
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -64,17 +65,6 @@
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<footer class="main-footer">
-  <div class="float-right d-none d-sm-block">
-    <b>Version</b> 3.2.0
-  </div>
-</footer>
-
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-  <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
@@ -93,9 +83,8 @@
       processing: true,
       serverSide: true,
       ajax: "{{ route('gym-managers.index') }}",
-      columns: [{
-          data: 'user_id',
-        },
+      columns: [
+        {data: 'DT_RowIndex', name: 'DT_RowIndex'},
         {
           data: 'user.name',
         },

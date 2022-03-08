@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+<link rel="stylesheet" href="{{asset('/css/app.css')}}">
 
 <div class="wrapper mt-5">
   <!-- Content Wrapper. Contains page content -->
@@ -21,10 +22,11 @@
                   <table class="table table-bordered table-hover table-striped  data-table" id="data-table">
                     <thead>
                       <tr>
+                        <th>ID</th>
                         <th>City</th>
-                        <th>Gym</th>
+                        <!-- <th>Gym</th> -->
                         <th>City Manager</th>
-                        <th>Actions</th>
+                        <!-- <th>Actions</th> -->
                       </tr>
                     </thead>
                     <tbody>
@@ -89,22 +91,26 @@
       serverSide: true,
       ajax: "{{ route('cities.index') }}",
       columns: [{
+          data: 'city_id',
+          name: 'city_id'
+        },
+        {
           data: 'city_name',
           name: 'city_name'
         },
-        {
-          data: 'gym_name',
-          name: 'gym_name'
-        },
+        // {
+        //   data: 'gym_name',
+        //   name: 'gym_name'
+        // },
         {
           data: 'city_manager_name',
           name: 'city_manager_name'
         },
-        {
-          data: 'action',
-          orderable: false,
-          searchable: false
-        },
+        // {
+        //   data: 'action',
+        //   orderable: false,
+        //   searchable: false
+        // },
       ]
     });
 
