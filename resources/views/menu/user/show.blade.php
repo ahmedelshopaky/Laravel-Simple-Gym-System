@@ -8,7 +8,7 @@
 
     <div class="card card-widget widget-user card-view">
 
-        <div class="widget-user-header text-white" style="background-color: #17a2b8;">
+        <div class="widget-user-header text-white " >
             <h2 class="fw-bold mt-2"> {{$user->name}}</h2>
         </div>
         <div class="widget-user-image">

@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini ">
     <div class="wrapper">
 
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -163,7 +163,7 @@
                         @endrole
                         @hasanyrole('admin|cityManager')
                         <li class="nav-item menu-close">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link ">
                                 <i class="fa-regular fa-address-card nav-icon"></i>
                                 <p>Gym Managers<i class="right fas fa-angle-left"></i></p>
                             </a>
@@ -188,7 +188,7 @@
                         @endhasanyrole
 
                         <li class="nav-item menu-close">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link ">
                                 <i class="fa-solid fa-user-group nav-icon"></i>
                                 <p>Gym Members<i class="right fas fa-angle-left"></i></p>
                             </a>
@@ -219,7 +219,7 @@
                         @hasanyrole('admin|cityManager')
 
                         <li class="nav-item menu-close">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link ">
                                 <i class="fa-solid fa-dumbbell nav-icon"></i>
                                 <p>Gyms<i class="right fas fa-angle-left"></i></p>
                             </a>
@@ -242,7 +242,7 @@
                         </li>
                         @endhasanyrole
                         <li class="nav-item menu-close">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link ">
                                 <i class="fa-solid fa-hand-back-fist nav-icon"></i>
                                 <p>Coaches<i class="right fas fa-angle-left"></i></p>
                             </a>
@@ -265,7 +265,7 @@
 
 
                         <li class="nav-item menu-close">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link ">
                                 <i class=" fa-solid fa-wallet nav-icon"></i>
                                 <p>Training Packages<i class="right fas fa-angle-left"></i></p>
                             </a>
