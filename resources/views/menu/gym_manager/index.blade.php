@@ -114,6 +114,35 @@
           });
         });
     });
+    let gymManagerId;
+    $('body').on('click','.ban',function () {
+       gymManagerId = $(this).data("id");
+      $.ajax({
+            url: "/gym-managers/ban/" + gymManagerId,
+            type: "PUT",
+            async:false,
+            data: {_token: '{!! csrf_token() !!}',}, 
+            success:(response) =>
+            {
+              table.ajax.reload();
+            }  
+          });
+      
+    });
+    $('body').on('click','.unban',function () {
+       gymManagerId = $(this).data("id");
+      $.ajax({
+            url: "/gym-managers/unban/" + gymManagerId,
+            type: "PUT",
+            async:false,
+            data: {_token: '{!! csrf_token() !!}',}, 
+            success:(response) =>
+            {
+              table.ajax.reload();
+            }  
+          });
+      
+    });
   });
 </script>
 

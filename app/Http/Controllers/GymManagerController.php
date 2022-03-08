@@ -14,20 +14,20 @@ class GymManagerController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $gymManager = GymManager::with('user')->get();
+            $gymManager = GymManager::with('user')->withBanned()->get();
             return Datatables::of($gymManager)->addIndexColumn()
                 ->addColumn('action', function ($user) {
                     $Btn  = '<a href="' . route('gym-managers.show', $user->user_id) . '" data-toggle="tooltip" class="btn btn-primary btn-sm mr-3 "   data-id="' . $user->user_id . '" data-original-title="View" > <i class="fas fa-folder mr-2"> </i>View</a>';
                     $Btn .= '<a href="' . route('gym-managers.edit', $user->user_id) . '" data-toggle="tooltip" class="btn btn-info btn-sm mr-3 text-white" data-id="' . $user->user_id . '" data-original-title="Edit"><i class="fas fa-pencil-alt mr-2"> </i>Edit</a>';
                     $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id="' . $user->user_id . '"  data-bs-toggle="modal" data-bs-target="#deleteAlert"><i class="fas fa-trash mr-2"> </i>Delete</a>';
-                    // if($user->banned_at==null)
-                    // {
-                    //     $Btn .= '<a href="' . route('gym-managers.ban', $user->user_id) . '" data-toggle="tooltip" class="btn btn-warning btn-sm mr-3 text-white" data-id="' . $user->user_id . '" data-original-title="ban">Ban</a>';
-                    // }
-                    // else
-                    // {
-                    //     $Btn .= '<a href="' . route('gym-managers.unban', $user->user_id) . '" data-toggle="tooltip" class="btn btn-warning btn-sm mr-3 text-white" data-id="' . $user->user_id . '" data-original-title="unban">UnBan</a>';
-                    // }
+                    if($user->banned_at==null)
+                    {
+                        $Btn .= '<a href="javascript:void(0)" data-toggle="tooltip" class="btn btn-warning btn-sm mr-3 text-white ban" data-id="' . $user->user_id . '" data-original-title="ban">Ban</a>';
+                    }
+                    else
+                    {
+                        $Btn .= '<a href="javascript:void(0)" data-toggle="tooltip" class="btn btn-success btn-sm mr-3 text-white unban" data-id="' . $user->user_id . '" data-original-title="unban">UnBan</a>';
+                    }
                     return $Btn;
                 })
                 ->rawColumns(['action'])
@@ -41,16 +41,16 @@ class GymManagerController extends Controller
         return view('menu.gym_manager.create', compact('gyms'));
     }
  
-    public function ban( $gymManager)
+    public function ban($id)
     {
-        GymManager::find($gymManager)->ban();
-        return to_route('menu.gym-managers.index');
+        GymManager::where('user_id',$id)->first()->ban();
+        return response()->json(['success','you banned this manager Successfully']);
     }
 
-    public function unban($gymManager)
+    public function unban($id)
     {
-        GymManager::find($gymManager)->unban();
-        return to_route('menu.gym-managers.index');
+        GymManager::where('user_id',$id)->onlyBanned()->first()->unban();
+        return response()->json(['success'=>'you unbanned this manager Successfully']);
     }
 
     public function edit($id)
@@ -66,3 +66,5 @@ class GymManagerController extends Controller
         return view('menu.gym_manager.show', compact('user'));
     }
 }
+
+//$users = User::onlyBanned()->get();
