@@ -6,7 +6,9 @@
 @endsection
 
 @section('value_gym_manager')
+@if ($gymManager != null)
 <option value="{{$gymManager->id}}" selected>{{$gymManager->name}}</option>
+@endif
 @endsection
 
 @section('value_city')
