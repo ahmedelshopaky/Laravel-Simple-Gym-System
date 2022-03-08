@@ -1,4 +1,4 @@
-@extends('menu.gyms.create')
+@extends('menu.gyms.layout')
 
 
 @section('value_name')
@@ -11,4 +11,12 @@
 
 @section('value_city')
 <option value="{{$gym->city->id}}" selected>{{$gym->city->name}}</option>
+@endsection
+
+@section('route')
+{{ route('gyms.update', $gym->id) }}
+@endsection
+
+@section('method')
+@method('PUT')
 @endsection

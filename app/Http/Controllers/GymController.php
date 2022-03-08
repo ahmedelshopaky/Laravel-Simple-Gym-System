@@ -97,20 +97,26 @@ class GymController extends Controller
 
     public function update(UpdateGymRequest $request, $id)
     {
-        // if ($request->city == 'other') {
-        //     $city = City::create([
-        //         'name' => $request->new_city,
-        //     ]);
-        //     $cityID = $city->id;
-        // } else {
-        //     $cityID = $request->city;
-        // }
-        // CityManager::create([
-        //     'user_id' => $user->id,
-        //     'city_id' => $cityID,
-        //     // 'role' => 'city_manager',
-        // ]);
-        Gym::find($id)->update(request()->all());
+        $gym = Gym::find($id);
+        if (request()->hasFile('avatar_image')) {
+            $img = request()->file('avatar_image');
+            $name = $gym->avatar_image;
+            $img->move(public_path('/images/gyms/'), $name);
+            Gym::find($id)->update([
+                'cover_image' => $name,
+            ]);
+        } else {
+            //
+        }
+
+        Gym::find($id)->update([
+            'name' => request()->name,
+            'city_manager_id' => City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('city_id', request()->city)->get()->first()->user_id,
+            'city_id' => request()->city_id,
+        ]);
+        GymManager::where('user_id', request()->gym_manager)->update([
+            'gym_id' => $gym->id,
+        ]);
         return view('menu.gyms.index');
     }
 

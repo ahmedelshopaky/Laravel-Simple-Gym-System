@@ -27,7 +27,7 @@ class StoreGymRequest extends FormRequest
         return [
             'name'=>['required','min:4','string', Rule::unique('gyms','name')->ignore($this->id, 'id')],
             'city_id'=>['required'],
-            'cover_image'=>['required'],
+            // 'cover_image'=>['required'],
             'gym_manager'=>['required'],
         ];
     }
