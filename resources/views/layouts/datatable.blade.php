@@ -12,8 +12,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">@yield('title')</h3>
+                            <div class="card-header py-4">
+                                <h3 class="card-title text-white fs-3">@yield('title')</h3>
+                                <div class="card-tools">
+              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                <i class="fas fa-minus"></i>
+              </button>
+            </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
