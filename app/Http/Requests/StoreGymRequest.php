@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreGymRequest extends FormRequest
 {
@@ -24,8 +25,8 @@ class StoreGymRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>['required','min:4','string','unique:gyms'],
-            'city'=>['required', 'min:3','string'],
+            'name'=>['required','min:4','string', Rule::unique('gyms','name')->ignore($this->id, 'id')],
+            'city'=>['required'],
             'cover_image'=>['required'],
             'gym_manager'=>['required'],
         ];
