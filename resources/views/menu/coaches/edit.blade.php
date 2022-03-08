@@ -1,20 +1,79 @@
+
+
 @extends('layouts.master')
 @section('content')
-    <div class="card w-50 mx-auto text-white">
-        <div class="card-header bg-dark">
-            <h2 class="text-center">update Coach</h2>
+
+<div class="wrapper mt-4">
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-8 offset-2 mt-3">
+
+                    <div class="card card-info">
+                    <div class="card-header py-3">
+                            <h2 class="card-title fs-4">Update Coaches</h2>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <form method="POST" action="{{route('coaches.update',$coach->id)}}" enctype="multipart/form-data" class="form-horizontal">
+                            @method('PUT')
+                            @csrf
+                            <div class="card-body ">
+                                <div class="row mb-3 form-group">
+
+                                    <label for="name" class=" col-sm-2 col-form-label">Coach Name</label>
+
+                                    <div class="col-sm-10">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$coach->name}}"/>
+
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="row mb-3 form-group">
+
+                                    <label for="name" class=" col-sm-2 col-form-label">Gym Name</label>
+
+                                    <div class="col-sm-10">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$coach->gym->name}}"/>
+
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                              
+                                
+
+                                <div class="row mb-0">
+                                    <div class="col-sm-12 ">
+                                        <button type="submit" class="btn btn-info text-white col-sm-2 offset-5 fs-5" style="background-color: #17a2b8;">
+                                           Submit
+                                        </button>
+                                    </div>
+                                </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-body">
-            <form action="{{route('coaches.update',$coach->id)}}" method="post">
-                @csrf
-                @method('PUT')
-                <label for="name" class="form-label text-dark">Coach Name</label>
-                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$coach->name}}"/>
-                @error('name')
-                    <p class="text-danger ">{{$message}}</p>
-                @enderror
-                <input type="submit" class="btn btn-primary my-3" value="Update"/>
-            </form>
-        </div>
-    </div>
+</div>
+
+
+<!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+
 @endsection

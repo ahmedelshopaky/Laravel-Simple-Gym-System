@@ -6,9 +6,9 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-8 offset-2 mt-3">
 
-                    <div class="card">
+                    <div class="card card-info">
                         <div class="card-header">
                             <h3 class="card-title">{{ __('New Coach') }}</h3>
                             <div class="card-tools">
@@ -18,17 +18,16 @@
                             </div>
                         </div>
 
-                        <div class="card-body">
-                            <div class="card-body pt-0">
-                                <div class="row">
-                                    <div class="col-7 container-fluid">
+                        
                                         <form method="POST" action="{{ route('coaches.store') }}" enctype="multipart/form-data">
                                             @csrf
+                                            <div class="card-body">
+                                            <div class="card-body pt-0">
 
                                             <div class="row mb-3">
-                                                <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                                                <label for="name" class="col-sm-2 col-form-label">{{ __('Name') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="col-sm-8">
                                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                                     @error('name')
@@ -41,9 +40,9 @@
 
 
                                             <div class="row mb-3">
-                                                <label for="gym" class="col-md-4 col-form-label text-md-end">{{ __('Gym') }}</label>
+                                                <label for="gym" class="col-sm-2 col-form-label">{{ __('Gym') }}</label>
 
-                                                <div class="col-md-6">
+                                                <div class="col-sm-8">
                                                     <select id="gym" class="form-control @error('gym') is-invalid @enderror" name="gym" required autocomplete="gym" autofocus>
                                                         @foreach ($gyms as $gym)
                                                         <option value="{{$gym->id}}">{{$gym->gym->name}}</option>
@@ -61,8 +60,8 @@
 
 
                                             <div class="row mb-0">
-                                                <div class="col-md-6 offset-md-4">
-                                                    <button type="submit" class="btn btn-primary">
+                                                <div class="col-12">
+                                                    <button type="submit" class="btn btn-info text-white col-sm-2 offset-5 fs-5">
                                                         {{ __('Submit') }}
                                                     </button>
                                                 </div>
@@ -73,9 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                </div>
+             
             </div>
         </div>
 
@@ -86,3 +83,5 @@
 
 </div>
 @endsection
+
+
