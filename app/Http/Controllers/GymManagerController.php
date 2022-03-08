@@ -20,6 +20,14 @@ class GymManagerController extends Controller
                     $Btn  = '<a href="' . route('gym-managers.show', $user->user_id) . '" data-toggle="tooltip" class="btn btn-primary btn-sm mr-3 "   data-id="' . $user->user_id . '" data-original-title="View" > <i class="fas fa-folder mr-2"> </i>View</a>';
                     $Btn .= '<a href="' . route('gym-managers.edit', $user->user_id) . '" data-toggle="tooltip" class="btn btn-info btn-sm mr-3 text-white" data-id="' . $user->user_id . '" data-original-title="Edit"><i class="fas fa-pencil-alt mr-2"> </i>Edit</a>';
                     $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id="' . $user->user_id . '"  data-bs-toggle="modal" data-bs-target="#deleteAlert"><i class="fas fa-trash mr-2"> </i>Delete</a>';
+                    // if($user->banned_at==null)
+                    // {
+                    //     $Btn .= '<a href="' . route('gym-managers.ban', $user->user_id) . '" data-toggle="tooltip" class="btn btn-warning btn-sm mr-3 text-white" data-id="' . $user->user_id . '" data-original-title="ban">Ban</a>';
+                    // }
+                    // else
+                    // {
+                    //     $Btn .= '<a href="' . route('gym-managers.unban', $user->user_id) . '" data-toggle="tooltip" class="btn btn-warning btn-sm mr-3 text-white" data-id="' . $user->user_id . '" data-original-title="unban">UnBan</a>';
+                    // }
                     return $Btn;
                 })
                 ->rawColumns(['action'])
@@ -36,13 +44,13 @@ class GymManagerController extends Controller
     public function ban( $gymManager)
     {
         GymManager::find($gymManager)->ban();
-        return to_route('gym-managers.index');
+        return to_route('menu.gym-managers.index');
     }
 
     public function unban($gymManager)
     {
         GymManager::find($gymManager)->unban();
-        return to_route('gym-managers.index');
+        return to_route('menu.gym-managers.index');
     }
 
     public function edit($id)
