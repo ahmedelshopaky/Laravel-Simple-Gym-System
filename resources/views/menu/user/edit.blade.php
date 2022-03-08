@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-<link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 <div class="wrapper mt-4">
     <!-- Main content -->
@@ -10,8 +9,8 @@
                 <div class="col-8 offset-2 mt-3">
 
                     <div class="card card-info">
-                        <div class="card-header py-3">
-                            <h2 class="card-title fs-4">@yield('header')</h2>
+                    <div class="card-header py-3">
+                            <h3 class="card-title">@yield('header')</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>

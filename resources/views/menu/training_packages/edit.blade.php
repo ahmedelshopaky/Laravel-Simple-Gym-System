@@ -22,3 +22,8 @@ Edit Training Package
 @section('method')
 @method('PUT')
 @endsection
+
+
+
+
+
