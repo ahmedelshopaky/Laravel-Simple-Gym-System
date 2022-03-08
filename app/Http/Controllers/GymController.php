@@ -11,6 +11,7 @@ use App\Models\Gym;
 use App\Models\GymManager;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
@@ -20,7 +21,12 @@ class GymController extends Controller
 {
     public function index(Request $request)
     {
-        $gyms = Gym::with('city')->get();
+        if (Auth::user()->role == 'city_manager')
+        {
+            $gyms = Gym::with('city')->where('city_manager_id', 14)->get();
+        } else {
+            $gyms = Gym::with('city')->get();
+        }
         if ($request->ajax()) {
             return Datatables::of($gyms)->addIndexColumn()
                 ->addColumn('action', function ($gym) {
