@@ -12,7 +12,7 @@ class Gym extends Model
     protected $fillable = [
         'cover_image',
         'name',
-        'city',
+        'city_id',
         'city_manager_id',
     ];
 
