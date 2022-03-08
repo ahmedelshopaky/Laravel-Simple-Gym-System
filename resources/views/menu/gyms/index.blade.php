@@ -14,7 +14,12 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
+                @role('admin')
                 <h3 class="card-title">Gyms</h3>
+                @endrole
+                @role('cityManager')
+                <h3 class="card-title">Gyms in your city</h3>
+                @endrole
               </div>
               <div class="card-body">
                 <table class="table table-bordered table-hover table-striped  data-table" id="data-table">
