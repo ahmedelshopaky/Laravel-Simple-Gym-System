@@ -29,7 +29,7 @@
                                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Gym Name') }}</label>
 
                                                 <div class="col-md-6">
-                                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                                    <input value="@yield('value_name')" id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                                     @error('name')
                                                     <span class="invalid-feedback" role="alert">
@@ -47,6 +47,7 @@
                                                         @foreach ($gymManagers as $gymManager)
                                                         <option value="{{$gymManager->user_id}}">{{$gymManager->user->name}}</option>
                                                         @endforeach
+                                                        @yield('value_gym_manager')
                                                     </select>
                                                     @error('gym_manager')
                                                     <span class="invalid-feedback" role="alert">
@@ -65,6 +66,7 @@
                                                         @foreach ($cities as $city)
                                                         <option value="{{$city->id}}">{{$city->name}}</option>
                                                         @endforeach
+                                                        @yield('value_city')
                                                         <option value="other">Other</option>
                                                     </select>
                                                     @error('city_id')
