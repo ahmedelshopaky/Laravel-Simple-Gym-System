@@ -288,7 +288,7 @@
 
 
                         <li class="nav-item menu-close">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link ">
                                 <i class="fa-solid fa-person-running nav-icon"></i>
                                 <p>Training Sessions<i class="right fas fa-angle-left"></i></p>
                             </a>
