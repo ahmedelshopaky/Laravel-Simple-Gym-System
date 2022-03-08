@@ -22,7 +22,7 @@
                     <tr>
                       <th>ID</th>
                       <th>Name</th>
-                      <th>City</th>
+                      <th>City</th>               <!-- ADMIN OLNLY -->
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -94,7 +94,6 @@
           data: 'city.name',
           name: 'city.name'
         },
-
         {
           data: 'action',
           name: 'action',

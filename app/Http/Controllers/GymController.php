@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreGymRequest;
 use App\Http\Requests\UpdateGymRequest;
 use App\Http\Resources\GymResource;
+use App\Models\City;
 use App\Models\CityManager;
 use App\Models\Gym;
 use App\Models\GymManager;
@@ -38,10 +39,10 @@ class GymController extends Controller
 
     public function create()
     {
-        // $cities = Gym::distinct()->get(['city']);
-        // $gymManagers = GymManager::with('user')->where('gym_id', null)->get();
-        // $cityManagers = CityManager::leftJoin('gyms', 'city_managers.user_id', '=', 'gyms.city_manager_id')->where('id', null)->get();
-        // return view('menu.gyms.create', compact('gymManagers', 'cityManagers', 'cities'));
+        // City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('city_id',null)->get();
+        $cities = City::all();
+        $gymManagers = GymManager::with('user')->where('gym_id', null)->get();
+        return view('menu.gyms.create', compact('gymManagers', 'cities'));
     }
 
 
@@ -51,26 +52,27 @@ class GymController extends Controller
         {
             $img = request()->file('cover_image');
             $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('images/gyms'),$name);
+            $img->move(public_path('/images/gyms/'),$name);
         }
         $validated = $request->validated();
+        
+        
+        
         // insert new record in gyms table
-        $gym = Gym::create($validated);
+        $gym = Gym::create([
+            'name' => request()->name,
+            'cover_image' => $name,
+            'city_id' => request()->city,
+        ]);
+        
+        $gym->update([
+            'city_manager_id' => City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->find($gym->id)->user_id
+        ]);
+        
         // insert the id of the gym in gym_managers table as a fk
         GymManager::where('user_id', request()->gym_manager)->update([
-            'gym_id' => $gym->id,
+            'gym_id' => request()->gym_manager,
         ]);
-        // case 1 >> if the city is already exist
-        // how can i know the city manager of this city????
-
-        // case 2 >> if the city does not exist -> update the city field to the new city
-        // then -> update the city_manager_id field to the new city manager
-        if (request()->city == 'other') {
-            $gym->update([
-                'city' => request()->other_city,
-                'city_manager_id' => request()->city_manager,
-            ]);
-        }
         return redirect()->route('gyms.index');
     }
 
@@ -80,19 +82,33 @@ class GymController extends Controller
     public function show($id)
     {
         $gym = Gym::find($id);
-        $user = Gym::with('city_managers')->where('id', $id)->first()->city_managers->user;
-        return view('menu.gyms.show', compact(['gym', 'user']));
+        $cityManager = Gym::with('city_managers')->where('id', $id)->first()->city_managers->user;
+        $gymManager =  GymManager::where('gym_id', $id)->get()->first();
+        return view('menu.gyms.show', compact(['gym', 'cityManager', 'gymManager']));
     }
 
     public function edit($id)
     {
-        $modifyGym = Gym::find($id);
-        $users = CityManager::with('user')->get();
-        return view('menu.gyms.edit', compact('users', 'modifyGym'));
+        $gym = Gym::find($id);
+        $gymManagers = GymManager::leftJoin('gyms', 'gym_managers.gym_id', '=', 'gyms.id')->where('gym_id',null)->get();
+        return view('menu.gyms.edit', compact(['gym', 'gymManagers']));
     }
 
     public function update(UpdateGymRequest $request, $id)
     {
+        // if ($request->city == 'other') {
+        //     $city = City::create([
+        //         'name' => $request->new_city,
+        //     ]);
+        //     $cityID = $city->id;
+        // } else {
+        //     $cityID = $request->city;
+        // }
+        // CityManager::create([
+        //     'user_id' => $user->id,
+        //     'city_id' => $cityID,
+        //     // 'role' => 'city_manager',
+        // ]);
         Gym::find($id)->update(request()->all());
         return view('menu.gyms.index');
     }

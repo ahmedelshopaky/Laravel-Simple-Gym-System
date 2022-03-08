@@ -58,55 +58,23 @@
 
                                             
                                             <div class="row mb-3">
-                                                <label for="city" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
+                                                <label for="city_id" class="col-md-4 col-form-label text-md-end">{{ __('City') }}</label>
                                                 
                                                 <div class="col-md-6">
-                                                    <select id="city" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ old('city') }}" required autocomplete="city" autofocus>
+                                                    <select id="city_id" class="form-control @error('city_id') is-invalid @enderror" name="city_id" value="{{ old('city_id') }}" required autocomplete="city_id" autofocus>
                                                         @foreach ($cities as $city)
-                                                        <option value="{{$city->city}}">{{$city->city}}</option>
+                                                        <option value="{{$city->id}}">{{$city->name}}</option>
                                                         @endforeach
                                                         <option value="other">Other</option>
                                                     </select>
-                                                    @error('city')
+                                                    @error('city_id')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                     @enderror
                                                 </div>
                                             </div>
-                                            <!-- In case the city does not exist -->
-                                            <div class="row mb-3">
-                                                <label for="other_city" class="col-md-4 col-form-label text-md-end">{{ __('New City') }}</label>
-
-                                                <div class="col-md-6">
-                                                    <input id="other_city" type="text" class="form-control @error('other_city') is-invalid @enderror" name="other_city" value="{{ old('other_city') }}" autocomplete="other_city" placeholder="In case the city does not exist">
-                                                    * In case the city does not exist
-                                                    @error('other_city')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-3">
-                                                <label for="city_manager" class="col-md-4 col-form-label text-md-end">{{ __('City Manager') }}</label>
-
-                                                <div class="col-md-6">
-                                                    <select id="city_manager" class="form-control @error('city_manager') is-invalid @enderror" name="city_manager" value="{{ old('city_manager') }}" required autocomplete="city_manager" autofocus>
-                                                        @foreach ($cityManagers as $cityManager)
-                                                        <option value="{{$cityManager->user_id}}">{{$cityManager->user->name}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    * In case the city does not exist
-                                                    @error('city_manager')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <!-- End of -> In case the city does not exist -->
+                                            
 
 
                                             

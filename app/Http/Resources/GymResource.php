@@ -15,7 +15,11 @@ class GymResource extends JsonResource
     public function toArray($request)
     {
         return [
-            
+            'id' => $this->id,
+            'name' => $this->name,
+            'city' => $this->city->name,
+            'city_manager' => $this->city_managers->user->name,
+
             'city' => $this->city,
             'cover_image' => $this->cover_image,
             'id' => $this->id,
