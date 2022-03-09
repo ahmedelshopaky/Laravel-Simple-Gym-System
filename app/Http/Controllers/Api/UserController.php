@@ -30,6 +30,9 @@ class UserController extends Controller
     //you should use method post from postman but include ('_method => PUT') in the body fo 
     //the request this is due to errors of empty body of put method i hope they solve it soon
     
+
+    // update user information
+
     public function update(UpdateGymMemberRequest $request)
     {
      
@@ -61,6 +64,8 @@ class UserController extends Controller
         ]);
     }
 
+
+    //view total and remaining user training sessions 
     public function view(){
 
         $userId = Auth::id();
@@ -86,6 +91,7 @@ class UserController extends Controller
       ]);
     }
 
+    // function to allow user to attend a session
     public function attend($sessionId){
 
         $userId = Auth::id();
@@ -94,7 +100,7 @@ class UserController extends Controller
 
         $session = TrainingSession::find($sessionId);
         
-
+        //validation for the session id 
         if($session == null){
             return response([ 
                 'message' => "There is no session with this id ". $sessionId
@@ -102,7 +108,8 @@ class UserController extends Controller
 
         }else{
             $packages = Revenue::with('training_packages')->where('gym_member_id',$userId)->get();
-            //dd($session->gym_id);
+            
+            // check if the user have bought any packages
             if ($packages == null){
                 return response([ 
                     'message' =>  "you didn't buy any packages yet so you can't attend any sessions please buy package first"
@@ -114,6 +121,7 @@ class UserController extends Controller
                          $totalTrainingSessions += $package->training_packages[0]->sessions_number;
                 }
 
+                // check if the user have bought package in the gym where the session is held
                 if($totalTrainingSessions == 0 ){
                     return response([ 
                         'message' =>  "you didn't buy any packages in the gym which have this session please buy package in this gym first"
@@ -122,6 +130,7 @@ class UserController extends Controller
                   
                 $attendedSessions = Attendance::with('training_session')->where('gym_member_id',$userId)->get();
                
+                // check if the user has already attended this session before
                 foreach($attendedSessions as $attendedSession){
                     if($attendedSession->training_session_id == $sessionId)
                         return response([ 
@@ -136,6 +145,7 @@ class UserController extends Controller
                 
                 $remainingTrainingSessions = $totalTrainingSessions - $attendance;
     
+                //check if the user have consumed all his available session in the packages he has bought
                 if($remainingTrainingSessions == 0){
                     return response([ 
                         'message' => "you consumed all your sessions in this gym please buy extra packages first or try to attend a session in another gym you have bought package from"
@@ -145,7 +155,8 @@ class UserController extends Controller
                     $today = now()->toDateString();
 
                     $sessionDate = date('Y-m-d',strtotime($session->starts_at));
-                  
+                    
+                    //check if the date of the session is in the same date now
                     if($today == $sessionDate){
                         Attendance::create([
                             'gym_member_id' => $userId,

@@ -9,10 +9,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Cashier\Billable;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, BannableContract
 {
     use Billable, HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles,Bannable;
     protected $guard_name = 'web';
 
     /**
@@ -29,6 +32,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'role',
         'avatar_image',
         'national_id',
+        // 'banned_at'
     ];
 
     /**
@@ -63,5 +67,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function gym_member() // done
     {
         return $this->hasOne(GymMember::class, 'user_id');
+    }
+
+    public function shouldApplyBannedAtScope()
+    {
+        return true;
     }
 }

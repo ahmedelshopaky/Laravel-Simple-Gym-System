@@ -1,121 +1,22 @@
-@extends('layouts.master')
-@section('content')
-<link rel="stylesheet" href="{{asset('/css/app.css')}}">
+@extends('layouts.datatable')
 
-<div class="wrapper mt-5">
-  <!-- Content Wrapper. Contains page content -->
-  <div class="">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
+@section('title')
+Cities
+@endsection
 
-      <!-- Main content -->
-      <section class="content">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title">Cities</h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <table class="table table-bordered table-hover table-striped  data-table" id="data-table">
-                    <thead>
-                      <tr>
-                        <th>ID</th>
-                        <th>City</th>
-                        <!-- <th>Gym</th> -->
-                        <th>City Manager</th>
-                        <!-- <th>Actions</th> -->
-                      </tr>
-                    </thead>
-                    <tbody>
+@section('tr')
+<th>ID</th>
+<th>City</th>
+<th>City Manager</th>
+<th>Actions</th>
+@endsection
 
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-
-              <div class="card">
-                <div class="card-header">
-                  <h3 class="card-title"></h3>
-                </div>
-                <!-- /.card-header -->
-                <div class="card-body">
-
-
-
-
-
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.2.0
-    </div>
-  </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
-
-
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
-<!-- Page specific script -->
+@section('script')
 <script>
-  $(function() {
-
-    var table = $('.data-table').DataTable({
-      processing: true,
-      serverSide: true,
-      ajax: "{{ route('cities.index') }}",
-      columns: [{
-          data: 'city_id',
-          name: 'city_id'
-        },
-        {
-          data: 'city_name',
-          name: 'city_name'
-        },
-        // {
-        //   data: 'gym_name',
-        //   name: 'gym_name'
-        // },
-        {
-          data: 'city_manager_name',
-          name: 'city_manager_name'
-        },
-        // {
-        //   data: 'action',
-        //   orderable: false,
-        //   searchable: false
-        // },
-      ]
-    });
-
-
-  });
+  let col1 = 'city_id',
+    col2 = 'city_name',
+    col3 = 'city_manager_name';
+    route = "{{ route('cities.index') }}",
+    url = "/cities/";   // NOT WORKING :D
 </script>
-
 @endsection

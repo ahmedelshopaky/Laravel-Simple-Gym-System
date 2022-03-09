@@ -84,7 +84,7 @@
                   <div class="row mb-0">
                     <div class="col-sm-12">
                       <button type="submit" class="btn btn-info text-white col-sm-2 offset-5 fs-5"
-                        style="background-color: #17a2b8;">
+                        >
                         {{ __('Submit') }}
                       </button>
                     </div>

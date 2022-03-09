@@ -21,13 +21,13 @@ class CityController extends Controller
         if ($request->ajax()) {
             $cities = CityResource::collection(City::with('city_manager', 'gyms')->get());
             return DataTables::of($cities)->addIndexColumn()
-                // ->addColumn('action', function ($gym) {
-                //     $Btn = '<a href="javascript:void(0)" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder mr-2"> </i>View</a>';
-                //     $Btn .= '<a href="javascript:void(0)" class="edit btn btn-info btn-sm mr-3 text-white"> <i class="fas fa-pencil-alt mr-2"> </i> Edit</a>';
-                //     $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id=""  data-bs-toggle="modal" data-bs-target="#deleteAlert"> <i class="fas fa-trash mr-2">  </i>Delete</a>';
-                //     return $Btn;
-                // })
-                // ->rawColumns(['action'])
+                ->addColumn('action', function ($city) {
+                    $Btn = '<a href="javascript:void(0)" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder mr-2"> </i>View</a>';
+                    $Btn .= '<a href="javascript:void(0)" class="edit btn btn-info btn-sm mr-3 text-white"> <i class="fas fa-pencil-alt mr-2"> </i> Edit</a>';
+                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id=""  data-bs-toggle="modal" data-bs-target="#deleteAlert"> <i class="fas fa-trash mr-2">  </i>Delete</a>';
+                    return $Btn;
+                })
+                ->rawColumns(['action'])
                 ->make(true);
         }
         return view('menu.city.index');

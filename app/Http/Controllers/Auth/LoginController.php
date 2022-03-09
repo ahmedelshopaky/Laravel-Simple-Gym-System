@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -38,20 +39,18 @@ class LoginController extends Controller
      */
 
     //check if gymManager is banned or not on login
-    public function authenticated(Request $request, $user)
-    {
-        // dd($user);
-        if ($user->hasRole('gymManager')) {
-            // dd(User::isBanned());
-            $gymManager = User::with('gym_manager')->where('id', $user->id)->get();
-            // dd($gymManager);
-            // if ($user->isBanned()) {
-            //     return to_route('BannedController.ban');
-            // }
-        } elseif (!$user->hasAnyRole(['admin', 'cityManager', 'gymManager'])) {
-            dd('اتكل على الله يابا');
-        }
-    }
+    // public function authenticated(Request $request, $user)
+    // {
+    //     if ($user->hasRole('gymManager')) {
+    //         $gymManager=GymManager::where('user_id', Auth::id())->onlyBanned()->first();
+    //         if ($gymManager->isBanned()) {
+    //             Auth::logout();
+    //             return redirect()->route('BanController.ban');
+    //         }
+    //     } elseif (!$user->hasAnyRole(['admin', 'cityManager', 'gymManager'])) {
+    //         //dd('اتكل على الله يابا');
+    //     }
+    // }
 
     public function __construct()
     {
