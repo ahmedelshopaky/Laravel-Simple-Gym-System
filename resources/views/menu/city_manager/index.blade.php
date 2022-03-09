@@ -1,8 +1,8 @@
 @extends('layouts.datatable')
+
 @section('title')
 City Managers
 @endsection
-
 
 @section('tr')
 <th>ID</th>
@@ -13,51 +13,10 @@ City Managers
 
 @section('script')
 <script>
-  $(function() {
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-    var table = $('.data-table').DataTable({
-      processing: true,
-      serverSide: true,
-      ajax: "{{ route('city-managers.index') }}",
-      columns: [{
-          data: 'user_id'
-        },
-        {
-          data: 'user.name'
-        },
-        {
-          data: 'user.email'
-        },
-        {
-          data: 'action',
-          orderable: false,
-          searchable: false
-        },
-      ]
-    });
-
-    var ManagerId;
-    $('body').on('click', '.delete', function() {
-      ManagerId = $(this).data("id");
-      $('body').on('click', '._delete', (event) => {
-        $.ajax({
-          url: "/users/" + ManagerId,
-          type: "DELETE",
-          data: {
-            _token: '{!! csrf_token() !!}',
-          },
-          success: (response) => {
-            $('#deleteAlert').modal('hide');
-            table.ajax.reload();
-          }
-        });
-      });
-    });
-
-  });
+  let col1 = 'user_id',
+    col2 = 'user.name',
+    col3 = 'user.email',
+    route = "{{ route('city-managers.index') }}",
+    url = "/users/";
 </script>
 @endsection
