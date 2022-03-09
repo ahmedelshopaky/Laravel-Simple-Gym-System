@@ -14,8 +14,8 @@ use Cog\Laravel\Ban\Traits\Bannable;
 
 class User extends Authenticatable implements MustVerifyEmail, BannableContract
 {
-    use Billable, HasApiTokens, HasFactory, Notifiable, HasRoles;
-    use HasApiTokens, HasFactory, Notifiable, HasRoles,Bannable;
+    use Billable, HasApiTokens, HasFactory, Notifiable, HasRoles, Bannable;
+  
     protected $guard_name = 'web';
 
     /**

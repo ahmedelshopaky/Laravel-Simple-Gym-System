@@ -25,7 +25,7 @@
     }
 </style>
 @endsection
-
+@section('content')
 <form action="{{route('single.charge')}}" method="POST" id="subscribe-form">
     <input type="number" name="amount" id="amount" class="form-control"> <br>
     <label for="card-holder-name form-control">Card Holder Name</label> <br>
@@ -50,7 +50,7 @@
         <button id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-info btn-block">SUBMIT</button>
     </div>
 </form>
-
+@endsection
 
 @section('scripts')
 <script src="https://js.stripe.com/v3/"></script>
@@ -124,4 +124,3 @@
 </script>
 @endsection
 
-@endsection
