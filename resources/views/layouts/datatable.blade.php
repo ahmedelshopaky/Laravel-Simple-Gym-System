@@ -15,14 +15,17 @@
                             <div class="card-header py-4">
                                 <h3 class="card-title text-white fs-3">@yield('title')</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                        title="Collapse">
                                         <i class="fas fa-minus text-white"></i>
                                     </button>
                                 </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table class="table table-bordered table-striped  dtr-inline table-hover data-table w-100" id="">
+                                <table
+                                    class="table table-bordered table-striped  dtr-inline table-hover data-table w-100"
+                                    id="">
                                     <thead>
                                         <tr>
                                             @yield('tr')
@@ -37,7 +40,7 @@
                         </div>
                         <!-- /.card -->
 
-                        {{-- modal  --}}
+                        {{-- modal --}}
                         <div class="modal fade" id="deleteAlert" aria-hidden="true" tabindex="-1">
                             <div class="modal-dialog modal-sm modal-notify modal-danger">
                                 <div class="modal-content text-center">
@@ -48,7 +51,8 @@
                                     </div>
                                     <div class="modal-footer flex-center">
                                         <a class="btn btn-outline-danger _delete">Yes</a>
-                                        <a type="button" class="btn btn-danger waves-effect" data-bs-dismiss="modal">No</a>
+                                        <a type="button" class="btn btn-danger waves-effect"
+                                            data-bs-dismiss="modal">No</a>
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +130,7 @@
         $('body').on('click', '.ban', function() {
             gymManagerId = $(this).data("id");
             $.ajax({
-                url: "/gym-managers/ban/" + gymManagerId,
+                url: "/users/ban/" + gymManagerId,
                 type: "PUT",
                 async: false,
                 data: {
@@ -141,7 +145,7 @@
         $('body').on('click', '.unban', function() {
             gymManagerId = $(this).data("id");
             $.ajax({
-                url: "/gym-managers/unban/" + gymManagerId,
+                url: "/users/unban/" + gymManagerId,
                 type: "PUT",
                 async: false,
                 data: {
