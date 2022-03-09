@@ -17,10 +17,12 @@ class TrainingSessionResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'time' => $this->starts_at . ' / ' . $this->finishes_at,
+            'gym_name' => $this->gym->name,
+
             'starts_at' => $this->starts_at,
             'finishes_at' => $this->finishes_at,
             'gym' => $this->gym,
-            //'gym_members' => new GymMemberResource($this->gym_members),
         ];
     }
 }

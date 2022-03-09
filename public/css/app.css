@@ -4401,6 +4401,7 @@ input[type="button"].btn-block {
   padding: 0.5rem 0.5rem;
   /* box-shadow:10px 10px 10px #eee; */
   height: 70px;
+  /* background-color: #343a40 !important; */
 }
 
 .navbar .container,
@@ -10682,6 +10683,7 @@ html,
 body,
 .wrapper {
   min-height: 100%;
+
 }
 
 .wrapper {
@@ -11012,6 +11014,8 @@ body:not(.layout-fixed).layout-navbar-fixed.text-sm .wrapper .main-sidebar .side
 
 .layout-navbar-fixed .wrapper .content-wrapper {
   margin-top: calc(3.5rem + 1px);
+  background-image: url("../images/modern-futuristic-sci-fi-background.jpg");
+
 }
 
 .layout-navbar-fixed .wrapper .main-header.text-sm ~ .content-wrapper {
@@ -73506,6 +73510,22 @@ readers do not read off random characters that represent icons */
   /* background-color: #17a2b8; */
   background-color: #3f6791;
 }
-.card-header ,.widget-user-header{
+.card-header ,.widget-user-header ,.info{
   background-color: #3f6791 !important; 
+}
+
+/* body{
+  background-image: url("../images/15909.jpg");
+  background-size: cover;
+}
+.content-wrapper{
+background-image: url("../images/1.jpg");
+background-size: cover;
+  ;
+} */
+
+.p-view{
+  color:#3f6791;
+  text-shadow: 3px 3px 3px #d1d9e4;
+
 }
