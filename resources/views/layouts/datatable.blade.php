@@ -15,10 +15,10 @@
                             <div class="card-header py-4">
                                 <h3 class="card-title text-white fs-3">@yield('title')</h3>
                                 <div class="card-tools">
-              <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
-              </button>
-            </div>
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                        <i class="fas fa-minus text-white"></i>
+                                    </button>
+                                </div>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -36,7 +36,7 @@
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
-                        
+
                         {{-- modal  --}}
                         <div class="modal fade" id="deleteAlert" aria-hidden="true" tabindex="-1">
                             <div class="modal-dialog modal-sm modal-notify modal-danger">

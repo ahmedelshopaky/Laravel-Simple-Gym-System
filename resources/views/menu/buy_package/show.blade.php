@@ -1,50 +1,57 @@
 @extends('layouts.master')
 @section('content')
 
-<section class="content mt-5">
-    <div class="container-fluid">
+<div class="col-sm-10 offset-1 mt-5">
+    <div class="card card-info card-view">
+        <div class="card-header text-white  ">
+            <h2 class="text-center py-4 "> Package has been purchased for <br> <span  style="color:#ee1e25" class="fw-bold fs-1">  {{$gymMember->user->name}} </span></h2>
+
+        </div>
         <div class="row">
-            <div class="col-12">
 
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Success</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
 
-                    <!-- compact('gym', 'triningPackage', 'gymMember') -->
-                    <div class="card-body">
-                        <div class="card-body pt-0">
-                            <div class="row">
-                                <div class="col-7">
-                                    <h2 class="lead"><b>Package ({{$triningPackage->name}}) has been purchased</b></h2>
-                                    <p class="text-muted text-lg"><b>Client: </b> {{$gymMember->user->name}} </p>
-                                    <ul class="ml-4 mb-0 fa-ul text-muted text-md">
-                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Gym Address: {{$gym->city}}</li>
-                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Gym Name: {{$gym->name}}</li>
-                                    </ul>
+            <div class="col-md-4 ">
+                <img src="{{asset('/images/gym-logo.jpg')}}" class=" ml-5 img-fluid rounded-start w-75">
+            </div>
 
-                                    <ul class="mt-2 ml-4 mb-0 fa-ul text-muted text-md">
-                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> Package Name: {{$triningPackage->name}}</li>
-                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Sessions Number: {{$triningPackage->sessions_number}}</li>
-                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> Price: ${{$triningPackage->price / 100}}</li>
-                                    </ul>
-                                </div>
-                                <div class="col-5 text-center">
-                                    <img src="{{asset('/images/users/'.$gymMember->user->avatar_image)}}" alt="user-avatar" class="img-thumbnail">
-                                </div>
+            <div class="col-md-8">
+                <div class="card-body">
+
+                    <div class="row">
+                    <h3 class="fw-bold  my-5 p-view" >Package Info </h3>
+
+                        <div class="col-sm-4 border-right">
+
+                            <div class="description-block">
+                                <h5 class="description-header">Package Name</h5>
+                                <span class="description-text">{{$triningPackage->name}}</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
 
+                        </div>
+                        <div class="col-sm-4 border-right">
+                            <div class="description-block">
+                                <h5 class="description-header">Session Number</h5>
+                                <span class="description-text">{{$triningPackage->sessions_number}}</span>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-4  ">
+                            <div class="description-block">
+                                <h5 class="description-header">Price</h5>
+                                <span class="description-text">${{$triningPackage->price / 100}}</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+</div>
 
 @endsection

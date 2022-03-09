@@ -73510,7 +73510,7 @@ readers do not read off random characters that represent icons */
   /* background-color: #17a2b8; */
   background-color: #3f6791;
 }
-.card-header ,widget-user-header{
+.card-header ,.widget-user-header ,.info{
   background-color: #3f6791 !important; 
 }
 
@@ -73523,3 +73523,9 @@ background-image: url("../images/1.jpg");
 background-size: cover;
   ;
 } */
+
+.p-view{
+  color:#3f6791;
+  text-shadow: 3px 3px 3px #d1d9e4;
+
+}
