@@ -1,8 +1,8 @@
 @extends('layouts.datatable')
+
 @section('title')
 Gym Managers
 @endsection
-
 
 @section('tr')
 <th>ID</th>
@@ -13,80 +13,10 @@ Gym Managers
 
 @section('script')
 <script>
-  $(function() {
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-    var table = $('.data-table').DataTable({
-      processing: true,
-      serverSide: true,
-      ajax: "{{ route('gym-managers.index') }}",
-      columns: [{
-          data: 'user_id',
-        },
-        {
-          data: 'user.name',
-        },
-        {
-          data: 'user.email',
-        },
-        {
-          data: 'action',
-          orderable: false,
-          searchable: false
-        },
-      ]
-    });
-    var ManagerId;
-    $('body').on('click', '.delete', function() {
-
-      ManagerId = $(this).data("id");
-      $('body').on('click', '._delete', (event) => {
-        $.ajax({
-          url: "/users/" + ManagerId,
-          type: "DELETE",
-          async: false,
-          data: {
-            _token: '{!! csrf_token() !!}',
-          },
-          success: (response) => {
-            $('#deleteAlert').modal('hide');
-            table.ajax.reload();
-          }
-        });
-      });
-    });
-    let gymManagerId;
-    $('body').on('click','.ban',function () {
-       gymManagerId = $(this).data("id");
-      $.ajax({
-            url: "/gym-managers/ban/" + gymManagerId,
-            type: "PUT",
-            async:false,
-            data: {_token: '{!! csrf_token() !!}',}, 
-            success:(response) =>
-            {
-              table.ajax.reload();
-            }  
-          });
-      
-    });
-    $('body').on('click','.unban',function () {
-       gymManagerId = $(this).data("id");
-      $.ajax({
-            url: "/gym-managers/unban/" + gymManagerId,
-            type: "PUT",
-            async:false,
-            data: {_token: '{!! csrf_token() !!}',}, 
-            success:(response) =>
-            {
-              table.ajax.reload();
-            }  
-          });
-      
-    });
-  });
+  let col1 = 'id',
+    col2 = 'name',
+    col3 = 'email',
+    route = "{{ route('gym-managers.index') }}",
+    url = "/users/";
 </script>
 @endsection
