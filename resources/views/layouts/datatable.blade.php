@@ -16,7 +16,7 @@
                                 <h3 class="card-title text-white fs-3">@yield('title')</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                        <i class="fas fa-minus"></i>
+                                        <i class="fas fa-minus text-white"></i>
                                     </button>
                                 </div>
                             </div>
