@@ -118,7 +118,12 @@ Route::group(['middleware'=>['auth','logs-out-banned-user']], function () {
 
     Route::group(['prefix' => '/buy-package', 'middleware' => ['role:admin|cityManager|gymManager']], function () {
         Route::get('/create', [BuyPackageController::class, 'create'])->name('buy-package.create');
+
         Route::post('/', [BuyPackageController::class, 'store'])->name('buy-package.store');
+
+        Route::get('/stripe', [BuyPackageController::class, 'stripe'])->name('buy-package.stripe');
+        Route::post('/single-charge',[BuyPackageController::class, 'singleCharge'])->name('single.charge');
+
     });
 
     // Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');

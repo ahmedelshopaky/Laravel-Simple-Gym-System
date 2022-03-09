@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->bigInteger('national_id')->nullable();
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('stripe_id')->nullable()->index();
         });
     }
 
