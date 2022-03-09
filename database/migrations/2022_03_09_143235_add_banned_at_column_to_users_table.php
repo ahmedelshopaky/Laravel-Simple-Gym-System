@@ -12,9 +12,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::create('gym_managers', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id')->primary();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        Schema::table('users', function (Blueprint $table) {
+            $table->timestamp('banned_at')->nullable();
         });
     }
 
@@ -25,6 +24,8 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('gym_managers');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('banned_at');
+        });
     }
 };

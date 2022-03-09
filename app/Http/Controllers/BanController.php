@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class BannedController extends Controller
+class BanController extends Controller
 {
     public function index()
     {

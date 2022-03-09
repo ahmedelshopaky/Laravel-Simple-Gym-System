@@ -3,25 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Cog\Contracts\Ban\Bannable as BannableContract;
-use Cog\Laravel\Ban\Traits\Bannable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 
-class GymManager extends Authenticatable implements BannableContract
+class GymManager extends Model
 {
-    use HasFactory, Bannable, HasRoles;
+    use HasFactory, HasRoles;
     public $timestamps = false;
     protected $guard_name = 'web';
     protected $fillable = [
         'user_id',
-        'gym_id'
+        'gym_id',
     ];
-
-    public function shouldApplyBannedAtScope()
-    {
-        return true;
-    }
 
     public function user() // done
     {

@@ -120,4 +120,16 @@ class UserController extends Controller
         User::find($id)->delete();
         return response()->json(['success'=>'This row id deleted successfully']);
     }
+
+    public function ban($id)
+    {
+        User::where('id',$id)->first()->ban();
+        return response()->json(['success','you banned this manager Successfully']);
+    }
+
+    public function unban($id)
+    {
+        User::where('id',$id)->onlyBanned()->first()->unban();
+        return response()->json(['success'=>'you unbanned this manager Successfully']);
+    }
 }
