@@ -20,7 +20,7 @@
 @endsection
 
 @section('role')
-<option value="gym_manager">Gym Manager</option>
+<input type="hidden" name="role" value="gym_manager"/>
 @endsection
 
 @section('header')

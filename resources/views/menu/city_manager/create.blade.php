@@ -34,7 +34,7 @@
 @endsection
 
 @section('role')
-<option value="city_manager">City Manager</option>
+<input type="hidden" name="role" value="city_manager"/>
 @endsection
 
 @section('header')
