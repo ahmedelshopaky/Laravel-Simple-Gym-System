@@ -36,7 +36,6 @@ Auth::routes();
 Route::group(['middleware'=>['auth','logs-out-banned-user']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-    Route::get('/banned', [BanController::class,'index'])->name('BanController.ban');
     
     
     Route::group(['prefix' => '/gym-managers', 'middleware' => ['role:admin|cityManager']], function () {

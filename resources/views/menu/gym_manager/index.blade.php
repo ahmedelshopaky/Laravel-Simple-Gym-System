@@ -13,9 +13,9 @@ Gym Managers
 
 @section('script')
 <script>
-  let col1 = 'user_id',
-    col2 = 'user.name',
-    col3 = 'user.email',
+  let col1 = 'id',
+    col2 = 'name',
+    col3 = 'email',
     route = "{{ route('gym-managers.index') }}",
     url = "/users/";
 </script>

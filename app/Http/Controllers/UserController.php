@@ -123,13 +123,18 @@ class UserController extends Controller
 
     public function ban($id)
     {
-        User::where('id',$id)->first()->ban();
-        return response()->json(['success','you banned this manager Successfully']);
+        $user=User::where('id', $id)->first();
+        if ($user->hasRole('gymManager')) {
+            $user->ban();
+            return response()->json(['success','you banned this manager Successfully']);
+        } else {
+            return response()->json(['fail','Sorry, only gym managers are bannable']);
+        }
     }
 
     public function unban($id)
     {
-        User::where('id',$id)->onlyBanned()->first()->unban();
+        User::where('id', $id)->onlyBanned()->first()->unban();
         return response()->json(['success'=>'you unbanned this manager Successfully']);
     }
 }
