@@ -17,6 +17,8 @@ class PermissionsSeeder extends Seeder
      */
     public function run()
     {
+        //php artisan db:seed --class=PermissionsSeeder
+        
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
@@ -47,15 +49,15 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'delete package']);
         Permission::create(['name' => 'delete session']);
 
-        // Retrieve permissions
-        Permission::create(['name' => 'retrieve gym manager']);
-        Permission::create(['name' => 'retrieve city manager']);
-        Permission::create(['name' => 'retrieve gym']);
-        Permission::create(['name' => 'retrieve city']);
-        Permission::create(['name' => 'retrieve coach']);
-        Permission::create(['name' => 'retrieve package']);
-        Permission::create(['name' => 'retrieve session']);
-        Permission::create(['name' => 'retrieve attendance']);
+        // show permissions
+        Permission::create(['name' => 'show gym manager']);
+        Permission::create(['name' => 'show city manager']);
+        Permission::create(['name' => 'show gym']);
+        Permission::create(['name' => 'show city']);
+        Permission::create(['name' => 'show coach']);
+        Permission::create(['name' => 'show package']);
+        Permission::create(['name' => 'show session']);
+        Permission::create(['name' => 'show attendance']);
 
         // ban or unban permission
         Permission::create(['name' => 'ban gym manager']);
@@ -73,11 +75,11 @@ class PermissionsSeeder extends Seeder
 
         $cityManagerRole = Role::create(['name' => 'cityManager']);
 
-        $cityManagerRole->givePermissionTo(['create gym','create gym manager','create coach','create session','edit gym manager','edit gym','edit coach','edit session','delete gym manager','delete gym','delete coach','delete session','retrieve gym manager','retrieve gym','retrieve coach','retrieve package','retrieve session','retrieve attendance','buy package','assign coach','ban gym manager','unban gym manager']);
+        $cityManagerRole->givePermissionTo(['create gym','create gym manager','create coach','create session','edit gym manager','edit gym','edit coach','edit session','delete gym manager','delete gym','delete coach','delete session','show gym manager','show gym','show coach','show package','show session','show attendance','buy package','assign coach','ban gym manager','unban gym manager']);
 
         $gymManagerRole = Role::create(['name' => 'gymManager']);
 
-        $gymManagerRole->givePermissionTo(['create session','edit session','delete session','retrieve session','retrieve coach','retrieve package','retrieve attendance','buy package','assign coach']);
+        $gymManagerRole->givePermissionTo(['create session','edit session','delete session','show session','show coach','show package','show attendance','buy package','assign coach']);
 
         $adminRole = Role::create(['name' => 'admin']);
 

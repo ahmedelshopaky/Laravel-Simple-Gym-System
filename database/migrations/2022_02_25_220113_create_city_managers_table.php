@@ -14,12 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('city_managers', function (Blueprint $table) {
-            $table->id();
-            $table->integer('national_id')->unique();
-            $table->string('email')->unique();
-            $table->string('name');
-            $table->string('password');
-            $table->string('avatar_image');
+            $table->unsignedBigInteger('user_id')->primary();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

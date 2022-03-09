@@ -8,19 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class TrainingSession extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'name',
         'starts_at',
-        'finishes_at'
+        'finishes_at',
+        'gym_id'
     ];
 
-    public function users()
+    public function gym_members() // done
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(GymMember::class, 'gym_member_training_session', 'training_session_id', 'gym_member_id', 'id', 'user_id');
     }
 
-    public function coaches()
+    public function coaches() // done
     {
-        return $this->belongsTo(Coach::class);
+        return $this->belongsToMany(Coach::class, 'coach_training_session', 'training_session_id', 'coach_id');
+    }
+
+    public function gym() // done
+    {
+        return $this->belongsTo(Gym::class);
     }
 }

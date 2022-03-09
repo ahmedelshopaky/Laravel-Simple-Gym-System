@@ -1,29 +1,48 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\City;
 use App\Models\CityManager;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 
 class CityManagerController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         if ($request->ajax()) {
-            $data = CityManager::all();
-           
-
-            return Datatables::of($data)->addIndexColumn()
-                    ->addColumn('action', function($row){
-                           $Btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-xl mr-3">Edit</a>';
-                            $Btn=$Btn.'<a href="javascript:void(0)" class="delete btn btn-danger btn-xl mr-3">Delete</a>';
-                            $Btn=$Btn.'<a href="javascript:void(0)" class="view btn btn-primary btn-xl mr-3">View</a>';
-                            return $Btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
+            $cityManager = CityManager::with('user')->get();
+            return Datatables::of($cityManager)->addIndexColumn()
+                ->addColumn('action', function ($user) {
+                    $Btn = '<a href="' . route('city-managers.show', $user->user_id) . '" class="view btn btn-primary btn-sm mr-3"> <i class="fas fa-folder mr-2"> </i>View</a>';
+                    $Btn .= '<a href="' . route('city-managers.edit', $user->user_id) . '" class="edit btn btn-info text-white btn-sm mr-3"><i class="fas fa-pencil-alt mr-2"> </i>Edit</a>';
+                    $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id="' . $user->user_id . '"  data-bs-toggle="modal" data-bs-target="#deleteAlert"><i class="fas fa-trash mr-2"> </i>Delete</a>';
+                    return $Btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
-      
         return view('menu.city_manager.index');
+    }
+
+    public function create() {
+        $cities = City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('user_id',null)->get();
+        return view('menu.city_manager.create', compact('cities'));
+    }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+        $cities = City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('user_id',null)->get();
+        return view('menu.city_manager.edit', compact('user', 'cities'));
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        return view('menu.city_manager.show', compact('user'));
     }
 }

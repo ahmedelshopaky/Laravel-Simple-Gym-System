@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -17,17 +17,20 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $faker = \Faker\Factory::create('ar_EG');
+
         $gender = $this->faker->randomElement(['male', 'female']);
 
         return [
-            'username' => $this->faker->name($gender),
             'password' => bcrypt('secret'),
-            'gender' => $gender,
-            'profile_image' => $this->faker->image('public/images/users', 400, 300, null, false),
+            'avatar_image' => $this->faker->image('public/images/users', 200, 200, null, false),
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'date_of_birth' => $this->faker->date('Y-m-d', 'now'),
-            'remember_token' => Str::random(10),
+            'name' => $this->faker->name($gender),
+            'national_id'=>$faker->nationalIdNumber(),
+            'email_verified_at'=>$faker->date(),
+            'role' => $faker->randomElement(['city_manager', 'gym_manager', 'gym_member']),
+            'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -20,9 +21,11 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote');
 
 Artisan::command('create:admin', function () {
-    DB::table('admins')->insert([
+    User::create([
+            'name'=>$this->ask('Name'),
             'email' => $this->ask('Email'),
             'password' => bcrypt($this->ask('Password')),
-    ]);
+            'role' => 'admin'
+    ])->assignRole('admin');
     $this->info('Account created successfully.');
 });

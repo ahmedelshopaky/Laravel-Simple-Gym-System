@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Sparta Gym'),
 
     /*
     |--------------------------------------------------------------------------
@@ -165,6 +165,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Cog\Laravel\Ban\Providers\BanServiceProvider::class,
+        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -197,6 +199,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
         
     ])->toArray(),
 
