@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class MemberVerified extends Notification implements ShouldQueue
 {
@@ -42,11 +43,13 @@ class MemberVerified extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Welcome From Our Gym')
-                    ->greeting('Dear Sir,')
-                    ->line('I Would Like To Welcome You To Our Gym')
-                    ->line('Thank you for using our application!')
-                    ->salutation('Best Regards , Sparta Gym :D');
+            ->view('email.welcome');
+                    // ->subject('Welcome To Our Gym')
+                    // ->greeting('Dear Sir,')
+                    // ->line('I Would Like To Welcome You To Our Gym.')
+                    // ->line('I Hope You Enjoy Your Journey With Us.')
+                    // ->line('Thank you for using our application!')
+                    // ->salutation('Best Regards , Sparta Gym :D');
     }
 
     /**

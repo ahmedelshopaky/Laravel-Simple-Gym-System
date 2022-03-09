@@ -11,16 +11,16 @@ class MemberMissed extends Notification implements ShouldQueue
 {
     use Queueable;
 
-   // protected $member;
+    protected $member;
    
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($member)
     {
-        // $this->member = $member;
+         $this->member = $member;
     }
 
     /**
@@ -43,11 +43,7 @@ class MemberMissed extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Our Gym Misses You')
-                    ->greeting('Hello,')
-                    ->line("Just Wanted to check up on you we haven't see you in over a month now")
-                    ->line('Hope you are well')
-                    ->salutation('Best Regards , Sparta Gym :D');
+            ->view('email.missyou');
     }
 
     /**
