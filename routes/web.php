@@ -43,8 +43,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/{id}', [GymManagerController::class, 'show'])->name('gym-managers.show');
         Route::get('/{id}/edit', [GymManagerController::class, 'edit'])->name('gym-managers.edit');
 
-        Route::put('/{gymManager}/ban', [GymManagerController::class, 'ban'])->name('gym-managers.ban');
-        Route::put('/{gymManager}/unban', [GymManagerController::class, 'unban'])->name('gym-managers.unban');
+        Route::put('/ban/{id}', [GymManagerController::class, 'ban'])->name('gym-managers.ban');
+        Route::put('/unban/{id}', [GymManagerController::class, 'unban'])->name('gym-managers.unban');
     });
 
     Route::group(['prefix' => '/city-managers', 'middleware' => ['forbid-banned-user', 'role:admin']], function () {
