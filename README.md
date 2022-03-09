@@ -134,10 +134,14 @@ STRIPE_KEY=pk_test_51KZbWdGerl36jGBlSUe3rMyBApbtz9gPiGLrY3dSKyCRZKuqADbV9JG3gHNr
 STRIPE_SECRET=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa 
 ```
 
-Then run this command
+Then run these commands
 
 ```
-composer update 
+composer require laravel/cashier 
+```
+
+```
+composer require stripe/stripe-php
 ```
 In the end, don't forget to run this important command
 ```

@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
+
 <div class="wrapper mt-5">
   <!-- Main content -->
   <section class="content">
@@ -90,6 +91,8 @@
                   </div>
 
               </form>
+
+              
             </div>
           </div>
         </div>
@@ -117,3 +120,4 @@
 
 
 @endsection
+

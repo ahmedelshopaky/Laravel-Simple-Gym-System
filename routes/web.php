@@ -118,7 +118,12 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['prefix' => '/buy-package', 'middleware' => ['forbid-banned-user', 'role:admin|cityManager|gymManager']], function () {
         Route::get('/create', [BuyPackageController::class, 'create'])->name('buy-package.create');
+
         Route::post('/', [BuyPackageController::class, 'store'])->name('buy-package.store');
+
+        Route::get('/stripe', [BuyPackageController::class, 'stripe'])->name('buy-package.stripe');
+        Route::post('/single-charge',[BuyPackageController::class, 'singleCharge'])->name('single.charge');
+
     });
 
     // Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
@@ -143,5 +148,6 @@ Route::middleware('auth')->group(function () {
     });
             // Ban actions
     Route::get('/banned', [BannedController::class,'index'])->name('BannedController.ban');
+   
 
 });
