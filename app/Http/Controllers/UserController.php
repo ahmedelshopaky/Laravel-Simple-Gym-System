@@ -31,6 +31,7 @@ class UserController extends Controller
 
     public function store(StoreUserRequest $request)
     {
+        dd($request);
         if (request()->hasFile('avatar_image')) {
             $img = request()->file('avatar_image');
             $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();

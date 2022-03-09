@@ -106,27 +106,7 @@
                                                 </div>
                                             </div>
 
-
-                                            <div class="row mb-3 form-group">
-                                                <label for="role" class="col-sm-2 col-form-label">{{ __('Role') }}</label>
-
-                                                <div class="col-sm-10">
-                                                    <select id="role" class="form-control @error('role') is-invalid @enderror" name="role" required autocomplete="role" autofocus>
-                                                        <!-- <option value="city_manager">City Manager</option>
-                                                        <option value="gym_manager">Gym Manager</option>
-                                                        <option value="gym_member">Gym Member</option> -->
-                                                        @yield('role')
-                                                    </select>
-                                                    @error('role')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-
-
+                                            @yield('role')
 
                                             <div class="row mb-0">
                                                 <div class="col-sm-12">
