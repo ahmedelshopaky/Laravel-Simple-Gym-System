@@ -26,11 +26,23 @@
 </style>
 @endsection
 @section('content')
+<div class="col-8 offset-2">
+
+<div class="card card-info my-3">
+  <div class="card-header py-3">
+    <h3 class="card-title">Payment Detalis Form</h3>
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
 <form action="{{route('single.charge')}}" method="POST" id="subscribe-form">
-    <label for="amount">$</label>
+    <label for="amount">Price ($)</label> <br>
     <input value="{{ $price }}" type="number" name="amount" id="amount" class="form-control"> <br>
     <label for="card-holder-name form-control">Card Holder Name</label> <br>
-    <input id="card-holder-name" type="text">
+    <input id="card-holder-name" type="text" class="form-control">
     @csrf
     <div class="form-row">
         <label for="card-element">Credit or debit card</label> <br>
@@ -48,9 +60,10 @@
     </div>
     @endif
     <div class="form-group text-center">
-        <button id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-info btn-block">SUBMIT</button>
+        <button id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-info btn-block">Confirm</button>
     </div>
 </form>
+</div>
 @endsection
 
 @section('scripts')
