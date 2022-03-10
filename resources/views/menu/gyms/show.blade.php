@@ -46,24 +46,42 @@
                     <div class="row">
                         <div class="col-sm-4 border-right">
                             <div class="description-block">
-                                <h5 class="description-header">Manager Name</h5>
-                                <span class="description-text"> {{$gymManager ? $gymManager->name : "NONE"}}</span>
+                                <h5 class="description-header">Name</h5>
+                                @if($gymManagers->count() == 0)
+                                <span class="description-text">NONE</span><br/>
+                                @else
+                                @foreach ($gymManagers as $gymManager)
+                                <span class="description-text"> {{$gymManager->user->name}}</span><br/>
+                                @endforeach
+                                @endif
 
                             </div>
 
                         </div>
                         <div class="col-sm-4 ">
                             <div class="description-block">
-                                <h5 class="description-header"> Manager National ID</h5>
-                                <span class="description-text"> {{$gymManager ? $gymManager->national_id : "NONE"}}</span>
+                                <h5 class="description-header">National ID</h5>
+                                @if($gymManagers->count() == 0)
+                                <span class="description-text">NONE</span><br/>
+                                @else
+                                @foreach ($gymManagers as $gymManager)
+                                <span class="description-text"> {{$gymManager->user->national_id}}</span>
+                                @endforeach
+                                @endif
 
                             </div>
 
                         </div>
                         <div class="col-sm-4 border-right">
                             <div class="description-block">
-                                <h5 class="description-header"> Manager Email</h5>
-                                <span class="description-text">{{$gymManager ? $gymManager->email : "NONE"}}</span>
+                                <h5 class="description-header">Email</h5>
+                                @if($gymManagers->count() == 0)
+                                <span class="description-text">NONE</span><br/>
+                                @else
+                                @foreach ($gymManagers as $gymManager)
+                                <span class="description-text">{{$gymManager->user->email}}</span>
+                                @endforeach
+                                @endif
                             </div>
 
                         </div>
@@ -73,7 +91,7 @@
                         <div class="row">
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header">Manager Name</h5>
+                                    <h5 class="description-header">Name</h5>
                                     <span class="description-text"> {{$cityManager ? $cityManager->name : "NONE"}}</span>
 
                                 </div>
@@ -81,7 +99,7 @@
                             </div>
                             <div class="col-sm-4 ">
                                 <div class="description-block">
-                                    <h5 class="description-header"> Manager National ID</h5>
+                                    <h5 class="description-header">National ID</h5>
                                     <span class="description-text"> {{$cityManager ? $cityManager->national_id : "NONE"}}</span>
 
                                 </div>
@@ -89,7 +107,7 @@
                             </div>
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
-                                    <h5 class="description-header"> Manager Email</h5>
+                                    <h5 class="description-header">Email</h5>
                                     <span class="description-text">{{$cityManager ? $cityManager->email : "NONE"}}</span>
                                 </div>
 

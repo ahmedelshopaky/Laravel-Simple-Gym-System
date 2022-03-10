@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -27,7 +28,8 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'name' => $this->faker->name($gender),
             'national_id'=>$faker->nationalIdNumber(),
-            'email_verified_at'=>$faker->date(),
+            // 'email_verified_at'=>$faker->date(),
+            'email_verified_at'=>Carbon::create(2022,03 ,15, 00, 00, 00)->format('Y-m-d H:i:s'),
             'role' => $faker->randomElement(['city_manager', 'gym_manager', 'gym_member']),
             'created_at' => now(),
             'updated_at' => now(),

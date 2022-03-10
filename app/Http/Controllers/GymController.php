@@ -86,8 +86,8 @@ class GymController extends Controller
     {
         $gym = Gym::find($id);
         $cityManager = Gym::with('city_managers')->where('id', $id)->first()->city_managers->user;
-        $gymManager =  GymManager::where('gym_id', $id)->get()->first();
-        return view('menu.gyms.show', compact(['gym', 'cityManager', 'gymManager']));
+        $gymManagers =  GymManager::where('gym_id', $id)->get();
+        return view('menu.gyms.show', compact(['gym', 'cityManager', 'gymManagers']));
     }
 
     public function edit($id)
