@@ -141,6 +141,6 @@ class UserController extends Controller
     public function unban($id)
     {
         User::where('id', $id)->onlyBanned()->first()->unban();
-        return response()->json(['success'=>'you unbanned this manager Successfully']);
+        return response()->json(['message'=>true]);
     }
 }

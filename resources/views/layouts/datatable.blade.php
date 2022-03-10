@@ -127,9 +127,10 @@
                     },
                     success: (response) => {
                         $('#deleteAlert').modal('hide');
+
                         Toast.fire({
-                            icon: "success",
-                            title: response.success ? response.success : response.fail,
+                            icon: response.message  ? "success" : "error", 
+                            title: response.message ? "this row deleted Successfully":"Sorry Can't delete this Row right Now",
                         });
                         table.ajax.reload();
                     }
@@ -148,8 +149,8 @@
                 },
                 success: (response) => {
                     Toast.fire({
-                            icon: "success",
-                            title: response.success ? response.success : response.fail,
+                            icon:  response.message  ? "success" : "error",
+                            title: response.message ? "You Banned This Manager Successfully":"Sorry Can't Ban This User",
                         });
                     table.ajax.reload();
                 }
@@ -167,8 +168,8 @@
                 },
                 success: (response) => {
                     Toast.fire({
-                            icon: "success",
-                            title: response.success ? response.success : response.fail,
+                            icon: response.message  ? "success" : "error",
+                            title: response.message ? "You UnBanned This Manager Successfully":"Sorry can't unban this User",
                         });
                     table.ajax.reload();
                 }
