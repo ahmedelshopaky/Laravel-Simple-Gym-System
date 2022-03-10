@@ -68,9 +68,14 @@ class UserController extends Controller
 
             return redirect()->route('city-managers.index');
         } elseif ($request->role == 'gym_manager') {
+            if ($request->gym == 'none') {
+                $gymID = null;
+            } else {
+                $gymID = $request->gym;
+            }
             GymManager::create([
                 'user_id' => $user->id,
-                'gym_id' => $request->gym,
+                'gym_id' => $gymID,
                 // 'role' => 'gym_manager',
             ]);
             $user->assignRole('gymManager');
