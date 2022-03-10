@@ -124,7 +124,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return response()->json(['success'=>'This row id deleted successfully']);
+        return response()->json(['message'=>true]);
     }
 
     public function ban($id)
@@ -132,9 +132,9 @@ class UserController extends Controller
         $user=User::where('id', $id)->first();
         if ($user->hasRole('gymManager')) {
             $user->ban();
-            return response()->json(['success','you banned this manager Successfully']);
+            return response()->json(['message'=>true]);
         } else {
-            return response()->json(['fail','Sorry, only gym managers are bannable']);
+            return response()->json(['message'=>false]);
         }
     }
 

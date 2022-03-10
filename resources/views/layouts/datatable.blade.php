@@ -79,6 +79,12 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        var Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+        });
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
@@ -121,6 +127,10 @@
                     },
                     success: (response) => {
                         $('#deleteAlert').modal('hide');
+                        Toast.fire({
+                            icon: "success",
+                            title: response.success ? response.success : response.fail,
+                        });
                         table.ajax.reload();
                     }
                 });
@@ -137,6 +147,10 @@
                     _token: '{!! csrf_token() !!}',
                 },
                 success: (response) => {
+                    Toast.fire({
+                            icon: "success",
+                            title: response.success ? response.success : response.fail,
+                        });
                     table.ajax.reload();
                 }
             });
@@ -152,6 +166,10 @@
                     _token: '{!! csrf_token() !!}',
                 },
                 success: (response) => {
+                    Toast.fire({
+                            icon: "success",
+                            title: response.success ? response.success : response.fail,
+                        });
                     table.ajax.reload();
                 }
             });

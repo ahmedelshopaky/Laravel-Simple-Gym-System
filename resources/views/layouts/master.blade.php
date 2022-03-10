@@ -7,7 +7,6 @@
     <title>Home</title>
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -19,8 +18,12 @@
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js">
     </script>
-    @require("vendor\almasaeed2010\adminlte\plugins\sweetalert2\sweetalert2.min.js")
-    @yield('styles')
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        
+       
+        
+        @yield('styles')
 </head>
 
 <body class="hold-transition sidebar-mini">
