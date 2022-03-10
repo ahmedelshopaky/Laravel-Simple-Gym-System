@@ -4,7 +4,7 @@
 
 
 
-<div class="col-sm-10 offset-1 mt-5">
+<div class="col-md-10 col-sm-12 offset-md-1 mt-5">
 
     <div class="card card-widget widget-user card-view">
 

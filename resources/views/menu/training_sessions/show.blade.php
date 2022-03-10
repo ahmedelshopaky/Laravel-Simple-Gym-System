@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="col-sm-10 offset-1 mt-5">
+<div class="col-md-10 col-sm-12 offset-md-1 mt-5">
     <div class="card card-info card-view">
         <div class="card-header text-white  ">
             <h1 class="text-center py-4 fw-bold"> <i class="fa-solid fa-person-running nav-icon"></i> Training Session <i class="fa-solid fa-person-running nav-icon"></i> </h1>
