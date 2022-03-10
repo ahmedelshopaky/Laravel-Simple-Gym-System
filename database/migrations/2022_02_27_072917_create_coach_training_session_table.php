@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('coach_training_session', function (Blueprint $table) {
             $table->unsignedBigInteger('coach_id');
-            $table->foreign('coach_id')->references('id')->on('coaches');
+            $table->foreign('coach_id')->references('id')->on('coaches')->onDelete('cascade');
 
             $table->unsignedBigInteger('training_session_id');
-            $table->foreign('training_session_id')->references('id')->on('training_sessions');
+            $table->foreign('training_session_id')->references('id')->on('training_sessions')->onDelete('cascade');
         });
     }
 

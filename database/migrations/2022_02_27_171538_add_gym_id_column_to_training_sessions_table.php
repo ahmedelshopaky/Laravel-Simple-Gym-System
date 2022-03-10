@@ -14,7 +14,7 @@ return new class extends Migration {
     {
         Schema::table('training_sessions', function (Blueprint $table) {
             $table->unsignedBigInteger('gym_id');
-            $table->foreign('gym_id')->references('id')->on('gyms');
+            $table->foreign('gym_id')->references('id')->on('gyms')->onDelete('cascade');
         });
     }
 

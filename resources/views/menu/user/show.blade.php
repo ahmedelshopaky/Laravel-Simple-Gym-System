@@ -46,7 +46,7 @@
                 <div class="col-sm-4 border-right">
                     <div class="description-block">
                         <h5 class="description-header">Email Verified At</h5>
-                        <span class="description-text"> {{$user->email_verified_at}}</span>
+                        <span class="description-text"> {{$user->email_verified_at ? $user->email_verified_at : 'NONE'}}</span>
 
                     </div>
 
