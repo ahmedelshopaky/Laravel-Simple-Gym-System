@@ -20,9 +20,8 @@ Attendence
 
 
 
-
-@role('admin')
 @section('script')
+@role('admin')
 <script>
   $(function() {
 
@@ -132,5 +131,4 @@ Attendence
   });
 </script>
 @endrole
-
 @endsection

@@ -9,6 +9,7 @@
             @foreach ($gyms as $gym)
             <option value="{{$gym->id}}">{{$gym->name}}</option>
             @endforeach
+            <option value="none">None</option>          <!-- I can assign a gym manager without gym -->
         </select>
         @error('gym')
         <span class="invalid-feedback" role="alert">
@@ -20,7 +21,7 @@
 @endsection
 
 @section('role')
-<option value="gym_manager">Gym Manager</option>
+<input type="hidden" name="role" value="gym_manager"/>
 @endsection
 
 @section('header')

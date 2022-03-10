@@ -27,7 +27,8 @@
 @endsection
 @section('content')
 <form action="{{route('single.charge')}}" method="POST" id="subscribe-form">
-    <input type="number" name="amount" id="amount" class="form-control"> <br>
+    <label for="amount">$</label>
+    <input value="{{ $price }}" type="number" name="amount" id="amount" class="form-control"> <br>
     <label for="card-holder-name form-control">Card Holder Name</label> <br>
     <input id="card-holder-name" type="text">
     @csrf

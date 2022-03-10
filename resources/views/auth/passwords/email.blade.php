@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+                <div class="card-header py-3 text-white fs-4">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -32,8 +32,8 @@
                         </div>
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-12 ">
+                                <button type="submit" class="btn btn-info text-white col-sm-3 offset-5 ">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>

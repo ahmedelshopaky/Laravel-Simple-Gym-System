@@ -17,6 +17,7 @@ class CityManagerResource extends JsonResource
         return [
             'user_id' => $this->user_id,
             'user' => new UserResource($this->user),
+            
         ];
     }
 }

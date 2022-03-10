@@ -27,7 +27,7 @@ class StoreTrainingPackageRequest extends FormRequest
         return [
             'name' => ['required', 'max:255', 'min:4', 'string', Rule::unique('training_packages','name')->ignore($this->id, 'id')],
             'sessions_number' => ['required', 'integer'],
-            'price' => ['required', 'integer'],
+            'price' => ['required', 'integer', 'min:200'],
         ];
     }
 }

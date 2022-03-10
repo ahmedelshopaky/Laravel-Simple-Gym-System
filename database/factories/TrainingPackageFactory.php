@@ -18,7 +18,7 @@ class TrainingPackageFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'price' => $this->faker->numberBetween(100, 500),
+            'price' => $this->faker->numberBetween(1000, 50000),
             'sessions_number' => $this->faker->numberBetween(10, 50),
         ];
     }

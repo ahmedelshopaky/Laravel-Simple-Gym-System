@@ -4399,9 +4399,12 @@ input[type="button"].btn-block {
   -ms-flex-pack: justify;
   justify-content: space-between;
   padding: 0.5rem 0.5rem;
-  /* box-shadow:10px 10px 10px #eee; */
+   /* box-shadow:10px 10px 10px #eee;  */
   height: 70px;
-  /* background-color: #343a40 !important; */
+  border-bottom:3px solid #5e8ab8 !important;
+  background-color: #f7f7f7 !important;
+  margin-bottom:1px;
+
 }
 
 .navbar .container,
@@ -4732,8 +4735,13 @@ input[type="button"].btn-block {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
-  color: rgba(0, 0, 0, 0.7);
+.navbar-light .navbar-nav .pages:hover, .navbar-light .navbar-nav .pages :focus {
+  color: #fff !important; 
+  /* border-bottom: 2px solid #75a7dc; */
+  background-color:#3f6791 ;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  
 }
 
 .navbar-light .navbar-nav .nav-link.disabled {
@@ -57459,9 +57467,13 @@ textarea.form-control-lg {
 }
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.55);
+  font-size: 16px;
 }
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: rgba(0, 0, 0, 0.7);
+}
+.navbar-light .navbar-nav .account:hover, .navbar-light .navbar-nav .account:focus{
+  border-bottom: 2px solid #3f6791;
 }
 .navbar-light .navbar-nav .nav-link.disabled {
   color: rgba(0, 0, 0, 0.3);
@@ -73476,11 +73488,11 @@ readers do not read off random characters that represent icons */
   font-weight: 400;
 }
 
-
+/* 
 
 .card-view{
   box-shadow:10px 10px 10px #bbc4d2;
-}
+} */
 /* start pagination */
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current{
   color:#fff !important
@@ -73507,22 +73519,29 @@ readers do not read off random characters that represent icons */
 }
 
 .sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active{
-  /* background-color: #17a2b8; */
   background-color: #3f6791;
 }
 .card-header ,.widget-user-header ,.info{
   background-color: #3f6791 !important; 
 }
 
-/* body{
-  background-image: url("../images/15909.jpg");
-  background-size: cover;
-}
+
 .content-wrapper{
-background-image: url("../images/1.jpg");
-background-size: cover;
+background-image: url("../images/2.jpeg");
+background-repeat: no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+
   ;
-} */
+}
+.overlay{
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+  height: 100%;
+	background-color: rgba(0,0,0,0.5);
+}
 
 .p-view{
   color:#3f6791;

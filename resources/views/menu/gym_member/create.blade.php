@@ -31,7 +31,7 @@
 @endsection
 
 @section('role')
-<option value="gym_member">Gym Member</option>
+<input type="hidden" name="role" value="gym_member"/>
 @endsection
 
 @section('header')

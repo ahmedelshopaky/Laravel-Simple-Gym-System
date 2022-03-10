@@ -6,6 +6,7 @@ use App\Http\Controllers\GymManagerController;
 use App\Http\Controllers\TrainingPackageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BanController;
 use App\Http\Controllers\CityManagerController;
 use App\Http\Controllers\RevenueController;
@@ -33,7 +34,9 @@ use Illuminate\Support\Facades\Auth;
 
 
 Auth::routes();
-Route::group(['middleware'=>['auth','logs-out-banned-user']], function () {
+Route::get('/unauthorized', [LoginController::class, 'unauthorized'])->name('unauthorized');
+
+Route::group(['middleware'=>['auth','logs-out-banned-user','role:admin|cityManager|gymManager']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
     

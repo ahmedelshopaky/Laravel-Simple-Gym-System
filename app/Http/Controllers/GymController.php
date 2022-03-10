@@ -21,10 +21,11 @@ class GymController extends Controller
 {
     public function index(Request $request)
     {
-        if (Auth::user()->role == 'city_manager')
+        $user = Auth::user();
+        if ($user->hasRole('cityManager'))
         {
-            $gyms = Gym::with('city')->where('city_manager_id', 14)->get();
-        } else {
+            $gyms = Gym::with('city')->where('city_manager_id', $user->id)->get();
+        } else if ($user->hasRole('admin')){
             $gyms = Gym::with('city')->get();
         }
         if ($request->ajax()) {
@@ -85,8 +86,8 @@ class GymController extends Controller
     {
         $gym = Gym::find($id);
         $cityManager = Gym::with('city_managers')->where('id', $id)->first()->city_managers->user;
-        $gymManager =  GymManager::where('gym_id', $id)->get()->first();
-        return view('menu.gyms.show', compact(['gym', 'cityManager', 'gymManager']));
+        $gymManagers =  GymManager::where('gym_id', $id)->get();
+        return view('menu.gyms.show', compact(['gym', 'cityManager', 'gymManagers']));
     }
 
     public function edit($id)
