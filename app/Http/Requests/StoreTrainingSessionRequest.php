@@ -29,6 +29,12 @@ class StoreTrainingSessionRequest extends FormRequest
             'starts_at' => ['required', Rule::unique('training_sessions','starts_at')->ignore($this->id, 'id')],      // TODO : finishes at must come after starts at :)
             'finishes_at' => ['required', 'after:starts_at', Rule::unique('training_sessions','finishes_at')->ignore($this->id, 'id')],
             'gym_id' => ['required',],
+            'coach_id'=>['required','int'],
+        ];
+    }
+    public function messages(){
+        return [
+            'coach_id.required'=>'Sorry This Gym Doesn\'t have Coaches',
         ];
     }
 }
