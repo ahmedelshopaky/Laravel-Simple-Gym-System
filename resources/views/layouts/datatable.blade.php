@@ -96,6 +96,7 @@
         $('body').on('click', '.delete', function() {
             id = $(this).data("id");
             $('body').on('click', '._delete', (event) => {
+                
                 $.ajax({
                     url: url + id,
                     type: "DELETE",
@@ -105,7 +106,7 @@
                     },
                     success: (response) => {
                         $('#deleteAlert').modal('hide');
-
+                        // $(this).off();
                         Toast.fire({
                             icon: response.message  ? "success" : "error", 
                             title: response.message ? "this row deleted Successfully":"Sorry Can't delete this Row right Now",
