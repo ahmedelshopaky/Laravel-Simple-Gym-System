@@ -55,4 +55,42 @@ Create New Training Session
         @enderror
     </div>
 </div>
+<div class="row mb-3">
+    <label for="gym" class="col-sm-3 col-form-label "  >{{ __('Coach') }}</label>
+
+    <div class="col-sm-9">
+        <select id="coach_id" class="form-control @error('coach_id') is-invalid @enderror" name="coach_id" value="{{ old('coach_id') }}"  autocomplete="coach" autofocus>
+            @foreach ($coaches as $coach)
+            <option value="{{$coach->id}}">{{$coach->name}}</option>
+            @endforeach
+        </select>
+        @error('coach_id')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+</div>
+<script>
+    let gymId;
+            $('body').on('change', '#gym', function() {
+                gymId = $(this).val();
+                // alert(gymId);
+                $.ajax({
+                    url: "/training-sessions/gym-coaches/" + gymId,
+                    type: "GET",
+                    success: (response) => {
+                        // alert(response[0].id);
+                        // console.log(response);
+                        $('option','#coach_id').each(function(){$(this).remove()});
+                        $.each(response,function(coach){
+                            $('#coach_id').append(`<option value="${response[coach].id}">${response[coach].name}</option>`);
+                        });
+
+
+                    }
+                });
+    
+            });
+    </script>
 @endsection

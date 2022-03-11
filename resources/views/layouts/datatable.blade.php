@@ -79,6 +79,12 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        var Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+        });
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
@@ -121,6 +127,11 @@
                     },
                     success: (response) => {
                         $('#deleteAlert').modal('hide');
+
+                        Toast.fire({
+                            icon: response.message  ? "success" : "error", 
+                            title: response.message ? "this row deleted Successfully":"Sorry Can't delete this Row right Now",
+                        });
                         table.ajax.reload();
                     }
                 });
@@ -137,6 +148,10 @@
                     _token: '{!! csrf_token() !!}',
                 },
                 success: (response) => {
+                    Toast.fire({
+                            icon:  response.message  ? "success" : "error",
+                            title: response.message ? "You Banned This Manager Successfully":"Sorry Can't Ban This User",
+                        });
                     table.ajax.reload();
                 }
             });
@@ -152,6 +167,10 @@
                     _token: '{!! csrf_token() !!}',
                 },
                 success: (response) => {
+                    Toast.fire({
+                            icon: response.message  ? "success" : "error",
+                            title: response.message ? "You UnBanned This Manager Successfully":"Sorry can't unban this User",
+                        });
                     table.ajax.reload();
                 }
             });
