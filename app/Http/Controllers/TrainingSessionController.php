@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTrainingSessionRequest;
 use App\Http\Resources\TrainingSessionResource;
+use App\Models\Coach;
 use App\Models\Gym;
 use App\Models\TrainingSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -22,15 +24,7 @@ class TrainingSessionController extends Controller
     {
         if ($request->ajax()) {
             $trainingSessions = TrainingSessionResource::collection(TrainingSession::with('gym')->get());
-            return DataTables::of($trainingSessions)->addIndexColumn()
-                ->addColumn('action', function ($trainingSession) {
-                    $Btn = '<a href="' . route('training-sessions.show', $trainingSession['id']) . '" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder mr-2""> </i>View</a>';
-                    $Btn .= '<a href="' . route('training-sessions.edit', $trainingSession['id']) . '" class="edit btn btn-info btn-sm mr-3 text-white"> <i class="fas fa-pencil-alt mr-2"> </i> Edit</a>';
-                    $Btn .= '<a href="javascript:void(0)" data-id="' . $trainingSession['id'] . '" data-bs-toggle="modal" data-bs-target="#deleteAlert" class="btn btn-danger btn-sm mr-3 delete"> <i class="fas fa-trash mr-2"">  </i>Delete</a>';
-                    return $Btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+            return DataTables::of($trainingSessions)->addIndexColumn()->make(true);
         }
         return view('menu.training_sessions.index');
     }
@@ -43,7 +37,8 @@ class TrainingSessionController extends Controller
     public function create()
     {
         $gyms = Gym::all();
-        return view('menu.training_sessions.create', compact('gyms'));
+        $coaches = $gyms->first()->coaches;
+        return view('menu.training_sessions.create', compact('gyms','coaches'));
     }
 
     /**
@@ -54,9 +49,11 @@ class TrainingSessionController extends Controller
      */
     public function store(StoreTrainingSessionRequest $request)
     {
-        $validated = $request->validated();
-
-        TrainingSession::insert($validated);
+        $trainSessionWithCoach=array_slice(request()->all(),count(request()->all())-1);
+        $trainingSession=array_slice(request()->all(),1,count(request()->all())-2);
+        $trainingSession=TrainingSession::create($trainingSession);
+        $trainSessionWithCoach['training_session_id']=$trainingSession->id;
+        DB::table('coach_training_session')->insert($trainSessionWithCoach);
         return view('menu.training_sessions.index');
     }
 
@@ -85,9 +82,11 @@ class TrainingSessionController extends Controller
             $trainingSession->strats_at < now() &&
             $trainingSession->finishes_at > now() &&
             $trainingSession->gym_members->count() > 0
-        ) {
+        ) 
+        {
             return 'Hahaha';
-        } else {
+        } 
+        else {
             $gyms = Gym::all();
             return view('menu.training_sessions.edit', compact('trainingSession', 'gyms'));
         }
@@ -124,11 +123,17 @@ class TrainingSessionController extends Controller
             $trainingSession->strats_at < now() &&
             $trainingSession->finishes_at > now() &&
             $trainingSession->gym_members->count() > 0
-        ) {
-            return response()->json(['fail' => 'Can\'t delete the Sessions Right Now !']);
+        ) 
+        {
+            return response()->json(['fail' => 'Can\'t delete this session']);
         } else {
             TrainingSession::find($id)->delete();
             return response()->json(['success' => 'This session has been deleted successfully']);
         }
+    }
+    public function getCoaches($gymId)
+    {
+        $coaches=Coach::where('gym_id',$gymId)->get();
+        return response()->json($coaches);
     }
 }

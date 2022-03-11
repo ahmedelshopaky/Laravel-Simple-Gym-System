@@ -49,7 +49,7 @@ class NotifyMembers extends Command
         $users = GymMember::with('user')->where('last_login' ,'<',Carbon::now()->subDays(30)->toDateTimeString())->get();
       
         foreach($users as $user){
-            Notification::send($user->user,new MemberMissed());
+            Notification::send($user->user,new MemberMissed($user->user));
         }
         
     }

@@ -10,7 +10,7 @@
 
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title">{{ __('New Coach') }}</h3>
+                            <h3 class="card-title fs-3">{{ __('New Coach') }}</h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                     <i class="fas fa-minus"></i>
@@ -25,9 +25,9 @@
                                             <div class="card-body pt-0">
 
                                             <div class="row mb-3">
-                                                <label for="name" class="col-sm-2 col-form-label">{{ __('Name') }}</label>
+                                                <label for="name" class="col-sm-12 col-md-2 col-form-label">{{ __('Name') }}</label>
 
-                                                <div class="col-sm-8">
+                                                <div class="col-sm-12 col-md-8">
                                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                                     @error('name')
@@ -40,9 +40,9 @@
 
 
                                             <div class="row mb-3">
-                                                <label for="gym" class="col-sm-2 col-form-label">{{ __('Gym') }}</label>
+                                                <label for="gym" class="col-sm-12 col-md-2 col-form-label">{{ __('Gym') }}</label>
 
-                                                <div class="col-sm-8">
+                                                <div class="col-sm-12 col-md-8">
                                                     <select id="gym" class="form-control @error('gym') is-invalid @enderror" name="gym" required autocomplete="gym" autofocus>
                                                         @foreach ($gyms as $gym)
                                                         <option value="{{$gym->id}}">{{$gym->gym->name}}</option>
@@ -61,7 +61,7 @@
 
                                             <div class="row mb-0">
                                                 <div class="col-12">
-                                                    <button type="submit" class="btn btn-info text-white col-sm-2 offset-5 fs-5">
+                                                    <button type="submit" class="btn btn-info text-white col-sm-12  col-md-2 offset-md-5 fs-5">
                                                         {{ __('Submit') }}
                                                     </button>
                                                 </div>

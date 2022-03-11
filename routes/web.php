@@ -141,6 +141,7 @@ Route::group(['middleware'=>['auth','logs-out-banned-user','role:admin|cityManag
         Route::get('/', [TrainingSessionController::class, 'index'])->name('training-sessions.index');
 
         Route::get('/create', [TrainingSessionController::class, 'create'])->name('training-sessions.create');
+        Route::get('/gym-coaches/{gymId}',[TrainingSessionController::class, 'getCoaches'])->name('training-sessions.getCoaches');
         Route::post('/', [TrainingSessionController::class, 'store'])->name('training-sessions.store');
 
         Route::get('/{id}', [TrainingSessionController::class, 'show'])->name('training-sessions.show');

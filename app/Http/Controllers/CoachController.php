@@ -13,16 +13,7 @@ class CoachController extends Controller
     public function index(Request $request){
         if ($request->ajax()) {
             $coaches = Coach::with('gym')->get();
-            return Datatables::of($coaches)->addIndexColumn()
-                    ->addColumn('action', function($coach){
-                         
-                            $Btn='<a href="'.route('coaches.show',$coach->id).'" class="view btn btn-primary btn-sm mr-3"> <i class="fas fa-folder mr-2"> </i>View</a>';
-                            $Btn .= '<a href="'.route('coaches.edit',$coach->id).'" class="edit btn btn-info btn-sm mr-3 text-white"> <i class="fas fa-pencil-alt mr-2"> </i>Edit</a>';
-                            $Btn .= '<a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id="' . $coach->id . '"  data-bs-toggle="modal" data-bs-target="#deleteAlert"><i class="fas fa-trash mr-2"> </i>Delete</a>';
-                            return $Btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
+            return Datatables::of($coaches)->addIndexColumn()->make(true);
         }
       
         return view('menu.coaches.index');

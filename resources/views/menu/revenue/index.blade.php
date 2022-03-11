@@ -4,12 +4,12 @@
 <section class="content mt-5">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
+      <div class="col-md-4 ">
 
         <div class="card">
           <div class="card-header">
             @role('admin')
-            <h3 class="card-title">Total Revenue</h3> <!-- ADMIN ONLY -->
+            <h3 class="card-title py-3 text-white fs-4">Total Revenue</h3> <!-- ADMIN ONLY -->
             @endrole
             @role('cityManager')
             <h3 class="card-title">Total Revenue For Your City</h3> <!-- CITY MANAGER ONLY -->
@@ -19,7 +19,7 @@
             @endrole
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
+                <i class="fas fa-minus text-white"></i>
               </button>
             </div>
           </div>
@@ -48,10 +48,10 @@
 
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">Purchases History</h3>
+            <h3 class="card-title py-3 text-white fs-4">Purchases History</h3>
             <div class="card-tools">
               <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                <i class="fas fa-minus"></i>
+                <i class="fas fa-minus text-white"></i>
               </button>
             </div>
           </div>

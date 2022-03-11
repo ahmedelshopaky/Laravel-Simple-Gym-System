@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
-<div class="col-sm-10 offset-1 mt-5">
+<div class="col-md-10 col-sm-12 offset-md-1 mt-5">
     <div class="card card-info card-view">
         <div class="card-header text-white  ">
             <h1 class="text-center py-4 fw-bold"> <i class="fa-solid fa-person-running nav-icon"></i> Training Session <i class="fa-solid fa-person-running nav-icon"></i> </h1>
@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h3 class="fw-bold " style="color: #17a2b8;">Training Session Details </h3>
+                    <h3 class="fw-bold p-view">Training Session Details </h3>
 
                     <div class="row">
                         <div class="col-sm-4 border-right">
@@ -55,10 +55,10 @@
                             </div>
 
                         </div>
-                       
+
                     </div>
                     <hr>
-                    <h3 class="fw-bold mt-5" style="color: #17a2b8;">Gym Details </h3>
+                    <h3 class="fw-bold mt-5 p-view">Gym Details </h3>
 
                     <div class="row">
                         <div class="col-sm-4 border-right">

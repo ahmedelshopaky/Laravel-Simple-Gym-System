@@ -44,23 +44,13 @@ class BuyPackageController extends Controller
         $request->session()->put('gym', $request->gym);
         $request->session()->put('gym_member', $request->gym_member);
         $request->session()->put('training_package', $request->training_package);
-        // $triningPackage = TrainingPackage::find($request->training_package);
-        // $gym = Gym::find($request->gym);
-        // $gymMember = GymMember::where('user_id', $request->gym_member)->with('user')->get()->first();
-
-        // Revenue::insert([
-        //     'gym_id' => $request->gym,
-        //     'gym_member_id' => $request->gym_member,
-        //     'package_id' => $request->training_package,
-
-        //     'amount_paid' => $triningPackage->price,
-        //     'purchased_at' => now(),
-        // ]);
-        // return view('menu.buy_package.show', compact('gym', 'triningPackage', 'gymMember'));
+    
         $user = auth()->user();
         return view('menu.buy_package.stripe', [
             'intent' => $user->createSetupIntent(),
             'price' => TrainingPackage::find($request->training_package)->price / 100,
+            'gymMember' => GymMember::where('user_id',$request->gym_member)->first()->user->name,
+
         ]);
     }
 
@@ -77,7 +67,6 @@ class BuyPackageController extends Controller
         $user->createOrGetStripeCustomer();
         $paymentMethod = $user->addPaymentMethod($paymentMethod);
         $user->charge($amount, $paymentMethod->id);
-
 
         $triningPackage = TrainingPackage::find($training_packageFromSession);
         $gym = Gym::find($gymFromSession);

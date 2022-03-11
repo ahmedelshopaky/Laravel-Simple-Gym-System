@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="card card-primary">
-<div class="card-header">
-<h3 class="card-title">About Us</h3>
+<div class="card mt-5 w-75 m-auto">
+<div class="card-header py-3 ">
+<h2 class="text-white fw-bold ">About Us</h2>
 </div>
 
 <div class="card-body">
