@@ -30,7 +30,8 @@
 
 <div class="card card-info my-3">
   <div class="card-header py-3">
-    <h3 class="card-title">Payment Detalis Form</h3>
+        <img src="{{asset('/images/stripe.png')}}" width="350" height="100">
+    
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
         <i class="fas fa-minus"></i>
