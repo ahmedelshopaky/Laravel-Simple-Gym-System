@@ -73534,7 +73534,8 @@ body{
   background-image: url("../images/2.jpeg");
   background-repeat: no-repeat;
 	background-size: 100% 100%;
-	position: relative; 
+	position: relative;
+ 
   
 }
 /* .overlay{
@@ -73551,4 +73552,21 @@ body{
   color:#3f6791;
   text-shadow: 3px 3px 3px #d1d9e4;
 
+}
+.h-home{
+    color: #d39656;
+    text-shadow: 2px 2px 2px #181715;
+}
+.home{
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+  height:100%;
+	background-color: rgba(0,0,0,0.4);
+ 
+}
+.home .welcome{
+  font-size:50px;
+  
 }
