@@ -8,7 +8,6 @@ Cities
 <th>ID</th>
 <th>City</th>
 <th>City Manager</th>
-<th>Actions</th>
 @endsection
 
 @section('script')

@@ -2,9 +2,9 @@
 
 @section('manages')
 <div class="row mb-3">
-    <label for="gym" class="col-sm-2 col-form-label">{{ __('Gym') }}</label>
+    <label for="gym" class="col-sm-12 col-md-2 col-form-label">{{ __('Gym') }}</label>
 
-    <div class="col-sm-10">
+    <div class="col-sm-12 col-md-9">
         <select id="gym" class="form-control @error('gym') is-invalid @enderror" name="gym" value="{{ old('gym') }}" required autocomplete="gym" autofocus>
             @foreach ($gyms as $gym)
                 @if ($gym->id == $user->gym_manager->gym_id)

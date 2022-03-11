@@ -46,8 +46,8 @@
                                 <div class="modal-content text-center">
 
                                     <div class="modal-body">
-                                        <i class="fas fa-times fa-4x animated rotateIn"></i>
-                                        <p class="text-center h3 "> Sure? </p>
+                                        <i class="fas fa-times fa-3x animated rotateIn"></i>
+                                        <p class="text-center h3 "> Are you Sure? </p>
                                     </div>
                                     <div class="modal-footer flex-center">
                                         <a class="btn btn-outline-danger _delete">Yes</a>

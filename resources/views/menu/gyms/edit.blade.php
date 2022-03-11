@@ -1,6 +1,8 @@
 @extends('menu.gyms.layout')
 
-
+@section('title')
+Edit Gym
+@endsection
 @section('value_name')
 {{$gym->name}}
 @endsection

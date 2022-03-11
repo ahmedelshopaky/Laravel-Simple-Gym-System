@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h3 class="fw-bold " style="color: #17a2b8;">Training Session Details </h3>
+                    <h3 class="fw-bold p-view">Training Session Details </h3>
 
                     <div class="row">
                         <div class="col-sm-4 border-right">
@@ -55,10 +55,10 @@
                             </div>
 
                         </div>
-                       
+
                     </div>
                     <hr>
-                    <h3 class="fw-bold mt-5" style="color: #17a2b8;">Gym Details </h3>
+                    <h3 class="fw-bold mt-5 p-view">Gym Details </h3>
 
                     <div class="row">
                         <div class="col-sm-4 border-right">
