@@ -26,11 +26,24 @@
 </style>
 @endsection
 @section('content')
+<div class="col-8 offset-2">
+
+<div class="card card-info my-3">
+  <div class="card-header py-3">
+        <img src="{{asset('/images/stripe.png')}}" width="350" height="100">
+    
+    <div class="card-tools">
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+        <i class="fas fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
 <form action="{{route('single.charge')}}" method="POST" id="subscribe-form">
-    <label for="amount">$</label>
-    <input value="{{ $price }}" type="number" name="amount" id="amount" class="form-control"> <br>
+    <label for="amount">Price ($)</label> <br>
+    <input value="{{ $price }}" type="text" name="amount" id="amount" class="form-control"> <br>
     <label for="card-holder-name form-control">Card Holder Name</label> <br>
-    <input id="card-holder-name" type="text">
+    <input value="{{ $gymMember }}" id="card-holder-name" type="text" class="form-control">
     @csrf
     <div class="form-row">
         <label for="card-element">Credit or debit card</label> <br>
@@ -47,10 +60,12 @@
         @endforeach
     </div>
     @endif
+    <br>
     <div class="form-group text-center">
-        <button id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-info btn-block">SUBMIT</button>
+        <button id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-info text-white btn-block">Confirm Payment Process</button>
     </div>
 </form>
+</div>
 @endsection
 
 @section('scripts')

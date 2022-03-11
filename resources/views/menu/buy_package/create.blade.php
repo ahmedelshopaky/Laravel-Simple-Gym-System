@@ -42,7 +42,7 @@
                     </div>
                   </div>
 
-                  @hasanyrole('admin|cityManager')
+                  @hasanyrole('admin|cityManager|gymManager')
                   <div class="row mb-3">
                     <label for="training_package" class="col-sm-3 col-form-label">{{ __('Training Package') }}</label>
 
