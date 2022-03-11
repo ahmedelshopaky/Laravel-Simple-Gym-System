@@ -343,9 +343,8 @@
         </aside>
 
         <div class="content-wrapper">
-            <div class="overlay">
             @yield('content')
-            </div>
+         
         </div>
 
 

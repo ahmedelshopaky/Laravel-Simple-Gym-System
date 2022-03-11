@@ -187,7 +187,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title h4y-3 text-white fs-4">h4urchases History</h4>
+            <h4 class="card-title h4y-3 text-white fs-4">purchases History</h4>
             <div class="card-tools">
               <button tyh4e="button" class="btn btn-tool" data-card-widget="collah4se" title="Collah4se">
                 <i class="fas fa-minus text-white"></i>

@@ -3,12 +3,14 @@
 @section('content')
 
 
-<section class="content home">
+<section class="content home d-flex align-items-center">
     <div class="container ">
-        <div class="row justify-content-center">
-            <h1 class="text-center text-white mb-5 pt-5">Welcome {{ Auth::user()->name }}</h1>
-            <h1 class="text-center text-white mb-5">Ready to Burn ??</h1>
-            <div class="col-lg-3 col-6">
+        <div class="row ">
+            <div class="content">
+                <h1 class="text-center h-home  pt-5 fw-bold welcome ">Welcome {{ Auth::user()->name }}</h1>
+                <h1 class="text-center h-home mb-5  text-white">Ready to Burn ??</h1>
+            </div>
+            <!-- <div class="col-lg-3 col-6">
 
                 <div class="small-box  info text-white">
                     <div class="inner">
@@ -67,7 +69,7 @@
                         More info <i class="fas fa-arrow-circle-right"></i>
                     </a>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>
