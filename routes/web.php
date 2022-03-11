@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 Route::get('/unauthorized', [LoginController::class, 'unauthorized'])->name('unauthorized');
+Route::get('/register', [LoginController::class, 'unauthorized'])->name('unauthorized');
 
 Route::group(['middleware'=>['auth','logs-out-banned-user','role:admin|cityManager|gymManager']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');

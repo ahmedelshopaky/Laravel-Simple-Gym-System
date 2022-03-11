@@ -6,17 +6,27 @@ Training Session
 
 @section('tr')
 <th>Name</th>
-<th>Time</th>
+<th>Start Time / End Time </th>
 <th>Gym</th>
 <th>Actions</th>
 @endsection
 
 @section('script')
 <script>
-  let col1 = 'name',
-    col2 = 'time',
-    col3 = 'gym_name';
-    route = "{{ route('training-sessions.index') }}",
+  let columnsArray = [{
+    data: 'id'
+  }, {
+    data: 'name'
+  }, {
+    data: 'time'
+  },{
+    data: 'gym_name'
+  }, {
+    data: 'action',
+    orderable: false,
+    searchable: false
+  }];
+  let route = "{{ route('training-sessions.index') }}",
     url = "/training-sessions/";
 </script>
 @endsection

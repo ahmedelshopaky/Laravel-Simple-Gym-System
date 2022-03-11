@@ -47,6 +47,7 @@ Create New Training Session
             @foreach ($gyms as $gym)
             <option value="{{$gym->id}}">{{$gym->name}}</option>
             @endforeach
+            @yield('mygym')
         </select>
         @error('gym')
         <span class="invalid-feedback" role="alert">

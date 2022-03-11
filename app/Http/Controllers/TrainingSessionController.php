@@ -119,16 +119,16 @@ class TrainingSessionController extends Controller
      */
     public function destroy($id)
     {
-        // $trainingSession = TrainingSession::find($id);
-        // if (
-        //     $trainingSession->strats_at < now() &&
-        //     $trainingSession->finishes_at > now() &&
-        //     $trainingSession->gym_members->count() > 0
-        // ) {
-        //     return 'Hahaha';
-        // } else {
+        $trainingSession = TrainingSession::find($id);
+        if (
+            $trainingSession->strats_at < now() &&
+            $trainingSession->finishes_at > now() &&
+            $trainingSession->gym_members->count() > 0
+        ) {
+            return response()->json(['fail' => 'Can\'t delete the Sessions Right Now !']);
+        } else {
             TrainingSession::find($id)->delete();
             return response()->json(['success' => 'This session has been deleted successfully']);
-        // }
+        }
     }
 }
