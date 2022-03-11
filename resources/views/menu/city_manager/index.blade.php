@@ -13,10 +13,22 @@ City Managers
 
 @section('script')
 <script>
-  let col1 = 'user_id',
-    col2 = 'user.name',
-    col3 = 'user.email',
-    route = "{{ route('city-managers.index') }}",
-    url = "/users/";
+  let columnsArray=[
+    {data : 'user_id'},
+    {data : 'user.name'},
+    {data : 'user.email'},
+    {
+      data: null,
+      render: function(user) 
+      {
+          
+          return `<a href="${'/city-managers/'+user.user.id}" class="view btn btn-primary btn-sm mr-3"> <i class="fas fa-folder mr-2"> </i>View</a>
+                  <a href="${'/city-managers/'+user.user.id+'/edit'}" class="edit btn btn-info text-white btn-sm mr-3"><i class="fas fa-pencil-alt mr-2"> </i>Edit</a>
+                  <a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id="${user.user.id}"  data-bs-toggle="modal" data-bs-target="#deleteAlert"><i class="fas fa-trash mr-2"> </i>Delete</a>`;
+      }
+    }
+  ],
+  route = "{{ route('city-managers.index') }}",
+  url = "/users/";
 </script>
 @endsection

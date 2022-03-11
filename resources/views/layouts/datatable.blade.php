@@ -73,45 +73,30 @@
 
 
 <script>
+    var check;
     $(function() {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        var Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+        });
         var table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
             ajax: route,
-            columns: [{
-                    data: col1,
-                },
-                {
-                    data: col2,
-                },
-                {
-                    data: col3,
-                },
-                {
-                    data: 'action',
-                    orderable: false,
-                    searchable: false
-                },
-                // {
-                //     data: null,
-                //     render: function() {
-                //         return `<a href="' . route('city-managers.show', $user->user_id) . '" class="view btn btn-primary btn-sm mr-3"> <i class="fas fa-folder mr-2"> </i>View</a>
-                //                 <a href="' . route('city-managers.edit', $user->user_id) . '" class="edit btn btn-info text-white btn-sm mr-3"><i class="fas fa-pencil-alt mr-2"> </i>Edit</a>
-                //                 <a href="javascript:void(0)"  class="btn btn-danger btn-sm mr-3 delete"  data-id="' . $user->user_id . '  data-bs-toggle="modal" data-bs-target="#deleteAlert"><i class="fas fa-trash mr-2"> </i>Delete</a>`;
-                //     }
-
-                // },
-            ]
+            columns: columnsArray
         });
         var id;
         $('body').on('click', '.delete', function() {
             id = $(this).data("id");
-            $('body').on('click', '._delete', (event) => {
+            $('body').one('click', '._delete',function (event) {
+                
                 $.ajax({
                     url: url + id,
                     type: "DELETE",
@@ -121,7 +106,12 @@
                     },
                     success: (response) => {
                         $('#deleteAlert').modal('hide');
+                        Toast.fire({
+                            icon: response.message  ? "success" : "error", 
+                            title: response.message ? "this row deleted Successfully":"Sorry Can't delete this Row right Now",
+                        });
                         table.ajax.reload();
+                
                     }
                 });
             });
@@ -137,6 +127,10 @@
                     _token: '{!! csrf_token() !!}',
                 },
                 success: (response) => {
+                    Toast.fire({
+                            icon:  response.message  ? "success" : "error",
+                            title: response.message ? "You Banned This Manager Successfully":"Sorry Can't Ban This User",
+                        });
                     table.ajax.reload();
                 }
             });
@@ -152,6 +146,10 @@
                     _token: '{!! csrf_token() !!}',
                 },
                 success: (response) => {
+                    Toast.fire({
+                            icon: response.message  ? "success" : "error",
+                            title: response.message ? "You UnBanned This Manager Successfully":"Sorry can't unban this User",
+                        });
                     table.ajax.reload();
                 }
             });

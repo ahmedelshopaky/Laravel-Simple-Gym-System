@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('notify:users-not-logged-in-for-month')->everyMinute()->timezone('Africa/Cairo');
+        $schedule->command('notify:users-not-logged-in-for-month')->daily()->timezone('Africa/Cairo');
     }
 
     /**
