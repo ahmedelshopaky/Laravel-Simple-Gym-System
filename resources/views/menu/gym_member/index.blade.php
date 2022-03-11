@@ -1,7 +1,7 @@
 @extends('layouts.datatable')
 
 @section('title')
-Gym Mambers
+Gym Mثmbers
 @endsection
 
 @section('tr')

@@ -88,7 +88,8 @@ class TrainingSessionController extends Controller
         } 
         else {
             $gyms = Gym::all();
-            return view('menu.training_sessions.edit', compact('trainingSession', 'gyms'));
+            $coaches = $gyms->first()->coaches;
+            return view('menu.training_sessions.edit', compact('trainingSession', 'gyms', 'coaches'));
         }
     }
 
