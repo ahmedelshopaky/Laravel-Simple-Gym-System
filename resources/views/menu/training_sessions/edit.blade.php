@@ -19,6 +19,15 @@ Edit Training Session
 {{ route('training-sessions.update', $trainingSession->id) }}
 @endsection
 
+@section('mygym')
+<option value="{{$trainingSession->gym->id}}" selected>{{$trainingSession->gym->name}}</option>
+@endsection
+
+@if (!($trainingSession->coaches))
+@section('mycoach')
+<option value="{{$trainingSession->coaches->first()->id}}" selected>{{$trainingSession->coaches->first()->name}}</option>
+@endsection
+@endif
 
 @section('method')
 @method('PUT')

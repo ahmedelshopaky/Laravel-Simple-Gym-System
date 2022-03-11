@@ -6,7 +6,7 @@ Training Session
 
 @section('tr')
 <th>Name</th>
-<th>Time</th>
+<th>Start Time / End Time </th>
 <th>Gym</th>
 <th>Actions</th>
 @endsection

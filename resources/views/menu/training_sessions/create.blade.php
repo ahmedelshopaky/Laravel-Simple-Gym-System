@@ -4,6 +4,9 @@
 Create New Training Session
 @endsection
 
+@section('value_name')
+{{ old('name') }}
+@endsection
 
 @section('route')
 {{ route('training-sessions.store') }}
@@ -47,6 +50,7 @@ Create New Training Session
             @foreach ($gyms as $gym)
             <option value="{{$gym->id}}">{{$gym->name}}</option>
             @endforeach
+            @yield('mygym')
         </select>
         @error('gym')
         <span class="invalid-feedback" role="alert">
@@ -63,6 +67,7 @@ Create New Training Session
             @foreach ($coaches as $coach)
             <option value="{{$coach->id}}">{{$coach->name}}</option>
             @endforeach
+            @yield('mycoach')
         </select>
         @error('coach_id')
         <span class="invalid-feedback" role="alert">
