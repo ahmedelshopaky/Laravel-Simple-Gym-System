@@ -43,3 +43,28 @@ h2 {
     font-size: 30px;
     text-transform: uppercase;
 }
+.boxButton {
+    display: block;
+    width: 50px;
+    position: relative;
+    margin: 10px 44%;
+    background: #f95959;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    height: 50px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    line-height: 50px;
+    font-size: 18px;
+    padding: 0 70px;
+    white-space: nowrap;
+    margin-top: 25px;
+    transition: background 0.5s ease;
+    overflow: hidden;
+}
+
+.boxButton:hover {
+    background: transparent;
+    border-color: #fff;
+}
