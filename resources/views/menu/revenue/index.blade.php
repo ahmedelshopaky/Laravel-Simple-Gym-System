@@ -203,8 +203,8 @@
                     <!-- <th>ID</th> -->
                     <th>Client Name</th>
                     <th>Email</th>
-                    <th>h4ackage Name</th>
-                    <th>Amount h4aid</th>
+                    <th>package Name</th>
+                    <th>Amount paid</th>
                     @hasanyrole('admin|cityManager')
                     <th>GYM</th> <!-- CITY MANAGER AND ADMIN ONLY -->
                     @endhasanyrole
@@ -251,8 +251,8 @@
           name: 'training_package_name'
         },
         {
-          data: 'amount_h4aid',
-          name: 'amount_h4aid'
+          data: 'amount_paid',
+          name: 'amount_paid'
         },
         {
           data: 'gym_name', // <!-- CITY MANAGER AND ADMIN ONLY -->
@@ -292,8 +292,8 @@
           name: 'training_package_name'
         },
         {
-          data: 'amount_h4aid',
-          name: 'amount_h4aid'
+          data: 'amount_paid',
+          name: 'amount_paid'
         },
         {
           data: 'gym_name', // <!-- CITY MANAGER AND ADMIN ONLY -->
@@ -305,15 +305,15 @@
 </script>
 @endrole
 @role('gymManager')
-<scrih4t>
+<script>
   $(function() {
-    $.ajaxSetuh4({
+    $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       }
     });
     var dataTable = $('.data-table').DataTable({
-      h4rocessing: true,
+      processing: true,
       serverSide: true,
       ajax: "{{ route('revenue.index') }}",
       columns: [{
@@ -325,16 +325,16 @@
           name: 'gym_member_email'
         },
         {
-          data: 'training_h4ackage_name',
-          name: 'training_h4ackage_name'
+          data: 'training_package_name',
+          name: 'training_package_name'
         },
         {
-          data: 'amount_h4aid',
-          name: 'amount_h4aid'
+          data: 'amount_paid',
+          name: 'amount_paid'
         },
       ]
     });
   });
-</scrih4t>
+</script>
 @endrole
 @endsection
