@@ -95,7 +95,7 @@
         var id;
         $('body').on('click', '.delete', function() {
             id = $(this).data("id");
-            $('body').on('click', '._delete', (event) => {
+            $('body').one('click', '._delete',function (event) {
                 
                 $.ajax({
                     url: url + id,
@@ -106,12 +106,12 @@
                     },
                     success: (response) => {
                         $('#deleteAlert').modal('hide');
-                        // $(this).off();
                         Toast.fire({
                             icon: response.message  ? "success" : "error", 
                             title: response.message ? "this row deleted Successfully":"Sorry Can't delete this Row right Now",
                         });
                         table.ajax.reload();
+                
                     }
                 });
             });
