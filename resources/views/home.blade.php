@@ -3,10 +3,10 @@
 @section('content')
 
 
-<section class="content mt-5 home">
+<section class="content home">
     <div class="container ">
         <div class="row justify-content-center">
-            <h1 class="text-center text-white mb-5">Welcome {{ Auth::user()->name }}</h1>
+            <h1 class="text-center text-white mb-5 pt-5">Welcome {{ Auth::user()->name }}</h1>
             <h1 class="text-center text-white mb-5">Ready to Burn ??</h1>
             <div class="col-lg-3 col-6">
 

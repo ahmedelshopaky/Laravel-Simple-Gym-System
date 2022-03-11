@@ -73525,23 +73525,27 @@ readers do not read off random characters that represent icons */
   background-color: #3f6791 !important; 
 }
 
-
-.content-wrapper{
-background-image: url("../images/2.jpeg");
-background-repeat: no-repeat;
+body{
+  background-image: url("../images/2.jpeg");
+  background-repeat: no-repeat;
 	background-size: 100% 100%;
-	position: relative;
-
-  ;
 }
-.overlay{
+.content-wrapper{
+  background-image: url("../images/2.jpeg");
+  background-repeat: no-repeat;
+	background-size: 100% 100%;
+	position: relative; 
+  
+}
+/* .overlay{
+
   position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
-  height: 100%;
+  height:100%;
 	background-color: rgba(0,0,0,0.5);
-}
+} */
 
 .p-view{
   color:#3f6791;
