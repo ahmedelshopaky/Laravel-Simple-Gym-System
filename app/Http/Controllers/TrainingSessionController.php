@@ -24,15 +24,7 @@ class TrainingSessionController extends Controller
     {
         if ($request->ajax()) {
             $trainingSessions = TrainingSessionResource::collection(TrainingSession::with('gym')->get());
-            return DataTables::of($trainingSessions)->addIndexColumn()
-                ->addColumn('action', function ($trainingSession) {
-                    $Btn = '<a href="' . route('training-sessions.show', $trainingSession['id']) . '" class="view btn btn-primary btn-sm mr-3 "> <i class="fas fa-folder mr-2""> </i>View</a>';
-                    $Btn .= '<a href="' . route('training-sessions.edit', $trainingSession['id']) . '" class="edit btn btn-info btn-sm mr-3 text-white"> <i class="fas fa-pencil-alt mr-2"> </i> Edit</a>';
-                    $Btn .= '<a href="javascript:void(0)" data-id="' . $trainingSession['id'] . '" data-bs-toggle="modal" data-bs-target="#deleteAlert" class="btn btn-danger btn-sm mr-3 delete"> <i class="fas fa-trash mr-2"">  </i>Delete</a>';
-                    return $Btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
+            return DataTables::of($trainingSessions)->addIndexColumn()->make(true);
         }
         return view('menu.training_sessions.index');
     }
