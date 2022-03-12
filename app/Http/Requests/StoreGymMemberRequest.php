@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Http\FormRequest;
@@ -27,6 +28,7 @@ class StoreGymMemberRequest extends FormRequest
      */
     public function rules()
     {
+        $now = Carbon::now();
         return [
             'avatar_image' => ['mimes:png,jpg,jpeg','max:2048'],
             'email' => ['required','email',Rule::unique('users','email')->ignore($this->id, 'id')],
@@ -34,7 +36,7 @@ class StoreGymMemberRequest extends FormRequest
             'password' => ['required',Password::min(8)],
             'national_id' => ['required', Rule::unique('users', 'national_id')->ignore($this->id, 'id'), 'min:14'],
             'gender' => ['required',Rule::in(['male','female','Male','Female'])],
-            'date_of_birth' => ['required','date'],
+            'date_of_birth' => ['required','date','before:now'],
         ];
     }
 
