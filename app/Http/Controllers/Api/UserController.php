@@ -162,8 +162,7 @@ class UserController extends Controller
                         ]);
                     }else{
                         return response([ 
-                            'message' => "you can't attend session it's date is before or after today's date ,
-                            please choose another session that is running today"
+                            'message' => "you can't attend session it's date is before or after today's date ,please choose another session that is running today"
                         ]);
                     }
                 }
