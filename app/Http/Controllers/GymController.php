@@ -55,11 +55,22 @@ class GymController extends Controller
         }
         // $validated = $request->validated();
         // insert new record in gyms table
+
+        if ($request->city_id == 'other') {
+            $city = City::create([
+                'name' => $request->new_city,
+            ]);
+            $cityID = $city->id;
+        } else {
+            $cityID = $request->city_id;
+        }
+
+        
         $gym = Gym::create([
             'cover_image' => $name,
             'name' => request()->name,
-            'city_manager_id' => City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('city_id', request()->city)->get()->first()->user_id,
-            'city_id' => request()->city_id,
+            'city_manager_id' => City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('city_id', request()->city_id)->get()->first()->user_id,
+            'city_id' => $cityID,
         ]);
         
         // what if this manager is banned ?
@@ -114,7 +125,7 @@ class GymController extends Controller
 
         Gym::find($id)->update([
             'name' => request()->name,
-            'city_manager_id' => City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('city_id', request()->city)->get()->first()->user_id,
+            'city_manager_id' => City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('city_id', request()->city_id)->get()->first()->user_id,
             'city_id' => request()->city_id,
         ]);
         GymManager::where('user_id', request()->gym_manager)->update([
@@ -127,9 +138,9 @@ class GymController extends Controller
     {
         if (isNull(Gym::with('training_sessions')->where('id', $id)->first()->training_sessions)) {
             Gym::find($id)->delete();
-            return response()->json(['success' => 'Gym is deleted Successfully']);
+            return response()->json(['message' => true]);
         } else {
-            return response()->json(['fail' => 'Can\'t delete Gym Right Now !']);
+            return response()->json(['message' => false]);
         }
     }
 }

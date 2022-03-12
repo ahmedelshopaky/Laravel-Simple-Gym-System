@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
 
-
+                                    @yield('new_city')
 
 
                                     <div class="row mb-3">

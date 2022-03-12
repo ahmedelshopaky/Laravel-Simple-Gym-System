@@ -45,7 +45,7 @@
                                                 <div class="col-sm-12 col-md-8">
                                                     <select id="gym" class="form-control @error('gym') is-invalid @enderror" name="gym" required autocomplete="gym" autofocus>
                                                         @foreach ($gyms as $gym)
-                                                        <option value="{{$gym->id}}">{{$gym->gym->name}}</option>
+                                                        <option value="{{$gym->id}}">{{$gym->name}}</option>
                                                         @endforeach
                                                     </select>
                                                     @error('gym')
