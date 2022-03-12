@@ -364,15 +364,6 @@
     </div>
 
     <script src="{{asset('js/app.js')}} "> </script>
-    <script>
-        // $('.nav-link').removeClass('active');
-        $(function() {
-            $('.nav-link','.nav-item').click(function(){
-                
-            });
-            
-    });
-    </script>
     @yield('scripts')
 </body>
 

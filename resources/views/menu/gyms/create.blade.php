@@ -1,6 +1,6 @@
 @extends('menu.gyms.layout')
 
-@section('route')
+@section('method')
 POST
 @endsection
 
