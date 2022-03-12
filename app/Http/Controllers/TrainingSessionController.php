@@ -126,10 +126,11 @@ class TrainingSessionController extends Controller
             $trainingSession->gym_members->count() > 0
         ) 
         {
-            return response()->json(['fail' => 'Can\'t delete this session']);
-        } else {
+            return response()->json(['message' => false]);
+        } 
+        else {
             TrainingSession::find($id)->delete();
-            return response()->json(['success' => 'This session has been deleted successfully']);
+            return response()->json(['message' => true]);
         }
     }
     public function getCoaches($gymId)

@@ -124,6 +124,7 @@ Attendence
           name: 'status'
         },
       ],
+      
       success: function(response) {
         console.log(response);
       }
