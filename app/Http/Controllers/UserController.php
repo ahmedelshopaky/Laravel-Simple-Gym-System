@@ -100,6 +100,29 @@ class UserController extends Controller
         if ($user) {
             $user->update($validated);
         }
+
+        if ($request->role == 'city_manager') {
+            if ($request->city == 'other') {
+                $city = City::create([
+                    'name' => $request->new_city,
+                ]);
+                $cityID = $city->id;
+            } else {
+                $cityID = $request->city;
+            }
+            CityManager::where('user_id', $user->id)->update([
+                'city_id' => $cityID,
+            ]);
+        } elseif ($request->role == 'gym_manager') {
+            if ($request->gym == 'none') {
+                $gymID = null;
+            } else {
+                $gymID = $request->gym;
+            }
+            GymManager::where('user_id', $user->id)->update([
+                'gym_id' => $gymID,
+            ]);
+        }
         return view('menu.user.show', compact('user'));
     }
 

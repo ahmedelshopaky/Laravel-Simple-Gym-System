@@ -28,7 +28,7 @@ class StoreUserRequest extends FormRequest
     {
         return [
             // 'avatar_image' => ['required'],
-            'email' => ['required','email', 'unique:users'],
+            'email' => ['required','email', Rule::unique('users','email')->ignore($this->id, 'id')],
             'name' => ['required', 'min:3'],
             'password' => ['confirmed', Password::min(8)],
             'national_id' => ['required', Rule::unique('users','national_id')->ignore($this->id, 'id'), 'min:14'],
