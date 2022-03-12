@@ -18,8 +18,7 @@ class AttendanceController extends Controller
         // }
         if ($request->ajax()) {
             $user = AttendanceResource::collection(Attendance::with('training_session', 'gym_member')->get());
-            return Datatables::of($user)->addIndexColumn()
-                ->make(true);
+            return Datatables::of($user)->addIndexColumn()->make(true);
         }
         return view('menu.attendance.index');
     }

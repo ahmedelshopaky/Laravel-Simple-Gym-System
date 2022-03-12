@@ -84,7 +84,7 @@ class TrainingSessionController extends Controller
             $trainingSession->gym_members->count() > 0
         ) 
         {
-            return 'Hahaha';
+            return response()->json(['message'=>false]);
         } 
         else {
             $gyms = Gym::all();

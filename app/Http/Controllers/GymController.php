@@ -25,7 +25,9 @@ class GymController extends Controller
         if ($user->hasRole('cityManager'))
         {
             $gyms = Gym::with('city')->where('city_manager_id', $user->id)->get();
-        } else if ($user->hasRole('admin')){
+        } 
+        else if ($user->hasRole('admin'))
+        {
             $gyms = Gym::with('city')->get();
         }
         if ($request->ajax()) {
@@ -53,18 +55,12 @@ class GymController extends Controller
             $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();
             $img->move(public_path('/images/gyms/'),$name);
         }
-        // $validated = $request->validated();
-        // insert new record in gyms table
         $gym = Gym::create([
             'cover_image' => $name,
             'name' => request()->name,
             'city_manager_id' => City::leftJoin('city_managers', 'cities.id', '=', 'city_managers.city_id')->where('city_id', request()->city)->get()->first()->user_id,
             'city_id' => request()->city_id,
         ]);
-        
-        // what if this manager is banned ?
-        // what about multiple gym managers ?
-        // insert the id of the gym in gym_managers table as a fk
         GymManager::where('user_id', request()->gym_manager)->update([
             'gym_id' => $gym->id,
         ]);
@@ -93,9 +89,6 @@ class GymController extends Controller
         $cities = City::all();
         $gymManagers = GymManager::with('user')->where('gym_id', null)->get();
         return view('menu.gyms.edit', compact('gymManagers', 'cities', 'gym', 'gymManager'));
-        
-        // $gymManagers = GymManager::leftJoin('gyms', 'gym_managers.gym_id', '=', 'gyms.id')->where('gym_id',null)->get();
-        // return view('menu.gyms.edit', compact(['gym', 'gymManagers']));
     }
 
     public function update(UpdateGymRequest $request, $id)
@@ -127,7 +120,7 @@ class GymController extends Controller
     {
         if (isNull(Gym::with('training_sessions')->where('id', $id)->first()->training_sessions)) {
             Gym::find($id)->delete();
-            return response()->json(['success' => 'Gym is deleted Successfully']);
+            return response()->json(['message' => 'Gym is deleted Successfully']);
         } else {
             return response()->json(['fail' => 'Can\'t delete Gym Right Now !']);
         }
