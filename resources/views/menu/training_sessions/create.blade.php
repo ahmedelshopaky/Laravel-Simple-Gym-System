@@ -103,4 +103,20 @@ Create New Training Session
     
             });
     </script>
+    @if($errors->any())
+    <script>
+        var Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+        $(function() {
+            Toast.fire({
+                icon: "warning",
+                title: "Unexpected Error",
+            });
+    });
+    </script>
+@endif
 @endsection

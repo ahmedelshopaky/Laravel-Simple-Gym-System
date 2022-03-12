@@ -25,7 +25,7 @@ class TrainingSessionController extends Controller
      */
     public function index(Request $request)
     {
-        if (Auth::user()->role == "admin"){
+        if (Auth::user()->role == "admin") {
             $trainingSessions = TrainingSessionResource::collection(TrainingSession::with('gym')->get());
         } else if (Auth::user()->role == "city_manager") {
             $trainingSessions = TrainingSessionResource::collection(TrainingSession::with('gym')->whereIn('gym_id', Gym::where('city_manager_id', Auth::id())->get()->pluck('id'))->get());
@@ -46,7 +46,7 @@ class TrainingSessionController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->role == "admin"){
+        if (Auth::user()->role == "admin") {
             $gyms = Gym::all();
             $coaches = $gyms->first()->coaches;
         } else if (Auth::user()->role == "gym_manager") {
@@ -67,12 +67,18 @@ class TrainingSessionController extends Controller
      */
     public function store(StoreTrainingSessionRequest $request)
     {
-        $trainSessionWithCoach = array_slice(request()->all(), count(request()->all()) - 1);
-        $trainingSession = array_slice(request()->all(), 1, count(request()->all()) - 2);
-        $trainingSession = TrainingSession::create($trainingSession);
-        $trainSessionWithCoach['training_session_id'] = $trainingSession->id;
-        DB::table('coach_training_session')->insert($trainSessionWithCoach);
-        return view('menu.training_sessions.index');
+        if (TrainingSession::where('starts_at', '<', request()->starts_at)->where('finishes_at', '>', request()->starts_at)->first() == null) {
+            $trainSessionWithCoach = array_slice(request()->all(), count(request()->all()) - 1);
+            $trainingSession = array_slice(request()->all(), 1, count(request()->all()) - 2);
+            $trainingSession = TrainingSession::create($trainingSession);
+            $trainSessionWithCoach['training_session_id'] = $trainingSession->id;
+            DB::table('coach_training_session')->insert($trainSessionWithCoach);
+            return view('menu.training_sessions.index');
+            // return 'success';
+        } else {
+            return Redirect::back()->withErrors(['msg' => false]);
+            // return 'fail';
+        }
     }
 
     /**
@@ -100,11 +106,10 @@ class TrainingSessionController extends Controller
             $trainingSession->strats_at < now() &&
             $trainingSession->finishes_at > now() &&
             $trainingSession->gym_members->count() > 0
-        ) 
-        {
+        ) {
             return Redirect::back()->withErrors(['msg' => false]);
         } else {
-            if (Auth::user()->role == "admin"){
+            if (Auth::user()->role == "admin") {
                 $gyms = Gym::all();
                 $coaches = $gyms->first()->coaches;
             } else if (Auth::user()->role == "gym_manager") {
@@ -128,13 +133,17 @@ class TrainingSessionController extends Controller
      */
     public function update(StoreTrainingSessionRequest $request, $id)
     {
-        $validated = $request->validated();
+        if (TrainingSession::where('starts_at', '<', request()->starts_at)->where('finishes_at', '>', request()->starts_at)->first() == null) {
+            $validated = $request->validated();
 
-        $trainingSession = TrainingSession::find($id);
-        if ($trainingSession) {
-            $trainingSession->update($validated);
+            $trainingSession = TrainingSession::find($id);
+            if ($trainingSession) {
+                $trainingSession->update($validated);
+            }
+            return view('menu.training_sessions.show', compact('trainingSession'));
+        } else {
+            return Redirect::back()->withErrors(['msg' => false]);
         }
-        return view('menu.training_sessions.show', compact('trainingSession'));
     }
 
     /**
