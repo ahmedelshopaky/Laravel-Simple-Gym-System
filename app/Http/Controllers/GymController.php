@@ -4,18 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGymRequest;
 use App\Http\Requests\UpdateGymRequest;
-use App\Http\Resources\GymResource;
 use App\Models\City;
-use App\Models\CityManager;
 use App\Models\Gym;
 use App\Models\GymManager;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
-
-use function PHPUnit\Framework\isNull;
 
 class GymController extends Controller
 {

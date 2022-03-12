@@ -7,10 +7,8 @@ use App\Models\GymManager;
 use App\Models\GymMember;
 use App\Models\Revenue;
 use App\Models\TrainingPackage;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Yajra\DataTables\DataTables;
 
 class BuyPackageController extends Controller
 {
@@ -18,19 +16,13 @@ class BuyPackageController extends Controller
     {
         $gymMembers = GymMember::with('user')->get();
         $trainingPackages = TrainingPackage::all();
-        // $amountPaid = Revenue::all();
-        // $user= auth()->user();
-
         $user = Auth::user();
-        // if user is admin, show all gyms in the system
         if ($user->hasRole('admin')) {
             $gyms = Gym::all();
 
-            // if user is city_manager, show all gyms in his city
         } else if ($user->hasRole('cityManager')) {
             $gyms = Gym::with('city_managers')->where('city_manager_id', $user->id)->get();
 
-            // if user is gym_manager, show only his gym
         } else if ($user->hasRole('gymManager')) {
             $gymID = GymManager::where('user_id', $user->id)->first()->gym_id;
             $gym = Gym::find($gymID);
