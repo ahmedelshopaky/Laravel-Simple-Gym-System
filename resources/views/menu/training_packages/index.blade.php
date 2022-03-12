@@ -15,7 +15,7 @@ Training Package
 @section('script')
 <script>
   let columnsArray=[
-    {data: 'id'},
+    {data : 'id'},
     {data : 'name'},
     {data : 'sessions_number'},
     {data : 'price'},
@@ -33,4 +33,6 @@ Training Package
     route = "{{ route('training-packages.index') }}",
     url = "/training-packages/";
 </script>
+
+
 @endsection

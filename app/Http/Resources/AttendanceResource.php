@@ -27,6 +27,7 @@ class AttendanceResource extends JsonResource
                     ? 'Active Now' : 'Not Active',
             'gym_name' => $this->training_session->gym->name,
             'city' => $this->training_session->gym->city->name,
+            'id' => $this->id
         ];
     }
 }

@@ -9,6 +9,7 @@ use App\Models\Gym;
 use App\Models\TrainingSession;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -82,8 +83,9 @@ class TrainingSessionController extends Controller
             $trainingSession->strats_at < now() &&
             $trainingSession->finishes_at > now() &&
             $trainingSession->gym_members->count() > 0
-        ) {
-            return 'Hahaha';
+        ) 
+        {
+            return Redirect::back()->withErrors(['msg' => false]);
         } else {
             $gyms = Gym::all();
             $coaches = $gyms->first()->coaches;
@@ -123,10 +125,10 @@ class TrainingSessionController extends Controller
             $trainingSession->finishes_at > now() &&
             $trainingSession->gym_members->count() > 0
         ) {
-            return response()->json(['fail' => 'Can\'t delete this session']);
+            return response()->json(['message' => false]);
         } else {
             TrainingSession::find($id)->delete();
-            return response()->json(['success' => 'This session has been deleted successfully']);
+            return response()->json(['message' => true]);
         }
     }
     public function getCoaches($gymId)

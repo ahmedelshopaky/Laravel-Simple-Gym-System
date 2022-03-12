@@ -18,12 +18,6 @@ use Spatie\Permission\Traits\HasRoles;
 class UserController extends Controller
 {
     use HasRoles;
-
-    public function index(Request $request)
-    {
-        //
-    }
-
     public function create()
     {
         return view('menu.user.create');
@@ -41,9 +35,7 @@ class UserController extends Controller
             File::copy(public_path('/images/blank-profile-picture.png'), public_path('/images/users/'.$name));
         }
         
-        // validate the request data
         $validated = $request->validated();
-        // store in db
         $user = User::create($validated);
         User::where('national_id', $request->national_id)->update([
             'avatar_image' => $name,
@@ -62,7 +54,6 @@ class UserController extends Controller
             CityManager::create([
                 'user_id' => $user->id,
                 'city_id' => $cityID,
-                // 'role' => 'city_manager',
             ]);
             $user->assignRole('cityManager');
 
@@ -76,7 +67,6 @@ class UserController extends Controller
             GymManager::create([
                 'user_id' => $user->id,
                 'gym_id' => $gymID,
-                // 'role' => 'gym_manager',
             ]);
             $user->assignRole('gymManager');
 
@@ -104,8 +94,6 @@ class UserController extends Controller
             $img = request()->file('avatar_image');
             $name = $user->avatar_image;
             $img->move(public_path('images/users'), $name);
-        } else {
-            // do nothing
         }
 
         $validated = $request->validated();

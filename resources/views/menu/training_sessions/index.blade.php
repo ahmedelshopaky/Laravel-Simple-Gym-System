@@ -15,7 +15,7 @@ Training Session
 @section('script')
 <script>
   let columnsArray=[
-    {data: 'id'},
+    {data : 'id'},
     {data : 'name'},
     {data : 'time'},
     {data : 'gym_name'},

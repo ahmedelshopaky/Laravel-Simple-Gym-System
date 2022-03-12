@@ -7,7 +7,6 @@ use App\Models\Gym;
 use App\Models\GymManager;
 use App\Models\Revenue;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
