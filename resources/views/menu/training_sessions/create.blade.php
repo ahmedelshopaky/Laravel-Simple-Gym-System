@@ -47,9 +47,15 @@ Create New Training Session
 
     <div class="col-sm-12 col-md-9">
         <select id="gym" class="form-control @error('gym') is-invalid @enderror" name="gym_id" value="{{ old('gym') }}" required autocomplete="gym" autofocus>
+            @hasanyrole('admin|cityManager')
             @foreach ($gyms as $gym)
             <option value="{{$gym->id}}">{{$gym->name}}</option>
             @endforeach
+            @endrole
+
+            @hasrole('gymManager')
+            <option value="{{$gyms->id}}">{{$gyms->name}}</option>
+            @endrole
             @yield('mygym')
         </select>
         @error('gym')
@@ -61,7 +67,6 @@ Create New Training Session
 </div>
 <div class="row mb-3">
     <label for="gym" class="col-sm-12 col-md-3 col-form-label "  >{{ __('Coach') }}</label>
-
     <div class="col-sm-12 col-md-9">
         <select id="coach_id" class="form-control @error('coach_id') is-invalid @enderror" name="coach_id" value="{{ old('coach_id') }}"  autocomplete="coach" autofocus>
             @foreach ($coaches as $coach)

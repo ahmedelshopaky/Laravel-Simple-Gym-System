@@ -6,8 +6,10 @@ use App\Http\Requests\StoreTrainingSessionRequest;
 use App\Http\Resources\TrainingSessionResource;
 use App\Models\Coach;
 use App\Models\Gym;
+use App\Models\GymManager;
 use App\Models\TrainingSession;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Yajra\DataTables\Facades\DataTables;
@@ -23,8 +25,15 @@ class TrainingSessionController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
+        if (Auth::user()->role == "admin"){
             $trainingSessions = TrainingSessionResource::collection(TrainingSession::with('gym')->get());
+        } else if (Auth::user()->role == "city_manager") {
+            $trainingSessions = TrainingSessionResource::collection(TrainingSession::with('gym')->whereIn('gym_id', Gym::where('city_manager_id', Auth::id())->get()->pluck('id'))->get());
+        } else if (Auth::user()->role == "gym_manager") {
+            $gymID = GymManager::where('user_id', Auth::user()->id)->get()->first()->gym_id;
+            $trainingSessions = TrainingSessionResource::collection(TrainingSession::with('gym')->where('gym_id', $gymID)->get());
+        }
+        if ($request->ajax()) {
             return DataTables::of($trainingSessions)->addIndexColumn()->make(true);
         }
         return view('menu.training_sessions.index');
@@ -37,8 +46,16 @@ class TrainingSessionController extends Controller
      */
     public function create()
     {
-        $gyms = Gym::all();
-        $coaches = $gyms->first()->coaches;
+        if (Auth::user()->role == "admin"){
+            $gyms = Gym::all();
+            $coaches = $gyms->first()->coaches;
+        } else if (Auth::user()->role == "gym_manager") {
+            $gyms = GymManager::where('user_id', Auth::user()->id)->first()->gym;
+            $coaches = Coach::whereIn('gym_id', GymManager::where('user_id', Auth::id())->pluck('gym_id'))->get();
+        } else if (Auth::user()->role == "city_manager") {
+            $gyms = Gym::where('city_manager_id', Auth::id())->get();
+            $coaches = Coach::whereIn('gym_id', Gym::where('city_manager_id', Auth::user()->id)->get()->pluck('id'))->get();
+        }
         return view('menu.training_sessions.create', compact('gyms', 'coaches'));
     }
 
@@ -87,8 +104,17 @@ class TrainingSessionController extends Controller
         {
             return Redirect::back()->withErrors(['msg' => false]);
         } else {
-            $gyms = Gym::all();
-            $coaches = $gyms->first()->coaches;
+            if (Auth::user()->role == "admin"){
+                $gyms = Gym::all();
+                $coaches = $gyms->first()->coaches;
+            } else if (Auth::user()->role == "gym_manager") {
+                $gyms = GymManager::where('user_id', Auth::user()->id)->first()->gym;
+                $coaches = Coach::whereIn('gym_id', GymManager::where('user_id', Auth::id())->pluck('gym_id'))->get();
+                // $coaches = $gyms->first()->coaches;
+            } else if (Auth::user()->role == "city_manager") {
+                $gyms = Gym::where('city_manager_id', Auth::id())->get();
+                $coaches = Coach::whereIn('gym_id', Gym::where('city_manager_id', Auth::user()->id)->get()->pluck('id'))->get();
+            }
             return view('menu.training_sessions.edit', compact('trainingSession', 'gyms', 'coaches'));
         }
     }
