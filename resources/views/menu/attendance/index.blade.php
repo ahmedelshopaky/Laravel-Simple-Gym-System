@@ -83,9 +83,9 @@ Attendence
 
 @role('gymManager')
 <script>
-  let route="{{ route('attendance.index') }}",
+  let route="{{ route('attendance.index') }}", 
   columnsArray=[
-    {
+        {
           data: 'gym_member_name',
           name: 'gym_member_name'
         },

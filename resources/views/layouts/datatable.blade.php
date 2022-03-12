@@ -5,7 +5,6 @@
 <div class="wrapper mt-5">
     <!-- Content Wrapper. Contains page content -->
     <div class="">
-
         <!-- Main content -->
         <section class="content">
             <div class="container">
@@ -73,6 +72,12 @@
 
 
 <script>
+    var Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+        });
     var check;
     $(function() {
         $.ajaxSetup({
@@ -80,17 +85,14 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        var Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-        });
+        
         var table = $('.data-table').DataTable({
+            dom: 'Bfrtip',
             processing: true,
             serverSide: true,
             ajax: route,
-            columns: columnsArray
+            columns: columnsArray,
+            buttons: ['excel'],
         });
         var id;
         $('body').on('click', '.delete', function() {
@@ -156,6 +158,15 @@
         });
     });
 </script>
-
+@if($errors->any())
+    <script>
+        $(function() {
+            Toast.fire({
+                icon: "warning",
+                title: "sorry can\'t edit running session",
+            });
+    });
+    </script>
+@endif
 @yield('script')
 @endsection

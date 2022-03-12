@@ -31,4 +31,6 @@ Training Package
     route = "{{ route('training-packages.index') }}",
     url = "/training-packages/";
 </script>
+
+
 @endsection
