@@ -37,14 +37,16 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="row mb-3 form-group">
+                                <div class="row mb-3">
+                                    <label for="gym" class="col-sm-12 col-md-2 col-form-label">{{ __('Gym') }}</label>
 
-                                    <label for="name" class=" col-sm-12 col-md-2 col-form-label">Gym Name</label>
-
-                                    <div class="col-sm-12 col-md-9">
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$coach->gym->name}}" />
-
-                                        @error('name')
+                                    <div class="col-sm-12 col-md-8">
+                                        <select id="gym" class="form-control @error('gym') is-invalid @enderror" name="gym" required autocomplete="gym" autofocus>
+                                            @foreach ($gyms as $gym)
+                                            <option value="{{$gym->id}}">{{$gym->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('gym')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

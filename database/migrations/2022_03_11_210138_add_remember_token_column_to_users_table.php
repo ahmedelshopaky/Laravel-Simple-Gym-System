@@ -12,9 +12,8 @@ return new class extends Migration {
      */
     public function up()
     {
-        Schema::table('city_managers', function (Blueprint $table) {
-            $table->unsignedBigInteger('city_id');
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('remember_token')->nullable();
         });
     }
 
@@ -25,8 +24,8 @@ return new class extends Migration {
      */
     public function down()
     {
-        Schema::table('city_managers', function (Blueprint $table) {
-            $table->dropColumn('city_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('remember_token');
         });
     }
 };

@@ -44,7 +44,6 @@ class MemberVerified extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->view('email.welcome');
-
     }
 
     /**

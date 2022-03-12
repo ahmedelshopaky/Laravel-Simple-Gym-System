@@ -26,7 +26,8 @@ return new class extends Migration {
     public function down()
     {
         Schema::table('gyms', function (Blueprint $table) {
-            //
+            $table->dropColumn('city_manager_id');
+
         });
     }
 };

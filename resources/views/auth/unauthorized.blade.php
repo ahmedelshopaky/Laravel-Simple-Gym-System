@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Raleway:500,800" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <title>Document</title>
 </head>
 
@@ -29,6 +29,7 @@
     </use>
     <h1>403</h1>
     <h2>Not this time, access forbidden!</h2>
+    <a href="{{ route('home') }}" class="boxButton">Go back</a>
 </body>
 
 </html>

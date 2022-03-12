@@ -19,7 +19,7 @@
                         </div>
 
 
-                            <form method="PUT" action="@yield('route')" enctype="multipart/form-data">
+                            <form method="POST" action="@yield('route')" enctype="multipart/form-data">
                                 @csrf
                                 @yield('method')
                                 <div class="card-body">
@@ -75,7 +75,7 @@
                                         </div>
                                     </div>
 
-
+                                    @yield('new_city')
 
 
                                     <div class="row mb-3">
