@@ -18,6 +18,6 @@ Cities
     {data : 'city_manager_name'},
   ],
     route = "{{ route('cities.index') }}",
-    url = "/cities/";   // NOT WORKING :D
+    url = "/cities/";   
 </script>
 @endsection

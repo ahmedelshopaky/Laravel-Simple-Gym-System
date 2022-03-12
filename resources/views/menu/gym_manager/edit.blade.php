@@ -13,7 +13,7 @@
                 <option value="{{$gym->id}}">{{$gym->name}}</option>
                 @endif
             @endforeach
-            <option value="none">None</option>          <!-- I can assign a gym manager without gym -->
+            <option value="none">None</option>          
         </select>
         @error('gym')
         <span class="invalid-feedback" role="alert">
