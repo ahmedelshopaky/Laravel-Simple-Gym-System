@@ -10,7 +10,6 @@
         <div class="row">
 
             <div class="col-md-4">
-                <!-- <img src="{{asset('/images/gyms/'.$gym->cover_image)}}" class="img-fluid rounded-start w-75 mx-4"> -->
                 <img src="{{asset('/images/gym-logo.jpg')}}" class="img-fluid rounded-start w-75 mx-4">
 
 
