@@ -23,13 +23,9 @@ Attendence
 @section('script')
 @role('admin')
 <script>
-  $(function() {
-
-    var table = $('.data-table').DataTable({
-      processing: true,
-      serverSide: true,
-      ajax: "{{ route('attendance.index') }}",
-      columns: [{
+  let route="{{ route('attendance.index') }}",
+  columnsArray=[
+    {
           data: 'gym_member_name',
           name: 'gym_member_name'
         },
@@ -53,24 +49,15 @@ Attendence
           data: 'city', // <!-- ADMIN ONLY -->
           name: 'city'
         },
-      ],
-      success: function(response) {
-        console.log(response);
-      }
-    });
-  });
+   ];
 </script>
 @endrole
 
 @role('cityManager')
 <script>
-  $(function() {
-
-    var table = $('.data-table').DataTable({
-      processing: true,
-      serverSide: true,
-      ajax: "{{ route('attendance.index') }}",
-      columns: [{
+  let route="{{ route('attendance.index') }}",
+  columnsArray=[
+    {
           data: 'gym_member_name',
           name: 'gym_member_name'
         },
@@ -90,12 +77,7 @@ Attendence
           data: 'gym_name', // <!-- CITY MANAGER AND ADMIN ONLY -->
           name: 'gym_name'
         },
-      ],
-      success: function(response) {
-        console.log(response);
-      }
-    });
-  });
+  ];
 </script>
 @endrole
 
