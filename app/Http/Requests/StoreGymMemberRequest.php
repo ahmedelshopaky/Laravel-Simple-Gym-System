@@ -30,7 +30,7 @@ class StoreGymMemberRequest extends FormRequest
     {
         $now = Carbon::now();
         return [
-            'avatar_image' => ['mimes:png,jpg,jpeg','max:2048'],
+            'avatar_image' => ['mimes:png,jpg,jpeg','max:2048', 'unique:users'],
             'email' => ['required','email',Rule::unique('users','email')->ignore($this->id, 'id')],
             'name' => ['required', 'min:3'],
             'password' => ['required',Password::min(8)],

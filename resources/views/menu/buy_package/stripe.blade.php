@@ -30,7 +30,7 @@
 
 <div class="card card-info my-3">
   <div class="card-header py-3">
-        <img src="{{asset('/images/stripe.png')}}" width="350" height="100">
+        <img src="{{asset('/images/Credit-Card-Icons.jpg')}}" width="100%">
     
     <div class="card-tools">
       <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
