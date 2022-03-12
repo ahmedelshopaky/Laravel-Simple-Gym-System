@@ -101,13 +101,9 @@ Attendence
 
 @role('gymManager')
 <script>
-  $(function() {
-
-    var table = $('.data-table').DataTable({
-      processing: true,
-      serverSide: true,
-      ajax: "{{ route('attendance.index') }}",
-      columns: [{
+  let route="{{ route('attendance.index') }}",
+  columnsArray=[
+    {
           data: 'gym_member_name',
           name: 'gym_member_name'
         },
@@ -123,13 +119,7 @@ Attendence
           data: 'status',
           name: 'status'
         },
-      ],
-      
-      success: function(response) {
-        console.log(response);
-      }
-    });
-  });
+  ];
 </script>
 @endrole
 @endsection
