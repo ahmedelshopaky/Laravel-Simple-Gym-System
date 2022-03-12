@@ -21,11 +21,6 @@ use function PHPUnit\Framework\isNull;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        return view('home');
-    }
-
 
     //you should use method post from postman but include ('_method => PUT') in the body fo 
     //the request this is due to errors of empty body of put method i hope they solve it soon
