@@ -34,6 +34,8 @@ class StoreUserRequest extends FormRequest
             'national_id' => ['required', Rule::unique('users','national_id')->ignore($this->id, 'id'), 'min:14'],
             'role' => ['required'],
 
+            'new_city' => [Rule::unique('cities','name')]
+            
             // 'gender' => ['required',],
             // 'date_of_birth' => ['required',],
         ];

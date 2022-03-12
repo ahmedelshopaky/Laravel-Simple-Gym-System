@@ -64,7 +64,7 @@ class UserController extends Controller
             } else {
                 $gymID = $request->gym;
             }
-            GymManager::create([
+            GymManager::insert([
                 'user_id' => $user->id,
                 'gym_id' => $gymID,
             ]);

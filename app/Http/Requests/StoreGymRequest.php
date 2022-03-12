@@ -29,6 +29,8 @@ class StoreGymRequest extends FormRequest
             'city_id'=>['required'],
             'cover_image'=>['required'],
             'gym_manager'=>['required'],
+
+            'new_city' => [Rule::unique('cities','name')]
         ];
     }
 }

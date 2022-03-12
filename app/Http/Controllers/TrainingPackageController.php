@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTrainingPackageRequest;
+use App\Http\Resources\TrainingPackageResource;
 use App\Models\TrainingPackage;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -12,7 +13,7 @@ class TrainingPackageController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $packages = TrainingPackage::all();
+            $packages = TrainingPackageResource::collection(TrainingPackage::all());
             return Datatables::of($packages)->addIndexColumn()->make(true);
         }
 
