@@ -7,7 +7,6 @@ use App\Http\Controllers\TrainingPackageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\BanController;
 use App\Http\Controllers\CityManagerController;
 use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\GymController;
@@ -16,8 +15,6 @@ use App\Http\Controllers\BuyPackageController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\GymMemberController;
 use App\Http\Controllers\TrainingSessionController;
-use App\Models\Gym;
-use App\Models\GymMember;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -129,10 +126,6 @@ Route::group(['middleware'=>['auth','logs-out-banned-user','role:admin|cityManag
         Route::post('/single-charge',[BuyPackageController::class, 'singleCharge'])->name('single.charge');
 
     });
-
-    // Route::get('/revenue', [RevenueController::class, 'index'])->name('revenue.index');
-
-
     Route::prefix('/revenue')->group(function () {
         Route::get('/', [RevenueController::class, 'index'])->name('revenue.index');
     });
