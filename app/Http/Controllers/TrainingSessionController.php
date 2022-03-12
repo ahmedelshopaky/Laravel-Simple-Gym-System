@@ -38,7 +38,7 @@ class TrainingSessionController extends Controller
     {
         $gyms = Gym::all();
         $coaches = $gyms->first()->coaches;
-        return view('menu.training_sessions.create', compact('gyms','coaches'));
+        return view('menu.training_sessions.create', compact('gyms', 'coaches'));
     }
 
     /**
@@ -49,10 +49,10 @@ class TrainingSessionController extends Controller
      */
     public function store(StoreTrainingSessionRequest $request)
     {
-        $trainSessionWithCoach=array_slice(request()->all(),count(request()->all())-1);
-        $trainingSession=array_slice(request()->all(),1,count(request()->all())-2);
-        $trainingSession=TrainingSession::create($trainingSession);
-        $trainSessionWithCoach['training_session_id']=$trainingSession->id;
+        $trainSessionWithCoach = array_slice(request()->all(), count(request()->all()) - 1);
+        $trainingSession = array_slice(request()->all(), 1, count(request()->all()) - 2);
+        $trainingSession = TrainingSession::create($trainingSession);
+        $trainSessionWithCoach['training_session_id'] = $trainingSession->id;
         DB::table('coach_training_session')->insert($trainSessionWithCoach);
         return view('menu.training_sessions.index');
     }
@@ -82,11 +82,9 @@ class TrainingSessionController extends Controller
             $trainingSession->strats_at < now() &&
             $trainingSession->finishes_at > now() &&
             $trainingSession->gym_members->count() > 0
-        ) 
-        {
+        ) {
             return 'Hahaha';
-        } 
-        else {
+        } else {
             $gyms = Gym::all();
             $coaches = $gyms->first()->coaches;
             return view('menu.training_sessions.edit', compact('trainingSession', 'gyms', 'coaches'));
@@ -124,8 +122,7 @@ class TrainingSessionController extends Controller
             $trainingSession->strats_at < now() &&
             $trainingSession->finishes_at > now() &&
             $trainingSession->gym_members->count() > 0
-        ) 
-        {
+        ) {
             return response()->json(['fail' => 'Can\'t delete this session']);
         } else {
             TrainingSession::find($id)->delete();
@@ -134,7 +131,7 @@ class TrainingSessionController extends Controller
     }
     public function getCoaches($gymId)
     {
-        $coaches=Coach::where('gym_id',$gymId)->get();
+        $coaches = Coach::where('gym_id', $gymId)->get();
         return response()->json($coaches);
     }
 }
