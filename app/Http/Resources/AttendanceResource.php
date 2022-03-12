@@ -18,7 +18,7 @@ class AttendanceResource extends JsonResource
         return [
             // 'gym_member' =>  new UserResource($this->gym_member),
             // 'training_session' => new TrainingSession($this->training_session),
-
+            'id' => $this->id,
             'gym_member_name' => $this->gym_member->user->name,
             'training_session_name' => $this->training_session->name,
             'training_session_starts_at' => $this->training_session->starts_at,

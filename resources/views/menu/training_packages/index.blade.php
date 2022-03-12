@@ -5,6 +5,7 @@ Training Package
 
 
 @section('tr')
+<th>ID</th>
 <th>Name</th>
 <th>Sessions Number</th>
 <th>Price</th>
@@ -14,6 +15,7 @@ Training Package
 @section('script')
 <script>
   let columnsArray=[
+    {data: 'id'},
     {data : 'name'},
     {data : 'sessions_number'},
     {data : 'price'},

@@ -93,7 +93,7 @@
               <table class="table table-bordered table-hover yajra-datatable data-table" id="">
                 <thead>
                   <tr>
-                    <!-- <th>ID</th> -->
+                    <th>ID</th>
                     <th>Client Name</th>
                     <th>Email</th>
                     <th>package Name</th>
@@ -132,6 +132,9 @@
       serverSide: true,
       ajax: "{{ route('revenue.index') }}",
       columns: [{
+          data: 'id',
+          name: 'id'
+        },{
           data: 'gym_member_name',
           name: 'gym_member_name'
         },

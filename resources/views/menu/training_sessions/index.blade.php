@@ -5,6 +5,7 @@ Training Session
 @endsection
 
 @section('tr')
+<th>ID</th>
 <th>Name</th>
 <th>Start Time / End Time </th>
 <th>Gym</th>
@@ -14,6 +15,7 @@ Training Session
 @section('script')
 <script>
   let columnsArray=[
+    {data: 'id'},
     {data : 'name'},
     {data : 'time'},
     {data : 'gym_name'},
