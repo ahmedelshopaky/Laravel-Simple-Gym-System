@@ -70,17 +70,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $request = request();
-        if ($request->hasFile('profile_image'))
-        {
+        if ($request->hasFile('profile_image')) {
             $img = $request->file('profile_image');
             $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();
-            $img->move(public_path('images/users'),$name);
-
-            // TODO
-            // if $name == null
-            // unlink((public_path('uploads/users')).$name);
-
-            // image is already exists
+            $img->move(public_path('images/users'), $name);
         }
         
         $user = User::create([
