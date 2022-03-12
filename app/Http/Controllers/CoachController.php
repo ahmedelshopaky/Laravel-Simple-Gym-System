@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateCoachRequest;
 use App\Models\Coach;
+use App\Models\Gym;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -19,7 +20,7 @@ class CoachController extends Controller
         return view('menu.coaches.index');
     }
     public function create() {
-        $gyms = Coach::with('gym')->get();
+        $gyms = Gym::all();
         return view('menu.coaches.create', compact('gyms'));
     }
 
@@ -37,8 +38,9 @@ class CoachController extends Controller
     }
     public function edit($id)
     {
+        $gyms = Gym::all();
         $coach=Coach::find($id);
-        return view('menu.coaches.edit',compact('coach'));
+        return view('menu.coaches.edit',compact('coach', 'gyms'));
     }
     public function update(UpdateCoachRequest $request,$id)
     {

@@ -24,15 +24,15 @@ class DatabaseSeeder extends Seeder
     {
         //php artisan migrate:fresh --seed
 
-        $numberOfUsers=300;
-        // User::factory(10)->create();
-        GymMember::factory(10)->create();
-        CityManager::factory(10)->create();
-        // Gym::factory(5)->create();
-        Coach::factory(5)->create();
-        GymManager::factory(5)->create();
-        TrainingPackage::factory(10)->create();
-        TrainingSession::factory(10)->create();
+        // $numberOfUsers=300;
+        // // User::factory(10)->create();
+        // GymMember::factory(10)->create();
+        // CityManager::factory(10)->create();
+        // // Gym::factory(5)->create();
+        // Coach::factory(5)->create();
+        // GymManager::factory(5)->create();
+        // TrainingPackage::factory(10)->create();
+        // TrainingSession::factory(10)->create();
 
         $this->call(PermissionsSeeder::class);
     }
