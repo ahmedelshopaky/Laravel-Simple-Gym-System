@@ -141,7 +141,7 @@
                         data-accordion="false">
                         @role('admin')
                         <li class="nav-item menu-close">
-                            <a href="#" class="nav-link active">
+                            <a href="#" class="nav-link">
                                 <i class="fa-solid fa-address-card nav-icon"></i>
                                 <p>City Managers<i class="right fas fa-angle-left"></i></p>
                             </a>

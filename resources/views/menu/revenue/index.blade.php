@@ -2,113 +2,6 @@
 @section('content')
 
 <section class="content mt-5">
-  <!-- <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4 ">
-
-        <div class="card">
-          <div class="card-header">
-            @role('admin')
-            <h4 class="card-title h4y-3 text-white fs-4">Total Revenue</h4> 
-            @endrole
-            @role('cityManager')
-            <h4 class="card-title">Total Revenue For Your City</h4> 
-            @endrole
-            @role('gymManager')
-            <h4 class="card-title">Total Revenue For Your Gym</h4> 
-            @endrole
-            <div class="card-tools">
-              <button tyh4e="button" class="btn btn-tool" data-card-widget="collah4se" title="Collah4se">
-                <i class="fas fa-minus text-white"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="card-body">
-            <div class="card-body h4t-0">
-              <div class="row">
-                <div class="col-7">
-                  <h2 class="lead"><b>Total Revenue = ${{$totalRevenue / 100}}</b></h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-
-      </div>
-      <div class="col-md-4 ">
-
-        <div class="card">
-          <div class="card-header">
-            @role('admin')
-            <h4 class="card-title h4y-3 text-white fs-4">Total Revenue</h4> 
-            @endrole
-            @role('cityManager')
-            <h4 class="card-title">Total Revenue For Your City</h4>
-            @endrole
-            @role('gymManager')
-            <h4 class="card-title">Total Revenue For Your Gym</h4> 
-            @endrole
-            <div class="card-tools">
-              <button tyh4e="button" class="btn btn-tool" data-card-widget="collah4se" title="Collah4se">
-                <i class="fas fa-minus text-white"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="card-body">
-            <div class="card-body h4t-0">
-              <div class="row">
-                <div class="col-7">
-                  <h2 class="lead"><b>Total Revenue = ${{$totalRevenue / 100}}</b></h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-
-      </div>
-      <div class="col-md-4 ">
-
-        <div class="card">
-          <div class="card-header">
-            @role('admin')
-            <h4 class="card-title h4y-3 text-white fs-4">Total Revenue</h4> 
-            @endrole
-            @role('cityManager')
-            <h4 class="card-title">Total Revenue For Your City</h4> 
-            @endrole
-            @role('gymManager')
-            <h4 class="card-title">Total Revenue For Your Gym</h4> 
-            @endrole
-            <div class="card-tools">
-              <button tyh4e="button" class="btn btn-tool" data-card-widget="collah4se" title="Collah4se">
-                <i class="fas fa-minus text-white"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="card-body">
-            <div class="card-body h4t-0">
-              <div class="row">
-                <div class="col-7">
-                  <h2 class="lead"><b>Total Revenue = ${{$totalRevenue / 100}}</b></h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-
-      </div>
-    </div>
-  </div> -->
-
-  <!-- --------------------------------------------------------- -->
-  <!-- --------------------------------------------------------- -->
-
   <div class="container">
         <div class="row justify-content-center">
            
@@ -139,15 +32,15 @@
                 <div class="small-box info  text-white">
                 <div class="inner">
                     @role('admin')
-                      <h4 class="">Total Revenue</h4> 
+                      <h4 >Total Revenue Last Month</h4> 
                       @endrole
                       @role('cityManager')
-                      <h4 class="">Total Revenue For Your City</h4> 
+                      <h4 >Total Revenue Last Month For Your City </h4> 
                       @endrole
                       @role('gymManager')
-                      <h4 class="">Total Revenue For Your Gym</h4> 
+                      <h4 >Total Revenue Last Month For Your Gym</h4> 
                       @endrole
-                        <h3>${{$totalRevenue / 100}}</h3>
+                        <h3>${{$totalRevenueLastMonth / 100}}</h3>
                         
                     </div>
                     <div class="icon">
@@ -162,15 +55,15 @@
                 <div class="small-box info text-white">
                     <div class="inner">
                     @role('admin')
-                      <h4 class="">Total Revenue</h4> 
+                      <h4 class="">Total Revenue Last Year</h4> 
                       @endrole
                       @role('cityManager')
-                      <h4 class="">Total Revenue For Your City</h4> 
+                      <h4 class="">Total Revenue Last Year For Your City</h4> 
                       @endrole
                       @role('gymManager')
-                      <h4 class="">Total Revenue For Your Gym</h4> 
+                      <h4 class="">Total Revenue Last Year For Your Gym</h4> 
                       @endrole
-                        <h3>${{$totalRevenue / 100}}</h3>
+                        <h3>${{$totalRevenueLastYear / 100}}</h3>
                         
                     </div>
                     <div class="icon">
@@ -187,7 +80,7 @@
 
         <div class="card">
           <div class="card-header">
-            <h4 class="card-title h4y-3 text-white fs-4">purchases History</h4>
+            <h4 class="card-title py-2 text-white fs-2">purchases History</h4>
             <div class="card-tools">
               <button tyh4e="button" class="btn btn-tool" data-card-widget="collah4se" title="Collah4se">
                 <i class="fas fa-minus text-white"></i>

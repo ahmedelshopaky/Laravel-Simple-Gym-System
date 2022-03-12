@@ -44,12 +44,6 @@ class MemberVerified extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->view('email.welcome');
-                    // ->subject('Welcome To Our Gym')
-                    // ->greeting('Dear Sir,')
-                    // ->line('I Would Like To Welcome You To Our Gym.')
-                    // ->line('I Hope You Enjoy Your Journey With Us.')
-                    // ->line('Thank you for using our application!')
-                    // ->salutation('Best Regards , Sparta Gym :D');
     }
 
     /**
