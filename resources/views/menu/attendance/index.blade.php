@@ -5,6 +5,7 @@ Attendence
 
 
 @section('tr')
+<th>ID</th>
 <th>Client</th>
 <th>Training Session</th>
 <th>Date / Time</th>
@@ -25,7 +26,11 @@ Attendence
 <script>
   let route="{{ route('attendance.index') }}",
   columnsArray=[
-    {
+        {
+          data: 'id',
+          name: 'id'
+        },
+        {
           data: 'gym_member_name',
           name: 'gym_member_name'
         },
