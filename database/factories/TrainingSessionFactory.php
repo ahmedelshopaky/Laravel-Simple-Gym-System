@@ -25,12 +25,12 @@ class TrainingSessionFactory extends Factory
         $month = 03;
         $day = rand(1, 31);
 
-        $date = Carbon::create($year,$month ,$day, $hour, $minute, $second);
+        $date = Carbon::create($year, $month, $day, $hour, $minute, $second);
 
         return [
             'name' => $this->faker->name,
             'starts_at' => $date->format('Y-m-d H:i:s'),
-            'finishes_at' => $date->addHours(rand(1,3))->format('Y-m-d H:i:s'),
+            'finishes_at' => $date->addHours(rand(1, 3))->format('Y-m-d H:i:s'),
             // 'gym_id' => Gym::factory(),
             'gym_id' => $this->faker->unique()->numberBetween(1, 10),
         ];

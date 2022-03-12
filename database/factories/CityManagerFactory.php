@@ -19,8 +19,8 @@ class CityManagerFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>User::factory(['role'=>'city_manager']),
-            'city_id'=>City::factory(),
+            'user_id' => User::factory(['role' => 'city_manager']),
+            'city_id' => City::factory(),
         ];
     }
 }

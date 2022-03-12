@@ -73,7 +73,7 @@ class AuthController extends Controller
         $token = $user->createToken($request->email)->plainTextToken;
 
         GymMember::where('user_id', $user->id)
-            ->update(['last_login' => Carbon::now(), 'remember_token' => $token]);
+            ->update(['last_login' => Carbon::now()]);
         
         return [
             'message' => 'Welcome you are logged in',

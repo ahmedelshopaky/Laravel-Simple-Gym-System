@@ -19,7 +19,7 @@ class GymManagerFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>User::factory(['role'=>'gym_manager']),
+            'user_id' => User::factory(['role' => 'gym_manager']),
             // 'banned_at' => $this->faker->dateTimeThisYear(),
             'gym_id' => Gym::factory(),
         ];
