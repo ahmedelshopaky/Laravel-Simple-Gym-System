@@ -19,9 +19,10 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js">
     </script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        
-       
-        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
         @yield('styles')
 </head>
 
@@ -290,8 +291,6 @@
                             </ul>
                         </li>
 
-
-
                         <li class="nav-item menu-close">
                             <a href="#" class="nav-link ">
                                 <i class="fa-solid fa-person-running nav-icon"></i>
@@ -335,6 +334,12 @@
                             <a href="{{route('revenue.index')}}" class="nav-link">
                                 <i class="far fa-usd nav-icon"></i>
                                 <p>Revenue</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('statics')}}" class="nav-link">
+                                <i class=" mx-1 fa-solid fa-chart-column"></i>
+                                <p>Statics</p>
                             </a>
                         </li>
                     </ul>

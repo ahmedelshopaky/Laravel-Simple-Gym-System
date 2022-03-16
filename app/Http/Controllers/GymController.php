@@ -15,13 +15,16 @@ class GymController extends Controller
 {
     public function index(Request $request)
     {
-        $user = Auth::user();
-        if ($user->hasRole('cityManager')) {
-            $gyms = Gym::with('city')->where('city_manager_id', $user->id)->get();
-        } else if ($user->hasRole('admin')) {
+        if (Auth::user()->hasRole('cityManager')) 
+        {
+            $gyms = Gym::with('city')->where('city_manager_id', Auth::id())->get();
+        } 
+        else if (Auth::user()->hasRole('admin')) {
             $gyms = Gym::with('city')->get();
         }
-        if ($request->ajax()) {
+
+        if ($request->ajax()) 
+        {
             return Datatables::of($gyms)->addIndexColumn()->make(true);
         }
 
@@ -39,11 +42,13 @@ class GymController extends Controller
 
     public function store(StoreGymRequest $request)
     {
-        if (request()->hasFile('cover_image')) {
+        if (request()->hasFile('cover_image')) 
+        {
             $img = request()->file('cover_image');
             $name = 'img-' . uniqid() . '.' . $img->getClientOriginalExtension();
             $img->move(public_path('/images/gyms/'), $name);
         }
+        
         if ($request->city_id == 'other') {
             $city = City::create([
                 'name' => $request->new_city,
@@ -83,7 +88,8 @@ class GymController extends Controller
         if (Gym::with('gym_managers')->find($id)->gym_managers->first()) 
         {
             $gymManager = Gym::with('gym_managers')->find($id)->gym_managers->first()->user;
-        } else {
+        }
+        else {
             $gymManager = null;
         }
         $cities = City::all();
@@ -94,7 +100,8 @@ class GymController extends Controller
     public function update(UpdateGymRequest $request, $id)
     {
         $gym = Gym::find($id);
-        if (request()->hasFile('avatar_image')) {
+        if (request()->hasFile('avatar_image')) 
+        {
             $img = request()->file('avatar_image');
             $name = $gym->avatar_image;
             $img->move(public_path('/images/gyms/'), $name);
@@ -122,11 +129,25 @@ class GymController extends Controller
                 $trainingSession->strats_at < now() &&
                 $trainingSession->finishes_at > now() &&
                 $trainingSession->gym_members->count() > 0
-            ) {
+            ) 
+            {
                 return response()->json(['message' => false]);
             }
         }
         Gym::find($id)->delete();
         return response()->json(['message' => true]);
+    }
+    public static function getAllGyms()
+    {
+        return Gym::all();
+    }
+    public static function getCityManagerGyms()
+    {
+        return Gym::with('city_managers')->where('city_manager_id', Auth::id())->get();
+    }
+    public static function getGymManagerGym()
+    {
+        
+        return Gym::find(GymManager::where('user_id', Auth::id())->first()->gym_id);
     }
 }

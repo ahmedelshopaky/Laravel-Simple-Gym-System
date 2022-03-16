@@ -16,16 +16,20 @@ class BuyPackageController extends Controller
     {
         $gymMembers = GymMember::with('user')->get();
         $trainingPackages = TrainingPackage::all();
-        $user = Auth::user();
-        if ($user->hasRole('admin')) {
-            $gyms = Gym::all();
+        // $user = Auth::user();
+        if (Auth::user()->hasRole('admin')) 
+        {
+            $gyms = GymController::getAllGyms();
 
-        } else if ($user->hasRole('cityManager')) {
-            $gyms = Gym::with('city_managers')->where('city_manager_id', $user->id)->get();
+        } 
+        else if (Auth::user()->hasRole('cityManager')) 
+        {
+            $gyms = GymController::getCityManagerGyms();
 
-        } else if ($user->hasRole('gymManager')) {
-            $gymID = GymManager::where('user_id', $user->id)->first()->gym_id;
-            $gym = Gym::find($gymID);
+        } 
+        else if (Auth::user()->hasRole('gymManager')) 
+        {
+            $gym = GymController::getGymManagerGym();
             $gyms = compact('gym');
         }
         return view('menu.buy_package.create', compact('gymMembers', 'trainingPackages', 'gyms'));
@@ -36,10 +40,8 @@ class BuyPackageController extends Controller
         $request->session()->put('gym', $request->gym);
         $request->session()->put('gym_member', $request->gym_member);
         $request->session()->put('training_package', $request->training_package);
-    
-        $user = auth()->user();
         return view('menu.buy_package.stripe', [
-            'intent' => $user->createSetupIntent(),
+            'intent' => Auth::user()->createSetupIntent(),
             'price' => TrainingPackage::find($request->training_package)->price / 100,
             'gymMember' => GymMember::where('user_id',$request->gym_member)->first()->user->name,
 
@@ -55,10 +57,9 @@ class BuyPackageController extends Controller
         $amount = $request->amount;
         $amount = $amount * 100;
         $paymentMethod = $request->payment_method;
-        $user = auth()->user();
-        $user->createOrGetStripeCustomer();
-        $paymentMethod = $user->addPaymentMethod($paymentMethod);
-        $user->charge($amount, $paymentMethod->id);
+        Auth::user()->createOrGetStripeCustomer();
+        $paymentMethod = Auth::user()->addPaymentMethod($paymentMethod);
+        Auth::user()->charge($amount, $paymentMethod->id);
 
         $triningPackage = TrainingPackage::find($training_packageFromSession);
         $gym = Gym::find($gymFromSession);
@@ -77,9 +78,9 @@ class BuyPackageController extends Controller
 
     public function stripe()
     {
-        $user = auth()->user();
         return view('menu.buy_package.stripe', [
-            'intent' => $user->createSetupIntent()
+            'intent' => Auth::user()->createSetupIntent()
         ]);
     }
+    
 }

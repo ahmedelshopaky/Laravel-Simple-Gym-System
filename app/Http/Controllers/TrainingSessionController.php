@@ -110,14 +110,13 @@ class TrainingSessionController extends Controller
             return Redirect::back()->withErrors(['msg' => false]);
         } else {
             if (Auth::user()->role == "admin") {
-                $gyms = Gym::all();
+                $gyms = GymController::getAllGyms();
                 $coaches = $gyms->first()->coaches;
             } else if (Auth::user()->role == "gym_manager") {
-                $gyms = GymManager::where('user_id', Auth::user()->id)->first()->gym;
+                $gyms = GymController::getGymManagerGym();
                 $coaches = Coach::whereIn('gym_id', GymManager::where('user_id', Auth::id())->pluck('gym_id'))->get();
-                // $coaches = $gyms->first()->coaches;
             } else if (Auth::user()->role == "city_manager") {
-                $gyms = Gym::where('city_manager_id', Auth::id())->get();
+                $gyms = GymController::getCityManagerGyms();
                 $coaches = Coach::whereIn('gym_id', Gym::where('city_manager_id', Auth::user()->id)->get()->pluck('id'))->get();
             }
             return view('menu.training_sessions.edit', compact('trainingSession', 'gyms', 'coaches'));

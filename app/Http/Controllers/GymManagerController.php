@@ -12,7 +12,8 @@ class GymManagerController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->ajax()) {
+        if ($request->ajax()) 
+        {
             $gymManager = User::role('gymManager')->withBanned()->get();
             return Datatables::of($gymManager)->addIndexColumn()->make(true);
         }
@@ -21,14 +22,14 @@ class GymManagerController extends Controller
 
     public function create()
     {
-        $gyms = Gym::all();
+        $gyms = GymController::getAllGyms();
         return view('menu.gym_manager.create', compact('gyms'));
     }
 
     public function edit($id)
     {
         $user = User::find($id);
-        $gyms = Gym::all();
+        $gyms = GymController::getAllGyms();
         return view('menu.gym_manager.edit', compact('user', 'gyms'));
     }
 

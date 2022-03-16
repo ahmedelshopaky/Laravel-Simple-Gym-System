@@ -14,6 +14,7 @@ use App\Http\Controllers\CoachController;
 use App\Http\Controllers\BuyPackageController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\GymMemberController;
+use App\Http\Controllers\StaticsController;
 use App\Http\Controllers\TrainingSessionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,7 @@ Route::get('/register', [LoginController::class, 'unauthorized'])->name('unautho
 Route::group(['middleware'=>['auth','logs-out-banned-user','role:admin|cityManager|gymManager']], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/contact', [ContactController::class, 'index'])->name('contact');
-    
+    Route::get("/statics",[StaticsController::class,'index'])->name('statics');
     
     Route::group(['prefix' => '/gym-managers', 'middleware' => ['role:admin|cityManager']], function () {
         Route::get('/', [GymManagerController::class, 'index'])->name('gym-managers.index');

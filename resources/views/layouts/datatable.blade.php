@@ -88,11 +88,23 @@
         
         var table = $('.data-table').DataTable({
             dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'excelHtml5',
+                    text: 'data to excel',
+                    exportOptions: {
+                        columns: [ 0,1,2 ],
+                            modifier: {
+                                page: 'current'
+                            }
+                        }
+                }
+            ],
             processing: true,
             serverSide: true,
             ajax: route,
             columns: columnsArray,
-            buttons: ['excel'],
+            
         });
         var id;
         $('body').on('click', '.delete', function() {

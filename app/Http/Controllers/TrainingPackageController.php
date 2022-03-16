@@ -43,7 +43,8 @@ class TrainingPackageController extends Controller
         $validated = $request->validated();
 
         $package = TrainingPackage::find($id);
-        if ($package) {
+        if ($package) 
+        {
             $package->update($validated);
         }
         return view('menu.training_packages.show', compact('package'));

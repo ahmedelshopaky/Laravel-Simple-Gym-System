@@ -12,19 +12,22 @@ class CoachController extends Controller
 {
     
     public function index(Request $request){
-        if ($request->ajax()) {
+        if ($request->ajax()) 
+        {
             $coaches = Coach::with('gym')->get();
             return Datatables::of($coaches)->addIndexColumn()->make(true);
         }
       
         return view('menu.coaches.index');
     }
-    public function create() {
-        $gyms = Gym::all();
+    public function create() 
+    {
+        $gyms = GymController::getAllGyms();
         return view('menu.coaches.create', compact('gyms'));
     }
 
-    public function store() {
+    public function store() 
+    {
         Coach::insert([
             'name' => request()->name,
             'gym_id' => request()->gym,
@@ -38,7 +41,7 @@ class CoachController extends Controller
     }
     public function edit($id)
     {
-        $gyms = Gym::all();
+        $gyms = GymController::getAllGyms();
         $coach=Coach::find($id);
         return view('menu.coaches.edit',compact('coach', 'gyms'));
     }
