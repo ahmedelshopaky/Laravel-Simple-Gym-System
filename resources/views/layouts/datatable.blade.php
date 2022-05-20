@@ -91,7 +91,7 @@
             buttons: [
                 {
                     extend: 'excelHtml5',
-                    text: 'data to excel',
+                    text: 'Download',
                     exportOptions: {
                         columns: [ 0,1,2 ],
                             modifier: {

@@ -4,9 +4,9 @@
 @section('content')
 <section class="bg-light content home bg-white">
     <div class="container">
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-12">   
-                <h1 class="text-center p-3 fw-bold"><span class="badge badge-primary p-4" style="letter-spacing: 2px;word-spacing:6px;">Statics Charts</span></h1>
+                <h1 class="text-center mt-5 fw-bold"><span class="badge badge-primary">Statics Charts</span></h1>
             </div>
         </div>
         <div class="row">

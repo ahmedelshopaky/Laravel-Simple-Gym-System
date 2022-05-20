@@ -1,178 +1,119 @@
 # Simple Gym System
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-A Simple Gym System as the Laravel project for Open Source Application Development Track, ITI intake 42.
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/ahmedelshopaky/Laravel-Simple-Gym-System">
+    <img src="public/images/gym-logo.jpg" alt="Logo" width="150" />
+  </a>
 
-# Contents
-- [ERD]()
-- [Running the Project]()
-- [Built with]()
-- [Authors ]()
+  <h3 align="center">Simple Gym System</h3>
+
+  <p align="center">
+    This is a Laravel PHP Web Application based on rules like Admin, City Manager, Gym Manager. All features and roles are explained below.
+  </p>
+</div>
 
 
-## ERD & Mapping 
 
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+### Built With
+
+* [Laravel](https://laravel.com/)
+* [Admin LTE](https://adminlte.io/)
+* [Laravel Cashier](https://github.com/laravel/cashier-stripe/)
+* [Laravel Sanctum](https://github.com/laravel/sanctum/)
+* [Laravel Ban](https://github.com/cybercog/laravel-ban/)
+* [Laravel Permissions](https://github.com/spatie/laravel-permission/)
+* [Laravel UI](https://github.com/laravel/ui)
+
+
+### ERD & Mapping 
 
 ![gym edited](https://user-images.githubusercontent.com/97949768/156903803-d0e015de-a274-4a9a-a25c-de8434383991.png)
 
-# Running the project
+
+### Prerequisites
+
+* Apache Web Server
+* PHP 8.0
+* Composer
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/ahmedelshopaky/Laravel-Simple-Gym-System
+   ```
+2. Run this command to install dependencies
+   ```sh
+   composer update
+   ```
+3. Configure your database in `.env` file
+4. Run this command
+   ```sh
+   php artisan migrate --seed
+   ```
+5. Run this command to create an admin account
+   ```sh
+   php artisan create:admin
+   ```
 
 
-## .env file
+### Roles
 
-After making clone to our project go to .env file and make sure you edit these parameters to suit yours. 
+- Admin will have access to everything in the system, he can see any links or make any action Gym Manager and City Manager can do with these extra functionalities.
+- City Manager can do what Gym Manager do with extra functionalities like he can see all gyms in his city and make CRUD on any gym or gym manager in his city.
+- Gym Manager can CRUD training sessions and assign coaches to these sessions, also he can buy training package for a user through stripe.
+- User will have an endpoint to register, after he registers he must verify his email via verification link sent to him.
 
-* **DB_DATABASE=gym**
-* **DB_USERNAME=root**
-* **DB_PASSWORD=**
+### Contributors
 
-* **DB_HOST=127.0.0.1**
-* **DB_PORT=3306**
-
-Run this command in your terminal
-```
-composer install 
-```
-</br>
-
-### Admin LTE
-</br>
-
-
-```
-npm install
-```
-If you faced problems in setuping npm make sure you've node js
-```
-npm run dev
-```
-```
-npm install admin-lte@^3.2 --save
-```
-```
-npm install --save @fortawesome/fontawesome-free
-```
-```
-npm run dev
-```
-
-### Laravel Permissions
-</br>
-
-```
-composer require spatie/laravel-permission
-```
-```
-php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
-```
-```
-php artisan optimize:clear
-```
-```
-php artisan migrate
-```
-### Laravel Ban
-</br>
-
-```
-composer require cybercog/laravel-ban
-```
-```
-php artisan vendor:publish --provider="Cog\Laravel\Ban\Providers\BanServiceProvider" --tag="migrations"
-```
-```
-php artisan migrate
-```
-
-
-
-
-### DataTables 
-</br>
-
-```
- composer require yajra/laravel-datatables-oracle:"~9.0"
-```
-```
-php artisan vendor:publish --provider="Yajra\DataTables\DataTablesServiceProvider"
-```
-
-
-### Laravel Sanctum 
-</br>
-
-```
-composer require laravel/sanctum
-```
-```
-php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvider"
-```
-```
-php artisan migrate
-```
-
-### To add new admin 
-</br>
-
-```
-php artisan create:admin
-```
-
-### To run seeders 
-</br>
-
-```
-php artisan db:seed
-```
-### Add Stripe key
-In .env file add 
-``` 
-STRIPE_KEY=pk_test_51KZbWdGerl36jGBlSUe3rMyBApbtz9gPiGLrY3dSKyCRZKuqADbV9JG3gHNrtxxh94WD703gxBv3NZ7WzVTMqZUV00bCzwzL6F
-```
-
-```
-STRIPE_SECRET=sk_test_51KZbWdGerl36jGBlurnj9wlsLRgZS70wmhiSNkP5zzwKlSxCvY3GwZr1YCutrdfulSVJE8hSyzGppuYIRQ1LJ70U00gKEGdZCa 
-```
-
-Then run these commands
-
-```
-composer require laravel/cashier 
-```
-
-```
-composer require stripe/stripe-php
-```
-In the end, don't forget to run this important command
-```
-php artisan serve 
-```
-
-</br>
-</br>
-
-## Built With
-
-* [Laravel]()
-* [Admin LTE]()
-* [Stripe]()
-* [Laravel Sanctum ]()
-* [Laravel Ban ]()
-* [Laravel Permissions ]()
-
-</br>
-</br>
-
-
-
-
-
-## Authors
-* **Abdeladl Mounir Abdeladl Shaheen**
-* **Abdelrahman Magdy Ibrahim Eldesouky**
-* **Ahmed Abdelfatah Abdelfatah Ali Elshopaky**
-* **Ahmed Hamdy Abd elkader Ashour**
-* **Asmaa Ebrahim Abdelhamid Ebrahim**
-* **Ali Tarek Ahmed Hussein**
-
-
+<table>
+  <tr>
+    <td>
+      <img src="https://avatars.githubusercontent.com/u/58668061?v=4" />
+    </td>
+    <td>
+      <img src="https://avatars.githubusercontent.com/u/56225081?v=4" />
+    </td>
+    <td>
+      <img src="https://avatars.githubusercontent.com/u/97956558?v=4" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://github.com/ahmedelshopaky">Ahmed Elshopaky</a>
+    </td>
+      <td>
+      <a href="https://github.com/Asmaa100">Asmaa Ibrahim</a>
+    </td>
+     <td>
+      <a href="https://github.com/abdeladlshaheen421">Abdeladl Shaheen</a>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img src="https://avatars.githubusercontent.com/u/97949768?v=4" />
+    </td>
+    <td>
+      <img src="https://avatars.githubusercontent.com/u/75224277?v=4" />
+    </td>
+    <td>
+      <img src="https://avatars.githubusercontent.com/u/97910397?v=4" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <a href="https://github.com/EngAbdelrahmanMagdi">Abdelrahman Magdy</a>
+    </td>
+      <td>
+      <a href="https://github.com/AshourDono">Ahmed Ashour</a>
+    </td>
+     <td>
+      <a href="https://github.com/AliTaarek">Ali Tarek</a>
+    </td>
+  </tr>
+</table>

@@ -89624,11 +89624,12 @@ readers do not read off random characters that represent icons */
     font-weight: 400;
 }
 
-/* 
 
-.card-view{
+
+.card-view {
   box-shadow:10px 10px 10px #bbc4d2;
-} */
+}
+
 /* start pagination */
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current {
@@ -89645,6 +89646,7 @@ readers do not read off random characters that represent icons */
     border: 1px solid #3f6791;
     color: #000 !important;
 }
+
 /* end pagination */
 .btn-info {
     background: #3f6791;
@@ -89665,19 +89667,19 @@ readers do not read off random characters that represent icons */
     background-color: #3f6791 !important;
 }
 
-body {
-    /* background-image: url("../images/2.jpeg"); */
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+/* body{
+  background-image: url("../images/2.jpeg");
+  background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
-.content-wrapper {
-    /* background-image: url("../images/2.jpeg"); */
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    position: relative;
-}
-/* .overlay{
+.content-wrapper{
+  background-image: url("../images/2.jpeg");
+  background-repeat: no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+} */
 
+/* .overlay{
   position: absolute;
 	top: 0;
 	left: 0;
@@ -89686,22 +89688,20 @@ body {
 	background-color: rgba(0,0,0,0.5);
 } */
 
-.p-view {
-    color: #3f6791;
-    text-shadow: 3px 3px 3px #d1d9e4;
+.p-view{
+  color: #3f6791;
+  text-shadow: 3px 3px 3px #d1d9e4;
 }
-.h-home {
-    color: #d39656;
-    text-shadow: 2px 2px 2px #181715;
+
+.home{
+  position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+  height:100%;
+	/* background-color: rgba(0,0,0,0.4); */
 }
-.home {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-.home .welcome {
-    font-size: 50px;
+
+.home .welcome{
+  font-size: 50px;
 }
